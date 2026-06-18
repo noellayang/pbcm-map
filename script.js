@@ -469,10 +469,10 @@ const TYPE_LABELS = {
 };
 
 const TYPE_COLORS = {
-  university: "#2f607f",
-  hospital: "#8b3f3f",
-  city: "#446b51",
-  other: "#67577a"
+  university: "--university",
+  hospital: "--hospital",
+  city: "--city",
+  other: "--other"
 };
 
 const CANADA_VIEW = {
@@ -579,7 +579,18 @@ function getInstitutionById(id) {
 }
 
 function typeColor(type) {
-  return TYPE_COLORS[type] ?? TYPE_COLORS.other;
+  const variableNames = {
+    university: "--university",
+    hospital: "--hospital",
+    city: "--city",
+    other: "--other"
+  };
+
+  const variableName = variableNames[type] ?? "--other";
+
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(variableName)
+    .trim();
 }
 
 function createInstitutionIcon(institution, selected = false) {
