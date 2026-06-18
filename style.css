@@ -12,15 +12,15 @@
   --blue: #2f607f;
   --red: #a62a1e;
 
-  --university: #2f607f;
-  --hospital: #8b3f3f;
-  --city: #446b51;
-  --other: #67577a;
+  --university: royalblue;
+  --hospital: orangered;
+  --city: seagreen;
+  --other: slategray;
 
-  --stage-outreach: #c58a00;
-  --stage-active: #287a8b;
-  --stage-motion: #4c63a8;
-  --stage-implemented: #2f7d4a;
+  --stage-outreach: orange;
+  --stage-active: orangered;
+  --stage-motion: royalblue;
+  --stage-implemented: forestgreen;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
 
