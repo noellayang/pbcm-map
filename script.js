@@ -1,22 +1,4 @@
-/*
-  Canadian Plant-Forward Directory
-  --------------------------------
-  This file contains:
-  1. The temporary institution dataset
-  2. Leaflet map setup
-  3. Institution type markers
-  4. Search and filtering
-  5. Directory cards
-  6. Google Maps-style profile drawer
-
-  Replace or expand INSTITUTIONS when your final reviewed data is ready.
-*/
-
-"use strict";
-
-/* =========================================================
-   DATA
-   ========================================================= */
+/* DATA */
 const INSTITUTIONS = [
   {
     id: "ubc",
@@ -28,6 +10,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 49.2606, lng: -123.2460 },
     stage: "implemented",
     stageLabel: "Implementation underway",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -62,6 +45,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 48.4634, lng: -123.3117 },
     stage: "active",
     stageLabel: "Active campus outreach",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -110,6 +94,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 45.4972, lng: -73.5789 },
     stage: "active",
     stageLabel: "Reported menu progress",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: 42,
     summary:
@@ -134,6 +119,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.4723, lng: -80.5449 },
     stage: "active",
     stageLabel: "Sustainability integration",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -158,6 +144,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.5305, lng: -80.2262 },
     stage: "active",
     stageLabel: "Campus options available",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -216,6 +203,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 48.5949, lng: -123.4085 },
     stage: "active",
     stageLabel: "Initial collaboration",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -240,6 +228,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 49.3200, lng: -123.0700 },
     stage: "motion-passed",
     stageLabel: "Motion passed",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -261,6 +250,42 @@ const INSTITUTIONS = [
   },
 
   {
+    id: "vancouver",
+    name: "City of Vancouver",
+    shortName: "Vancouver",
+    type: "city",
+    city: "Vancouver",
+    province: "BC",
+    coordinates: { lat: 49.2827, lng: -123.1207 },
+    stage: "motion-passed",
+    stageLabel: "Motion passed; staff work ongoing",
+    initiative: "Vancouver Humane Society-supported initiative",
+    score: null,
+    plantBasedPercent: null,
+    summary:
+      "Vancouver City Council passed the Plant-Based Purchasing Savings for City and Climate motion on November 2, 2021. The motion directed staff to assess how a partial shift toward plant-based procurement could reduce municipal costs and greenhouse-gas emissions. Staff later reported that the City would continue advancing lower-emission food procurement while considering equity, public demand, and the operational requirements of different food-service streams.",
+    achievements: [
+      "Council approved a formal review of plant-based municipal procurement",
+      "Staff evaluated procurement scenarios proposed by the Vancouver Humane Society",
+      "Connected municipal food purchasing with climate action, cost considerations, and food-related emissions tracking",
+      "Committed to pursuing and improving lower-emission procurement practices",
+      "Continued exploring methods to track and report food-related greenhouse-gas emissions"
+    ],
+    resources: [
+      {
+        label: "Vancouver City Council motion",
+        url: "https://council.vancouver.ca/20211102/documents/b5.pdf"
+      },
+      {
+        label: "2023 staff status update",
+        url: "https://vancouver.ca/files/cov/2023-09-20-council-memo-plant-based-procurement-motion-status-update-rts.pdf"
+      }
+    ],
+    lastUpdated: "2023-11-07",
+    verified: true
+  },
+
+  {
     id: "saanich",
     name: "District of Saanich",
     shortName: "Saanich",
@@ -270,6 +295,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 48.4593, lng: -123.3767 },
     stage: "implemented",
     stageLabel: "Pilot and policy work",
+    initiative: "Plant-Based Cities Movement and Greener By Default-supported initiaitve.",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -295,6 +321,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 49.2488, lng: -122.9805 },
     stage: "motion-passed",
     stageLabel: "Motion passed; follow-up needed",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -325,6 +352,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.7315, lng: -79.7624 },
     stage: "motion-passed",
     stageLabel: "Motion passed",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -350,6 +378,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.4675, lng: -79.6877 },
     stage: "motion-passed",
     stageLabel: "Motion passed",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -380,6 +409,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 44.2312, lng: -76.4860 },
     stage: "motion-passed",
     stageLabel: "Motion passed",
+    initiative: "Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -410,6 +440,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 45.5019, lng: -73.5674 },
     stage: "motion-passed",
     stageLabel: "Major commitment passed",
+    initiative: "Sustainable Food Transition Coalition & Plant-Based Cities Movement-supported initiative",
     score: null,
     plantBasedPercent: 75,
     summary:
@@ -441,6 +472,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.5320, lng: -80.2240 },
     stage: "implemented",
     stageLabel: "Plant-based menu implemented",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -864,6 +896,12 @@ function renderProfileDrawer(institution) {
       <p class="drawer-location">
         ${escapeHtml(institution.city)}, ${escapeHtml(institution.province)}
       </p>
+      
+      ${
+        institution.initiative
+        ? `<p class="drawer-initiative">${escapeHtml(institution.initiative)}</p>`
+        : ""
+      }
 
       <span class="stage-badge stage-${escapeHtml(institution.stage)}">
         ${escapeHtml(institution.stageLabel)}
