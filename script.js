@@ -932,12 +932,12 @@ function renderProfileDrawer(institution) {
 
       <div class="profile-body">
         <section class="profile-introduction" aria-labelledby="profile-summary-heading">
-          <h3 id="profile-summary-heading">About this work</h3>
+          <h3 id="profile-summary-heading">About the initiative</h3>
           <p>${escapeHtml(institution.summary)}</p>
         </section>
 
         <section class="profile-content-section" aria-labelledby="profile-highlights-heading">
-          <h3 id="profile-highlights-heading">Highlights</h3>
+          <h3 id="profile-highlights-heading">Progress to date</h3>
           <ul class="profile-highlights">
             ${achievements}
           </ul>
