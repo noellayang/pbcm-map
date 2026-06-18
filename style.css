@@ -9,18 +9,19 @@
   --text-muted: #566675;
   --navy: #26374a;
   --navy-dark: #162b3a;
-  --blue: #2f607f;
-  --cyan: #00BFFF;
+  --blue: #284162;
 
-  --university: #4169E1;
-  --hospital: #FF4500;
-  --city: #32CD32;
-  --other: #778899;
+  --selected-pin: #00a6c8;
 
-  --stage-outreach: #FFA500;
-  --stage-active: #EB332E;
-  --stage-motion: #65689F;
-  --stage-implemented: #32CD32;
+  --university: #356fa3;
+  --hospital: #d94a45;
+  --city: #3f8a5b;
+  --other: #687783;
+
+  --stage-outreach: #d39400;
+  --stage-active: #2e7f91;
+  --stage-motion: #5867a8;
+  --stage-implemented: #328455;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
 
