@@ -71,6 +71,7 @@ const INSTITUTIONS = [
     coordinates: { lat: 43.0096, lng: -81.2737 },
     stage: "active",
     stageLabel: "Reported menu progress",
+    initiative: "Canadian University-supported initiative",
     score: null,
     plantBasedPercent: 46,
     summary:
