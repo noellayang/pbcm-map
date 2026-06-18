@@ -17,10 +17,10 @@
   --city: #446b51;
   --other: #67577a;
 
-  --stage-outreach: #747b80;
-  --stage-active: #2c7189;
-  --stage-motion: #68558c;
-  --stage-implemented: #26734d;
+  --stage-outreach: yellow;
+  --stage-active: green;
+  --stage-motion: blue;
+  --stage-implemented: limegreen;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
 
