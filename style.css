@@ -17,10 +17,10 @@
   --city: #446b51;
   --other: #67577a;
 
-  --stage-outreach: yellow;
-  --stage-active: green;
-  --stage-motion: blue;
-  --stage-implemented: limegreen;
+  --stage-outreach: #c58a00;
+  --stage-active: #287a8b;
+  --stage-motion: #4c63a8;
+  --stage-implemented: #2f7d4a;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
 
@@ -100,7 +100,7 @@ a {
   gap: 20px;
   padding: 0 20px;
   background: var(--white);
-  border-top: 4px solid var(--red);
+  border-top: 0;
   border-bottom: 1px solid var(--border);
 }
 
