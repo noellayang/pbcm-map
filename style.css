@@ -10,7 +10,7 @@
   --navy: #26374a;
   --navy-dark: #162b3a;
   --blue: #2f607f;
-  --red: #a62a1e;
+  --cyan: #00BFFF;
 
   --university: #4169E1;
   --hospital: #FF4500;
@@ -18,8 +18,8 @@
   --other: #778899;
 
   --stage-outreach: #FFA500;
-  --stage-active: #FF4500;
-  --stage-motion: #4169E1;
+  --stage-active: #EB332E;
+  --stage-motion: #65689F;
   --stage-implemented: #32CD32;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
@@ -535,7 +535,7 @@ a {
 .institution-marker.is-selected {
   box-shadow:
     0 0 0 3px var(--white),
-    0 0 0 6px var(--red),
+    0 0 0 6px var(--cyan),
     0 2px 7px rgb(0 0 0 / 30%);
   transform: scale(1.06);
 }
