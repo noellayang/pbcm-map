@@ -593,21 +593,21 @@ function typeColor(type) {
     .trim();
 }
 
-function createInstitutionIcon(institution, selected = false) {
+function createInstitutionIcon(institution) {
   return L.divIcon({
     className: "institution-marker-wrapper",
     html: `
       <div
-        class="institution-marker ${selected ? "is-selected" : ""}"
+        class="institution-marker"
         style="--type-color:${typeColor(institution.type)}"
         aria-hidden="true"
       >
         ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
       </div>
     `,
-    iconSize: [34, 34],
-    iconAnchor: [17, 17],
-    tooltipAnchor: [0, -21]
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    tooltipAnchor: [0, -24]
   });
 }
 
@@ -700,10 +700,7 @@ function renderMarkers(institutions) {
     const marker = L.marker(
       [institution.coordinates.lat, institution.coordinates.lng],
       {
-        icon: createInstitutionIcon(
-          institution,
-          institution.id === selectedInstitutionId
-        ),
+        icon: createInstitutionIcon(institution),
         title: institution.name,
         riseOnHover: true,
         keyboard: true
@@ -726,12 +723,21 @@ function renderMarkers(institutions) {
       }
     );
 
-    marker.on("click", () => selectInstitution(institution.id));
+    marker.on("click", () => {
+      selectInstitution(institution.id);
+    });
+
     marker.addTo(map);
     markers.set(institution.id, marker);
+
+    if (institution.id === selectedInstitutionId) {
+      marker
+        .getElement()
+        ?.querySelector(".institution-marker")
+        ?.classList.add("is-selected");
+    }
   });
 }
-
 /* =========================================================
    FILTERS
    ========================================================= */
@@ -946,20 +952,20 @@ function setSelectedCard(id) {
 
 function updateSelectedMarker(previousId, nextId) {
   if (previousId) {
-    const previousInstitution = getInstitutionById(previousId);
     const previousMarker = markers.get(previousId);
+    const previousElement = previousMarker?.getElement();
 
-    if (previousInstitution && previousMarker) {
-      previousMarker.setIcon(createInstitutionIcon(previousInstitution, false));
-    }
+    previousElement
+      ?.querySelector(".institution-marker")
+      ?.classList.remove("is-selected");
   }
 
-  const nextInstitution = getInstitutionById(nextId);
   const nextMarker = markers.get(nextId);
+  const nextElement = nextMarker?.getElement();
 
-  if (nextInstitution && nextMarker) {
-    nextMarker.setIcon(createInstitutionIcon(nextInstitution, true));
-  }
+  nextElement
+    ?.querySelector(".institution-marker")
+    ?.classList.add("is-selected");
 }
 
 function selectInstitution(id) {
