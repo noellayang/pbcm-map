@@ -854,97 +854,129 @@ function applyFilters({ updateMapView = true } = {}) {
 /* =========================================================
    PROFILE
    ========================================================= */
-
 function renderProfileDrawer(institution) {
   const achievements =
     institution.achievements?.length
       ? institution.achievements
-          .map((achievement) => `<li>${escapeHtml(achievement)}</li>`)
+          .map(
+            (achievement) => `
+              <li>${escapeHtml(achievement)}</li>
+            `
+          )
           .join("")
-      : `<li class="empty-value">No achievements reported.</li>`;
+      : `<li class="empty-value">No public achievements reported.</li>`;
 
   const resources =
     institution.resources?.length
       ? institution.resources
-          .map((resource) => `
-            <a
-              class="resource-card"
-              href="${escapeHtml(safeUrl(resource.url))}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>${escapeHtml(resource.label)}</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          `)
+          .map(
+            (resource) => `
+              <a
+                class="profile-resource"
+                href="${escapeHtml(safeUrl(resource.url))}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>${escapeHtml(resource.label)}</span>
+                <span class="resource-arrow" aria-hidden="true">↗</span>
+              </a>
+            `
+          )
           .join("")
-      : `<p class="empty-value">No public resources listed.</p>`;
+      : `<p class="empty-value">No public sources currently listed.</p>`;
+
+  const initiative = institution.initiative
+    ? `
+        <div class="profile-program">
+          <span class="profile-program-label">Initiative</span>
+          <span>${escapeHtml(institution.initiative)}</span>
+        </div>
+      `
+    : "";
 
   drawerContent.innerHTML = `
-    <div class="drawer-hero">
-      <div class="drawer-type">
-        <span
-          class="drawer-type-icon"
-          style="--type-color:${typeColor(institution.type)}"
-          aria-hidden="true"
-        >
-          ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
-        </span>
-        ${escapeHtml(TYPE_LABELS[institution.type] ?? "Institution")}
+    <article class="institution-profile">
+      <header class="profile-header">
+        <div class="profile-classification">
+          <span
+            class="drawer-type-icon"
+            style="--type-color:${typeColor(institution.type)}"
+            aria-hidden="true"
+          >
+            ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
+          </span>
+
+          <span>
+            ${escapeHtml(TYPE_LABELS[institution.type] ?? "Institution")}
+          </span>
+        </div>
+
+        <h2 id="drawer-name">${escapeHtml(institution.name)}</h2>
+
+        <p class="profile-location">
+          ${escapeHtml(institution.city)}, ${escapeHtml(institution.province)}
+        </p>
+
+        <div class="profile-status-row">
+          <span class="stage-badge stage-${escapeHtml(institution.stage)}">
+            ${escapeHtml(institution.stageLabel)}
+          </span>
+
+          <span class="verification-status">
+            ${institution.verified ? "Public sources reviewed" : "Review pending"}
+          </span>
+        </div>
+
+        ${initiative}
+      </header>
+
+      <div class="profile-body">
+        <section class="profile-introduction" aria-labelledby="profile-summary-heading">
+          <h3 id="profile-summary-heading">About this work</h3>
+          <p>${escapeHtml(institution.summary)}</p>
+        </section>
+
+        <section class="profile-content-section" aria-labelledby="profile-highlights-heading">
+          <h3 id="profile-highlights-heading">Highlights</h3>
+          <ul class="profile-highlights">
+            ${achievements}
+          </ul>
+        </section>
+
+        <section class="profile-content-section" aria-labelledby="profile-details-heading">
+          <h3 id="profile-details-heading">Profile details</h3>
+
+          <dl class="profile-details">
+            <div>
+              <dt>Progress</dt>
+              <dd>${escapeHtml(institution.stageLabel)}</dd>
+            </div>
+
+            <div>
+              <dt>Plant-based offering</dt>
+              <dd>${escapeHtml(formatPercentage(institution.plantBasedPercent))}</dd>
+            </div>
+
+            <div>
+              <dt>Overall score</dt>
+              <dd>${escapeHtml(formatScore(institution.score))}</dd>
+            </div>
+
+            <div>
+              <dt>Last reviewed</dt>
+              <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="profile-content-section profile-sources" aria-labelledby="profile-sources-heading">
+          <h3 id="profile-sources-heading">Sources and related information</h3>
+          <div class="profile-resource-list">
+            ${resources}
+          </div>
+        </section>
       </div>
-
-      <h2 id="drawer-name">${escapeHtml(institution.name)}</h2>
-      <p class="drawer-location">
-        ${escapeHtml(institution.city)}, ${escapeHtml(institution.province)}
-      </p>
-      
-      ${
-        institution.initiative
-        ? `<p class="drawer-initiative">${escapeHtml(institution.initiative)}</p>`
-        : ""
-      }
-
-      <span class="stage-badge stage-${escapeHtml(institution.stage)}">
-        ${escapeHtml(institution.stageLabel)}
-      </span>
-    </div>
-
-    <section class="drawer-section">
-      <h3>Overview</h3>
-      <p class="drawer-summary">${escapeHtml(institution.summary)}</p>
-    </section>
-
-    <section class="drawer-section">
-      <h3>Key achievements</h3>
-      <ul class="achievement-list">${achievements}</ul>
-    </section>
-
-    <section class="drawer-section">
-      <h3>Reported progress</h3>
-      <dl class="fact-list">
-        <div>
-          <dt>Plant-based offering</dt>
-          <dd>${escapeHtml(formatPercentage(institution.plantBasedPercent))}</dd>
-        </div>
-        <div>
-          <dt>Overall score</dt>
-          <dd>${escapeHtml(formatScore(institution.score))}</dd>
-        </div>
-        <div>
-          <dt>Last updated</dt>
-          <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
-        </div>
-        <div>
-          <dt>Source review</dt>
-          <dd>${institution.verified ? "Public source verified" : "Pending review"}</dd>
-        </div>
-      </dl>
-    </section>
-
-    <section class="drawer-section">
-      <h3>Sources and resources</h3>
-      <div class="resource-list">${resources}</div>
-    </section>
+    </article>
   `;
 }
 
