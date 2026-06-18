@@ -17,7 +17,6 @@
 /* =========================================================
    DATA
    ========================================================= */
-
 const INSTITUTIONS = [
   {
     id: "ubc",
@@ -32,11 +31,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Implementing climate-friendly food procurement guidelines with a target to reduce food-system greenhouse-gas emissions by 50% by 2030.",
+      "The University of British Columbia is implementing climate-friendly food-system procurement guidelines through its Climate Action Plan 2030, including a target to reduce food-related greenhouse-gas emissions by 50% by 2030.",
     achievements: [
-      "Climate-friendly food procurement guidelines",
-      "Food-system greenhouse-gas reduction target of 50% by 2030",
-      "Climate-friendly food labels introduced across participating outlets"
+      "Adopted climate-friendly food-system procurement guidelines",
+      "Established a 2030 target to reduce food-related greenhouse-gas emissions by 50%",
+      "Introduced climate-friendly food labels to communicate the environmental impacts of menu choices",
+      "Integrated food procurement into the University’s broader institutional climate strategy"
     ],
     resources: [
       {
@@ -51,6 +51,7 @@ const INSTITUTIONS = [
     lastUpdated: "2026-06-09",
     verified: true
   },
+
   {
     id: "uvic",
     name: "University of Victoria",
@@ -64,16 +65,18 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Its Climate and Sustainability Action Plan targets a 50% reduction in food-related emissions and plant-based defaults on 60% of campus menus by 2030.",
+      "The University of Victoria’s Climate and Sustainability Action Plan 2030 includes targets to reduce food-related greenhouse-gas emissions by 50% and make plant-based choices the default on 60% of campus menus by 2030. Faculty-level outreach and implementation work are continuing.",
     achievements: [
-      "2030 target for a 50% reduction in food-related greenhouse-gas emissions",
-      "2030 target for plant-based defaults on 60% of campus menus",
-      "Faculty-level outreach and student recruitment work underway"
+      "Established a 2030 target for a 50% reduction in food-related greenhouse-gas emissions",
+      "Established a target for plant-based defaults on 60% of campus menus",
+      "Demonstrated faculty-level adoption through a plant-based default initiative in the Faculty of Law",
+      "Began outreach aimed at expanding participation across additional faculties"
     ],
     resources: [],
     lastUpdated: "2026-06-09",
     verified: false
   },
+
   {
     id: "western",
     name: "Western University",
@@ -87,14 +90,16 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: 46,
     summary:
-      "Residence dining services report that approximately 46% of offerings within the residence dining cycle are plant-based.",
+      "Western University residence dining services report that approximately 46% of offerings within the residence dining cycle are plant-based.",
     achievements: [
-      "Approximately 46% of residence dining-cycle offerings reported as plant-based"
+      "Approximately 46% of residence dining-cycle offerings are reported as plant-based",
+      "Plant-based availability has been incorporated into residence dining operations"
     ],
     resources: [],
     lastUpdated: "2026-06-09",
     verified: false
   },
+
   {
     id: "concordia",
     name: "Concordia University",
@@ -108,16 +113,17 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: 42,
     summary:
-      "Dining menus reportedly include approximately 42% vegan and 24% vegetarian options, alongside increased promotion of plant-based milk.",
+      "Concordia University dining menus reportedly include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk.",
     achievements: [
-      "Approximately 42% of dining options reported as vegan",
-      "Approximately 24% of dining options reported as vegetarian",
-      "Greater visibility for plant-based milk"
+      "Approximately 42% of dining options are reported as vegan",
+      "Approximately 24% of dining options are reported as vegetarian",
+      "Plant-based milk has received greater visibility in campus food service"
     ],
     resources: [],
     lastUpdated: "2026-06-09",
     verified: false
   },
+
   {
     id: "waterloo-university",
     name: "University of Waterloo",
@@ -131,16 +137,17 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Food systems are increasingly integrated into sustainability planning and procurement, with continued expansion of vegan offerings.",
+      "The University of Waterloo is increasingly integrating food systems into sustainability planning and procurement while continuing to expand vegan offerings.",
     achievements: [
-      "Food systems included in sustainability planning",
-      "Plant-forward procurement work underway",
-      "Continued expansion of vegan offerings"
+      "Food systems have been incorporated into institutional sustainability planning",
+      "Plant-forward procurement work is reported as underway",
+      "Vegan menu offerings continue to expand"
     ],
     resources: [],
     lastUpdated: "2026-06-09",
     verified: false
   },
+
   {
     id: "guelph-university",
     name: "University of Guelph",
@@ -154,9 +161,10 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Vegan and vegetarian options are reported as readily available across campus food-service locations.",
+      "The University of Guelph reports that vegan and vegetarian options are readily available across campus food-service locations.",
     achievements: [
-      "Vegan and vegetarian choices available across campus"
+      "Vegan and vegetarian choices are available across campus",
+      "Plant-forward options have been incorporated into campus hospitality services"
     ],
     resources: [
       {
@@ -167,6 +175,7 @@ const INSTITUTIONS = [
     lastUpdated: null,
     verified: true
   },
+
   {
     id: "vancouver-general-hospital",
     name: "Vancouver General Hospital",
@@ -180,11 +189,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "A planetary-health menu pilot introduced more than 20 new patient dishes emphasizing plant proteins, whole grains, fruits, and vegetables.",
+      "Vancouver General Hospital launched a planetary-health menu pilot that introduced more than 20 patient dishes emphasizing plant proteins, whole grains, fruits, and vegetables.",
     achievements: [
-      "More than 20 new plant-rich patient menu items piloted",
-      "Collaboration among physicians, dietitians, chefs, food-service staff, and sustainability experts",
-      "Successful pilot dishes retained following evaluation"
+      "Piloted more than 20 new plant-rich patient menu items",
+      "Brought together physicians, dietitians, chefs, food-service staff, and sustainability specialists",
+      "Retained successful menu items following the pilot",
+      "Connected patient nutrition with lower-carbon healthcare food service"
     ],
     resources: [
       {
@@ -195,6 +205,7 @@ const INSTITUTIONS = [
     lastUpdated: "2026-06-05",
     verified: true
   },
+
   {
     id: "saanich-peninsula-hospital",
     name: "Saanich Peninsula Hospital",
@@ -208,16 +219,17 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "A physician-led effort is exploring support for shifting food offerings for both staff and patients.",
+      "A physician-led initiative is exploring opportunities to strengthen plant-forward food offerings for hospital staff and patients, with early resource-sharing and planning support from the Plant-Based Cities Movement.",
     achievements: [
-      "Initial discussions with Plant-Based Cities Movement",
-      "Early ideas shared for staff and patient food-service improvements",
-      "Resource and planning support under consideration"
+      "Opened initial discussions regarding staff and patient food offerings",
+      "Shared preliminary ideas for food-service improvements",
+      "Identified opportunities for resource-sharing and planning support"
     ],
     resources: [],
     lastUpdated: "2026-06-01",
     verified: false
   },
+
   {
     id: "district-north-vancouver",
     name: "District of North Vancouver",
@@ -231,11 +243,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Council passed a motion in May 2024 to prioritize plant-based food whenever food is purchased or funded by the District.",
+      "On May 6, 2024, District of North Vancouver Council passed a motion directing the District to prioritize plant-based food options when food is purchased or funded for municipal meetings, events, and functions.",
     achievements: [
-      "Plant-forward municipal motion passed May 6, 2024",
-      "Plant-based options prioritized for District-purchased or funded food",
-      "Food procurement connected with health, climate, and biodiversity goals"
+      "Council adopted a formal plant-forward food procurement motion",
+      "Plant-based options were identified as a priority for District-purchased or funded food",
+      "The motion connected municipal purchasing with public health, climate action, biodiversity, and responsible resource use",
+      "Established a formal municipal commitment to plant-forward procurement"
     ],
     resources: [
       {
@@ -246,6 +259,7 @@ const INSTITUTIONS = [
     lastUpdated: "2024-05-06",
     verified: true
   },
+
   {
     id: "saanich",
     name: "District of Saanich",
@@ -259,16 +273,18 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Saanich has supported plant-forward public purchasing, hosted a Greener by Default workshop, and launched a one-year pilot to test feasibility and uptake.",
+      "The District of Saanich has advanced plant-forward food procurement through staff engagement, training, and a one-year pilot project examining the feasibility and uptake of prioritizing plant-based food in municipal purchasing and food service.",
     achievements: [
-      "Plant-forward workshop delivered for managers and staff",
-      "One-year pilot launched",
-      "Policy development and greenhouse-gas measurement procedures underway"
+      "Secured support from the Sustainability Department for plant-forward procurement work",
+      "Hosted a Greener by Default workshop for municipal managers and staff",
+      "Launched a one-year pilot project to assess feasibility and participation",
+      "Began developing policy options and procedures for measuring food-related greenhouse-gas emissions"
     ],
     resources: [],
     lastUpdated: null,
     verified: false
   },
+
   {
     id: "burnaby",
     name: "City of Burnaby",
@@ -282,11 +298,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Council directed staff to explore more plant-forward options at City facilities and improve public information about sustainable food choices.",
+      "Burnaby City Council directed staff in April 2025 to explore opportunities to increase plant-forward food options at City facilities and improve public information about sustainable food choices. The direction followed a Plant-Based Cities Movement presentation to the Environment Committee on March 31, 2025.",
     achievements: [
-      "Presentation delivered to the Environment Committee in March 2025",
-      "Council motion passed in April 2025",
-      "Staff directed to explore more plant-forward food options and promotion"
+      "Presented evidence on food-related greenhouse-gas emissions and municipal climate action to the Environment Committee",
+      "Secured Council direction for staff to examine additional plant-forward options at City facilities",
+      "Encouraged the City to identify new ways to inform patrons about sustainable food choices",
+      "Initiated follow-up regarding food-service practices and implementation progress"
     ],
     resources: [
       {
@@ -297,6 +314,7 @@ const INSTITUTIONS = [
     lastUpdated: "2026-06-05",
     verified: true
   },
+
   {
     id: "brampton",
     name: "City of Brampton",
@@ -310,16 +328,18 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Council approved a motion in August 2022 to evaluate food sourcing and consider a substantial increase in plant-based options at facilities and events.",
+      "Brampton City Council approved a motion in August 2022 directing the City to evaluate food sourcing and consider a substantial increase in plant-based options at municipal facilities and events.",
     achievements: [
-      "Plant-forward motion passed August 10, 2022",
-      "Municipal food sourcing linked to climate impacts",
-      "Vegan and vegetarian options included in concession and event follow-up"
+      "Council approved a formal plant-forward food-sourcing review",
+      "Connected food-service decisions with climate impacts",
+      "Reported vegan and vegetarian options in municipal concessions and events",
+      "Included plant-based requirements in discussions regarding future vendors"
     ],
     resources: [],
     lastUpdated: "2024-07-17",
     verified: false
   },
+
   {
     id: "halton-region",
     name: "Halton Region",
@@ -333,11 +353,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Regional Council passed a motion to evaluate increasing plant-based options in facilities and events while supporting healthy eating and climate goals.",
+      "Halton Regional Council passed a motion on July 12, 2023 directing staff to evaluate opportunities to increase plant-based food options at Regional facilities and events. The motion connected healthy eating, Canada’s Food Guide, food-waste reduction, and climate action.",
     achievements: [
-      "Regional motion passed July 12, 2023",
-      "New plant-based salads and sandwiches added at Halton Regional Centre",
-      "Healthy workplace food guidelines under development"
+      "Regional Council approved a formal review of plant-based food options",
+      "Connected plant-forward food service with healthy eating and food-related climate impacts",
+      "Reported new plant-based salads and sandwiches at Halton Regional Centre",
+      "Began updating corporate healthy-food guidance to encourage greater consideration of plant-based choices"
     ],
     resources: [
       {
@@ -348,6 +369,7 @@ const INSTITUTIONS = [
     lastUpdated: "2024-06-30",
     verified: true
   },
+
   {
     id: "kingston",
     name: "City of Kingston",
@@ -361,11 +383,12 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "Council approved a motion supporting increased plant-rich procurement, awareness, and collaboration on lower-carbon municipal food practices.",
+      "Kingston City Council approved a motion supporting increased plant-rich and plant-based procurement, public awareness, and collaboration on lower-carbon municipal food practices.",
     achievements: [
-      "Motion approved by a 10–3 council vote in October 2024",
-      "Plant-rich procurement prioritized for facilities and events",
-      "Education and community collaboration included in the motion"
+      "Council approved the motion by a 10–3 vote in October 2024",
+      "Prioritized plant-rich procurement at municipal facilities and events",
+      "Connected food policy with Canada’s Food Guide and climate objectives",
+      "Included public education and community collaboration in the motion"
     ],
     resources: [
       {
@@ -376,6 +399,7 @@ const INSTITUTIONS = [
     lastUpdated: "2024-10-15",
     verified: true
   },
+
   {
     id: "montreal",
     name: "Ville de Montréal",
@@ -389,12 +413,13 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: 75,
     summary:
-      "Montréal unanimously committed to offering at least 75% vegetarian food at City-organized events and aligning procurement with the Planetary Health Diet.",
+      "Montréal unanimously committed in May 2022 to offer at least 75% vegetarian food at City-organized events and align municipal food procurement with the Planetary Health Diet.",
     achievements: [
-      "Unanimous motion supported by 65 councillors in May 2022",
-      "Minimum 75% vegetarian food commitment for City-organized events",
-      "Commitment to the C40 Good Food Cities Declaration",
-      "Internal food committee established to coordinate implementation"
+      "Unanimous motion supported by 65 councillors",
+      "Committed to a minimum of 75% vegetarian food at City-organized events",
+      "Committed to the C40 Good Food Cities Declaration",
+      "Established an internal food committee to coordinate implementation",
+      "Began developing responsible food-purchasing guidance"
     ],
     resources: [
       {
@@ -405,6 +430,7 @@ const INSTITUTIONS = [
     lastUpdated: "2023-12-31",
     verified: true
   },
+
   {
     id: "child-learning-centre",
     name: "University of Guelph Child Care and Learning Centre",
@@ -418,10 +444,11 @@ const INSTITUTIONS = [
     score: null,
     plantBasedPercent: null,
     summary:
-      "The centre introduced a plant-based menu initiative designed to reduce its food-related carbon footprint.",
+      "The University of Guelph Child Care and Learning Centre introduced a plant-based menu initiative designed to reduce its food-related carbon footprint in an early-learning setting.",
     achievements: [
-      "Plant-based menu introduced in an early-learning setting",
-      "Food-service changes connected with carbon-footprint reduction"
+      "Introduced a plant-based menu in an early-childhood learning environment",
+      "Connected food-service changes with institutional carbon-footprint reduction",
+      "Demonstrated plant-forward menu implementation in a child-care setting"
     ],
     resources: [
       {
@@ -433,6 +460,7 @@ const INSTITUTIONS = [
     verified: true
   }
 ];
+
 
 /* =========================================================
    ICONS AND DISPLAY CONSTANTS
