@@ -5,23 +5,24 @@
   --border: #c7ced4;
   --border-light: #e2e6e9;
 
-  --text: #24313d;
-  --text-muted: #566675;
+  --text: #263238;
+  --text-muted: #596875;
+
   --navy: #26374a;
-  --navy-dark: #162b3a;
-  --blue: #284162;
+  --navy-dark: #002145;
+  --blue: #1f497a;
 
-  --selected-pin: #00a6c8;
+  --pin: #00a7e1;
 
-  --university: #356fa3;
-  --hospital: #d94a45;
-  --city: #3f8a5b;
-  --other: #687783;
+  --university: #0055b7;
+  --hospital: #b3192e;
+  --city: #2f7650;
+  --other: #667783;
 
-  --stage-outreach: #d39400;
-  --stage-active: #2e7f91;
-  --stage-motion: #5867a8;
-  --stage-implemented: #328455;
+  --stage-outreach: #c28b0a;
+  --stage-active: #137991;
+  --stage-motion: #4b5f9c;
+  --stage-implemented: #1f7a40;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
 
@@ -358,12 +359,61 @@ a {
 .legend-type-icon,
 .drawer-type-icon,
 .institution-marker {
+  position: relative;
+
+  width: 34px;
+  height: 34px;
+
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
+
   background: var(--type-color, var(--navy));
   color: var(--white);
+
+  border: 2px solid var(--white);
   border-radius: 50%;
+
+  box-shadow:
+    0 1px 4px rgb(0 0 0 / 24%),
+    0 0 0 1px rgb(23 43 58 / 22%);
+
+  transition:
+    transform 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.institution-marker::after {
+  position: absolute;
+  inset: -7px;
+
+  content: "";
+  pointer-events: none;
+
+  border: 3px solid var(--pin);
+  border-radius: 50%;
+
+  opacity: 0;
+  transform: scale(0.92);
+
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.institution-marker:hover {
+  transform: scale(1.05);
+}
+
+.institution-marker.is-selected {
+  transform: scale(1.04);
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 25%),
+    0 0 0 1px rgb(23 43 58 / 22%);
+}
+
+.institution-marker.is-selected::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .card-icon {
@@ -526,11 +576,15 @@ a {
   box-shadow:
     0 1px 4px rgb(0 0 0 / 28%),
     0 0 0 1px rgb(23 43 58 / 28%);
-  transition: transform 130ms ease, box-shadow 130ms ease;
+  transition: transform 100ms ease, box-shadow 100ms ease;
 }
 
 .institution-marker:hover {
   transform: scale(1.08);
+}
+
+.institution-marker.is-selected:hover {
+  transform: scale(1.04);
 }
 
 .institution-marker.is-selected {
