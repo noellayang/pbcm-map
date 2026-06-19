@@ -270,8 +270,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed; staff work ongoing",
     initiative: "Vancouver Humane Society-supported initiative",
-    image: "https://ca-times.brightspotcdn.com/dims4/default/fe95225/2147483647/strip/true/crop/4800x3213+0+0/resize/1200x803!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F6c%2F3d%2F732446534aa2bd5b0c2e4cab0e04%2Fvancouver-dusk.jpeg",
-    score: null,
+    image: "https://thfvnext.bing.com/th/id/R.b3d168f59e3ce2f1e729683717cf85b7?rik=ttOmRPQXuW94kA&pid=ImgRaw&r=0",
     plantBasedPercent: null,
     summary:
       "Vancouver City Council passed the Plant-Based Purchasing Savings for City and Climate motion on November 2, 2021. The motion directed staff to assess how a partial shift toward plant-based procurement could reduce municipal costs and greenhouse-gas emissions. Staff later reported that the City would continue advancing lower-emission food procurement while considering equity, public demand, and the operational requirements of different food-service streams.",
