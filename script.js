@@ -179,7 +179,7 @@ const INSTITUTIONS = [
     province: "BC",
     coordinates: { lat: 49.2612, lng: -123.1233 },
     stage: "implemented",
-    stageLabel: "Menu pilot completed",\
+    stageLabel: "Menu pilot completed",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrHMOUbr7FFeXYcoF94NEWtYukkXZQSDVTPjfEicNhlalguaDgLyrFEtUw&s=10",
     score: null,
     plantBasedPercent: null,
