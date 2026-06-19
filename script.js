@@ -11,6 +11,7 @@ const INSTITUTIONS = [
     stage: "implemented",
     stageLabel: "Implementation underway",
     initiative: "Canadian University-supported initiative",
+    image: "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=3840&fm=webp&q=75&fit=max",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -46,6 +47,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Active campus outreach",
     initiative: "Canadian University-supported initiative",
+    image: "https://www.kaplanpathways.com/tachyon/sites/4/2023/05/header-uvic.jpg?resize=750%2C560&crop=690px%2C0px%2C750px%2C560px",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -72,6 +74,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Reported menu progress",
     initiative: "Canadian University-supported initiative",
+    image: "https://www.uwo.ca/img/about/bnr/about_western_mobile.jpg",
     score: null,
     plantBasedPercent: 46,
     summary:
@@ -96,6 +99,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Reported menu progress",
     initiative: "Canadian University-supported initiative",
+    image: "https://www.concordia.ca/news/stories/2018/06/07/3-global-rankings-confirm-concordias-place-among-the-worlds-leading-institutions/_jcr_content/top-image.img.768.medium.jpg/1536174173428.jpg",
     score: null,
     plantBasedPercent: 42,
     summary:
@@ -121,6 +125,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Sustainability integration",
     initiative: "Canadian University-supported initiative",
+    image: "https://photos.applyboard.com/school_photos/000/014/138/photos/optimized/University-of-Waterloo-Campus-Aerial-July2020.webp?1659723993",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -146,6 +151,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Campus options available",
     initiative: "Canadian University-supported initiative",
+    image: "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=3840&q=75",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -173,7 +179,8 @@ const INSTITUTIONS = [
     province: "BC",
     coordinates: { lat: 49.2612, lng: -123.1233 },
     stage: "implemented",
-    stageLabel: "Menu pilot completed",
+    stageLabel: "Menu pilot completed",\
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrHMOUbr7FFeXYcoF94NEWtYukkXZQSDVTPjfEicNhlalguaDgLyrFEtUw&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -205,6 +212,7 @@ const INSTITUTIONS = [
     stage: "active",
     stageLabel: "Initial collaboration",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://victoriabuzz.com/wp-content/uploads/2020/12/saanich-peninsula-hospital.jpg",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -230,6 +238,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlyxzyam8JQVGhJt8pjL9jrX42RhVxCLbDIRN8X85BQ&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -261,6 +270,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed; staff work ongoing",
     initiative: "Vancouver Humane Society-supported initiative",
+    image: "https://ca-times.brightspotcdn.com/dims4/default/fe95225/2147483647/strip/true/crop/4800x3213+0+0/resize/1200x803!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F6c%2F3d%2F732446534aa2bd5b0c2e4cab0e04%2Fvancouver-dusk.jpeg",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -297,6 +307,7 @@ const INSTITUTIONS = [
     stage: "implemented",
     stageLabel: "Pilot and policy work",
     initiative: "Plant-Based Cities Movement and Greener By Default-supported initiaitve.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlO_YGsOFcm7uT4zCxdMPkJm6Qu4jgdWGU4B1Imcq4HUFHgd4NZ_-7w-Y&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -323,6 +334,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed; follow-up needed",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATUOAM8ovnNGVTPT6PM5ZBJt0NY4qv3ELZ6U_qmi4YTGH-qdofUiZBGk&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -354,6 +366,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBhklyQfCY6U8e4jf54sjNFCST_90zAiNwI_pcfDFNOJaFjAWrEErL8PFD&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -380,6 +393,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS69qOrp0juP07gCE-54R7UKaOKsGqyp-5jvlRLOkS4Eg&s=10",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -411,6 +425,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Motion passed",
     initiative: "Plant-Based Cities Movement-supported initiative",
+    image: "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -442,6 +457,7 @@ const INSTITUTIONS = [
     stage: "motion-passed",
     stageLabel: "Major commitment passed",
     initiative: "Sustainable Food Transition Coalition & Plant-Based Cities Movement-supported initiative",
+    image: "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
     score: null,
     plantBasedPercent: 75,
     summary:
@@ -474,6 +490,7 @@ const INSTITUTIONS = [
     stage: "implemented",
     stageLabel: "Plant-based menu implemented",
     initiative: "Canadian University-supported initiative",
+    image: "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
     score: null,
     plantBasedPercent: null,
     summary:
@@ -885,6 +902,17 @@ function renderProfileDrawer(institution) {
           .join("")
       : `<p class="empty-value">No public sources currently listed.</p>`;
 
+  const profileImage = institution.image
+    ? `
+        <figure class="profile-image">
+          <img
+            src="${escapeHtml(institution.image)}"
+            alt=""
+          >
+        </figure>
+      `
+    : "";
+    
   const initiative = institution.initiative
     ? `
         <div class="profile-program">
@@ -929,6 +957,8 @@ function renderProfileDrawer(institution) {
 
         ${initiative}
       </header>
+
+      ${profileImage}
 
       <div class="profile-body">
         <section class="profile-introduction" aria-labelledby="profile-summary-heading">
