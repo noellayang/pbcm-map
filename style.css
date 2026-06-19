@@ -799,6 +799,19 @@ a {
   line-height: 1.25;
 }
 
+.profile-image {
+  margin: 0;
+  background: var(--panel-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+}
+
 .profile-location {
   margin: 6px 0 0;
   color: var(--text-muted);
