@@ -766,113 +766,103 @@ a {
   background: var(--white);
 }
 
+.profile-image {
+  position: relative;
+  margin: 0;
+  height: 205px;
+  overflow: hidden;
+  background: #dfe4e8;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 .profile-header {
-  padding: 28px 24px 20px;
-  background: #f5f7f9;
+  padding: 19px 24px 17px;
+  background: var(--white);
   border-bottom: 1px solid var(--border);
 }
 
 .profile-classification {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 7px;
+  margin-bottom: 8px;
   color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
   text-transform: uppercase;
 }
 
 .drawer-type-icon {
-  width: 28px;
-  height: 28px;
+  width: 23px;
+  height: 23px;
 }
 
 .profile-header h2 {
-  max-width: 325px;
+  max-width: 340px;
   margin: 0;
   color: var(--navy-dark);
   font-family: var(--font-primary);
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 700;
-  line-height: 1.25;
-}
-
-.profile-image {
-  margin: 0;
-  background: var(--panel-muted);
-  border-bottom: 1px solid var(--border);
-}
-
-.profile-image img {
-  width: 100%;
-  height: 190px;
-  display: block;
-  object-fit: cover;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
 }
 
 .profile-location {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 11.5px;
+  line-height: 1.4;
 }
 
-.profile-status-row {
+.profile-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 14px;
-  margin-top: 12px;
-}
-
-.profile-status-row .stage-badge {
-  margin-top: 0;
-}
-
-.verification-status {
-  color: var(--text-muted);
+  gap: 4px 7px;
+  margin-top: 9px;
+  color: #526170;
   font-size: 10.5px;
+  line-height: 1.4;
 }
 
-.profile-program {
-  display: grid;
-  grid-template-columns: 68px minmax(0, 1fr);
-  gap: 10px;
-  margin-top: 15px;
-  padding-top: 13px;
-  color: var(--text);
-  border-top: 1px solid var(--border-light);
-  font-size: 11px;
-  line-height: 1.45;
+.profile-meta span:first-child {
+  color: var(--navy);
+  font-weight: 700;
 }
 
-.profile-program-label {
-  color: var(--text-muted);
-  font-weight: 600;
+.profile-meta-separator {
+  color: #9aa4ad;
 }
 
 .profile-body {
-  padding: 0 24px 30px;
+  padding: 0 24px 28px;
 }
 
 .profile-introduction,
 .profile-content-section {
-  padding-top: 21px;
+  padding-top: 17px;
 }
 
 .profile-content-section {
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 16px;
+  padding-top: 16px;
   border-top: 1px solid var(--border-light);
 }
 
 .profile-introduction h3,
 .profile-content-section h3 {
-  margin: 0 0 9px;
+  margin: 0 0 8px;
   color: var(--navy);
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -880,21 +870,20 @@ a {
 .profile-introduction p {
   margin: 0;
   color: var(--text);
-  font-size: 12.5px;
-  line-height: 1.65;
+  font-size: 12px;
+  line-height: 1.58;
 }
 
 .profile-highlights {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 18px;
   color: var(--text);
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11.5px;
+  line-height: 1.5;
 }
 
 .profile-highlights li {
-  margin-bottom: 8px;
-  padding-left: 2px;
+  margin-bottom: 6px;
 }
 
 .profile-highlights li:last-child {
@@ -909,8 +898,8 @@ a {
 .profile-details > div {
   display: grid;
   grid-template-columns: 42% minmax(0, 1fr);
-  gap: 14px;
-  padding: 9px 0;
+  gap: 12px;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -923,7 +912,7 @@ a {
 .profile-details dd {
   margin: 0;
   color: var(--text);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   text-align: left;
 }
@@ -937,10 +926,10 @@ a {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
   align-items: start;
-  padding: 10px 0;
+  padding: 9px 0;
   color: var(--blue);
   border-bottom: 1px solid var(--border-light);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   line-height: 1.4;
   text-decoration: none;
