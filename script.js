@@ -924,6 +924,8 @@ function renderProfileDrawer(institution) {
 
   drawerContent.innerHTML = `
     <article class="institution-profile">
+      ${profileImage}
+  
       <header class="profile-header">
         <div class="profile-classification">
           <span
@@ -933,74 +935,76 @@ function renderProfileDrawer(institution) {
           >
             ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
           </span>
-
+  
           <span>
             ${escapeHtml(TYPE_LABELS[institution.type] ?? "Institution")}
           </span>
         </div>
-
+  
         <h2 id="drawer-name">${escapeHtml(institution.name)}</h2>
-
+  
         <p class="profile-location">
           ${escapeHtml(institution.city)}, ${escapeHtml(institution.province)}
         </p>
-
-        <div class="profile-status-row">
-          <span class="stage-badge stage-${escapeHtml(institution.stage)}">
-            ${escapeHtml(institution.stageLabel)}
-          </span>
-
-          <span class="verification-status">
-            ${institution.verified ? "Public sources reviewed" : "Review pending"}
-          </span>
+  
+        <div class="profile-meta">
+          <span>${escapeHtml(institution.stageLabel)}</span>
+  
+          ${
+            institution.initiative
+              ? `
+                <span class="profile-meta-separator" aria-hidden="true">•</span>
+                <span>${escapeHtml(institution.initiative)}</span>
+              `
+              : ""
+          }
         </div>
-
-        ${initiative}
       </header>
-
-      ${profileImage}
-
+  
       <div class="profile-body">
         <section class="profile-introduction" aria-labelledby="profile-summary-heading">
           <h3 id="profile-summary-heading">About the initiative</h3>
           <p>${escapeHtml(institution.summary)}</p>
         </section>
-
+  
         <section class="profile-content-section" aria-labelledby="profile-highlights-heading">
           <h3 id="profile-highlights-heading">Progress to date</h3>
           <ul class="profile-highlights">
             ${achievements}
           </ul>
         </section>
-
+  
         <section class="profile-content-section" aria-labelledby="profile-details-heading">
           <h3 id="profile-details-heading">Profile details</h3>
-
+  
           <dl class="profile-details">
-            <div>
-              <dt>Progress</dt>
-              <dd>${escapeHtml(institution.stageLabel)}</dd>
-            </div>
-
             <div>
               <dt>Plant-based offering</dt>
               <dd>${escapeHtml(formatPercentage(institution.plantBasedPercent))}</dd>
             </div>
-
+  
             <div>
               <dt>Overall score</dt>
               <dd>${escapeHtml(formatScore(institution.score))}</dd>
             </div>
-
+  
             <div>
               <dt>Last reviewed</dt>
               <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
             </div>
+  
+            <div>
+              <dt>Source review</dt>
+              <dd>
+                ${institution.verified ? "Public sources reviewed" : "Review pending"}
+              </dd>
+            </div>
           </dl>
         </section>
-
+  
         <section class="profile-content-section profile-sources" aria-labelledby="profile-sources-heading">
           <h3 id="profile-sources-heading">Sources and related information</h3>
+  
           <div class="profile-resource-list">
             ${resources}
           </div>
