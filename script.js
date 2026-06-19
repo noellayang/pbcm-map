@@ -935,31 +935,29 @@ function renderProfileDrawer(institution) {
           >
             ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
           </span>
-  
+      
           <span>
             ${escapeHtml(TYPE_LABELS[institution.type] ?? "Institution")}
           </span>
         </div>
-  
+      
         <h2 id="drawer-name">${escapeHtml(institution.name)}</h2>
-  
+      
         <p class="profile-location">
           ${escapeHtml(institution.city)}, ${escapeHtml(institution.province)}
         </p>
-  
-        <div class="profile-meta">
-          <span>${escapeHtml(institution.stageLabel)}</span>
-  
-          ${
-            institution.initiative
-              ? `
-                <span class="profile-meta-separator" aria-hidden="true">•</span>
-                <span>${escapeHtml(institution.initiative)}</span>
-              `
-              : ""
-          }
-        </div>
+      
+        ${
+          institution.initiative
+            ? `
+              <p class="profile-initiative">
+                ${escapeHtml(institution.initiative)}
+              </p>
+            `
+            : ""
+        }
       </header>
+
   
       <div class="profile-body">
         <section class="profile-introduction" aria-labelledby="profile-summary-heading">
@@ -978,6 +976,11 @@ function renderProfileDrawer(institution) {
           <h3 id="profile-details-heading">Profile details</h3>
   
           <dl class="profile-details">
+            <div>
+            <dt>Current status</dt>
+            <dd>${escapeHtml(institution.stageLabel)}</dd>
+            </div>
+            
             <div>
               <dt>Plant-based offering</dt>
               <dd>${escapeHtml(formatPercentage(institution.plantBasedPercent))}</dd>
