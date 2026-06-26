@@ -37,9 +37,9 @@
 
   /* Progress stages */
 
-  --stage-outreach: #ff9500;
-  --stage-active: #00ced1;
-  --stage-motion: #d14334;
+  --stage-outreach: #2589c7;
+  --stage-active: #f29e0e;
+  --stage-motion: #d17334;
   --stage-implemented: #40916c;
 
   --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
