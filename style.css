@@ -1024,6 +1024,54 @@ a {
   line-height: 1.45;
 }
 
+/* Profile storytelling and headline statistics */
+
+.profile-headline {
+  margin: 0;
+  padding: 19px 20px 17px;
+  color: var(--navy-dark);
+  border-bottom: 1px solid var(--border-light);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.profile-stat {
+  min-width: 0;
+  padding: 15px 16px 14px;
+  background: #f6f8f9;
+}
+
+.profile-stat strong {
+  display: block;
+  color: var(--navy-dark);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.profile-stat span {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
 .profile-body {
   padding: 0 20px 26px;
 }
@@ -1157,7 +1205,7 @@ a {
   
 }
 
-@media (max-width: 680px) {
+@media (max-width: 420px) {
   :root {
     --header-height: 58px;
   }
@@ -1209,6 +1257,18 @@ a {
   .institution-list {
     max-height: none;
     overflow: visible;
+  }
+
+  .profile-stat strong {
+    font-size: 18px;
+  }
+
+  .profile-stat {
+    padding: 13px 14px;
+  }
+
+  .profile-headline {
+    font-size: 16px;
   }
 
   .profile-drawer {
