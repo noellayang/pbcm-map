@@ -357,63 +357,22 @@ a {
 .type-icon,
 .card-icon,
 .legend-type-icon,
-.drawer-type-icon,
-.institution-marker {
+.drawer-type-icon {
   position: relative;
-
   width: 34px;
   height: 34px;
-
   display: grid;
   place-items: center;
-
   background: var(--type-color, var(--navy));
   color: var(--white);
-
   border: 2px solid var(--white);
   border-radius: 50%;
-
   box-shadow:
     0 1px 4px rgb(0 0 0 / 24%),
     0 0 0 1px rgb(23 43 58 / 22%);
-
   transition:
     transform 100ms ease,
     box-shadow 100ms ease;
-}
-
-.institution-marker::after {
-  position: absolute;
-  inset: -7px;
-
-  content: "";
-  pointer-events: none;
-
-  border: 3px solid var(--pin);
-  border-radius: 50%;
-
-  opacity: 0;
-  transform: scale(0.92);
-
-  transition:
-    opacity 120ms ease,
-    transform 120ms ease;
-}
-
-.institution-marker:hover {
-  transform: scale(1.05);
-}
-
-.institution-marker.is-selected {
-  transform: scale(1.04);
-  box-shadow:
-    0 2px 6px rgb(0 0 0 / 25%),
-    0 0 0 1px rgb(23 43 58 / 22%);
-}
-
-.institution-marker.is-selected::after {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .card-icon {
@@ -423,8 +382,7 @@ a {
 
 .card-icon svg,
 .legend-type-icon svg,
-.drawer-type-icon svg,
-.institution-marker svg {
+.drawer-type-icon svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
@@ -503,208 +461,467 @@ a {
   font-size: 11px;
 }
 
-/* Map */
+/* =========================================================
+   MAP — LIGHTING UP CANADA
+   ========================================================= */
 
 .map-shell {
   position: relative;
   min-width: 0;
+  min-height: 0;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  background: #e7ecef;
+  background: #101d29;
+}
+
+/* Poster-style heading above the map */
+
+.map-heading {
+  position: relative;
+  z-index: 20;
+  flex: 0 0 auto;
+  padding: 19px 25px 18px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.map-heading-compact {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 34px;
+}
+
+.map-heading-copy {
+  min-width: 0;
+}
+
+.map-kicker {
+  margin: 0 0 6px;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.map-heading h1 {
+  max-width: 600px;
+  margin: 0;
+  color: var(--navy-dark);
+  font-family: var(--font-primary);
+  font-size: clamp(23px, 2.35vw, 35px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.map-heading h1 strong {
+  display: block;
+  font-weight: 800;
+}
+
+.map-intro {
+  max-width: 390px;
+  margin: 0 0 2px;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+/* Leaflet map fills the remaining space */
+
+.map-frame {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #101d29;
 }
 
 #map {
   width: 100%;
   height: 100%;
+  min-height: 0;
 }
 
 .leaflet-container {
+  background: #101d29;
   font-family: var(--font-primary);
 }
 
+/* Dark-map zoom controls */
+
 .leaflet-control-zoom {
-  border: 1px solid #8c9aa5 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 20%) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 34%) !important;
 }
 
 .leaflet-control-zoom a {
-  color: var(--navy) !important;
-  background: var(--white) !important;
-  border-color: var(--border) !important;
+  width: 34px !important;
+  height: 34px !important;
+  color: #f3f6f8 !important;
+  background: #172738 !important;
+  border-bottom-color: rgb(255 255 255 / 13%) !important;
+  font-family: Arial, sans-serif;
+  line-height: 34px !important;
 }
+
+.leaflet-control-zoom a:hover,
+.leaflet-control-zoom a:focus {
+  color: #ffffff !important;
+  background: #24415a !important;
+}
+
+.leaflet-control-zoom a.leaflet-disabled {
+  color: #82909b !important;
+  background: #132231 !important;
+}
+
+/* Map attribution */
 
 .leaflet-control-attribution {
-  color: var(--text-muted);
-  background: rgb(255 255 255 / 90%) !important;
+  color: #cbd3da !important;
+  background: rgb(10 22 34 / 82%) !important;
+  font-size: 8.5px;
 }
 
-.sidebar-open {
-  position: absolute;
-  z-index: 600;
-  top: 12px;
-  left: 12px;
-  height: 35px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 0 9px 0 6px;
-  background: var(--white);
-  color: var(--navy);
-  border: 1px solid #8c9aa5;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
-  cursor: pointer;
+.leaflet-control-attribution a {
+  color: #e2edf3 !important;
+}
+
+/* Marker tooltips */
+
+.institution-tooltip {
+  min-width: 170px;
+  padding: 9px 11px;
+  color: #f4f7f9;
+  background: rgb(12 27 41 / 96%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 2px;
+  box-shadow: 0 5px 16px rgb(0 0 0 / 42%);
+}
+
+.leaflet-tooltip-top.institution-tooltip::before {
+  border-top-color: rgb(12 27 41 / 96%) !important;
+}
+
+.leaflet-tooltip-bottom.institution-tooltip::before {
+  border-bottom-color: rgb(12 27 41 / 96%) !important;
+}
+
+.leaflet-tooltip-left.institution-tooltip::before {
+  border-left-color: rgb(12 27 41 / 96%) !important;
+}
+
+.leaflet-tooltip-right.institution-tooltip::before {
+  border-right-color: rgb(12 27 41 / 96%) !important;
+}
+
+.institution-tooltip strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #ffffff;
   font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.institution-tooltip span {
+  display: block;
+  color: #c6d0d8;
+  font-size: 9.5px;
+  line-height: 1.35;
+}
+
+/* Map legend */
+
+.map-legend {
+  position: absolute;
+  z-index: 500;
+  right: 18px;
+  bottom: 20px;
+  width: 210px;
+  padding: 13px 14px;
+  color: #edf2f5;
+  background: rgb(14 30 44 / 92%);
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 32%);
+  backdrop-filter: blur(5px);
+}
+
+.legend-heading {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legend-section + .legend-section {
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid rgb(255 255 255 / 13%);
+}
+
+.legend-section > strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #cbd5dc;
+  font-size: 9.5px;
   font-weight: 600;
 }
 
-.sidebar-open[hidden] {
-  display: none;
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
 }
 
-/* Markers */
+.legend-grid span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #edf2f5;
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+.legend-type-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.stage-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.stage-dot.stage-outreach {
+  color: var(--stage-outreach);
+  background: var(--stage-outreach);
+}
+
+.stage-dot.stage-active {
+  color: var(--stage-active);
+  background: var(--stage-active);
+}
+
+.stage-dot.stage-motion-passed {
+  color: var(--stage-motion);
+  background: var(--stage-motion);
+}
+
+.stage-dot.stage-implemented {
+  color: var(--stage-implemented);
+  background: var(--stage-implemented);
+}
+
+/* Button used when the directory is collapsed */
+
+.sidebar-open {
+  position: absolute;
+  z-index: 550;
+  top: 18px;
+  left: 18px;
+}
+
+
+/* Markers for LIGHTING UP CANADA theme */
 
 .institution-marker-wrapper {
+  overflow: visible;
   background: transparent;
   border: 0;
 }
 
 .institution-marker {
-  width: 34px;
-  height: 34px;
-  border: 2px solid var(--white);
-  box-shadow:
-    0 1px 4px rgb(0 0 0 / 28%),
-    0 0 0 1px rgb(23 43 58 / 28%);
-  transition: transform 100ms ease, box-shadow 100ms ease;
+  position: relative;
+  width: 48px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transform-origin: 50% 84%;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
 }
+
+/* Soft light around every mapped institution */
+
+.marker-glow {
+  position: absolute;
+  z-index: 0;
+  top: -5px;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color) 46%, white) 0%,
+      color-mix(in srgb, var(--type-color) 35%, transparent) 32%,
+      transparent 72%
+    );
+  opacity: 0.44;
+  transform: translateX(-50%) scale(0.82);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+/* Main icon face */
+
+.marker-face {
+  position: relative;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgb(255 255 255 / 82%);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 38% 30%,
+      color-mix(in srgb, var(--type-color) 68%, white),
+      var(--type-color) 58%,
+      color-mix(in srgb, var(--type-color) 76%, black)
+    );
+  box-shadow:
+    0 2px 5px rgb(0 0 0 / 45%),
+    0 0 8px color-mix(in srgb, var(--type-color) 52%, transparent);
+  transition:
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.marker-face svg {
+  width: 19px;
+  height: 19px;
+  fill: white;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 25%));
+}
+
+/* Small base gives a subtle lamp/beacon shape */
+
+.marker-base {
+  position: absolute;
+  z-index: 1;
+  top: 34px;
+  left: 50%;
+  width: 11px;
+  height: 10px;
+  background: #d9e0e5;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 1px 1px 4px 4px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 38%);
+  transform: translateX(-50%);
+}
+
+.marker-base::after {
+  position: absolute;
+  right: 1px;
+  bottom: -4px;
+  left: 1px;
+  height: 3px;
+  content: "";
+  background: #7f8b95;
+  border-radius: 0 0 3px 3px;
+}
+
+/* Hover: the light begins to brighten */
 
 .institution-marker:hover {
-  transform: scale(1.08);
+  z-index: 20;
+  transform: translateY(-2px) scale(1.06);
 }
 
-.institution-marker.is-selected:hover {
-  transform: scale(1.04);
+.institution-marker:hover .marker-glow {
+  opacity: 0.72;
+  transform: translateX(-50%) scale(1.05);
 }
+
+.institution-marker:hover .marker-face {
+  border-color: white;
+  box-shadow:
+    0 3px 8px rgb(0 0 0 / 48%),
+    0 0 12px var(--type-color),
+    0 0 24px color-mix(in srgb, var(--type-color) 58%, transparent);
+}
+
+/* Selected: the institution fully “lights up” */
 
 .institution-marker.is-selected {
+  z-index: 30;
+  transform: translateY(-3px) scale(1.11);
+  animation: marker-rise 240ms ease-out;
+}
+
+.institution-marker.is-selected .marker-glow {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.32);
+  animation: selected-light-pulse 2.2s ease-in-out infinite;
+}
+
+.institution-marker.is-selected .marker-face {
+  border-color: white;
+  transform: scale(1.03);
   box-shadow:
-    0 0 0 3px var(--white),
-    0 0 0 6px var(--cyan),
-    0 2px 7px rgb(0 0 0 / 30%);
-  transform: scale(1.06);
+    0 4px 10px rgb(0 0 0 / 52%),
+    0 0 9px white,
+    0 0 18px var(--type-color),
+    0 0 34px color-mix(in srgb, var(--type-color) 72%, transparent);
 }
 
-.institution-tooltip {
-  padding: 7px 9px !important;
-  color: var(--text) !important;
-  background: var(--white) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 14%) !important;
-}
+/* Thin white selection ring */
 
-.institution-tooltip strong,
-.institution-tooltip span {
-  display: block;
-}
-
-.institution-tooltip strong {
-  max-width: 230px;
-  color: var(--navy);
-  font-size: 11.5px;
-  font-weight: 600;
-}
-
-.institution-tooltip span {
-  margin-top: 2px;
-  color: var(--text-muted);
-  font-size: 9.5px;
-}
-
-/* Legend */
-
-.map-legend {
+.institution-marker.is-selected .marker-face::after {
   position: absolute;
-  z-index: 550;
-  left: 12px;
-  bottom: 14px;
-  width: 246px;
-  background: var(--white);
-  border: 1px solid #8c9aa5;
-  box-shadow: 0 1px 4px rgb(0 0 0 / 12%);
-}
-
-.legend-heading {
-  padding: 7px 9px;
-  color: var(--navy);
-  border-bottom: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.legend-section {
-  padding: 8px 9px;
-}
-
-.legend-section + .legend-section {
-  border-top: 1px solid var(--border-light);
-}
-
-.legend-section > strong {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--text-muted);
-  font-size: 9.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.legend-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px 7px;
-}
-
-.legend-grid > span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--text-muted);
-  font-size: 9.5px;
-}
-
-.legend-type-icon {
-  width: 22px;
-  height: 22px;
-}
-
-.legend-type-icon svg {
-  width: 12px;
-  height: 12px;
-}
-
-.stage-dot {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 auto;
+  inset: -6px;
+  content: "";
+  border: 1.5px solid rgb(255 255 255 / 82%);
   border-radius: 50%;
+  box-shadow: 0 0 7px rgb(255 255 255 / 55%);
 }
 
-.stage-dot.stage-outreach {
-  background: var(--stage-outreach);
+@keyframes marker-rise {
+  from {
+    transform: translateY(2px) scale(0.94);
+  }
+
+  to {
+    transform: translateY(-3px) scale(1.11);
+  }
 }
 
-.stage-dot.stage-active {
-  background: var(--stage-active);
-}
+@keyframes selected-light-pulse {
+  0%,
+  100% {
+    opacity: 0.76;
+    transform: translateX(-50%) scale(1.16);
+  }
 
-.stage-dot.stage-motion-passed {
-  background: var(--stage-motion);
-}
-
-.stage-dot.stage-implemented {
-  background: var(--stage-implemented);
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.38);
+  }
 }
 
 /* Profile drawer */
@@ -954,6 +1171,32 @@ a {
   .brand-title {
     font-size: 17px;
   }
+
+  .map-heading-compact {
+    display: block;
+  }
+
+  .map-heading {
+    padding: 16px 18px 15px;
+  }
+
+  .map-heading h1 {
+    font-size: 26px;
+  }
+
+  .map-intro {
+    max-width: 560px;
+    margin-top: 9px;
+    font-size: 11px;
+  }
+
+  .map-legend {
+    right: 12px;
+    bottom: 14px;
+    width: 190px;
+    padding: 11px 12px;
+  }
+  
 }
 
 @media (max-width: 680px) {
@@ -986,8 +1229,8 @@ a {
 
   .map-shell {
     order: 1;
-    height: 52vh;
-    min-height: 370px;
+    height: 58vh;
+    min-height: 480px;
   }
 
   .results-panel,
@@ -1008,10 +1251,6 @@ a {
   .institution-list {
     max-height: none;
     overflow: visible;
-  }
-
-  .map-legend {
-    width: 220px;
   }
 
   .profile-drawer {
@@ -1043,6 +1282,32 @@ a {
   .mobile-scrim[hidden] {
     display: none;
   }
+
+  .map-heading {
+    padding: 14px 15px 13px;
+  }
+
+  .map-kicker {
+    margin-bottom: 5px;
+    font-size: 9px;
+  }
+
+  .map-heading h1 {
+    font-size: 23px;
+  }
+
+  .map-intro {
+    display: none;
+  }
+
+  .map-legend {
+    right: 10px;
+    bottom: 12px;
+    width: 174px;
+    max-height: 210px;
+    overflow-y: auto;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

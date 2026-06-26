@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Canadian Plant-Forward Directory</title>
+  <title>Lighting Up Canada | Canadian Plant-Forward Directory</title>
+
   <meta
     name="description"
-    content="An interactive directory of Canadian municipalities, universities, hospitals, and institutions advancing plant-forward food."
+    content="A professional national directory highlighting the institutions, teams, and communities advancing plant-forward change across Canada."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -26,26 +28,40 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#map">Skip to map</a>
+  <a class="skip-link" href="#map">Skip to interactive map</a>
 
   <header class="site-header">
     <div class="brand">
-      <span class="brand-organization">Plant-Based Cities Movement</span>
-      <a class="brand-title" href="#">Canadian Plant-Forward Directory</a>
+      <span class="brand-organization">
+        Plant-Based Cities Movement
+      </span>
+
+      <a class="brand-title" href="#">
+        Canadian Plant-Forward Directory
+      </a>
     </div>
 
-    <div class="header-count">
+    <div class="header-count" aria-label="Number of institutions in the directory">
       <strong id="header-count">0</strong>
       <span>institutions</span>
     </div>
   </header>
 
   <main id="directory-app" class="directory-app">
-    <aside id="results-panel" class="results-panel" aria-label="Institution directory">
+    <aside
+      id="results-panel"
+      class="results-panel"
+      aria-label="Institution directory"
+    >
       <div class="sidebar-header">
         <div>
           <h1>Institution directory</h1>
-          <span id="result-count" class="result-count" aria-live="polite"></span>
+
+          <span
+            id="result-count"
+            class="result-count"
+            aria-live="polite"
+          ></span>
         </div>
 
         <button
@@ -66,9 +82,11 @@
       <div class="sidebar-controls">
         <label class="search-field">
           <span class="sr-only">Search institutions</span>
+
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m21 20-5.7-5.7a7 7 0 1 0-1.4 1.4L19.6 21 21 20ZM5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
           </svg>
+
           <input
             id="institution-search"
             type="search"
@@ -77,62 +95,163 @@
           >
         </label>
 
-        <div class="filter-row" aria-label="Filter institutions by type">
-          <button class="filter-chip active" type="button" data-type="all">All</button>
-          <button class="filter-chip" type="button" data-type="university">Universities</button>
-          <button class="filter-chip" type="button" data-type="hospital">Hospitals</button>
-          <button class="filter-chip" type="button" data-type="city">Municipalities</button>
-          <button class="filter-chip" type="button" data-type="other">Other</button>
+        <div
+          class="filter-row"
+          aria-label="Filter institutions by type"
+        >
+          <button
+            class="filter-chip active"
+            type="button"
+            data-type="all"
+          >
+            All
+          </button>
+
+          <button
+            class="filter-chip"
+            type="button"
+            data-type="university"
+          >
+            Universities
+          </button>
+
+          <button
+            class="filter-chip"
+            type="button"
+            data-type="hospital"
+          >
+            Hospitals
+          </button>
+
+          <button
+            class="filter-chip"
+            type="button"
+            data-type="city"
+          >
+            Municipalities
+          </button>
+
+          <button
+            class="filter-chip"
+            type="button"
+            data-type="other"
+          >
+            Other
+          </button>
         </div>
 
         <div class="sidebar-actions">
-          <span>Select a row or map marker.</span>
-          <button id="reset-view" class="link-button" type="button">Reset</button>
+          <span>Select an institution or illuminated map marker.</span>
+
+          <button
+            id="reset-view"
+            class="link-button"
+            type="button"
+          >
+            Reset
+          </button>
         </div>
       </div>
 
-      <div id="institution-list" class="institution-list"></div>
+      <div
+        id="institution-list"
+        class="institution-list"
+      ></div>
 
-      <div id="empty-state" class="empty-state" hidden>
+      <div
+        id="empty-state"
+        class="empty-state"
+        hidden
+      >
         <strong>No matching institutions</strong>
-        <p>Try a broader search or another filter.</p>
+        <p>Try a broader search or select another institution type.</p>
       </div>
     </aside>
 
-    <section class="map-shell" aria-label="Interactive institution map">
-      <div id="map" tabindex="0"></div>
+    <section
+      class="map-shell"
+      aria-label="Interactive map of plant-forward initiatives across Canada"
+    >
+      <header class="map-heading map-heading-compact">
+        <div class="map-heading-copy">
+          <p class="map-kicker">Lighting up Canada</p>
 
-      <button
-        id="sidebar-open"
-        class="sidebar-open"
-        type="button"
-        aria-label="Open institution directory"
-        hidden
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M9.3 5.3 16 12l-6.7 6.7-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4Z"/>
-        </svg>
-        Directory
-      </button>
-
-      <section class="map-legend" aria-label="Map legend">
-        <div class="legend-heading">Map legend</div>
-
-        <div class="legend-section">
-          <strong>Institution type</strong>
-          <div id="type-legend" class="legend-grid"></div>
+          <h1>
+            Plant-forward leadership
+            <strong>across Canada.</strong>
+          </h1>
         </div>
 
-        <div class="legend-section">
-          <strong>Progress stage</strong>
-          <div class="legend-grid">
-            <span><i class="stage-dot stage-outreach"></i>Early outreach</span>
-            <span><i class="stage-dot stage-active"></i>Active work</span>
-            <span><i class="stage-dot stage-motion-passed"></i>Motion passed</span>
-            <span><i class="stage-dot stage-implemented"></i>Implemented</span>
+        <p class="map-intro">
+          A professional national directory highlighting the institutions,
+          teams, and communities advancing plant-forward change.
+        </p>
+      </header>
+
+      <div class="map-frame">
+        <div
+          id="map"
+          tabindex="0"
+          role="application"
+          aria-label="Interactive map showing plant-forward institutions across Canada"
+        ></div>
+
+        <button
+          id="sidebar-open"
+          class="sidebar-open"
+          type="button"
+          aria-label="Open institution directory"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9.3 5.3 16 12l-6.7 6.7-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4Z"/>
+          </svg>
+
+          Directory
+        </button>
+
+        <section
+          class="map-legend"
+          aria-label="Map legend"
+        >
+          <div class="legend-heading">Map key</div>
+
+          <div class="legend-section">
+            <strong>Institution type</strong>
+
+            <div
+              id="type-legend"
+              class="legend-grid"
+            ></div>
           </div>
-        </div>
-      </section>
+
+          <div class="legend-section">
+            <strong>Progress stage</strong>
+
+            <div class="legend-grid">
+              <span>
+                <i class="stage-dot stage-outreach"></i>
+                Early outreach
+              </span>
+
+              <span>
+                <i class="stage-dot stage-active"></i>
+                Active work
+              </span>
+
+              <span>
+                <i class="stage-dot stage-motion-passed"></i>
+                Motion passed
+              </span>
+
+              <span>
+                <i class="stage-dot stage-implemented"></i>
+                Implemented
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <aside
         id="profile-drawer"
@@ -154,7 +273,11 @@
     </section>
   </main>
 
-  <div id="mobile-scrim" class="mobile-scrim" hidden></div>
+  <div
+    id="mobile-scrim"
+    class="mobile-scrim"
+    hidden
+  ></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>

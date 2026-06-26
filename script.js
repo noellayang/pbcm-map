@@ -599,10 +599,16 @@ const map = L.map("map", {
   scrollWheelZoom: false
 });
 
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: "&copy; OpenStreetMap contributors"
-}).addTo(map);
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  {
+    subdomains: "abcd",
+    maxZoom: 20,
+    attribution:
+      "&copy; OpenStreetMap contributors &copy; CARTO"
+  }
+).addTo(map);
+
 
 /* =========================================================
    HELPERS
@@ -670,44 +676,31 @@ function typeColor(type) {
     .trim();
 }
 
+
 function createInstitutionIcon(institution) {
   return L.divIcon({
     className: "institution-marker-wrapper",
     html: `
       <div
-        class="institution-marker"
+        class="institution-marker marker-${escapeHtml(institution.type)}"
         style="--type-color:${typeColor(institution.type)}"
         aria-hidden="true"
       >
-        ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
+        <span class="marker-glow"></span>
+
+        <span class="marker-face">
+          ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
+        </span>
+
+        <span class="marker-base"></span>
       </div>
     `,
-    iconSize: [42, 42],
-    iconAnchor: [21, 21],
-    tooltipAnchor: [0, -24]
+    iconSize: [48, 54],
+    iconAnchor: [24, 47],
+    tooltipAnchor: [0, -42]
   });
 }
 
-/* =========================================================
-   LEGEND
-   ========================================================= */
-
-function renderTypeLegend() {
-  typeLegendElement.innerHTML = Object.entries(TYPE_LABELS)
-    .map(([type, label]) => `
-      <span>
-        <i
-          class="legend-type-icon"
-          style="--type-color:${typeColor(type)}"
-          aria-hidden="true"
-        >
-          ${TYPE_ICONS[type] ?? TYPE_ICONS.other}
-        </i>
-        ${escapeHtml(label)}
-      </span>
-    `)
-    .join("");
-}
 
 /* =========================================================
    DIRECTORY
