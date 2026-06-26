@@ -1,11 +1,11 @@
 :root {
  
-  --night: #101d29;
-  --night-soft: #172738;
-  --night-panel: #1c2d3d;
-  --night-panel-hover: #233749;
-  --night-panel-selected: #294055;
-  --night-border: #314354;
+  --night: #1f2327;
+  --night-soft: #343e48;
+  --night-panel: #33383d;
+  --night-panel-hover: #4f5051;
+  --night-panel-selected: #505356;
+  --night-border: #4e5052;
 
   --surface: #f4f3ef;
   --surface-soft: #ebece8;
