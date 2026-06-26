@@ -210,7 +210,7 @@ a {
 }
 
 /* =========================================================
-   DIRECTORY SIDEBAR
+   DIRECTORY SIDEBAR — LIGHT THEME
    ========================================================= */
 
 .results-panel {
@@ -221,9 +221,9 @@ a {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   overflow: hidden;
-  color: var(--text-on-dark);
-  background: var(--night-panel);
-  border-right: 1px solid var(--night-border);
+  color: var(--text);
+  background: var(--surface);
+  border-right: 1px solid var(--surface-border);
 }
 
 .directory-app.sidebar-collapsed .results-panel {
@@ -238,12 +238,13 @@ a {
   align-items: center;
   gap: 10px;
   padding: 8px 9px 8px 12px;
-  border-bottom: 1px solid var(--night-border);
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-border);
 }
 
 .sidebar-header h1 {
   margin: 0;
-  color: var(--text-on-dark);
+  color: var(--navy-dark);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;
@@ -252,7 +253,7 @@ a {
 .result-count {
   display: block;
   margin-top: 1px;
-  color: var(--text-muted-dark);
+  color: var(--text-muted);
   font-size: 10.5px;
 }
 
@@ -263,16 +264,16 @@ a {
   place-items: center;
   flex: 0 0 auto;
   padding: 0;
-  color: var(--text-on-dark);
-  background: var(--night-soft);
-  border: 1px solid var(--night-border);
+  color: var(--navy);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
   cursor: pointer;
 }
 
 .icon-button:hover,
 .icon-button:focus-visible {
-  background: #29445b;
-  border-color: #607487;
+  background: var(--surface-soft);
+  border-color: #9ca7ae;
 }
 
 .icon-button svg,
@@ -284,7 +285,8 @@ a {
 
 .sidebar-controls {
   padding: 8px 9px 7px;
-  border-bottom: 1px solid var(--night-border);
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-border);
 }
 
 /* Search */
@@ -300,7 +302,7 @@ a {
   left: 9px;
   width: 15px;
   height: 15px;
-  fill: var(--text-muted-dark);
+  fill: var(--text-muted);
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -309,20 +311,20 @@ a {
   width: 100%;
   height: 36px;
   padding: 7px 9px 7px 31px;
-  color: var(--text-on-dark);
-  background: #142433;
-  border: 1px solid #4b5e6e;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid #9ba6ae;
   border-radius: 0;
   outline: none;
 }
 
 .search-field input::placeholder {
-  color: #98a8b4;
+  color: #74818b;
 }
 
 .search-field input:focus {
-  border-color: var(--light-blue);
-  box-shadow: 0 0 0 2px rgb(143 212 255 / 16%);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgb(31 73 122 / 14%);
 }
 
 /* Filters */
@@ -337,9 +339,9 @@ a {
 .filter-chip {
   min-height: 27px;
   padding: 3px 7px;
-  color: #dce4e9;
-  background: var(--night-soft);
-  border: 1px solid #3b4d5d;
+  color: var(--navy);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
   border-radius: 0;
   cursor: pointer;
   font-size: 10.5px;
@@ -348,14 +350,14 @@ a {
 
 .filter-chip:hover,
 .filter-chip:focus-visible {
-  background: #21384c;
-  border-color: #607487;
+  background: var(--surface-soft);
+  border-color: #9ca7ae;
 }
 
 .filter-chip.active {
-  color: var(--navy-dark);
-  background: #f0f3f5;
-  border-color: #f0f3f5;
+  color: var(--white);
+  background: var(--navy);
+  border-color: var(--navy);
 }
 
 .sidebar-actions {
@@ -364,13 +366,13 @@ a {
   align-items: center;
   gap: 10px;
   margin-top: 7px;
-  color: var(--text-muted-dark);
+  color: var(--text-muted);
   font-size: 10px;
 }
 
 .link-button {
   padding: 0;
-  color: var(--light-blue);
+  color: var(--blue);
   background: none;
   border: 0;
   cursor: pointer;
@@ -389,8 +391,9 @@ a {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
+  background: var(--surface);
   scrollbar-width: thin;
-  scrollbar-color: #5d7080 var(--night-panel);
+  scrollbar-color: #a9b2b8 var(--surface);
 }
 
 .institution-card {
@@ -399,28 +402,28 @@ a {
   grid-template-columns: 27px minmax(0, 1fr);
   gap: 7px;
   padding: 8px 9px;
-  color: var(--text-on-dark);
-  background: var(--night-panel);
+  color: var(--text);
+  background: var(--surface);
   text-align: left;
   border: 0;
-  border-bottom: 1px solid var(--night-border);
+  border-bottom: 1px solid var(--surface-border);
   cursor: pointer;
 }
 
 .institution-card:hover {
-  background: var(--night-panel-hover);
+  background: #e9eeef;
 }
 
 .institution-card:focus-visible {
   position: relative;
   z-index: 2;
-  outline: 2px solid var(--light-blue);
+  outline: 2px solid var(--blue);
   outline-offset: -2px;
 }
 
 .institution-card.is-selected {
-  background: var(--night-panel-selected);
-  box-shadow: inset 4px 0 var(--light-blue);
+  background: #e4edf2;
+  box-shadow: inset 4px 0 var(--blue);
 }
 
 /* Shared institution type icons */
@@ -472,7 +475,7 @@ a {
 
 .card-heading strong {
   display: block;
-  color: var(--text-on-dark);
+  color: var(--navy-dark);
   font-size: 12.5px;
   font-weight: 600;
   line-height: 1.28;
@@ -481,7 +484,7 @@ a {
 .card-heading > span {
   display: block;
   margin-top: 1px;
-  color: var(--text-muted-dark);
+  color: var(--text-muted);
   font-size: 10.5px;
 }
 
@@ -490,7 +493,7 @@ a {
   align-items: center;
   gap: 5px;
   margin-top: 4px;
-  color: var(--text-muted-dark);
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 500;
 }
@@ -502,7 +505,6 @@ a {
   content: "";
   background: var(--badge-color, var(--stage-outreach));
   border-radius: 50%;
-  box-shadow: 0 0 5px var(--badge-color, var(--stage-outreach));
 }
 
 .stage-outreach {
@@ -523,12 +525,12 @@ a {
 
 .empty-state {
   padding: 24px 14px;
-  color: var(--text-muted-dark);
+  color: var(--text-muted);
   text-align: center;
 }
 
 .empty-state strong {
-  color: var(--text-on-dark);
+  color: var(--navy-dark);
 }
 
 .empty-state p {
@@ -1322,7 +1324,7 @@ a {
     height: auto;
     overflow: visible;
     visibility: visible;
-    border-top: 1px solid var(--night-border);
+    border-top: 1px solid var(--surface-border);
     border-right: 0;
   }
 
