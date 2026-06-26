@@ -1437,25 +1437,15 @@ function renderProfileDrawer(institution) {
       ${profileImage}
 
       <header class="profile-header">
-        <div class="profile-classification">
-          <span
-            class="drawer-type-icon"
-            style="--type-color:${typeColor(institution.type)}"
-            aria-hidden="true"
-          >
-            ${TYPE_ICONS[institution.type] ?? TYPE_ICONS.other}
-          </span>
-
-          <span>
-            ${escapeHtml(
-              TYPE_LABELS[institution.type] ?? "Institution"
-            )}
-          </span>
-        </div>
-
         <h2 id="drawer-name">
           ${escapeHtml(institution.name)}
         </h2>
+
+        <p class="profile-classification">
+          ${escapeHtml(
+            TYPE_LABELS[institution.type] ?? "Institution"
+          )}
+        </p>
 
         <p class="profile-location">
           ${escapeHtml(institution.city)},
