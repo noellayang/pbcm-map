@@ -268,6 +268,7 @@ const INSTITUTIONS = [
     province: "BC",
     coordinates: { lat: 49.2827, lng: -123.1207 },
     stage: "motion-passed",
+    score: null,
     stageLabel: "Motion passed; staff work ongoing",
     initiative: "Vancouver Humane Society-supported initiative",
     image: "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
@@ -701,6 +702,32 @@ function createInstitutionIcon(institution) {
   });
 }
 
+/* =========================================================
+   LEGEND
+   ========================================================= */
+
+function renderTypeLegend() {
+  if (!typeLegendElement) return;
+
+  typeLegendElement.innerHTML = Object.entries(TYPE_LABELS)
+    .map(
+      ([type, label]) => `
+        <span>
+          <i
+            class="legend-type-icon"
+            style="--type-color:${typeColor(type)}"
+            aria-hidden="true"
+          >
+            ${TYPE_ICONS[type] ?? TYPE_ICONS.other}
+          </i>
+
+          ${escapeHtml(label)}
+        </span>
+      `
+    )
+    .join("");
+}
+
 
 /* =========================================================
    DIRECTORY
@@ -902,15 +929,6 @@ function renderProfileDrawer(institution) {
             alt=""
           >
         </figure>
-      `
-    : "";
-    
-  const initiative = institution.initiative
-    ? `
-        <div class="profile-program">
-          <span class="profile-program-label">Initiative</span>
-          <span>${escapeHtml(institution.initiative)}</span>
-        </div>
       `
     : "";
 
