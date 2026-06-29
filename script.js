@@ -2998,6 +2998,61 @@ const UNPUBLISHED_RESEARCH_LEADS = [
 ];
 
 
+
+/* =========================================================
+   PROFILE IMAGES
+   =========================================================
+
+   Earlier image links are preserved where a previous version
+   of the map already supplied one. New records use the preview
+   image published by their first public source through Microlink.
+*/
+
+const INSTITUTION_IMAGE_OVERRIDES = {
+  "burnaby": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATUOAM8ovnNGVTPT6PM5ZBJt0NY4qv3ELZ6U_qmi4YTGH-qdofUiZBGk&s=10",
+  "district-of-north-vancouver": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlyxzyam8JQVGhJt8pjL9jrX42RhVxCLbDIRN8X85BQ&s=10",
+  "vancouver": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
+  "halton-region": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS69qOrp0juP07gCE-54R7UKaOKsGqyp-5jvlRLOkS4Eg&s=10",
+  "kingston": "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
+  "montr-al": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
+  "vancouver-general-hospital": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrHMOUbr7FFeXYcoF94NEWtYukkXZQSDVTPjfEicNhlalguaDgLyrFEtUw&s=10",
+  "university-of-british-columbia": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=3840&fm=webp&q=75&fit=max",
+  "university-of-guelph": "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=3840&q=75",
+  "child-learning-center": "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg"
+};
+
+const PROFILE_IMAGE_FALLBACKS = {
+  university: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
+  hospital: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+  city: "https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=1200&q=80",
+  government: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+  other: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80"
+};
+
+function sourcePreviewImage(institution) {
+  const sourceUrl = institution.resources?.find(
+    (resource) => /^https?:\/\//i.test(resource?.url ?? "")
+  )?.url;
+
+  if (!sourceUrl) {
+    return PROFILE_IMAGE_FALLBACKS[institution.type]
+      ?? PROFILE_IMAGE_FALLBACKS.other;
+  }
+
+  return `https://api.microlink.io/?url=${encodeURIComponent(sourceUrl)}&embed=image.url`;
+}
+
+function profileImageFor(institution) {
+  return INSTITUTION_IMAGE_OVERRIDES[institution.id]
+    ?? institution.image
+    ?? sourcePreviewImage(institution);
+}
+
+function profileImageFallbackFor(institution) {
+  return PROFILE_IMAGE_FALLBACKS[institution.type]
+    ?? PROFILE_IMAGE_FALLBACKS.other;
+}
+
 /* =========================================================
    ICONS AND DISPLAY CONSTANTS
    ========================================================= */
@@ -3446,6 +3501,23 @@ function renderProfileDrawer(institution) {
         .join("")
     : `<p class="empty-value">No public sources currently listed.</p>`;
 
+  const imageUrl = profileImageFor(institution);
+  const imageFallbackUrl = profileImageFallbackFor(institution);
+
+  const profileImage = imageUrl
+    ? `
+        <figure class="profile-image">
+          <img
+            src="${escapeHtml(imageUrl)}"
+            data-fallback-src="${escapeHtml(imageFallbackUrl)}"
+            alt="${escapeHtml(institution.name)}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+      `
+    : "";
+
   const profileHeadline = institution.headline
     ? `<p class="profile-headline">${escapeHtml(institution.headline)}</p>`
     : "";
@@ -3499,6 +3571,8 @@ function renderProfileDrawer(institution) {
 
   drawerContent.innerHTML = `
     <article class="institution-profile">
+      ${profileImage}
+
       <header class="profile-header">
         <h2 id="drawer-name">${escapeHtml(institution.name)}</h2>
 
@@ -3576,6 +3650,18 @@ function renderProfileDrawer(institution) {
       </div>
     </article>
   `;
+
+  const profileImageElement = drawerContent.querySelector(".profile-image img");
+
+  profileImageElement?.addEventListener("error", () => {
+    const fallbackSrc = profileImageElement.dataset.fallbackSrc;
+
+    if (fallbackSrc && profileImageElement.src !== fallbackSrc) {
+      profileImageElement.src = fallbackSrc;
+    } else {
+      profileImageElement.closest(".profile-image")?.remove();
+    }
+  }, { once: true });
 }
 
 function openProfileDrawer(institution) {
