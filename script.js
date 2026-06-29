@@ -3004,16 +3004,19 @@ const UNPUBLISHED_RESEARCH_LEADS = [
    =========================================================
 
    Image policy:
-   1. Preserve manually reviewed image links.
-   2. Prefer a unique Wikipedia/Wikimedia image for the named
-      institution or municipality.
-   3. Use a source-page preview only when that source is unique
-      to one map entry and is not a shared report/program page.
-   4. Show a branded placeholder instead of repeating an
-      unrelated or generic image.
+   1. Prefer a unique source-page preview when it appears related
+      to plant-based food, dining, procurement, or an on-the-ground
+      initiative.
+   2. Preserve curated scenic or institution-specific image links
+      when they are still the best available option.
+   3. Use a unique Wikipedia/Wikimedia image of the institution,
+      campus, municipality, or public body when no better initiative
+      image is available.
+   4. Fall back to varied plant-forward food imagery rather than
+      repeating generic icons.
 */
 
-const INSTITUTION_IMAGE_OVERRIDES = {
+const SCENIC_IMAGE_OVERRIDES = {
   "burnaby": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATUOAM8ovnNGVTPT6PM5ZBJt0NY4qv3ELZ6U_qmi4YTGH-qdofUiZBGk&s=10",
   "district-of-north-vancouver": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlyxzyam8JQVGhJt8pjL9jrX42RhVxCLbDIRN8X85BQ&s=10",
   "vancouver": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
@@ -3056,7 +3059,38 @@ const GENERIC_SOURCE_PATTERNS = [
   /facebook\.com\//i,
   /linkedin\.com\//i,
   /youtube\.com\//i,
-  /youtu\.be\//i
+  /youtu\.be\//i,
+  /\.pdf($|\?)/i
+];
+
+const FOOD_RELATED_PATTERNS = [
+  /plant/i,
+  /vegan/i,
+  /vegetarian/i,
+  /food/i,
+  /meal/i,
+  /menu/i,
+  /dining/i,
+  /dish/i,
+  /chef/i,
+  /kitchen/i,
+  /cafeteria/i,
+  /procurement/i,
+  /recipe/i,
+  /catering/i,
+  /agri-food/i,
+  /sustainable food/i
+];
+
+const THEMATIC_FALLBACK_IMAGES = [
+  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1600&q=80"
 ];
 
 const sourceUseCounts = INSTITUTIONS.reduce((counts, institution) => {
@@ -3071,33 +3105,56 @@ const sourceUseCounts = INSTITUTIONS.reduce((counts, institution) => {
   return counts;
 }, new Map());
 
-function firstPublicSourceUrl(institution) {
-  return institution.resources?.find(
-    (resource) => /^https?:\/\//i.test(resource?.url ?? "")
-  )?.url?.trim() ?? "";
+function sourcePreviewCandidates(institution) {
+  return (institution.resources ?? [])
+    .map((resource) => {
+      const url = resource?.url?.trim() ?? "";
+      const label = `${resource?.label ?? ""} ${url}`;
+
+      if (!/^https?:\/\//i.test(url)) {
+        return null;
+      }
+
+      const isShared = (sourceUseCounts.get(url) ?? 0) > 1;
+      const isGeneric = GENERIC_SOURCE_PATTERNS.some(
+        (pattern) => pattern.test(url)
+      );
+
+      if (isShared || isGeneric) {
+        return null;
+      }
+
+      let score = 1;
+
+      if (FOOD_RELATED_PATTERNS.some((pattern) => pattern.test(label))) {
+        score += 6;
+      }
+
+      if (/dining|hospitality|sustainability|student|caf|foodservice/i.test(label)) {
+        score += 2;
+      }
+
+      return {
+        url,
+        score
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.score - a.score);
 }
 
-function uniqueSourcePreviewImage(institution) {
-  const sourceUrl = firstPublicSourceUrl(institution);
+function initiativeSourcePreviewImage(institution) {
+  const bestCandidate = sourcePreviewCandidates(institution)[0];
 
-  if (!sourceUrl) {
+  if (!bestCandidate) {
     return "";
   }
 
-  const isShared = (sourceUseCounts.get(sourceUrl) ?? 0) > 1;
-  const isGeneric = GENERIC_SOURCE_PATTERNS.some(
-    (pattern) => pattern.test(sourceUrl)
-  );
-
-  if (isShared || isGeneric) {
-    return "";
-  }
-
-  return `https://api.microlink.io/?url=${encodeURIComponent(sourceUrl)}&embed=image.url`;
+  return `https://api.microlink.io/?url=${encodeURIComponent(bestCandidate.url)}&embed=image.url`;
 }
 
-function synchronousProfileImage(institution) {
-  return INSTITUTION_IMAGE_OVERRIDES[institution.id]
+function curatedScenicImage(institution) {
+  return SCENIC_IMAGE_OVERRIDES[institution.id]
     ?? institution.image
     ?? "";
 }
@@ -3138,11 +3195,26 @@ async function wikipediaImageFor(institution) {
   }
 }
 
-async function resolveProfileImage(institution) {
-  const reviewedImage = synchronousProfileImage(institution);
+function thematicFallbackImage(institution) {
+  const seed = Array.from(institution.id).reduce(
+    (value, character) => value + character.charCodeAt(0),
+    0
+  );
 
-  if (reviewedImage) {
-    return reviewedImage;
+  return THEMATIC_FALLBACK_IMAGES[seed % THEMATIC_FALLBACK_IMAGES.length];
+}
+
+async function resolveProfileImage(institution) {
+  const initiativeImage = initiativeSourcePreviewImage(institution);
+
+  if (initiativeImage) {
+    return initiativeImage;
+  }
+
+  const scenicImage = curatedScenicImage(institution);
+
+  if (scenicImage) {
+    return scenicImage;
   }
 
   const wikipediaImage = await wikipediaImageFor(institution);
@@ -3151,7 +3223,7 @@ async function resolveProfileImage(institution) {
     return wikipediaImage;
   }
 
-  return uniqueSourcePreviewImage(institution);
+  return thematicFallbackImage(institution);
 }
 
 function profileImagePlaceholder(institution) {
@@ -3672,7 +3744,7 @@ function renderProfileDrawer(institution) {
         .join("")
     : `<p class="empty-value">No public sources currently listed.</p>`;
 
-  const initialImageUrl = synchronousProfileImage(institution);
+  const initialImageUrl = curatedScenicImage(institution);
 
   const profileImage = `
     <figure
