@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Lighting Up Canada | Canadian Plant-Forward Directory</title>
+  <title>Lighting Up Canada | Plant-Based Progress Map</title>
 
   <meta
     name="description"
-    content="A professional national directory highlighting the institutions, teams, and communities advancing plant-forward change across Canada."
+    content="Lighting Up Canada is a national map of plant-based food policies, procurement initiatives, menu changes, and institutional commitments across Canada."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,271 +19,1727 @@
     rel="stylesheet"
   >
 
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  >
+  <style>
+    :root {
+      --navy-950: #0d1b27;
+      --navy-900: #132433;
+      --navy-800: #1b3143;
+      --navy-700: #27465f;
 
-  <link rel="stylesheet" href="style.css">
+      --blue: #2f73c8;
+      --blue-light: #dceaf8;
+
+      --green: #3f8f52;
+      --green-light: #e3f0e7;
+
+      --red: #c9493a;
+      --red-light: #f6e4e1;
+
+      --purple: #8462b0;
+      --purple-light: #ece5f5;
+
+      --orange: #d9822b;
+      --orange-light: #f8eadb;
+
+      --cream: #f5f3ee;
+      --cream-dark: #ebe7df;
+      --white: #ffffff;
+
+      --text: #21313d;
+      --text-muted: #5f6f7c;
+      --border: #d6d9d7;
+
+      --shadow-sm: 0 4px 16px rgb(13 27 39 / 8%);
+      --shadow-md: 0 14px 40px rgb(13 27 39 / 13%);
+
+      --page-width: 1180px;
+      --header-height: 72px;
+
+      --font: "Noto Sans", Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--cream);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 3000;
+      top: 10px;
+      left: 10px;
+      padding: 9px 13px;
+      color: var(--white);
+      background: var(--navy-950);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-shell {
+      width: min(var(--page-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin: 0;
+      color: var(--navy-950);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: var(--text-muted);
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 17px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition:
+        transform 160ms ease,
+        background-color 160ms ease,
+        color 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: var(--navy-950);
+      border-color: var(--navy-950);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      background: var(--navy-700);
+      border-color: var(--navy-700);
+    }
+
+    .button-secondary {
+      color: var(--navy-950);
+      background: transparent;
+      border-color: #9ca7af;
+    }
+
+    .button-secondary:hover,
+    .button-secondary:focus-visible {
+      background: var(--white);
+      border-color: var(--navy-700);
+    }
+
+    .button-light {
+      color: var(--navy-950);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .button-light:hover,
+    .button-light:focus-visible {
+      background: var(--cream);
+      border-color: var(--cream);
+    }
+
+    .button-ghost-light {
+      color: var(--white);
+      background: transparent;
+      border-color: rgb(255 255 255 / 42%);
+    }
+
+    .button-ghost-light:hover,
+    .button-ghost-light:focus-visible {
+      background: rgb(255 255 255 / 10%);
+      border-color: var(--white);
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      height: var(--header-height);
+      color: var(--white);
+      background: rgb(13 27 39 / 96%);
+      border-bottom: 1px solid rgb(255 255 255 / 10%);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border: 1px solid rgb(255 255 255 / 32%);
+      border-radius: 50%;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+    }
+
+    .brand-mark::before {
+      inset: 8px;
+      background: var(--green);
+      box-shadow:
+        0 0 0 5px rgb(63 143 82 / 15%),
+        0 0 18px rgb(63 143 82 / 45%);
+    }
+
+    .brand-mark::after {
+      top: 4px;
+      right: 4px;
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      box-shadow: 0 0 10px rgb(47 115 200 / 60%);
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong,
+    .brand-copy span {
+      display: block;
+    }
+
+    .brand-copy strong {
+      overflow: hidden;
+      font-size: 0.97rem;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      margin-top: 1px;
+      color: #bac6ce;
+      font-size: 0.68rem;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .site-nav a {
+      padding: 8px 10px;
+      color: #dce4e9;
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--white);
+    }
+
+    .site-nav .nav-primary {
+      margin-left: 6px;
+      padding: 9px 13px;
+      color: var(--navy-950);
+      background: var(--white);
+    }
+
+    .site-nav .nav-primary:hover,
+    .site-nav .nav-primary:focus-visible {
+      color: var(--navy-950);
+      background: var(--cream);
+    }
+
+    .menu-toggle {
+      width: 40px;
+      height: 40px;
+      display: none;
+      place-items: center;
+      padding: 0;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgb(255 255 255 / 22%);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(105deg, rgb(13 27 39 / 98%) 0%, rgb(19 41 57 / 96%) 51%, rgb(20 54 71 / 90%) 100%);
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        radial-gradient(circle at 76% 22%, rgb(47 115 200 / 25%), transparent 19%),
+        radial-gradient(circle at 83% 52%, rgb(63 143 82 / 22%), transparent 17%),
+        radial-gradient(circle at 63% 70%, rgb(217 130 43 / 16%), transparent 14%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      min-height: 670px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
+      align-items: center;
+      gap: 72px;
+      padding: 82px 0 86px;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+    }
+
+    .hero .eyebrow {
+      color: #9ed2ff;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 7vw, 6.9rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #dcecf8;
+      font-weight: 500;
+    }
+
+    .hero-intro {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: #d4dde3;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      line-height: 1.72;
+    }
+
+    .hero-attribution {
+      margin: 20px 0 0;
+      color: #aebcc6;
+      font-size: 0.76rem;
+    }
+
+    /* Decorative map panel */
+
+    .map-preview {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, #f4f6f5 0%, #dfe8ea 100%);
+      border: 1px solid rgb(255 255 255 / 18%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-preview::before {
+      position: absolute;
+      inset: 12% 8%;
+      content: "";
+      background:
+        linear-gradient(
+          148deg,
+          transparent 0 7%,
+          #243b4d 7% 22%,
+          transparent 22% 25%,
+          #243b4d 25% 44%,
+          transparent 44% 46%,
+          #243b4d 46% 65%,
+          transparent 65% 68%,
+          #243b4d 68% 78%,
+          transparent 78%
+        );
+      clip-path: polygon(
+        2% 45%, 8% 30%, 17% 27%, 23% 17%, 32% 20%, 40% 9%,
+        50% 18%, 61% 12%, 68% 22%, 78% 25%, 84% 37%, 94% 42%,
+        98% 54%, 91% 61%, 85% 59%, 78% 71%, 66% 74%, 58% 88%,
+        49% 81%, 38% 86%, 29% 76%, 18% 70%, 10% 60%
+      );
+      opacity: 0.98;
+    }
+
+    .map-preview::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 140px;
+      content: "";
+      background: linear-gradient(to top, rgb(10 27 39 / 38%), transparent);
+      pointer-events: none;
+    }
+
+    .map-dot {
+      position: absolute;
+      z-index: 2;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 6px rgb(255 255 255 / 9%),
+        0 0 18px currentColor;
+    }
+
+    .map-dot.green {
+      color: var(--green);
+      background: var(--green);
+    }
+
+    .map-dot.blue {
+      color: var(--blue);
+      background: var(--blue);
+    }
+
+    .map-dot.red {
+      color: var(--red);
+      background: var(--red);
+    }
+
+    .map-dot.purple {
+      color: var(--purple);
+      background: var(--purple);
+    }
+
+    .map-dot.orange {
+      color: var(--orange);
+      background: var(--orange);
+    }
+
+    .dot-1 { top: 48%; left: 17%; }
+    .dot-2 { top: 42%; left: 23%; }
+    .dot-3 { top: 58%; left: 43%; }
+    .dot-4 { top: 65%; left: 54%; }
+    .dot-5 { top: 57%; left: 64%; }
+    .dot-6 { top: 61%; left: 70%; }
+    .dot-7 { top: 54%; left: 76%; }
+    .dot-8 { top: 46%; left: 83%; }
+
+    .preview-label {
+      position: absolute;
+      z-index: 3;
+      right: 20px;
+      bottom: 18px;
+      left: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      color: var(--white);
+    }
+
+    .preview-label strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .preview-label span {
+      display: block;
+      margin-top: 2px;
+      color: #d5dfe5;
+      font-size: 0.74rem;
+    }
+
+    .preview-label b {
+      font-size: 2.3rem;
+      line-height: 1;
+    }
+
+    /* Statistics */
+
+    .stats-band {
+      position: relative;
+      z-index: 4;
+      margin-top: -36px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat {
+      min-width: 0;
+      padding: 25px 26px 23px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy-950);
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    /* Scope section */
+
+    .scope-section {
+      padding: 118px 0 92px;
+    }
+
+    .scope-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 70px;
+      align-items: end;
+    }
+
+    .scope-note {
+      margin: 0;
+      padding: 22px 0 3px 22px;
+      color: var(--text-muted);
+      border-left: 3px solid var(--green);
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 44px;
+    }
+
+    .sector-card {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sector-card .sector-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      border-radius: 50%;
+    }
+
+    .sector-card .sector-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .sector-card h3 {
+      margin: 24px 0 0;
+      color: var(--navy-950);
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .sector-card p {
+      margin: 8px 0 0;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .sector-card.green {
+      border-top: 4px solid var(--green);
+    }
+
+    .sector-card.blue {
+      border-top: 4px solid var(--blue);
+    }
+
+    .sector-card.red {
+      border-top: 4px solid var(--red);
+    }
+
+    .sector-card.purple {
+      border-top: 4px solid var(--purple);
+    }
+
+    .sector-card.orange {
+      border-top: 4px solid var(--orange);
+    }
+
+    .sector-card.green .sector-icon { background: var(--green); }
+    .sector-card.blue .sector-icon { background: var(--blue); }
+    .sector-card.red .sector-icon { background: var(--red); }
+    .sector-card.purple .sector-icon { background: var(--purple); }
+    .sector-card.orange .sector-icon { background: var(--orange); }
+
+    /* Why visibility matters */
+
+    .visibility-section {
+      color: var(--white);
+      background: var(--navy-950);
+    }
+
+    .visibility-grid {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: stretch;
+    }
+
+    .visibility-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 78px 72px 78px max(20px, calc((100vw - var(--page-width)) / 2));
+    }
+
+    .visibility-copy .eyebrow {
+      color: #9ed2ff;
+    }
+
+    .visibility-copy h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.7vw, 4.7rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .visibility-copy p {
+      max-width: 560px;
+      margin: 24px 0 0;
+      color: #c8d3da;
+      font-size: 1.02rem;
+      line-height: 1.78;
+    }
+
+    .visibility-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      background: var(--navy-800);
+      border-left: 1px solid rgb(255 255 255 / 10%);
+    }
+
+    .visibility-point {
+      min-height: 280px;
+      padding: 34px;
+      border-right: 1px solid rgb(255 255 255 / 10%);
+      border-bottom: 1px solid rgb(255 255 255 / 10%);
+    }
+
+    .visibility-point:nth-child(even) {
+      border-right: 0;
+    }
+
+    .visibility-point:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .visibility-point strong {
+      display: block;
+      color: #a8d6ff;
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visibility-point h3 {
+      margin: 22px 0 0;
+      font-size: 1.02rem;
+    }
+
+    .visibility-point p {
+      margin: 9px 0 0;
+      color: #bac8d1;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    /* Featured stories */
+
+    .featured-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+
+    .featured-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+    }
+
+    .text-link {
+      color: var(--blue);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .text-link:hover,
+    .text-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .story-card {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: var(--text);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .story-card:hover,
+    .story-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .story-accent {
+      height: 9px;
+    }
+
+    .story-accent.green { background: var(--green); }
+    .story-accent.blue { background: var(--blue); }
+    .story-accent.red { background: var(--red); }
+
+    .story-body {
+      min-height: 0;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 26px;
+    }
+
+    .story-meta {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .story-number {
+      display: block;
+      margin-top: 30px;
+      color: var(--navy-950);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.065em;
+    }
+
+    .story-card h3 {
+      margin: 16px 0 0;
+      color: var(--navy-950);
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .story-card p {
+      margin: 10px 0 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .story-link {
+      margin-top: auto;
+      padding-top: 28px;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* Evidence section */
+
+    .evidence-section {
+      padding: 88px 0;
+      background: var(--cream);
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: 80px;
+      align-items: start;
+    }
+
+    .evidence-list {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .evidence-list li {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 14px;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .evidence-list strong {
+      color: var(--blue);
+      font-size: 0.82rem;
+    }
+
+    .evidence-list span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Contribute */
+
+    .contribute-section {
+      padding: 84px 0;
+      color: var(--white);
+      background:
+        linear-gradient(120deg, var(--green) 0%, #2e7443 100%);
+    }
+
+    .contribute-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contribute-section .eyebrow {
+      color: #d8f0df;
+    }
+
+    .contribute-section h2 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2rem, 4.6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .contribute-section p {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: #e6f1e9;
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      color: #c2ccd3;
+      background: var(--navy-950);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 1.2fr) repeat(2, minmax(150px, 0.4fr));
+      gap: 60px;
+      padding: 58px 0 44px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    .footer-brand p {
+      max-width: 500px;
+      margin: 12px 0 0;
+      font-size: 0.83rem;
+      line-height: 1.7;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      margin-top: 8px;
+      color: #c2ccd3;
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover,
+    .footer-column a:focus-visible {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0 26px;
+      border-top: 1px solid rgb(255 255 255 / 10%);
+      font-size: 0.72rem;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1040px) {
+      .hero-grid {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 72px 0 78px;
+      }
+
+      .map-preview {
+        min-height: 390px;
+      }
+
+      .sector-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .scope-header,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .visibility-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visibility-copy {
+        padding: 74px max(20px, calc((100vw - var(--page-width)) / 2));
+      }
+
+      .visibility-points {
+        border-top: 1px solid rgb(255 255 255 / 10%);
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 800px) {
+      :root {
+        --header-height: 64px;
+      }
+
+      .site-shell {
+        width: min(100% - 28px, var(--page-width));
+      }
+
+      .site-nav {
+        position: fixed;
+        z-index: 999;
+        top: var(--header-height);
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 14px 18px;
+        background: var(--navy-950);
+        border-top: 1px solid rgb(255 255 255 / 10%);
+        box-shadow: 0 18px 40px rgb(0 0 0 / 26%);
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a,
+      .site-nav .nav-primary {
+        margin: 0;
+        padding: 13px 12px;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .sector-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-heading-row,
+      .contribute-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .visibility-points {
+        grid-template-columns: 1fr;
+      }
+
+      .visibility-point,
+      .visibility-point:nth-child(even),
+      .visibility-point:nth-last-child(-n + 2) {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid rgb(255 255 255 / 10%);
+      }
+
+      .visibility-point:last-child {
+        border-bottom: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero-grid {
+        padding: 58px 0 66px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 17vw, 5rem);
+      }
+
+      .map-preview {
+        min-height: 310px;
+      }
+
+      .preview-label {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .preview-label b {
+        font-size: 1.8rem;
+      }
+
+      .stats-band {
+        margin-top: -22px;
+      }
+
+      .stat {
+        padding: 20px 17px;
+      }
+
+      .scope-section,
+      .featured-section {
+        padding: 76px 0;
+      }
+
+      .sector-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sector-card {
+        min-height: 0;
+      }
+
+      .visibility-copy {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      .evidence-section,
+      .contribute-section {
+        padding: 66px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#map">Skip to interactive map</a>
+  <a class="skip-link" href="#main-content">
+    Skip to main content
+  </a>
 
   <header class="site-header">
-    <div class="brand">
-      <span class="brand-organization">
-        Plant-Based Cities Movement
-      </span>
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html" aria-label="Lighting Up Canada home">
+        <span class="brand-mark" aria-hidden="true"></span>
 
-      <a class="brand-title" href="#">
-        Canadian Plant-Forward Directory
+        <span class="brand-copy">
+          <strong>Lighting Up Canada</strong>
+          <span>Plant-Based Progress Map</span>
+        </span>
       </a>
-    </div>
 
-    <div class="header-theme">
-      <span class="header-theme-kicker">
-        Lighting up Canada
-      </span>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#progress">Progress</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#contribute">Submit an initiative</a>
+        <a class="nav-primary" href="map.html">Explore the map</a>
+      </nav>
 
-      <span class="header-theme-title">
-        Plant-forward leadership across Canada.
-      </span>
-    </div>
-
-    <div
-      class="header-count"
-      aria-label="Number of institutions in the directory">
-      <strong id="header-count">0</strong>
-      <span>institutions</span>
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
+        </svg>
+      </button>
     </div>
   </header>
 
-  <main id="directory-app" class="directory-app">
-    <aside
-      id="results-panel"
-      class="results-panel"
-      aria-label="Institution directory"
-    >
-      <div class="sidebar-header">
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="site-shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A national public-interest resource</p>
+
+          <h1 id="hero-title">
+            Plant-forward progress
+            <span>is taking root across Canada.</span>
+          </h1>
+
+          <p class="hero-intro">
+            Discover the municipalities, schools, universities, healthcare
+            organizations, public bodies, and other institutions turning
+            sustainable food commitments into practical action.
+          </p>
+
+          <div class="button-row">
+            <a class="button button-light" href="map.html">
+              Explore the national map
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="button button-ghost-light" href="#about">
+              Learn about the project
+            </a>
+          </div>
+
+          <p class="hero-attribution">
+            Developed and maintained by the Plant-Based Cities Movement.
+          </p>
+        </div>
+
+        <a
+          class="map-preview"
+          href="map.html"
+          aria-label="Open the interactive national map"
+        >
+          <span class="map-dot green dot-1" aria-hidden="true"></span>
+          <span class="map-dot blue dot-2" aria-hidden="true"></span>
+          <span class="map-dot red dot-3" aria-hidden="true"></span>
+          <span class="map-dot green dot-4" aria-hidden="true"></span>
+          <span class="map-dot purple dot-5" aria-hidden="true"></span>
+          <span class="map-dot orange dot-6" aria-hidden="true"></span>
+          <span class="map-dot blue dot-7" aria-hidden="true"></span>
+          <span class="map-dot green dot-8" aria-hidden="true"></span>
+
+          <span class="preview-label">
+            <span>
+              <strong>Interactive progress map</strong>
+              <span>Explore institutions and documented initiatives</span>
+            </span>
+
+            <b aria-hidden="true">↗</b>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="stats-band" aria-label="Project statistics">
+      <div class="site-shell stats-grid">
+        <div class="stat">
+          <strong>62</strong>
+          <span>Initiatives tracked</span>
+        </div>
+
+        <div class="stat">
+          <strong>48</strong>
+          <span>Institutions</span>
+        </div>
+
+        <div class="stat">
+          <strong>31</strong>
+          <span>Communities represented</span>
+        </div>
+
+        <div class="stat">
+          <strong>8</strong>
+          <span>Provinces represented</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="scope-section">
+      <div class="site-shell">
+        <div class="scope-header">
+          <div>
+            <p class="eyebrow">What the map documents</p>
+
+            <h2 class="section-title">
+              A growing record of practical change.
+            </h2>
+
+            <p class="section-intro">
+              Lighting Up Canada brings together plant-based food policies,
+              procurement decisions, menu transformations, and institutional
+              commitments from across the country.
+            </p>
+          </div>
+
+          <p class="scope-note">
+            The map focuses on documented outcomes: what is happening, where it
+            is happening, and what others can learn from it.
+          </p>
+        </div>
+
+        <div class="sector-grid" aria-label="Institution categories">
+          <article class="sector-card green">
+            <span class="sector-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 21V8l5-3v4l6-4v4l5-2v14h-4v-5h-3v5H4Zm3-9v2h2v-2H7Zm0 4v2h2v-2H7Zm5-4v2h2v-2h-2Z"/>
+              </svg>
+            </span>
+
+            <h3>Municipalities</h3>
+            <p>
+              Motions, procurement policies, public events, and municipal food
+              service initiatives.
+            </p>
+          </article>
+
+          <article class="sector-card blue">
+            <span class="sector-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 8.4 12 3l10 5.4-10 5.4L2 8.4Zm4 3.5v4.2c0 1.6 2.7 3.1 6 3.1s6-1.5 6-3.1v-4.2L12 15l-6-3.1Z"/>
+              </svg>
+            </span>
+
+            <h3>Educational institutions</h3>
+            <p>
+              Universities, colleges, schools, and campus dining programs
+              advancing plant-forward food.
+            </p>
+          </article>
+
+          <article class="sector-card red">
+            <span class="sector-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3Z"/>
+              </svg>
+            </span>
+
+            <h3>Healthcare</h3>
+            <p>
+              Patient menus, hospital pilots, food-service practices, and
+              health-centred institutional change.
+            </p>
+          </article>
+
+          <article class="sector-card purple">
+            <span class="sector-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2 2 7v2h20V7L12 2ZM4 11v7H2v2h20v-2h-2v-7h-3v7h-3v-7h-4v7H7v-7H4Z"/>
+              </svg>
+            </span>
+
+            <h3>Government and public bodies</h3>
+            <p>
+              Agencies, public authorities, and other bodies shaping food
+              standards, programs, or procurement.
+            </p>
+          </article>
+
+          <article class="sector-card orange">
+            <span class="sector-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="m12 3 9 9-9 9-9-9 9-9Z"/>
+              </svg>
+            </span>
+
+            <h3>Hospitality and other institutions</h3>
+            <p>
+              Organizations, facilities, and public-facing programs showing
+              additional pathways for progress.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress" class="visibility-section">
+      <div class="visibility-grid">
+        <div class="visibility-copy">
+          <p class="eyebrow">Why visibility matters</p>
+
+          <h2>
+            Progress moves faster when institutions can see what is already possible.
+          </h2>
+
+          <p>
+            Many initiatives begin in isolation. By bringing examples together,
+            Lighting Up Canada helps institutions learn from one another, adapt
+            proven ideas, and move more confidently from intention to action.
+          </p>
+
+          <div class="button-row">
+            <a class="button button-light" href="map.html">
+              See the progress map
+            </a>
+          </div>
+        </div>
+
+        <div class="visibility-points">
+          <article class="visibility-point">
+            <strong>01</strong>
+            <h3>Make progress visible</h3>
+            <p>
+              Bring policies, programs, commitments, and menu changes into one
+              accessible national view.
+            </p>
+          </article>
+
+          <article class="visibility-point">
+            <strong>02</strong>
+            <h3>Support practical learning</h3>
+            <p>
+              Help schools, municipalities, hospitals, and institutions find
+              examples they can adapt.
+            </p>
+          </article>
+
+          <article class="visibility-point">
+            <strong>03</strong>
+            <h3>Strengthen public understanding</h3>
+            <p>
+              Show that plant-forward change is already occurring across
+              sectors, regions, and communities.
+            </p>
+          </article>
+
+          <article class="visibility-point">
+            <strong>04</strong>
+            <h3>Build shared momentum</h3>
+            <p>
+              Create a stronger public record that can grow as more initiatives
+              are identified and verified.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featured-title">
+      <div class="site-shell">
+        <div class="featured-heading-row">
+          <div>
+            <p class="eyebrow">Featured progress</p>
+
+            <h2 id="featured-title" class="section-title">
+              Examples already lighting the way.
+            </h2>
+          </div>
+
+          <a class="text-link" href="map.html">
+            Explore all initiatives →
+          </a>
+        </div>
+
+        <div class="story-grid">
+          <a class="story-card" href="map.html">
+            <span class="story-accent green" aria-hidden="true"></span>
+
+            <span class="story-body">
+              <span class="story-meta">Montréal, Québec · Municipality</span>
+              <strong class="story-number">75%</strong>
+
+              <h3>Vegetarian food commitment at City-organized events</h3>
+
+              <p>
+                Montréal made one of Canada’s most significant municipal food
+                commitments, supported by unanimous Council approval.
+              </p>
+
+              <span class="story-link">View initiative →</span>
+            </span>
+          </a>
+
+          <a class="story-card" href="map.html">
+            <span class="story-accent blue" aria-hidden="true"></span>
+
+            <span class="story-body">
+              <span class="story-meta">Vancouver, British Columbia · University</span>
+              <strong class="story-number">50%</strong>
+
+              <h3>Food-emissions reduction target by 2030</h3>
+
+              <p>
+                UBC is integrating procurement, climate planning, and menu
+                communication into a wider food-system strategy.
+              </p>
+
+              <span class="story-link">View initiative →</span>
+            </span>
+          </a>
+
+          <a class="story-card" href="map.html">
+            <span class="story-accent red" aria-hidden="true"></span>
+
+            <span class="story-body">
+              <span class="story-meta">Vancouver, British Columbia · Healthcare</span>
+              <strong class="story-number">20+</strong>
+
+              <h3>Plant-rich patient dishes piloted</h3>
+
+              <p>
+                Vancouver General Hospital brought clinicians, dietitians,
+                chefs, and food-service teams together around patient care.
+              </p>
+
+              <span class="story-link">View initiative →</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="methodology" class="evidence-section">
+      <div class="site-shell evidence-grid">
         <div>
-          <h1>Institution directory</h1>
+          <p class="eyebrow">Built from public evidence</p>
 
-          <span
-            id="result-count"
-            class="result-count"
-            aria-live="polite"
-          ></span>
-        </div>
+          <h2 class="section-title">
+            A resource designed for trust, learning, and responsible use.
+          </h2>
 
-        <button
-          id="sidebar-toggle"
-          class="icon-button"
-          type="button"
-          aria-expanded="true"
-          aria-controls="results-panel"
-          aria-label="Collapse institution directory"
-          title="Collapse directory"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m14.7 5.3-6.7 6.7 6.7 6.7 1.4-1.4-5.3-5.3 5.3-5.3-1.4-1.4Z"/>
-          </svg>
-        </button>
-      </div>
+          <p class="section-intro">
+            Each published entry is supported by at least one publicly
+            available source, such as a policy, council record, institutional
+            report, announcement, or news article.
+          </p>
 
-      <div class="sidebar-controls">
-        <label class="search-field">
-          <span class="sr-only">Search institutions</span>
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m21 20-5.7-5.7a7 7 0 1 0-1.4 1.4L19.6 21 21 20ZM5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
-          </svg>
-
-          <input
-            id="institution-search"
-            type="search"
-            placeholder="Search institution or location"
-            autocomplete="off"
-          >
-        </label>
-
-        <div
-          class="filter-row"
-          aria-label="Filter institutions by type"
-        >
-          <button
-            class="filter-chip active"
-            type="button"
-            data-type="all"
-          >
-            All
-          </button>
-
-          <button
-            class="filter-chip"
-            type="button"
-            data-type="university"
-          >
-            Universities
-          </button>
-
-          <button
-            class="filter-chip"
-            type="button"
-            data-type="hospital"
-          >
-            Hospitals
-          </button>
-
-          <button
-            class="filter-chip"
-            type="button"
-            data-type="city"
-          >
-            Municipalities
-          </button>
-
-          <button
-            class="filter-chip"
-            type="button"
-            data-type="government"
-          >
-            Government
-          </button>
-
-          <button
-            class="filter-chip"
-            type="button"
-            data-type="other"
-          >
-            Other
-          </button>
-        </div>
-
-        <div class="sidebar-actions">
-          <span>Select an institution or illuminated map marker.</span>
-
-          <button
-            id="reset-view"
-            class="link-button"
-            type="button"
-          >
-            Reset
-          </button>
-        </div>
-      </div>
-
-      <div
-        id="institution-list"
-        class="institution-list"
-      ></div>
-
-      <div
-        id="empty-state"
-        class="empty-state"
-        hidden
-      >
-        <strong>No matching institutions</strong>
-        <p>Try a broader search or select another institution type.</p>
-      </div>
-    </aside>
-
-    <section
-      class="map-shell"
-      aria-label="Interactive map of plant-forward initiatives across Canada"
-    >
-      <div class="map-frame">
-        <div
-          id="map"
-          tabindex="0"
-          role="application"
-          aria-label="Interactive map showing plant-forward institutions across Canada"
-        ></div>
-
-        <button
-          id="sidebar-open"
-          class="sidebar-open"
-          type="button"
-          aria-label="Open institution directory"
-          hidden
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9.3 5.3 16 12l-6.7 6.7-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4Z"/>
-          </svg>
-
-          Directory
-        </button>
-
-        <section
-          class="map-legend"
-          aria-label="Map legend"
-        >
-          <div class="legend-heading">Map key</div>
-
-          <div class="legend-section">
-            <strong>Institution type</strong>
-
-            <div
-              id="type-legend"
-              class="legend-grid"
-            ></div>
+          <div class="button-row">
+            <a class="button button-secondary" href="#">
+              Read the methodology
+            </a>
           </div>
+        </div>
 
-          <div class="legend-section">
-            <strong>Progress stage</strong>
+        <ol class="evidence-list">
+          <li>
+            <strong>01</strong>
+            <span>
+              Document a clear policy, program, menu change, procurement
+              decision, or institutional commitment.
+            </span>
+          </li>
 
-            <div class="legend-grid">
-              <span>
-                <i class="stage-dot stage-outreach"></i>
-                Early outreach
-              </span>
+          <li>
+            <strong>02</strong>
+            <span>
+              Link each public entry to at least one source that visitors can
+              review directly.
+            </span>
+          </li>
 
-              <span>
-                <i class="stage-dot stage-active"></i>
-                Active work
-              </span>
+          <li>
+            <strong>03</strong>
+            <span>
+              Record the year or timeframe of implementation where the
+              information is available.
+            </span>
+          </li>
 
-              <span>
-                <i class="stage-dot stage-motion-passed"></i>
-                Motion passed
-              </span>
-
-              <span>
-                <i class="stage-dot stage-implemented"></i>
-                Implemented
-              </span>
-            </div>
-          </div>
-        </section>
+          <li>
+            <strong>04</strong>
+            <span>
+              Focus on the documented outcome while treating attribution as
+              useful supporting context.
+            </span>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <aside
-        id="profile-drawer"
-        class="profile-drawer"
-        aria-hidden="true"
-        aria-labelledby="drawer-name"
-      >
-        <button
-          id="drawer-close"
-          class="drawer-close"
-          type="button"
-          aria-label="Close institution profile"
-        >
-          ×
-        </button>
+    <section id="contribute" class="contribute-section">
+      <div class="site-shell contribute-grid">
+        <div>
+          <p class="eyebrow">Help strengthen the map</p>
 
-        <div id="drawer-content"></div>
-      </aside>
+          <h2>
+            Know of an initiative that belongs here?
+          </h2>
+
+          <p>
+            Share a policy, program, menu change, procurement initiative, or
+            institutional commitment that can help expand Canada’s public
+            record of plant-forward progress.
+          </p>
+        </div>
+
+        <div class="button-row">
+          <a class="button button-light" href="mailto:info@plantbasedcitiesmovement.org">
+            Submit an initiative
+          </a>
+
+          <a class="button button-ghost-light" href="#methodology">
+            Review inclusion criteria
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <div
-    id="mobile-scrim"
-    class="mobile-scrim"
-    hidden
-  ></div>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <div class="footer-brand">
+        <strong>Lighting Up Canada</strong>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js"></script>
+        <p>
+          A national educational resource documenting plant-based food
+          policies, procurement initiatives, menu changes, and institutional
+          commitments across Canada.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="map.html">National map</a>
+        <a href="#progress">Featured progress</a>
+        <a href="#about">About the project</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Project</h3>
+        <a href="#methodology">Methodology</a>
+        <a href="#contribute">Submit an initiative</a>
+        <a href="https://plantbasedcitiesmovement.org/">Plant-Based Cities Movement</a>
+      </div>
+    </div>
+
+    <div class="site-shell footer-bottom">
+      <span>
+        Developed and maintained by the Plant-Based Cities Movement.
+      </span>
+
+      <span>
+        © <span id="current-year"></span> Lighting Up Canada
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const siteNav = document.getElementById("site-nav");
+    const currentYear = document.getElementById("current-year");
+
+    currentYear.textContent = new Date().getFullYear();
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("is-open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        document.body.classList.remove("menu-open");
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 800) {
+        siteNav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        document.body.classList.remove("menu-open");
+      }
+    });
+  </script>
 </body>
 </html>
