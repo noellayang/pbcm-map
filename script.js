@@ -3003,9 +3003,14 @@ const UNPUBLISHED_RESEARCH_LEADS = [
    PROFILE IMAGES
    =========================================================
 
-   Earlier image links are preserved where a previous version
-   of the map already supplied one. New records use the preview
-   image published by their first public source through Microlink.
+   Image policy:
+   1. Preserve manually reviewed image links.
+   2. Prefer a unique Wikipedia/Wikimedia image for the named
+      institution or municipality.
+   3. Use a source-page preview only when that source is unique
+      to one map entry and is not a shared report/program page.
+   4. Show a branded placeholder instead of repeating an
+      unrelated or generic image.
 */
 
 const INSTITUTION_IMAGE_OVERRIDES = {
@@ -3021,36 +3026,202 @@ const INSTITUTION_IMAGE_OVERRIDES = {
   "child-learning-center": "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg"
 };
 
-const PROFILE_IMAGE_FALLBACKS = {
-  university: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
-  hospital: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-  city: "https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=1200&q=80",
-  government: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
-  other: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80"
+/*
+  These titles resolve common naming differences and improve
+  Wikimedia matching. Entries not listed here use institution.name.
+*/
+const WIKIPEDIA_TITLES = {
+  "montr-al": "Montreal",
+  "district-of-north-vancouver": "District of North Vancouver",
+  "university-of-british-columbia": "University of British Columbia",
+  "university-of-guelph": "University of Guelph",
+  "university-of-toronto-st-george-campus": "University of Toronto",
+  "university-of-toronto-mississauga": "University of Toronto Mississauga",
+  "trinity-college-university-of-toronto": "Trinity College, Toronto",
+  "university-of-toronto-scarborough": "University of Toronto Scarborough",
+  "government-of-canada-health-canada": "Health Canada",
+  "british-columbia-institute-of-technology": "British Columbia Institute of Technology",
+  "trinity-western-university": "Trinity Western University",
+  "eric-hamber-secondary-school": "Eric Hamber Secondary School",
+  "provincial-health-services-authority": "Provincial Health Services Authority",
+  "providence-health-care": "Providence Health Care (Vancouver)",
+  "newfoundland-and-labrador-health-services": "Newfoundland and Labrador Health Services"
 };
 
-function sourcePreviewImage(institution) {
-  const sourceUrl = institution.resources?.find(
+const GENERIC_SOURCE_PATTERNS = [
+  /nourishleadership\.ca\/programs\//i,
+  /impactclimate\.ca\/wp-content\//i,
+  /forwardfood\.org\/testimonials/i,
+  /instagram\.com\//i,
+  /facebook\.com\//i,
+  /linkedin\.com\//i,
+  /youtube\.com\//i,
+  /youtu\.be\//i
+];
+
+const sourceUseCounts = INSTITUTIONS.reduce((counts, institution) => {
+  institution.resources?.forEach((resource) => {
+    const url = resource?.url?.trim();
+
+    if (/^https?:\/\//i.test(url ?? "")) {
+      counts.set(url, (counts.get(url) ?? 0) + 1);
+    }
+  });
+
+  return counts;
+}, new Map());
+
+function firstPublicSourceUrl(institution) {
+  return institution.resources?.find(
     (resource) => /^https?:\/\//i.test(resource?.url ?? "")
-  )?.url;
+  )?.url?.trim() ?? "";
+}
+
+function uniqueSourcePreviewImage(institution) {
+  const sourceUrl = firstPublicSourceUrl(institution);
 
   if (!sourceUrl) {
-    return PROFILE_IMAGE_FALLBACKS[institution.type]
-      ?? PROFILE_IMAGE_FALLBACKS.other;
+    return "";
+  }
+
+  const isShared = (sourceUseCounts.get(sourceUrl) ?? 0) > 1;
+  const isGeneric = GENERIC_SOURCE_PATTERNS.some(
+    (pattern) => pattern.test(sourceUrl)
+  );
+
+  if (isShared || isGeneric) {
+    return "";
   }
 
   return `https://api.microlink.io/?url=${encodeURIComponent(sourceUrl)}&embed=image.url`;
 }
 
-function profileImageFor(institution) {
+function synchronousProfileImage(institution) {
   return INSTITUTION_IMAGE_OVERRIDES[institution.id]
     ?? institution.image
-    ?? sourcePreviewImage(institution);
+    ?? "";
 }
 
-function profileImageFallbackFor(institution) {
-  return PROFILE_IMAGE_FALLBACKS[institution.type]
-    ?? PROFILE_IMAGE_FALLBACKS.other;
+function wikipediaTitleFor(institution) {
+  return WIKIPEDIA_TITLES[institution.id] ?? institution.name;
+}
+
+async function wikipediaImageFor(institution) {
+  const title = wikipediaTitleFor(institution);
+
+  if (!title) {
+    return "";
+  }
+
+  const endpoint =
+    `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+
+  try {
+    const response = await fetch(endpoint, {
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      return "";
+    }
+
+    const data = await response.json();
+
+    return data.originalimage?.source
+      ?? data.thumbnail?.source
+      ?? "";
+  } catch (error) {
+    console.warn(`Could not load a Wikimedia image for ${institution.name}.`, error);
+    return "";
+  }
+}
+
+async function resolveProfileImage(institution) {
+  const reviewedImage = synchronousProfileImage(institution);
+
+  if (reviewedImage) {
+    return reviewedImage;
+  }
+
+  const wikipediaImage = await wikipediaImageFor(institution);
+
+  if (wikipediaImage) {
+    return wikipediaImage;
+  }
+
+  return uniqueSourcePreviewImage(institution);
+}
+
+function profileImagePlaceholder(institution) {
+  const label = TYPE_LABELS?.[institution.type] ?? "Institution";
+
+  return `
+    <div
+      class="profile-image-placeholder"
+      aria-hidden="true"
+      style="
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-end;
+        gap:4px;
+        padding:20px;
+        color:#f2f5f7;
+        background:
+          radial-gradient(circle at 78% 22%, color-mix(in srgb, var(--type-color) 45%, transparent), transparent 34%),
+          linear-gradient(135deg, #172738 0%, #29445b 100%);
+      "
+    >
+      <strong style="font-size:16px;line-height:1.25;">
+        ${escapeHtml(institution.name)}
+      </strong>
+      <span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.78;">
+        ${escapeHtml(label)}
+      </span>
+    </div>
+  `;
+}
+
+async function hydrateProfileImage(institution) {
+  const figure = drawerContent?.querySelector(".profile-image");
+
+  if (!figure) {
+    return;
+  }
+
+  const image = figure.querySelector("img");
+  const placeholder = figure.querySelector(".profile-image-placeholder");
+  const resolvedUrl = await resolveProfileImage(institution);
+
+  /*
+    The user may have opened another profile while the asynchronous
+    image request was running. Do not insert an image into the wrong
+    institution's drawer.
+  */
+  if (
+    selectedInstitutionId !== institution.id
+    || !drawerContent?.contains(figure)
+  ) {
+    return;
+  }
+
+  if (!resolvedUrl || !image) {
+    return;
+  }
+
+  image.addEventListener("load", () => {
+    image.hidden = false;
+    placeholder?.remove();
+  }, { once: true });
+
+  image.addEventListener("error", () => {
+    image.remove();
+  }, { once: true });
+
+  image.src = resolvedUrl;
 }
 
 /* =========================================================
@@ -3501,22 +3672,23 @@ function renderProfileDrawer(institution) {
         .join("")
     : `<p class="empty-value">No public sources currently listed.</p>`;
 
-  const imageUrl = profileImageFor(institution);
-  const imageFallbackUrl = profileImageFallbackFor(institution);
+  const initialImageUrl = synchronousProfileImage(institution);
 
-  const profileImage = imageUrl
-    ? `
-        <figure class="profile-image">
-          <img
-            src="${escapeHtml(imageUrl)}"
-            data-fallback-src="${escapeHtml(imageFallbackUrl)}"
-            alt="${escapeHtml(institution.name)}"
-            loading="lazy"
-            decoding="async"
-          >
-        </figure>
-      `
-    : "";
+  const profileImage = `
+    <figure
+      class="profile-image"
+      style="--type-color:${escapeHtml(typeColor(institution.type))};"
+    >
+      <img
+        ${initialImageUrl ? `src="${escapeHtml(initialImageUrl)}"` : ""}
+        alt="${escapeHtml(institution.name)}"
+        loading="lazy"
+        decoding="async"
+        ${initialImageUrl ? "" : "hidden"}
+      >
+      ${initialImageUrl ? "" : profileImagePlaceholder(institution)}
+    </figure>
+  `;
 
   const profileHeadline = institution.headline
     ? `<p class="profile-headline">${escapeHtml(institution.headline)}</p>`
@@ -3654,14 +3826,19 @@ function renderProfileDrawer(institution) {
   const profileImageElement = drawerContent.querySelector(".profile-image img");
 
   profileImageElement?.addEventListener("error", () => {
-    const fallbackSrc = profileImageElement.dataset.fallbackSrc;
+    profileImageElement.remove();
 
-    if (fallbackSrc && profileImageElement.src !== fallbackSrc) {
-      profileImageElement.src = fallbackSrc;
-    } else {
-      profileImageElement.closest(".profile-image")?.remove();
+    const figure = drawerContent.querySelector(".profile-image");
+
+    if (figure && !figure.querySelector(".profile-image-placeholder")) {
+      figure.insertAdjacentHTML(
+        "beforeend",
+        profileImagePlaceholder(institution)
+      );
     }
   }, { once: true });
+
+  hydrateProfileImage(institution);
 }
 
 function openProfileDrawer(institution) {
