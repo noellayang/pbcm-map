@@ -29,12 +29,12 @@
   --blue: #1f497a;
 
   /* Institution types */
-
-  --university: #08b4c0;
-  --hospital: #d3351c;
-  --city: #eaa800;
-  --government: #28965A;
-  --other: #B9BAA3;
+  
+  --university: #2f73c8;
+  --hospital: #c9493a;
+  --city: #3f8f52;
+  --government: #8462b0;
+  --other: #d9822b;
 
   /* Progress stages */
 
