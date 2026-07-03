@@ -1,85 +1,5 @@
 [
   {
-    "id": "burnaby",
-    "name": "Burnaby",
-    "shortName": "Burnaby",
-    "type": "city",
-    "city": "Burnaby",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.24636,
-      "lng": -122.97551
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "Presented March 31, 2025",
-    "headline": "PBCM presentation to Burnaby, BC Environment Committee",
-    "stats": [],
-    "summary": "PBCM presentation to Burnaby, BC Environment Committee. Presented March 31, 2025",
-    "achievements": [
-      "Discussed the role of food emissions in municipal climate action",
-      "Highlighted opportunities to increase plant-based food options and reduce food-related greenhouse gas emissions",
-      "Raised awareness of sustainable food procurement practices and municipal leadership opportunities",
-      "Contributed to dialogue on climate-friendly food systems within municipal governance"
-    ],
-    "organizationsInvolved": [
-      "Plant-Based Cities Movement"
-    ],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://pub-burnaby.escribemeetings.com/filestream.ashx?DocumentId=81350"
-      }
-    ],
-    "lastUpdated": "2025-01-28",
-    "verified": true
-  },
-  {
-    "id": "district-of-north-vancouver",
-    "name": "District of North Vancouver",
-    "shortName": "District of North Vancouver",
-    "type": "city",
-    "city": "North Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.32009,
-      "lng": -123.06108
-    },
-    "coordinatesApproximate": true,
-    "stage": "motion-passed",
-    "stageLabel": "Policy or motion adopted",
-    "yearImplemented": 2024,
-    "timeframe": "Passed May 6, 2024",
-    "headline": "Municipal Plant-Forward Motion",
-    "stats": [
-      {
-        "value": "2024",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Passed May 6, 2024 District of North Vancouver Council",
-    "achievements": [
-      "Prioritize plant-based food options whenever food is purchased or funded by the District",
-      "Support healthier and more sustainable food choices at municipal meetings, events, and functions",
-      "Recognize the environmental benefits of reducing food-related greenhouse gas emissions",
-      "Promote biodiversity conservation and more sustainable use of natural resources through food procurement",
-      "Demonstrate municipal leadership on climate-friendly and plant-forward food practices"
-    ],
-    "organizationsInvolved": [
-      "Plant-Based Cities Movement"
-    ],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.dnv.org/your-government/council-meetings-and-minutes"
-      }
-    ],
-    "lastUpdated": null,
-    "verified": true
-  },
-  {
     "id": "vancouver",
     "name": "Vancouver",
     "shortName": "Vancouver",
@@ -94,9 +14,13 @@
     "stage": "motion-passed",
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2021,
-    "timeframe": "Passed November 2, 2021",
+    "timeframe": "2021-11-01 | 2023-09-19",
     "headline": "Municipal Plant-Based Procurement Review Motion",
     "stats": [
+      {
+        "value": "2021",
+        "label": "Year documented"
+      },
       {
         "value": "2021",
         "label": "Year documented"
@@ -114,11 +38,11 @@
     ],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://council.vancouver.ca/20211102/documents/b5.pdf"
       }
     ],
-    "lastUpdated": "2023-11-07",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -136,9 +60,13 @@
     "stage": "motion-passed",
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2023,
-    "timeframe": "Passed July 12, 2023",
+    "timeframe": "2023-07-11",
     "headline": "Municipal Plant-Forward Motion",
     "stats": [
+      {
+        "value": "2023",
+        "label": "Year documented"
+      },
       {
         "value": "2023",
         "label": "Year documented"
@@ -156,15 +84,15 @@
     ],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://edmweb.halton.ca/OnBaseAgendaOnline/Documents/ViewDocument/REGULAR_MEETING_OF_REGIONAL_COUNCIL_17-23_4418_Minutes_2023-07-12_9_30_00_AM.pdf?meetingId=4418&documentType=Minutes&itemId=undefined&publishId=undefined&isSection=false"
       },
       {
-        "label": "Public source 2",
+        "label": "Secondary source",
         "url": "https://edmweb.halton.ca/OnBaseAgendaOnline/Documents/ViewDocument/Notice%20of%20Motion%20-%20Food%20System%20and%20Climate%20Change.doc.pdf?documentType=Agenda&isSection=false&itemId=125597&meetingId=4418&publishId=78701"
       }
     ],
-    "lastUpdated": "2023-07-12",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -182,9 +110,13 @@
     "stage": "motion-passed",
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2024,
-    "timeframe": "October 15, 2024",
+    "timeframe": "2024-10-14",
     "headline": "Plant-Based Motion Passed",
     "stats": [
+      {
+        "value": "2024",
+        "label": "Year documented"
+      },
       {
         "value": "2024",
         "label": "Year documented"
@@ -203,11 +135,11 @@
     ],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://pub-cityofkingston.escribemeetings.com/filestream.ashx?DocumentId=9046"
       }
     ],
-    "lastUpdated": "2024-10-15",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -225,7 +157,7 @@
     "stage": "motion-passed",
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2022,
-    "timeframe": "Motion Unanimous 65 Councillors",
+    "timeframe": "2022-05-15",
     "headline": "Plant-Forward Motion Passed May 16, 2022",
     "stats": [
       {
@@ -250,11 +182,11 @@
     ],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://ville.montreal.qc.ca/documents/Adi_Public/CM/CM_PV_ORDI_2022-05-16_13h00_FR.pdf"
       }
     ],
-    "lastUpdated": "2022-05-16",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -272,9 +204,13 @@
     "stage": "active",
     "stageLabel": "Initiative documented",
     "yearImplemented": 2024,
-    "timeframe": "Vancouver General Hospital",
+    "timeframe": "",
     "headline": "2024 Plant-Rich Menu Pilot",
     "stats": [
+      {
+        "value": "2024",
+        "label": "Year documented"
+      },
       {
         "value": "2024",
         "label": "Year documented"
@@ -291,11 +227,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://www.vch.ca/en/news/vancouver-general-hospital-pilots-new-plant-rich-menu-items-health-patients-and-planet"
       }
     ],
-    "lastUpdated": "2026-06-05",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -313,7 +249,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": null,
-    "timeframe": null,
+    "timeframe": "",
     "headline": "University of British Columbia: implementing climate-friendly food procurement guidelines with a target to reduce food-system GHG emissions by 50% by 2030.",
     "stats": [
       {
@@ -328,43 +264,11 @@
     ],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://planning.ubc.ca/sustainability/sustainability-action-plans/climate-action-plan-2030/food-systems/climate-friendly-food-systems-procurement-guidelines"
       }
     ],
-    "lastUpdated": null,
-    "verified": true
-  },
-  {
-    "id": "university-of-guelph",
-    "name": "University of Guelph",
-    "shortName": "University of Guelph",
-    "type": "university",
-    "city": "University of Guelph",
-    "province": "",
-    "coordinates": {
-      "lat": 56.13372,
-      "lng": -106.3306
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": null,
-    "headline": "Vegan and Vegetarian options are readily available across campus,",
-    "stats": [],
-    "summary": "Vegan and Vegetarian options are readily available across campus,",
-    "achievements": [],
-    "organizationsInvolved": [
-      "Canadian University"
-    ],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://hospitality.uoguelph.ca/"
-      }
-    ],
-    "lastUpdated": null,
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -382,7 +286,7 @@
     "stage": "active",
     "stageLabel": "Initiative documented",
     "yearImplemented": null,
-    "timeframe": null,
+    "timeframe": "",
     "headline": "Child Learning Center",
     "stats": [],
     "summary": "",
@@ -390,123 +294,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/"
       }
     ],
-    "lastUpdated": null,
-    "verified": true
-  },
-  {
-    "id": "simon-fraser-university",
-    "name": "Simon Fraser University",
-    "shortName": "Simon Fraser University",
-    "type": "university",
-    "city": "Burnaby",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.24769,
-      "lng": -122.9843
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "Targeted for completion by December 2025 | Simon Fraser University",
-    "headline": "50% Plant-Based Menu Expansion Goal",
-    "stats": [
-      {
-        "value": "50%",
-        "label": "Documented target or result"
-      }
-    ],
-    "summary": "This commitment gives SFU a measurable benchmark for expanding everyday access to plant-based meals across its campuses.",
-    "achievements": [
-      "Committed to increasing the number of plant-based menu items offered through SFU Food by 50%.",
-      "Embedded the goal in the university’s food-sustainability program rather than treating plant-based meals as isolated menu additions.",
-      "Positioned menu expansion alongside waste reduction, responsible purchasing and lower-impact campus dining."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.sfu.ca/food/programs/sustainability.html"
-      }
-    ],
-    "lastUpdated": "2025-12-31",
-    "verified": true
-  },
-  {
-    "id": "capilano-university",
-    "name": "Capilano University",
-    "shortName": "Capilano University",
-    "type": "university",
-    "city": "North Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.31794,
-      "lng": -123.07993
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "Implemented during the regular academic term | Capilano University",
-    "headline": "Plant-Based Protein Becomes the Main Canteen Offering",
-    "stats": [],
-    "summary": "The initiative demonstrates how a campus can normalize plant-based proteins through the design of its regular food service.",
-    "achievements": [
-      "Dedicated a principal canteen station to meals made exclusively with plant-based protein from Monday through Thursday.",
-      "Moved plant-based protein from a side option to the central offering at a high-visibility campus food station.",
-      "Created a recurring four-day-per-week operational change that makes lower-impact meals easier for students and staff to choose."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.impactclimate.ca/wp-content/uploads/2026/01/ImpAct_Food-Guide_EN-compressed.pdf"
-      }
-    ],
-    "lastUpdated": "2026-01-01",
-    "verified": true
-  },
-  {
-    "id": "kwantlen-polytechnic-university",
-    "name": "Kwantlen Polytechnic University",
-    "shortName": "Kwantlen Polytechnic University",
-    "type": "university",
-    "city": "Surrey",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.19604,
-      "lng": -122.84229
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2025,
-    "timeframe": "2018 onward; further expansion reported in 2024–2025 | Kwantlen Polytechnic University",
-    "headline": "Campus-Wide Meatless Mondays and Expanded Vegan Dining",
-    "stats": [
-      {
-        "value": "2025",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "KPU’s progress shows a shift from periodic plant-based promotion toward permanent dining infrastructure.",
-    "achievements": [
-      "Introduced Meatless Mondays at all KPU campuses through Sodexo, featuring meatless entrées, soups, sandwiches, wraps and vegan choices.",
-      "Later reported expanded vegan offerings and the creation of two additional vegan dining stations following Forward Food engagement.",
-      "Used recurring programming and dedicated service points to make plant-based food more visible across a multi-campus institution."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.kpu.ca/sites/default/files/President/2018%20March%20Board%20Report%20optimized_0.pdf"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -524,18 +316,9 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": null,
-    "timeframe": "Current | University of Calgary, The Landing",
+    "timeframe": "",
     "headline": "Thousands of Plant-Forward Recipes and a Dedicated Vegan Residence Station",
-    "stats": [
-      {
-        "value": "20%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "3,000",
-        "label": "Documented scale"
-      }
-    ],
+    "stats": [],
     "summary": "The program combines permanent vegan service, lower-carbon menu identification and large-scale recipe development rather than relying on occasional specials.",
     "achievements": [
       "Operates a dedicated vegan station within the university’s principal residence dining program.",
@@ -546,46 +329,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://www.ucalgary.ca/ancillary/sustainability/sustainability-food-services"
       }
     ],
-    "lastUpdated": "2026-06-27",
-    "verified": true
-  },
-  {
-    "id": "university-of-saskatchewan",
-    "name": "University of Saskatchewan",
-    "shortName": "University of Saskatchewan",
-    "type": "university",
-    "city": "Saskatoon",
-    "province": "SK",
-    "coordinates": {
-      "lat": 52.14064,
-      "lng": -106.66164
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "Current | University of Saskatchewan, Marquis Culinary Centre",
-    "headline": "Forward Food Principles Embedded in Everyday Campus Dining",
-    "stats": [],
-    "summary": "The accomplishment is the institutionalization of plant-forward practice within a major residence dining operation.",
-    "achievements": [
-      "Incorporated Forward Food into the university’s stated nutrition and menu-development approach.",
-      "Commits to making vegan and vegetarian proteins readily available, abundant and affordable.",
-      "Treats plant proteins as a routine component of balanced campus dining rather than a niche dietary accommodation.",
-      "Connects menu design with student wellness, affordability and inclusive access."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://culinaryservices.usask.ca/marquis-culinary-centre/nutrition.php"
-      }
-    ],
-    "lastUpdated": "2026-06-27",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -603,7 +351,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": 2022,
-    "timeframe": "Implemented Fall 2022 | University of Winnipeg",
+    "timeframe": "",
     "headline": "Sprout Converted to a 100% Plant-Based Campus Food Outlet",
     "stats": [
       {
@@ -625,11 +373,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://news.uwinnipeg.ca/diversity-food-services-to-introduce-plant-based-menu-this-fall/"
       }
     ],
-    "lastUpdated": "2022-09-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -647,7 +395,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2022,
-    "timeframe": "Pledge signed August 2022 | University of Toronto, St. George Campus",
+    "timeframe": "",
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
@@ -669,11 +417,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/"
       }
     ],
-    "lastUpdated": "2022-08-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -691,7 +439,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2022,
-    "timeframe": "Pledge signed August 2022 | University of Toronto Mississauga",
+    "timeframe": "",
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
@@ -713,206 +461,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/"
       }
     ],
-    "lastUpdated": "2022-08-01",
-    "verified": true
-  },
-  {
-    "id": "trinity-college-university-of-toronto",
-    "name": "Trinity College, University of Toronto",
-    "shortName": "Trinity College, University of Toronto",
-    "type": "university",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.65819,
-      "lng": -79.40017
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2019,
-    "timeframe": "Launched January 14, 2019 | University of Toronto",
-    "headline": "Recurring Meatless Monday Lunches Introduced at Trinity College",
-    "stats": [
-      {
-        "value": "2019",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The program moved meatless dining from occasional availability to a named, recurring institutional practice.",
-    "achievements": [
-      "Established a weekly lunch service centred on vegetarian, vegan and plant-protein meals.",
-      "Used the recurring program to test and showcase high-quality meatless dishes in a residential-college setting.",
-      "Linked the initiative to environmental responsibility, health and animal welfare.",
-      "Made lower-impact meals a predictable part of the weekly dining routine."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.trinity.utoronto.ca/discover/news/item/trinity-launches-meatless-monday-lunches/"
-      }
-    ],
-    "lastUpdated": "2019-01-14",
-    "verified": true
-  },
-  {
-    "id": "university-of-toronto-scarborough",
-    "name": "University of Toronto Scarborough",
-    "shortName": "University of Toronto Scarborough",
-    "type": "university",
-    "city": "Scarborough",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.78685,
-      "lng": -79.23367
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "Current | University of Toronto Scarborough, Harmony Commons",
-    "headline": "Residence Dining Connected to a 25% Food-Emissions Reduction Commitment",
-    "stats": [
-      {
-        "value": "25%",
-        "label": "Documented target or result"
-      }
-    ],
-    "summary": "The achievement connects residence menus to a recognized, measurable climate target rather than relying only on sustainability messaging.",
-    "achievements": [
-      "Applies Aramark’s Cool Food Pledge commitment within a major residence dining facility.",
-      "Supports a goal to reduce food-related greenhouse-gas emissions by 25% by 2030.",
-      "Integrates lower-carbon menu planning into a high-volume student dining environment.",
-      "Places food emissions alongside the building’s broader Passive House and sustainability objectives."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.utsc.utoronto.ca/food/harmony-commons-passive-house-dining"
-      }
-    ],
-    "lastUpdated": "2026-06-27",
-    "verified": true
-  },
-  {
-    "id": "york-university",
-    "name": "York University",
-    "shortName": "York University",
-    "type": "university",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.66064,
-      "lng": -79.39061
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "Reported achieved in approximately one year | York University",
-    "headline": "Vegetarian Majority Menu Target Achieved",
-    "stats": [
-      {
-        "value": "60%",
-        "label": "Documented target or result"
-      }
-    ],
-    "summary": "York’s achievement demonstrates rapid, measurable protein diversification across institutional menus.",
-    "achievements": [
-      "Set a goal for at least 60% of menus to be vegetarian.",
-      "Required at least half of those vegetarian selections to be fully vegan.",
-      "Redesigned Chef’s Table offerings around culturally diverse plant-based dishes.",
-      "Reportedly reached the target within roughly one year of implementation."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.impactclimate.ca/wp-content/uploads/2026/01/ImpAct_Food-Guide_EN-compressed.pdf"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "sheridan-college",
-    "name": "Sheridan College",
-    "shortName": "Sheridan College",
-    "type": "university",
-    "city": "Oakville",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.46854,
-      "lng": -79.6716
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "Within less than one year of Forward Food training | Sheridan College",
-    "headline": "Plant-Based and Vegetarian Options Increased by 11%",
-    "stats": [
-      {
-        "value": "11%",
-        "label": "Documented target or result"
-      }
-    ],
-    "summary": "The reported 11% increase provides a concrete outcome from institutional culinary training.",
-    "achievements": [
-      "Trained campus culinary teams to prepare cost-effective, appealing plant-based meals at institutional scale.",
-      "Increased plant-based and vegetarian food options by 11% in less than one year, according to Sheridan’s Chartwells food-service leadership.",
-      "Translated chef training into a measurable menu expansion rather than ending at staff education.",
-      "Built practical capacity for plant-based food across a multi-campus college system."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.forwardfood.org/testimonials/"
-      }
-    ],
-    "lastUpdated": "2019-01-01",
-    "verified": true
-  },
-  {
-    "id": "trent-university",
-    "name": "Trent University",
-    "shortName": "Trent University",
-    "type": "university",
-    "city": "Peterborough",
-    "province": "ON",
-    "coordinates": {
-      "lat": 44.29665,
-      "lng": -78.31849
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "October 23–25, 2019 | Trent University and Fleming College",
-    "headline": "Ontario-Wide Plant-Based Culinary Leadership Hosted at Trent",
-    "stats": [],
-    "summary": "Trent helped extend plant-based culinary capacity well beyond its own campus by convening institutions from across the province.",
-    "achievements": [
-      "Co-hosted Peterborough’s first Forward Food Culinary Experience, a two-day chef training focused on affordable, sustainable plant-based dishes.",
-      "Brought together food-service professionals from Trent, Fleming and more than a dozen Ontario schools.",
-      "Followed the training with Ontario’s first Forward Food Leadership Summit, attended by approximately 150 food-service professionals.",
-      "Publicly committed to increasing the use of plant-based proteins and improving campus food offerings."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.trentu.ca/news/story/25437"
-      }
-    ],
-    "lastUpdated": "2019-10-21",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -930,7 +483,7 @@
     "stage": "active",
     "stageLabel": "Initiative documented",
     "yearImplemented": null,
-    "timeframe": "2019 onward | Université Laval",
+    "timeframe": "",
     "headline": "Nearly 40% of Campus Food Purchases Are Plant-Origin",
     "stats": [
       {
@@ -948,11 +501,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://www.ulaval.ca/developpement-durable/alimentation/repas-eco-efficients"
       }
     ],
-    "lastUpdated": "2019-01-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -970,7 +523,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": null,
-    "timeframe": "2020–2025 | McGill University",
+    "timeframe": "",
     "headline": "Plant-Based Food Embedded in McGill’s Climate and Sustainability Strategy",
     "stats": [],
     "summary": "The strategy established plant-based dining as a measurable part of McGill’s institutional sustainability work.",
@@ -983,11 +536,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://www.mcgill.ca/sustainability/files/sustainability/mcgillclimatesustainability2025_-_reduced.pdf"
       }
     ],
-    "lastUpdated": "2020-01-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -1005,7 +558,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": null,
-    "timeframe": "2020–2030 | Dalhousie University",
+    "timeframe": "2030-12-30",
     "headline": "Plant-Based Baseline Established and 50% Menu Goal Set for 2030",
     "stats": [
       {
@@ -1023,11 +576,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://www.dal.ca/content/dam/www/about/mission-vision-and-values/sustainability/Sustainable%20and%20Healthy%20Food%20Plan%20Final.pdf"
       }
     ],
-    "lastUpdated": "2020-01-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -1045,7 +598,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2019,
-    "timeframe": "Cool Food Pledge member since 2019 | City of Toronto",
+    "timeframe": "2030-12-30",
     "headline": "City Food Procurement Tied to a 25% Emissions-Reduction Goal",
     "stats": [
       {
@@ -1067,161 +620,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://secure.toronto.ca/council/agenda-item.do?item=2024.IE15.1"
       }
     ],
-    "lastUpdated": "2019-01-01",
-    "verified": true
-  },
-  {
-    "id": "vancouver-coastal-health",
-    "name": "Vancouver Coastal Health",
-    "shortName": "Vancouver Coastal Health",
-    "type": "hospital",
-    "city": "Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.28852,
-      "lng": -123.12072
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2022 onward | Vancouver Coastal Health",
-    "headline": "High-Emission Hospital Dishes Replaced with Plant-Forward Alternatives",
-    "stats": [],
-    "summary": "The work represents an important shift from isolated vegetarian choices toward intentional health-system menu reform.",
-    "achievements": [
-      "Advanced a plant-forward health-care food strategy that replaces selected high-emission dishes with plant-based and lower-emission alternatives.",
-      "Uses planetary-health principles to connect patient and staff food with climate and public-health outcomes.",
-      "Brings plant-forward menu development into a regional health-authority setting serving multiple facilities.",
-      "Demonstrates that hospital food can support both clinical nutrition and emissions reduction."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.landfood.ubc.ca/advancing-innovation-and-sustainability-in-healthcare-food-services/"
-      }
-    ],
-    "lastUpdated": "2022-01-01",
-    "verified": true
-  },
-  {
-    "id": "royal-columbian-hospital",
-    "name": "Royal Columbian Hospital",
-    "shortName": "Royal Columbian Hospital",
-    "type": "hospital",
-    "city": "New Westminster",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.21192,
-      "lng": -122.89613
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2023 onward | Royal Columbian Hospital",
-    "headline": "Hospital Food Emissions Measured Through Planetary Health Menus",
-    "stats": [],
-    "summary": "The initiative provides a structured route from food-emissions measurement to lower-carbon menu action.",
-    "achievements": [
-      "Joined the Planetary Health Menus initiative to calculate and reduce the climate impact of hospital food.",
-      "Publicly identified participation in the Coolfood Pledge framework.",
-      "Began using menu and procurement data to guide climate action in health-care food service.",
-      "Connected hospital food reform with patient health and the health sector’s environmental responsibilities."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/planetary-health/"
-      }
-    ],
-    "lastUpdated": "2023-01-01",
-    "verified": true
-  },
-  {
-    "id": "holland-bloorview-kids-rehabilitation-hospital",
-    "name": "Holland Bloorview Kids Rehabilitation Hospital",
-    "shortName": "Holland Bloorview Kids Rehabilitation Hospital",
-    "type": "hospital",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.64573,
-      "lng": -79.39401
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2026,
-    "timeframe": "Reported 2026 | Holland Bloorview Kids Rehabilitation Hospital",
-    "headline": "Plant-Based Culinary Development Introduced in Pediatric Rehabilitation Food Service",
-    "stats": [
-      {
-        "value": "2026",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The collaboration is an encouraging first step toward permanent hospital menu reform.",
-    "achievements": [
-      "Collaborated with Sodexo Canada and Forward Food on institutional plant-based culinary development.",
-      "Brought specialized plant-based training into a pediatric rehabilitation hospital environment.",
-      "Created a foundation for healthier, inclusive and lower-impact meals for patients, families and staff.",
-      "Extended plant-forward food-service work into a health-care setting where menu acceptability and nutrition are especially important."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.instagram.com/reel/DXwiZIDkz3v/"
-      }
-    ],
-    "lastUpdated": "2026-01-01",
-    "verified": true
-  },
-  {
-    "id": "university-of-prince-edward-island",
-    "name": "University of Prince Edward Island",
-    "shortName": "University of Prince Edward Island",
-    "type": "university",
-    "city": "Charlottetown",
-    "province": "PE",
-    "coordinates": {
-      "lat": 46.23116,
-      "lng": -63.14135
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2022,
-    "timeframe": "Announced 2022 | University of Prince Edward Island and regional partners",
-    "headline": "Atlantic Plant-Protein Innovation Partnership Strengthened",
-    "stats": [
-      {
-        "value": "2022",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The accomplishment concerns research and regional food-sector development rather than UPEI campus dining.",
-    "achievements": [
-      "Joined a regional collaboration to expand Atlantic Canada’s plant-protein and plant-based ingredient ecosystem.",
-      "Connected university research capacity with agricultural processors and food-industry partners.",
-      "Supported development of higher-value plant ingredients and new economic opportunities for regional crops.",
-      "Helped build infrastructure and expertise for a more diversified Canadian protein economy."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://peibioalliance.com/news/strengthening-atlantic-canadas-plant-based-food-and-ingredient-ecosystem/"
-      }
-    ],
-    "lastUpdated": "2022-01-01",
+    "lastUpdated": "2026-07-01",
     "verified": true
   },
   {
@@ -1239,9 +642,13 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": 2019,
-    "timeframe": "Released January 22, 2019 | Health Canada",
+    "timeframe": "",
     "headline": "Canada’s National Food Guide Prioritizes Plant Protein",
     "stats": [
+      {
+        "value": "2019",
+        "label": "Year documented"
+      },
       {
         "value": "2019",
         "label": "Year documented"
@@ -1257,1180 +664,11 @@
     "organizationsInvolved": [],
     "resources": [
       {
-        "label": "Public source 1",
+        "label": "Primary source",
         "url": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/"
       }
     ],
-    "lastUpdated": "2019-01-22",
-    "verified": true
-  },
-  {
-    "id": "selkirk-college",
-    "name": "Selkirk College",
-    "shortName": "Selkirk College",
-    "type": "university",
-    "city": "Castlegar",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.32977,
-      "lng": -117.66675
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2024,
-    "timeframe": "Confirmed March 2024 | Selkirk College",
-    "headline": "All College Cafeterias Go Meatless Every Monday",
-    "stats": [
-      {
-        "value": "2024",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Selkirk has made meat reduction a predictable weekly feature of campus dining across its communities.",
-    "achievements": [
-      "Operates every college cafeteria without meat each Monday.",
-      "Applies the recurring program across the cafeteria system rather than at a single outlet.",
-      "Continues offering plant-based choices throughout the rest of the week.",
-      "Connects the initiative with climate action and the UN Sustainable Development Goals."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.selkirk.ca/events/sdg-week"
-      }
-    ],
-    "lastUpdated": "2024-03-04",
-    "verified": true
-  },
-  {
-    "id": "lakehead-university",
-    "name": "Lakehead University",
-    "shortName": "Lakehead University",
-    "type": "university",
-    "city": "Thunder Bay",
-    "province": "ON",
-    "coordinates": {
-      "lat": 48.38927,
-      "lng": -89.25945
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2022,
-    "timeframe": "Implemented from Fall 2022 | Thunder Bay Campus",
-    "headline": "Residence Dining Connected to a 25% Food-Emissions Reduction Commitment",
-    "stats": [
-      {
-        "value": "25%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "2022",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Lakehead links everyday residence meals to a measurable institutional food-emissions target.",
-    "achievements": [
-      "Connected residence dining to Aramark's Cool Food Pledge.",
-      "Supports a commitment to reduce the carbon footprint of food offerings by at least 25% by 2030.",
-      "Includes plant-based food within all-you-care-to-eat residence dining plans.",
-      "Gives students access to meals assessed against recognized lower-carbon criteria."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.lakeheadu.ca/about/sustainability/sustainable-building/food"
-      }
-    ],
-    "lastUpdated": "2022-09-01",
-    "verified": true
-  },
-  {
-    "id": "brock-university",
-    "name": "Brock University",
-    "shortName": "Brock University",
-    "type": "university",
-    "city": "St. Catharines",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.14855,
-      "lng": -79.25823
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "Current | Brock Dining Services",
-    "headline": "Measurable Plant-Forward and Low-Carbon Menu Labelling",
-    "stats": [],
-    "summary": "Brock has translated plant-forward dining into a clear operational menu standard rather than a vague sustainability claim.",
-    "achievements": [
-      "Defines plant-forward dishes using a measurable threshold of no more than 60 grams of animal-based protein per serving.",
-      "Marks lower-carbon dishes with a separate Low Carbon Certified icon.",
-      "Applies the system in non-franchise campus food locations.",
-      "Helps diners distinguish reduced-animal-protein and climate-friendly meals at the point of purchase."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://brocku.ca/dining-services/dietary-labelling-program/"
-      }
-    ],
-    "lastUpdated": "2026-06-28",
-    "verified": true
-  },
-  {
-    "id": "carleton-university",
-    "name": "Carleton University",
-    "shortName": "Carleton University",
-    "type": "university",
-    "city": "Ottawa",
-    "province": "ON",
-    "coordinates": {
-      "lat": 45.4314,
-      "lng": -75.68047
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "Current | Carleton Dining Services",
-    "headline": "Cool Food Labels Introduced Across Non-Franchise Dining",
-    "stats": [],
-    "summary": "Carleton has converted food-emissions analysis into visible information that supports lower-carbon everyday choices.",
-    "achievements": [
-      "Identifies qualifying dishes with the Cool Food Meal icon.",
-      "Requires meals to fall below a recognized per-meal carbon threshold.",
-      "Adds a nutrition safeguard so labelled meals support both health and climate goals.",
-      "Applies the labels across non-franchise dining locations."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://dining.carleton.ca/nutrition_dietitian/dietary-labeling/"
-      }
-    ],
-    "lastUpdated": "2026-06-28",
-    "verified": true
-  },
-  {
-    "id": "mcmaster-university",
-    "name": "McMaster University",
-    "shortName": "McMaster University",
-    "type": "university",
-    "city": "Hamilton",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.25043,
-      "lng": -79.88636
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2022,
-    "timeframe": "Assessment published May 2022 | Hospitality Services",
-    "headline": "Carbon Footprint Measured for 503 Tonnes of Campus Food Purchasing",
-    "stats": [
-      {
-        "value": "2%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "1,000",
-        "label": "Documented scale"
-      }
-    ],
-    "summary": "McMaster produced one of Canada's most detailed university food-purchasing carbon assessments.",
-    "achievements": [
-      "Completed a life-cycle greenhouse-gas assessment covering more than 1,000 unique purchased food products.",
-      "Assessed 503 metric tonnes of purchases and approximately 1,400 metric tonnes of associated CO2e.",
-      "Found that beef represented only 2.2% of purchasing weight but approximately 26% of emissions.",
-      "Created a detailed institutional baseline for lower-carbon menu and procurement decisions."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://financial-affairs.mcmaster.ca/app/uploads/2022/05/Hospitality-Services-Procurement-GHG-Summary.pdf"
-      }
-    ],
-    "lastUpdated": "2022-05-01",
-    "verified": true
-  },
-  {
-    "id": "vancouver-island-university",
-    "name": "Vancouver Island University",
-    "shortName": "Vancouver Island University",
-    "type": "university",
-    "city": "Nanaimo",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.17232,
-      "lng": -123.93703
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": 2020,
-    "timeframe": "Announced February 2020 | VIU Culinary Arts",
-    "headline": "Plant-Based Menu and Culinary Curriculum Expansion",
-    "stats": [
-      {
-        "value": "2020",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "VIU extended plant-forward action from campus meals into the education of future food-service professionals.",
-    "achievements": [
-      "Co-hosted a two-day Forward Food culinary training for chefs and culinary students.",
-      "Announced that campus food service would increase plant-based and plant-forward options.",
-      "Committed to expanding plant-based content within the Culinary Arts curriculum.",
-      "Equipped future professional chefs with practical, high-volume plant-based cooking skills."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://news.viu.ca/viu-culinary-arts-mixing-it-plant-based-foods-training-event"
-      }
-    ],
-    "lastUpdated": "2020-02-20",
-    "verified": true
-  },
-  {
-    "id": "c-gep-de-rosemont",
-    "name": "Cégep de Rosemont",
-    "shortName": "Cégep de Rosemont",
-    "type": "university",
-    "city": "Montréal",
-    "province": "QC",
-    "coordinates": {
-      "lat": 45.51355,
-      "lng": -73.57576
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2024,
-    "timeframe": "Implemented 2024 | Cafeteria",
-    "headline": "Carbon Labels Show Vegan Meals Deliver the Lowest Impacts",
-    "stats": [
-      {
-        "value": "80%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "2024",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Rosemont makes the climate advantage of plant-based meals measurable and visible to its college community.",
-    "achievements": [
-      "Calculated the life-cycle carbon footprint of cafeteria dishes.",
-      "Displays an A-to-E carbon rating directly on meals at food counters.",
-      "Found that every A-rated dish was vegan.",
-      "Reported that more than 80% of vegetarian and vegan dishes earned an A or B rating, while beef dishes occupied the five highest-impact positions."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.crosemont.qc.ca/le-cegep/developpement-durable-et-ecocitoyennete/alimentation-durable/"
-      }
-    ],
-    "lastUpdated": "2024-11-01",
-    "verified": true
-  },
-  {
-    "id": "coll-ge-ahuntsic",
-    "name": "Collège Ahuntsic",
-    "shortName": "Collège Ahuntsic",
-    "type": "university",
-    "city": "Montréal",
-    "province": "QC",
-    "coordinates": {
-      "lat": 45.50837,
-      "lng": -73.55123
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2024,
-    "timeframe": "Implemented November 2024 | Collège Ahuntsic",
-    "headline": "Carbon Footprint Published for 40 Popular Cafeteria Dishes",
-    "stats": [
-      {
-        "value": "80%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "2024",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Ahuntsic has made the climate impact of everyday cafeteria meals transparent and easy for students to compare.",
-    "achievements": [
-      "Assessed 40 popular cafeteria meals using life-cycle carbon calculations.",
-      "Displays the results at food counters and on campus screens.",
-      "Found that all A-rated dishes were vegan.",
-      "Reported that more than 80% of vegetarian and vegan dishes received an A or B."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.collegeahuntsic.qc.ca/notre-college/nouvelles/nouveau-projet-de-quantification-de-l-empreinte-carbone-a-la-cafeteria"
-      }
-    ],
-    "lastUpdated": "2024-11-06",
-    "verified": true
-  },
-  {
-    "id": "st-josephs-health-care-london",
-    "name": "St. Joseph's Health Care London",
-    "shortName": "St. Joseph's Health Care London",
-    "type": "hospital",
-    "city": "London",
-    "province": "ON",
-    "coordinates": {
-      "lat": 42.98564,
-      "lng": -81.23362
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2015,
-    "timeframe": "2025 onward | St. Joseph's Health Care London",
-    "headline": "Patient-Approved Plant-Forward Recipes Support a 25% Emissions Goal",
-    "stats": [
-      {
-        "value": "25%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "2015",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "St. Joseph's demonstrates that plant-forward hospital meals can support climate goals while retaining strong patient acceptance.",
-    "achievements": [
-      "Committed to reducing food-related greenhouse-gas emissions by 25% by 2030 from a 2015 baseline.",
-      "Incorporated lentils and beans into familiar patient and resident dishes.",
-      "Achieved satisfaction scores above 85% for a reformulated lentil-enhanced meatloaf.",
-      "Increased spending on Ontario produce by 23% compared with 2022."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.sjhc.london.on.ca/news-and-media/our-stories/nourishing-health-connection-and-our-planet"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "c-gep-andr-laurendeau",
-    "name": "Cégep André-Laurendeau",
-    "shortName": "Cégep André-Laurendeau",
-    "type": "university",
-    "city": "Montréal",
-    "province": "QC",
-    "coordinates": {
-      "lat": 45.50024,
-      "lng": -73.55687
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "Policy updated 2024 | Cégep André-Laurendeau",
-    "headline": "Institutional Food Policy Favours Plant-Protein Sources",
-    "stats": [],
-    "summary": "André-Laurendeau has made plant-protein preference an explicit part of institutional food policy.",
-    "achievements": [
-      "Formally commits the college to favouring sources of plant protein.",
-      "Places plant proteins alongside local and seasonal foods in its healthy-lifestyle policy.",
-      "Moves plant-forward food into a durable institutional policy framework.",
-      "Provides a basis for cafeteria purchasing and menu decisions."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://mobiledspace.cdc.qc.ca/xmlui/bitstream/handle/11515/34444/politique-saines-habitudes-vie-andre-laurendeau.pdf?sequence=8"
-      }
-    ],
-    "lastUpdated": "2024-01-01",
-    "verified": true
-  },
-  {
-    "id": "providence-health-care",
-    "name": "Providence Health Care",
-    "shortName": "Providence Health Care",
-    "type": "hospital",
-    "city": "Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.27671,
-      "lng": -123.13375
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | Providence Health Care Facilities",
-    "headline": "Plant-Forward Menus and Sustainable Plant-Based Purchasing",
-    "stats": [],
-    "summary": "Providence is using the purchasing scale of a multi-hospital network to advance plant-forward health-care food.",
-    "achievements": [
-      "Joined a major BC health-care cohort developing planetary-health menus.",
-      "Committed to incorporating more plant-based menu items.",
-      "Is exploring sustainable bulk purchasing of plant-based products.",
-      "Connects menu reform with culturally appropriate meals, local food and food-waste reduction."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "provincial-health-services-authority",
-    "name": "Provincial Health Services Authority",
-    "shortName": "Provincial Health Services Authority",
-    "type": "hospital",
-    "city": "Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.29232,
-      "lng": -123.11921
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | PHSA",
-    "headline": "Province-Wide Health Facilities Join Plant-Forward Menu Project",
-    "stats": [],
-    "summary": "PHSA brings specialized provincial health facilities into a coordinated plant-forward food transition.",
-    "achievements": [
-      "Joined the BC Lower Mainland planetary-health food cohort.",
-      "Committed participating facilities to work on more plant-based menu items.",
-      "Supports sustainable purchasing of plant-based foods at institutional scale.",
-      "Participates in a partnership serving more than 2.7 million meals annually."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "newfoundland-and-labrador-health-services",
-    "name": "Newfoundland and Labrador Health Services",
-    "shortName": "Newfoundland and Labrador Health Services",
-    "type": "hospital",
-    "city": "St. John's",
-    "province": "NL",
-    "coordinates": {
-      "lat": 47.56572,
-      "lng": -52.70883
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | Labrador-Grenfell Zone",
-    "headline": "Provincial Health System Plans More Local Plant-Based Foods",
-    "stats": [],
-    "summary": "The initiative could make plant-forward food part of a more locally resilient northern health-care system.",
-    "achievements": [
-      "Joined a national health-care food-system cohort.",
-      "Plans to include more locally sourced plant-based foods.",
-      "Is building partnerships with northern producers and food-system organizations.",
-      "Connects menu reform with food security, Indigenous partnership and resilient supply chains."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "six-nations-health-services",
-    "name": "Six Nations Health Services",
-    "shortName": "Six Nations Health Services",
-    "type": "hospital",
-    "city": "Ohsweken",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.06491,
-      "lng": -80.13438
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | Six Nations of the Grand River",
-    "headline": "Community-Led Menu Redevelopment Across Four Health and Nutrition Programs",
-    "stats": [],
-    "summary": "Six Nations is developing a locally governed model for healthier and more sustainable institutional meals.",
-    "achievements": [
-      "Is redesigning menus for the Student Nutrition Program, Iroquois Lodge Long-Term Care Centre, supportive housing and Meals on Wheels.",
-      "Is creating a community food strategy grounded in Haudenosaunee knowledge.",
-      "Addresses food waste, sustainability, health and cultural relevance together.",
-      "Extends institutional food reform across four distinct community-serving settings."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "unity-health-toronto",
-    "name": "Unity Health Toronto",
-    "shortName": "Unity Health Toronto",
-    "type": "hospital",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.65734,
-      "lng": -79.39383
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | Unity Health Toronto",
-    "headline": "Plant-Forward Hospital Menu and Sustainability-Scored Food Tenders",
-    "stats": [],
-    "summary": "Unity Health is pairing plant-forward hospital menus with procurement rules designed to change how food suppliers are selected.",
-    "achievements": [
-      "Is developing a planetary-health menu expected to be plant-forward.",
-      "Is incorporating traditional Indigenous foods into menu planning.",
-      "Is creating food procurement requests that score suppliers for sustainability.",
-      "Is working to improve access for Indigenous food businesses."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "sutherland-secondary-school",
-    "name": "Sutherland Secondary School",
-    "shortName": "Sutherland Secondary School",
-    "type": "university",
-    "city": "North Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.31771,
-      "lng": -123.07317
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": 2019,
-    "timeframe": "Reported 2019 | Sutherland Secondary School",
-    "headline": "Student Campaign Secures a 20% Plant-Based Cafeteria Commitment",
-    "stats": [
-      {
-        "value": "20%",
-        "label": "Documented target or result"
-      },
-      {
-        "value": "2019",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Sutherland's campaign moved beyond awareness by winning a quantified cafeteria menu commitment.",
-    "achievements": [
-      "Built student demand through a Meatless Monday campaign.",
-      "Worked directly with the school's food provider.",
-      "Secured a commitment to transition 20% of the daily cafeteria menu to plant-based food.",
-      "Demonstrated how student leadership can produce a measurable operational change."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/posts/studentssavingtheworld/"
-      }
-    ],
-    "lastUpdated": "2019-03-22",
-    "verified": true
-  },
-  {
-    "id": "the-ottawa-mission-chef-rics",
-    "name": "The Ottawa Mission / Chef Ric's",
-    "shortName": "The Ottawa Mission / Chef Ric's",
-    "type": "other",
-    "city": "Ottawa",
-    "province": "ON",
-    "coordinates": {
-      "lat": 45.41115,
-      "lng": -75.70832
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2026,
-    "timeframe": "Reported 2026 | Chef Ric's Food Services Training Program",
-    "headline": "Plant-Based Culinary Training Added to an Employment Program",
-    "stats": [
-      {
-        "value": "2026",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The initiative connects plant-based cooking with employment, inclusion and workforce development.",
-    "achievements": [
-      "Collaborated with Forward Food to deliver hands-on plant-based culinary instruction.",
-      "Added plant-rich institutional cooking skills to training for people facing barriers to employment.",
-      "Gives graduates practical skills relevant to a growing institutional food-service market.",
-      "Extends plant-forward impact beyond one kitchen through future food-service workers."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://humaneworldfoundation.ca/about-us/latest-updates"
-      }
-    ],
-    "lastUpdated": "2026-01-01",
-    "verified": true
-  },
-  {
-    "id": "langara-college",
-    "name": "Langara College",
-    "shortName": "Langara College",
-    "type": "university",
-    "city": "Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.28692,
-      "lng": -123.1361
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2015,
-    "timeframe": "Reported by March 2015 | Langara College",
-    "headline": "Early Institutional Meatless Monday Program",
-    "stats": [
-      {
-        "value": "2015",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Langara appears to have been among Canada's early colleges implementing recurring Meatless Monday activity.",
-    "achievements": [
-      "Was identified by Vancouver Humane Society as a college it helped implement Meatless Monday.",
-      "Introduced a recurring meat-reduction concept within a post-secondary setting.",
-      "Helped establish early momentum for plant-forward campus food in British Columbia.",
-      "Provides a historical example of college-level institutional participation."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/wp-content/uploads/2015/03/Meatless-Monday-Toolkit.pdf"
-      }
-    ],
-    "lastUpdated": "2015-03-01",
-    "verified": true
-  },
-  {
-    "id": "british-columbia-institute-of-technology",
-    "name": "British Columbia Institute of Technology",
-    "shortName": "British Columbia Institute of Technology",
-    "type": "university",
-    "city": "Burnaby",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.25647,
-      "lng": -122.99562
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2015,
-    "timeframe": "Reported by March 2015 | BCIT",
-    "headline": "Early Polytechnic Meatless Monday Program",
-    "stats": [
-      {
-        "value": "2015",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "BCIT appears to have been an early Canadian polytechnic participant in Meatless Monday.",
-    "achievements": [
-      "Was identified by Vancouver Humane Society as an institution it helped implement Meatless Monday.",
-      "Brought recurring meat-reduction programming into a large polytechnic environment.",
-      "Expanded the reach of plant-forward institutional food beyond traditional universities.",
-      "Provides an early example of sector-wide post-secondary adoption."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/wp-content/uploads/2015/03/Meatless-Monday-Toolkit.pdf"
-      }
-    ],
-    "lastUpdated": "2015-03-01",
-    "verified": true
-  },
-  {
-    "id": "trinity-western-university",
-    "name": "Trinity Western University",
-    "shortName": "Trinity Western University",
-    "type": "university",
-    "city": "Langley",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.11672,
-      "lng": -122.65811
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2015,
-    "timeframe": "Reported by March 2015 | Trinity Western University",
-    "headline": "Early University Meatless Monday Program",
-    "stats": [
-      {
-        "value": "2015",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Trinity Western appears to have adopted Meatless Monday with institutional support.",
-    "achievements": [
-      "Was identified by Vancouver Humane Society as a university it helped implement Meatless Monday.",
-      "Introduced recurring meat reduction within campus food service.",
-      "Added to the early network of Canadian post-secondary institutions experimenting with plant-forward dining.",
-      "Provides a historical example outside a major public university."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/wp-content/uploads/2015/03/Meatless-Monday-Toolkit.pdf"
-      }
-    ],
-    "lastUpdated": "2015-03-01",
-    "verified": true
-  },
-  {
-    "id": "cole-l-mentaire-pavillon-de-la-jeunesse",
-    "name": "École élémentaire Pavillon de la jeunesse",
-    "shortName": "École élémentaire Pavillon de la jeunesse",
-    "type": "university",
-    "city": "Ottawa",
-    "province": "ON",
-    "coordinates": {
-      "lat": 45.43292,
-      "lng": -75.68201
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2022,
-    "timeframe": "Reported 2022 | Pavillon de la jeunesse",
-    "headline": "School-Wide Meatless Monday Climate Campaign",
-    "stats": [
-      {
-        "value": "2022",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The school demonstrated how a simple food initiative can make climate action tangible for younger students.",
-    "achievements": [
-      "Organized a school Meatless Monday campaign.",
-      "Encouraged students and families to bring meat-free lunches.",
-      "Paired the food action with education about the climate impacts of excessive meat consumption.",
-      "Used student participation to turn sustainability education into practical behaviour."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://ecoschools.ca/hosting-meatless-mondays-for-a-healthier-planet/"
-      }
-    ],
-    "lastUpdated": "2022-01-01",
-    "verified": true
-  },
-  {
-    "id": "eagle-ridge-hospital",
-    "name": "Eagle Ridge Hospital",
-    "shortName": "Eagle Ridge Hospital",
-    "type": "hospital",
-    "city": "Port Moody",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.28784,
-      "lng": -122.88096
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "2025–2026 | Eagle Ridge Hospital",
-    "headline": "Hospital Joins Planetary-Health Menu and Purchasing Project",
-    "stats": [],
-    "summary": "Eagle Ridge is helping test how planetary-health food practices can be implemented across Fraser Health hospitals.",
-    "achievements": [
-      "Was selected as a Fraser Health facility participating in the BC Lower Mainland Nourish cohort.",
-      "Is contributing to development of plant-forward menus.",
-      "Participates in work on sustainable food purchasing and improved patient food experience.",
-      "Brings the initiative to a second hospital setting beyond Royal Columbian Hospital."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://nourishleadership.ca/programs/anchor-cohort/"
-      }
-    ],
-    "lastUpdated": "2025-01-01",
-    "verified": true
-  },
-  {
-    "id": "north-vancouver-school-district",
-    "name": "North Vancouver School District",
-    "shortName": "North Vancouver School District",
-    "type": "university",
-    "city": "North Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.32254,
-      "lng": -123.0586
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2019,
-    "timeframe": "Reported 2019 | School District 44",
-    "headline": "School Board Support Helps Student-Led Meatless Programs Expand",
-    "stats": [
-      {
-        "value": "2019",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "District support helped move a single-school campaign toward broader institutional reach.",
-    "achievements": [
-      "Received a student presentation on Meatless Monday.",
-      "Issued a letter supporting the initiative.",
-      "Related reporting indicates plant-based specials spread to other schools using the same food provider.",
-      "Demonstrates school-board recognition of student-led food-system action."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/posts/studentssavingtheworld/"
-      }
-    ],
-    "lastUpdated": "2019-03-22",
-    "verified": true
-  },
-  {
-    "id": "mcgill-university-health-centre",
-    "name": "McGill University Health Centre",
-    "shortName": "McGill University Health Centre",
-    "type": "hospital",
-    "city": "Montréal",
-    "province": "QC",
-    "coordinates": {
-      "lat": 45.50019,
-      "lng": -73.55502
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2026,
-    "timeframe": "Confirmed March 2026 | MUHC Food Services",
-    "headline": "Plant-Forward Menus Embedded in Sustainable-Development Work",
-    "stats": [
-      {
-        "value": "2026",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "MUHC has formally identified plant-forward food as part of the future of its hospital food service.",
-    "achievements": [
-      "Publicly identifies increasing the proportion of plant-based meals as part of its sustainable-development commitments.",
-      "Uses Nutrition Month programming to feature plant-based institutional meals.",
-      "Frames plant-forward menus as a long-term food-service direction rather than a one-time dietary accommodation.",
-      "Connects menu change with health and environmental sustainability."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://muhc.ca/news-and-patient-stories/news/celebrate-nutrition-month-special-plant-based-meal"
-      }
-    ],
-    "lastUpdated": "2026-03-24",
-    "verified": true
-  },
-  {
-    "id": "meadowridge-school",
-    "name": "Meadowridge School",
-    "shortName": "Meadowridge School",
-    "type": "university",
-    "city": "Maple Ridge",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.20775,
-      "lng": -122.60308
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "2023–2024 | Meadowridge School",
-    "headline": "Meatless Monday Launches a Data-Informed School Food Program",
-    "stats": [],
-    "summary": "Meadowridge combines plant-forward food action with measurement and community participation rather than treating it as a symbolic event alone.",
-    "achievements": [
-      "Launched a cafeteria Meatless Monday during Earth Week.",
-      "Paired the program with a community-wide food-waste survey.",
-      "Collected feedback from students, families and staff to adjust future actions.",
-      "Planned quantitative food-waste measurement to guide the next stage."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.meadowridge.bc.ca/the-gryphon/article/~board/the-gryphon/post/an-overview-of-regenerative-sustainability-at-meadowridge"
-      }
-    ],
-    "lastUpdated": "2024-12-11",
-    "verified": true
-  },
-  {
-    "id": "st-margarets-school",
-    "name": "St. Margaret's School",
-    "shortName": "St. Margaret's School",
-    "type": "university",
-    "city": "Victoria",
-    "province": "BC",
-    "coordinates": {
-      "lat": 48.4391,
-      "lng": -123.36092
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2014,
-    "timeframe": "2013–2014 | St. Margaret's School",
-    "headline": "Meatless Mondays Implemented Through School Cafeteria Service",
-    "stats": [
-      {
-        "value": "2014",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "St. Margaret's was an early Canadian school to operationalize Meatless Monday through its cafeteria.",
-    "achievements": [
-      "Implemented Meatless Mondays with participation from students, teachers and administrators.",
-      "Used cafeteria menus to promote healthy lower-impact meals.",
-      "Linked the program with reducing the school's environmental and carbon footprint.",
-      "Demonstrated sustained institutional support within an independent school setting."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://onlineacademiccommunity.uvic.ca/humananimalstudies/tag/diet/"
-      }
-    ],
-    "lastUpdated": "2013-09-01",
-    "verified": true
-  },
-  {
-    "id": "eric-hamber-secondary-school",
-    "name": "Eric Hamber Secondary School",
-    "shortName": "Eric Hamber Secondary School",
-    "type": "university",
-    "city": "Vancouver",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.2925,
-      "lng": -123.12969
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": 2015,
-    "timeframe": "Reported by March 2015 | Eric Hamber Secondary",
-    "headline": "Early Secondary-School Meatless Monday Program",
-    "stats": [
-      {
-        "value": "2015",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Eric Hamber appears to have been among the first BC public schools supported in implementing Meatless Monday.",
-    "achievements": [
-      "Was identified by Vancouver Humane Society as a school it helped implement Meatless Monday.",
-      "Brought recurring meat-reduction activity into a public secondary-school cafeteria.",
-      "Helped establish an early youth-led model for institutional plant-forward action.",
-      "Provides a transferable example for other school cafeterias."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://vancouverhumanesociety.bc.ca/wp-content/uploads/2015/03/Meatless-Monday-Toolkit.pdf"
-      }
-    ],
-    "lastUpdated": "2015-03-01",
-    "verified": true
-  },
-  {
-    "id": "branksome-hall",
-    "name": "Branksome Hall",
-    "shortName": "Branksome Hall",
-    "type": "university",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.65577,
-      "lng": -79.39404
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2010,
-    "timeframe": "Reported 2010 | Branksome Hall",
-    "headline": "Student-Led Meatless Monday Transforms the School Menu",
-    "stats": [
-      {
-        "value": "2010",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Branksome Hall became an early, visible Canadian example of creative meatless school dining.",
-    "achievements": [
-      "Students championed a Meatless Monday campaign.",
-      "The school introduced substantial vegetarian and plant-based cafeteria dishes.",
-      "The resulting menu earned national recognition as one of Canada's most vegetarian-friendly high-school food programs.",
-      "Demonstrated that student advocacy could reshape regular institutional food service."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://macleans.ca/society/life/save-the-planet-stop-eating-meat/"
-      }
-    ],
-    "lastUpdated": "2010-03-30",
-    "verified": true
-  },
-  {
-    "id": "fraser-health-authority",
-    "name": "Fraser Health Authority",
-    "shortName": "Fraser Health Authority",
-    "type": "hospital",
-    "city": "Surrey",
-    "province": "BC",
-    "coordinates": {
-      "lat": 49.18573,
-      "lng": -122.8445
-    },
-    "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "2024–2026 | Fraser Health",
-    "headline": "Health Authority Advances Cool Food and Planetary-Health Menus",
-    "stats": [],
-    "summary": "Fraser Health is combining food-emissions targets, plant-forward menu design and waste reduction across a regional hospital system.",
-    "achievements": [
-      "Signed the Cool Food Pledge for food served at Royal Columbian Hospital.",
-      "Is developing planetary-health menus through a national Nourish cohort.",
-      "Is advancing sustainable food purchasing and improved patient and staff food experiences.",
-      "Is testing choice dining to reduce food waste at Royal Columbian and Surrey Memorial hospitals."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://www.fraserhealth.ca/-/media/Project/FraserHealth/FraserHealth/About-Us/Board-Presentations/FHA-Public-Board-Meeting---Planetary-Health.pdf"
-      }
-    ],
-    "lastUpdated": "2024-11-27",
-    "verified": true
-  },
-  {
-    "id": "havergal-college",
-    "name": "Havergal College",
-    "shortName": "Havergal College",
-    "type": "university",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.65091,
-      "lng": -79.37407
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2024,
-    "timeframe": "Implemented April 22, 2024 | Havergal College",
-    "headline": "Earth Week Meatless Monday Makes the Hot Lunch Plant-Based",
-    "stats": [
-      {
-        "value": "2024",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "Havergal used the design of its regular lunch service to make a lower-carbon choice the prominent Earth Week option.",
-    "achievements": [
-      "Made the only hot lunch offering meatless for the start of Earth Week.",
-      "Used the dining change to encourage students to reduce their food-related carbon footprint.",
-      "Connected plant-based meals directly with sustainable food practices.",
-      "Retained optional meat choices at other service points while shifting the main hot meal."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Public source 1",
-        "url": "https://theweeklyus.havergal.on.ca/page/9/"
-      }
-    ],
-    "lastUpdated": "2024-04-22",
+    "lastUpdated": "2026-07-01",
     "verified": true
   }
 ]
