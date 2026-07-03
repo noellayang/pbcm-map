@@ -6,7 +6,7 @@
  */
 
 const CONFIG = {
-  SPREADSHEET_ID: "PASTE_GOOGLE_SHEET_ID_HERE",
+  SPREADSHEET_ID: "1GPDjLHRepHsIlcn2keBytbW8CNyrvqQb",
   REVIEW_SHEET: "Review Queue",
   PUBLISHED_SHEET: "Published Records",
   ARCHIVE_SHEET: "Rejected Archive"
