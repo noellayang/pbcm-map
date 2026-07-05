@@ -14,48 +14,58 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* Branding follows the supplied PBCM guide: #b3c938, #002d66, #2ea3f2, Noto Serif, Open Sans. */
     :root {
-      --navy-950: #0d1b27;
-      --navy-900: #132433;
-      --navy-800: #1b3143;
-      --navy-700: #27465f;
+      /* PBCM brand guide */
+      --brand-green: #b3c938;
+      --brand-green-dark: #006400;
+      --brand-blue: #2ea3f2;
+      --brand-blue-dark: #002d66;
+      --brand-yellow: #fcb900;
+      --brand-coral: #ffa07a;
+      --brand-gray: #999999;
+      --brand-black: #000000;
 
-      --blue: #2f73c8;
-      --blue-light: #dceaf8;
+      --green: var(--brand-green);
+      --green-dark: var(--brand-green-dark);
+      --blue: var(--brand-blue);
+      --blue-dark: var(--brand-blue-dark);
+      --yellow: var(--brand-yellow);
+      --coral: var(--brand-coral);
+      --gray: var(--brand-gray);
 
-      --green: #3f8f52;
-      --green-light: #e3f0e7;
+      --navy-950: #001a3b;
+      --navy-900: #002d66;
+      --navy-800: #0a437f;
+      --navy-700: #145b96;
 
-      --red: #c9493a;
-      --red-light: #f6e4e1;
+      --blue-light: #e3f3fe;
+      --green-light: #f2f7db;
+      --red: #d66f53;
+      --red-light: #fff0ea;
+      --purple: #6f75a8;
+      --purple-light: #eceef7;
+      --orange: var(--brand-yellow);
+      --orange-light: #fff5d6;
 
-      --purple: #8462b0;
-      --purple-light: #ece5f5;
-
-      --orange: #d9822b;
-      --orange-light: #f8eadb;
-
-      --cream: #f5f3ee;
-      --cream-dark: #ebe7df;
+      --cream: #f8f8f3;
+      --cream-dark: #eceee2;
       --white: #ffffff;
+      --text: #263238;
+      --text-muted: #5f676d;
+      --border: #d9ddcf;
 
-      --text: #21313d;
-      --text-muted: #5f6f7c;
-      --border: #d6d9d7;
-
-      --shadow-sm: 0 4px 16px rgb(13 27 39 / 8%);
-      --shadow-md: 0 14px 40px rgb(13 27 39 / 13%);
+      --shadow-sm: 0 4px 16px rgb(0 45 102 / 8%);
+      --shadow-md: 0 14px 40px rgb(0 45 102 / 14%);
 
       --page-width: 1180px;
-      --header-height: 72px;
+      --header-height: 88px;
 
-      --font: "Noto Sans", Arial, Helvetica, sans-serif;
+      --font-body: "Open Sans", Arial, Helvetica, sans-serif;
+      --font-heading: "Noto Serif", Georgia, serif;
     }
 
     * {
@@ -70,7 +80,7 @@
       margin: 0;
       color: var(--text);
       background: var(--cream);
-      font-family: var(--font);
+      font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.55;
     }
@@ -103,7 +113,7 @@
       left: 10px;
       padding: 9px 13px;
       color: var(--white);
-      background: var(--navy-950);
+      background: var(--brand-blue-dark);
       transform: translateY(-160%);
     }
 
@@ -118,7 +128,7 @@
 
     .eyebrow {
       margin: 0 0 10px;
-      color: var(--blue);
+      color: var(--brand-green-dark);
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.14em;
@@ -130,8 +140,9 @@
       margin: 0;
       color: var(--navy-950);
       font-size: clamp(2rem, 4vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.05;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.08;
       letter-spacing: -0.045em;
     }
 
@@ -175,14 +186,14 @@
 
     .button-primary {
       color: var(--white);
-      background: var(--navy-950);
-      border-color: var(--navy-950);
+      background: var(--brand-blue-dark);
+      border-color: var(--brand-blue-dark);
     }
 
     .button-primary:hover,
     .button-primary:focus-visible {
-      background: var(--navy-700);
-      border-color: var(--navy-700);
+      background: var(--brand-green-dark);
+      border-color: var(--brand-green-dark);
     }
 
     .button-secondary {
@@ -198,15 +209,15 @@
     }
 
     .button-light {
-      color: var(--navy-950);
-      background: var(--white);
+      color: var(--white);
+      background: var(--brand-blue-dark);
       border-color: var(--white);
     }
 
     .button-light:hover,
     .button-light:focus-visible {
-      background: var(--cream);
-      border-color: var(--cream);
+      background: #c4d854;
+      border-color: #c4d854;
     }
 
     .button-ghost-light {
@@ -228,9 +239,9 @@
       z-index: 1000;
       top: 0;
       height: var(--header-height);
-      color: var(--white);
-      background: rgb(13 27 39 / 96%);
-      border-bottom: 1px solid rgb(255 255 255 / 10%);
+      color: var(--brand-blue-dark);
+      background: rgb(255 255 255 / 97%);
+      border-bottom: 4px solid var(--brand-green);
       backdrop-filter: blur(12px);
     }
 
@@ -246,41 +257,22 @@
       min-width: 0;
       display: inline-flex;
       align-items: center;
-      gap: 11px;
+      gap: 14px;
       text-decoration: none;
     }
 
-    .brand-mark {
-      position: relative;
-      width: 34px;
-      height: 34px;
-      flex: 0 0 34px;
-      border: 1px solid rgb(255 255 255 / 32%);
-      border-radius: 50%;
+    .brand-logo {
+      width: 255px;
+      max-height: 55px;
+      object-fit: contain;
+      object-position: left center;
     }
 
-    .brand-mark::before,
-    .brand-mark::after {
-      position: absolute;
-      content: "";
-      border-radius: 50%;
-    }
-
-    .brand-mark::before {
-      inset: 8px;
-      background: var(--green);
-      box-shadow:
-        0 0 0 5px rgb(63 143 82 / 15%),
-        0 0 18px rgb(63 143 82 / 45%);
-    }
-
-    .brand-mark::after {
-      top: 4px;
-      right: 4px;
-      width: 7px;
-      height: 7px;
-      background: var(--blue);
-      box-shadow: 0 0 10px rgb(47 115 200 / 60%);
+    .brand-divider {
+      width: 1px;
+      height: 38px;
+      flex: 0 0 1px;
+      background: #d7dccb;
     }
 
     .brand-copy {
@@ -290,6 +282,25 @@
     .brand-copy strong,
     .brand-copy span {
       display: block;
+    }
+
+    .brand-copy strong {
+      overflow: hidden;
+      color: var(--brand-blue-dark);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      margin-top: 2px;
+      color: #697277;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .brand-copy strong {
@@ -316,7 +327,7 @@
 
     .site-nav a {
       padding: 8px 10px;
-      color: #dce4e9;
+      color: var(--brand-blue-dark);
       text-decoration: none;
       font-size: 0.83rem;
       font-weight: 600;
@@ -324,7 +335,7 @@
 
     .site-nav a:hover,
     .site-nav a:focus-visible {
-      color: var(--white);
+      color: var(--brand-green-dark);
     }
 
     .site-nav .nav-primary {
@@ -336,8 +347,8 @@
 
     .site-nav .nav-primary:hover,
     .site-nav .nav-primary:focus-visible {
-      color: var(--navy-950);
-      background: var(--cream);
+      color: var(--white);
+      background: var(--brand-green-dark);
     }
 
     .menu-toggle {
@@ -346,9 +357,9 @@
       display: none;
       place-items: center;
       padding: 0;
-      color: var(--white);
+      color: var(--brand-blue-dark);
       background: transparent;
-      border: 1px solid rgb(255 255 255 / 22%);
+      border: 1px solid #cfd5c5;
       cursor: pointer;
     }
 
@@ -365,7 +376,7 @@
       overflow: hidden;
       color: var(--white);
       background:
-        linear-gradient(105deg, rgb(13 27 39 / 98%) 0%, rgb(19 41 57 / 96%) 51%, rgb(20 54 71 / 90%) 100%);
+        linear-gradient(112deg, #001a3b 0%, var(--brand-blue-dark) 62%, #063d7b 100%);
     }
 
     .hero::before {
@@ -373,9 +384,9 @@
       inset: 0;
       content: "";
       background:
-        radial-gradient(circle at 76% 22%, rgb(47 115 200 / 25%), transparent 19%),
-        radial-gradient(circle at 83% 52%, rgb(63 143 82 / 22%), transparent 17%),
-        radial-gradient(circle at 63% 70%, rgb(217 130 43 / 16%), transparent 14%);
+        radial-gradient(circle at 78% 20%, rgb(179 201 56 / 30%), transparent 20%),
+        radial-gradient(circle at 86% 56%, rgb(46 163 242 / 23%), transparent 18%),
+        radial-gradient(circle at 63% 74%, rgb(252 185 0 / 17%), transparent 14%);
       pointer-events: none;
     }
 
@@ -394,11 +405,12 @@
     }
 
     .hero .eyebrow {
-      color: #9ed2ff;
+      color: var(--brand-green);
     }
 
     .hero h1 {
       margin: 0;
+      font-family: var(--font-heading);
       font-size: clamp(3.2rem, 7vw, 6.9rem);
       font-weight: 800;
       line-height: 0.94;
@@ -407,7 +419,7 @@
 
     .hero h1 span {
       display: block;
-      color: #dcecf8;
+      color: #f2f5e8;
       font-weight: 500;
     }
 
@@ -432,7 +444,7 @@
       min-height: 460px;
       overflow: hidden;
       background:
-        linear-gradient(145deg, #f4f6f5 0%, #dfe8ea 100%);
+        linear-gradient(145deg, #f8faef 0%, #dceaf7 100%);
       border: 1px solid rgb(255 255 255 / 18%);
       box-shadow: var(--shadow-md);
     }
@@ -445,13 +457,13 @@
         linear-gradient(
           148deg,
           transparent 0 7%,
-          #243b4d 7% 22%,
+          #002d66 7% 22%,
           transparent 22% 25%,
-          #243b4d 25% 44%,
+          #002d66 25% 44%,
           transparent 44% 46%,
-          #243b4d 46% 65%,
+          #002d66 46% 65%,
           transparent 65% 68%,
-          #243b4d 68% 78%,
+          #002d66 68% 78%,
           transparent 78%
         );
       clip-path: polygon(
@@ -487,18 +499,18 @@
     }
 
     .map-dot.green {
-      color: var(--green);
-      background: var(--green);
+      color: var(--brand-green-dark);
+      background: var(--brand-green);
     }
 
     .map-dot.blue {
-      color: var(--blue);
-      background: var(--blue);
+      color: var(--brand-blue-dark);
+      background: var(--brand-blue);
     }
 
     .map-dot.red {
-      color: var(--red);
-      background: var(--red);
+      color: #9b432f;
+      background: var(--brand-coral);
     }
 
     .map-dot.purple {
@@ -507,8 +519,8 @@
     }
 
     .map-dot.orange {
-      color: var(--orange);
-      background: var(--orange);
+      color: #987000;
+      background: var(--brand-yellow);
     }
 
     .dot-1 { top: 48%; left: 17%; }
@@ -612,7 +624,7 @@
       margin: 0;
       padding: 22px 0 3px 22px;
       color: var(--text-muted);
-      border-left: 3px solid var(--green);
+      border-left: 4px solid var(--brand-green);
       font-size: 0.97rem;
       line-height: 1.7;
     }
@@ -651,6 +663,7 @@
 
     .sector-card h3 {
       margin: 24px 0 0;
+      font-family: var(--font-heading);
       color: var(--navy-950);
       font-size: 1rem;
       line-height: 1.25;
@@ -711,11 +724,12 @@
     }
 
     .visibility-copy .eyebrow {
-      color: #9ed2ff;
+      color: var(--brand-green);
     }
 
     .visibility-copy h2 {
       margin: 0;
+      font-family: var(--font-heading);
       font-size: clamp(2.2rem, 4.7vw, 4.7rem);
       line-height: 1;
       letter-spacing: -0.055em;
@@ -732,7 +746,7 @@
     .visibility-points {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      background: var(--navy-800);
+      background: #073d7a;
       border-left: 1px solid rgb(255 255 255 / 10%);
     }
 
@@ -753,7 +767,7 @@
 
     .visibility-point strong {
       display: block;
-      color: #a8d6ff;
+      color: var(--brand-green);
       font-size: 2.5rem;
       font-weight: 800;
       line-height: 1;
@@ -786,7 +800,7 @@
     }
 
     .text-link {
-      color: var(--blue);
+      color: var(--brand-blue-dark);
       font-size: 0.86rem;
       font-weight: 700;
       text-decoration: none;
@@ -860,6 +874,7 @@
 
     .story-card h3 {
       margin: 16px 0 0;
+      font-family: var(--font-heading);
       color: var(--navy-950);
       font-size: 1.15rem;
       line-height: 1.35;
@@ -926,7 +941,7 @@
       padding: 84px 0;
       color: var(--white);
       background:
-        linear-gradient(120deg, var(--green) 0%, #2e7443 100%);
+        linear-gradient(120deg, var(--brand-green-dark) 0%, #2d7c28 100%);
     }
 
     .contribute-grid {
@@ -942,6 +957,7 @@
 
     .contribute-section h2 {
       max-width: 760px;
+      font-family: var(--font-heading);
       margin: 0;
       font-size: clamp(2rem, 4.6vw, 4.2rem);
       line-height: 1.02;
@@ -970,8 +986,16 @@
       padding: 58px 0 44px;
     }
 
+    .footer-logo {
+      width: min(360px, 100%);
+      margin-bottom: 20px;
+      padding: 10px 12px;
+      background: var(--white);
+    }
+
     .footer-brand strong {
       display: block;
+      font-family: var(--font-heading);
       color: var(--white);
       font-size: 1rem;
     }
@@ -1071,9 +1095,9 @@
         align-items: stretch;
         gap: 0;
         padding: 12px 14px 18px;
-        background: var(--navy-950);
-        border-top: 1px solid rgb(255 255 255 / 10%);
-        box-shadow: 0 18px 40px rgb(0 0 0 / 26%);
+        background: var(--white);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 18px 40px rgb(0 45 102 / 18%);
       }
 
       .site-nav.is-open {
@@ -1142,7 +1166,12 @@
     }
 
     @media (max-width: 560px) {
-      .brand-copy span {
+      .brand-logo {
+        width: 205px;
+      }
+
+      .brand-divider,
+      .brand-copy {
         display: none;
       }
 
@@ -1231,12 +1260,18 @@
 
   <header class="site-header">
     <div class="site-shell header-inner">
-      <a class="brand" href="index.html" aria-label="Lighting Up Canada home">
-        <span class="brand-mark" aria-hidden="true"></span>
+      <a class="brand" href="index.html" aria-label="Plant-Based Cities Movement — Lighting Up Canada home">
+        <img
+          class="brand-logo"
+          src="assets/pbcm-horizontal-logo.jpg"
+          alt="Plant-Based Cities Movement"
+        >
+
+        <span class="brand-divider" aria-hidden="true"></span>
 
         <span class="brand-copy">
           <strong>Lighting Up Canada</strong>
-          <span>Plant-Based Progress Map</span>
+          <span>National plant-based progress map</span>
         </span>
       </a>
 
@@ -1267,7 +1302,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="site-shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">A national public-interest resource</p>
+          <p class="eyebrow">Plant-Based Cities Movement presents</p>
 
           <h1 id="hero-title">
             Plant-forward progress
@@ -1669,6 +1704,7 @@
   <footer class="site-footer">
     <div class="site-shell footer-grid">
       <div class="footer-brand">
+        <img class="footer-logo" src="assets/pbcm-horizontal-logo.jpg" alt="Plant-Based Cities Movement">
         <strong>Lighting Up Canada</strong>
 
         <p>
