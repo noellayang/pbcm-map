@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -33,25 +33,33 @@
   </a>
 
   <header class="site-header">
-    <div class="brand">
-      <span class="brand-organization">
-        Plant-Based Cities Movement
+    <a class="brand" href="index.html" aria-label="Plant-Based Cities Movement — Lighting Up Canada home">
+      <span class="brand-logo-wrap">
+        <img
+          class="brand-logo"
+          src="assets/pbcm-horizontal-logo.jpg"
+          alt="Plant-Based Cities Movement"
+        >
       </span>
 
-      <a class="brand-title" href="index.html">
-        Lighting Up Canada
-      </a>
-    </div>
+      <span class="brand-project">
+        <strong>Lighting Up Canada</strong>
+        <span>Plant-Based Progress Map</span>
+      </span>
+    </a>
 
     <div class="header-theme">
-      <span class="header-theme-kicker">
-        Plant-Based Progress Map
-      </span>
-
+      <span class="header-theme-kicker">Explore documented progress</span>
       <span class="header-theme-title">
-        See what is already possible across Canada.
+        Policies, procurement, menus, and institutional commitments across Canada
       </span>
     </div>
+
+    <nav class="header-nav" aria-label="Map navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#methodology">Methodology</a>
+      <a href="https://plantbasedcitiesmovement.org/" target="_blank" rel="noopener noreferrer">PBCM</a>
+    </nav>
 
     <div
       class="header-count"
@@ -70,6 +78,7 @@
     >
       <div class="sidebar-header">
         <div>
+          <p class="sidebar-kicker">National directory</p>
           <h1>Explore initiatives</h1>
 
           <span id="result-count" class="result-count">
@@ -159,7 +168,7 @@
 
         <div class="sidebar-actions">
           <span>
-            Search the national directory
+            Select a record to view its evidence and profile
           </span>
 
           <button
@@ -220,7 +229,7 @@
 
         <section class="map-legend" aria-label="Map legend">
           <div class="legend-heading">
-            Map key
+            Lighting Up Canada map key
           </div>
 
           <div class="legend-section">

@@ -1,53 +1,63 @@
 :root {
- 
-  --night: #27292c;
-  --night-soft: #262729;
-  --night-panel: #3c3e42;
-  --night-panel-hover: #4f5051;
-  --night-panel-selected: #505356;
-  --night-border: #4e5052;
+  /* PBCM brand guide */
+  --pbcm-green: #b3c938;
+  --pbcm-yellow: #fcb900;
+  --pbcm-gray: #999999;
+  --pbcm-coral: #ffa07a;
+  --pbcm-dark-green: #006400;
+  --pbcm-dark-blue: #002d66;
+  --pbcm-blue: #2ea3f2;
+  --pbcm-black: #000000;
 
-  --surface: #f4f3ef;
-  --surface-soft: #ebece8;
-  --surface-border: #d5d7d3;
+  /* Lighting Up Canada night environment */
+  --night: #07131f;
+  --night-soft: #001f46;
+  --night-panel: #0d2c4e;
+  --night-panel-hover: #123b63;
+  --night-panel-selected: #164a72;
+  --night-border: rgb(179 201 56 / 27%);
 
-  --text-on-dark: #f2f5f7;
-  --text-muted-dark: #b9c4cc;
-  --light-blue: #8fd4ff;
+  --surface: #fbfbf7;
+  --surface-soft: #f2f4e9;
+  --surface-border: #d9dec5;
+  --surface-green: #f3f7dc;
+
+  --text-on-dark: #ffffff;
+  --text-muted-dark: #c7d4df;
+  --light-blue: #8fd8ff;
 
   --white: #ffffff;
-  --page: #101d29;
-  --panel-muted: #f1f3f5;
-  --border: #c7ced4;
-  --border-light: #e2e6e9;
+  --page: #07131f;
+  --panel-muted: #f2f4e9;
+  --border: #cbd3bd;
+  --border-light: #e5e8dd;
 
   --text: #263238;
-  --text-muted: #596875;
+  --text-muted: #5c686f;
 
-  --navy: #26374a;
-  --navy-dark: #002145;
-  --blue: #1f497a;
+  --navy: #002d66;
+  --navy-dark: #001d43;
+  --blue: #087bbd;
 
-  /* Institution types */
-  
-  --university: #2f73c8;
-  --hospital: #c9493a;
-  --city: #3f8f52;
-  --government: #8462b0;
-  --other: #d9822b;
+  /* Institution types: recognizable, high-contrast extensions of PBCM */
+  --university: #2ea3f2;
+  --hospital: #e66f5d;
+  --city: #6f8f00;
+  --government: #6f63a8;
+  --other: #d28a00;
 
   /* Progress stages */
+  --stage-outreach: #2ea3f2;
+  --stage-active: #fcb900;
+  --stage-motion: #ffa07a;
+  --stage-implemented: #7e9b12;
 
-  --stage-outreach: #2589c7;
-  --stage-active: #f29e0e;
-  --stage-motion: #da5a15;
-  --stage-implemented: #40916c;
+  --font-primary: "Open Sans", Arial, Helvetica, sans-serif;
+  --font-display: "Noto Serif", Georgia, serif;
 
-  --font-primary: "Noto Sans", Arial, Helvetica, sans-serif;
-
-  --header-height: 64px;
-  --sidebar-width: 285px;
-  --drawer-width: 350px;
+  --header-height: 76px;
+  --sidebar-width: 330px;
+  --drawer-width: 410px;
 }
 
 * {
@@ -1433,5 +1443,581 @@ a {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+
+/* =========================================================
+   PBCM BRAND INTEGRATION
+   Keeps the dark-map / glowing-pin Lighting Up Canada concept
+   while aligning navigation, typography, and surfaces with PBCM.
+   ========================================================= */
+
+body {
+  font-family: var(--font-primary);
+  background: var(--page);
+}
+
+.skip-link {
+  color: var(--pbcm-dark-blue);
+  background: var(--pbcm-green);
+  font-weight: 700;
+}
+
+.site-header {
+  grid-template-columns: minmax(330px, auto) minmax(280px, 1fr) auto auto;
+  gap: 22px;
+  padding: 0 22px;
+  background:
+    linear-gradient(110deg, #001c40 0%, var(--pbcm-dark-blue) 54%, #003a74 100%);
+  border-bottom: 3px solid var(--pbcm-green);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 24%);
+}
+
+.brand {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-logo-wrap {
+  width: 226px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  flex: 0 0 226px;
+  padding: 5px 9px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+}
+
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-project {
+  min-width: 0;
+  display: block;
+  padding-left: 13px;
+  border-left: 1px solid rgb(255 255 255 / 23%);
+}
+
+.brand-project strong,
+.brand-project span {
+  display: block;
+}
+
+.brand-project strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.brand-project span {
+  margin-top: 3px;
+  color: var(--pbcm-green);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.header-theme {
+  padding-left: 22px;
+  border-left-color: rgb(179 201 56 / 34%);
+}
+
+.header-theme-kicker {
+  color: var(--pbcm-green);
+}
+
+.header-theme-title {
+  color: #eef5fa;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.header-nav a {
+  padding: 8px 9px;
+  color: #e7eef4;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.header-nav a:hover,
+.header-nav a:focus-visible {
+  color: var(--pbcm-dark-blue);
+  background: var(--pbcm-green);
+  outline: none;
+}
+
+.header-count {
+  min-width: 76px;
+  padding: 8px 10px;
+  color: #d8e4eb;
+  background: rgb(0 0 0 / 16%);
+  border: 1px solid rgb(179 201 56 / 34%);
+  border-radius: 3px;
+}
+
+.header-count strong {
+  color: var(--pbcm-green);
+  font-size: 17px;
+}
+
+.results-panel {
+  background: var(--surface);
+  border-right: 1px solid #bdc99a;
+  box-shadow: 5px 0 18px rgb(0 0 0 / 12%);
+}
+
+.sidebar-header {
+  min-height: 66px;
+  padding: 11px 12px 10px 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faef 100%);
+  border-bottom: 3px solid var(--pbcm-green);
+}
+
+.sidebar-kicker {
+  margin: 0 0 2px;
+  color: var(--pbcm-dark-green);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.sidebar-header h1 {
+  color: var(--pbcm-dark-blue);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.result-count {
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+.icon-button {
+  color: var(--pbcm-dark-blue);
+  background: #fff;
+  border-color: #b7c495;
+  border-radius: 3px;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  color: #fff;
+  background: var(--pbcm-dark-blue);
+  border-color: var(--pbcm-dark-blue);
+}
+
+.sidebar-controls {
+  padding: 12px 12px 10px;
+  background: #f8faef;
+  border-bottom-color: #d6ddbd;
+}
+
+.search-field input {
+  height: 42px;
+  padding-left: 34px;
+  background: #fff;
+  border: 1px solid #9cac75;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.search-field input:focus {
+  border-color: var(--pbcm-dark-blue);
+  box-shadow: 0 0 0 3px rgb(46 163 242 / 18%);
+}
+
+.filter-row {
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.filter-chip {
+  min-height: 30px;
+  padding: 4px 8px;
+  color: #293b49;
+  background: #fff;
+  border-color: #c6cfaa;
+  border-radius: 999px;
+  font-size: 10px;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  color: var(--pbcm-dark-blue);
+  background: var(--surface-green);
+  border-color: var(--pbcm-green);
+}
+
+.filter-chip.active {
+  color: #fff;
+  background: var(--pbcm-dark-blue);
+  border-color: var(--pbcm-dark-blue);
+  box-shadow: inset 0 -3px var(--pbcm-green);
+}
+
+.sidebar-actions {
+  margin-top: 9px;
+  color: #65706d;
+  font-size: 9.5px;
+}
+
+.link-button {
+  color: var(--pbcm-dark-blue);
+  font-weight: 700;
+}
+
+.institution-list {
+  background: #fbfcf6;
+  scrollbar-color: #a9b873 #f4f7e8;
+}
+
+.institution-card {
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  padding: 11px 12px;
+  background: #fbfcf6;
+  border-bottom-color: #dfe4cf;
+}
+
+.institution-card:hover {
+  background: #f0f5d9;
+}
+
+.institution-card:focus-visible {
+  outline-color: var(--pbcm-blue);
+}
+
+.institution-card.is-selected {
+  background: #e8f1c7;
+  box-shadow:
+    inset 5px 0 var(--pbcm-green),
+    inset 0 0 0 1px rgb(0 45 102 / 10%);
+}
+
+.card-heading strong {
+  color: var(--pbcm-dark-blue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.card-heading > span,
+.stage-badge {
+  color: #5c696d;
+}
+
+.type-icon,
+.card-icon,
+.legend-type-icon {
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 27%),
+    0 0 0 1px rgb(255 255 255 / 20%);
+}
+
+.map-shell,
+.map-frame,
+.leaflet-container {
+  background: #07131f;
+}
+
+.map-frame::after {
+  position: absolute;
+  z-index: 390;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 80px rgb(0 0 0 / 25%),
+    inset 0 -80px 120px rgb(0 16 33 / 14%);
+}
+
+.leaflet-control-zoom {
+  border-color: rgb(179 201 56 / 42%) !important;
+}
+
+.leaflet-control-zoom a {
+  color: #fff !important;
+  background: rgb(0 45 102 / 94%) !important;
+}
+
+.leaflet-control-zoom a:hover,
+.leaflet-control-zoom a:focus {
+  color: var(--pbcm-dark-blue) !important;
+  background: var(--pbcm-green) !important;
+}
+
+.institution-tooltip {
+  color: #fff;
+  background: rgb(0 31 70 / 97%);
+  border-color: rgb(179 201 56 / 48%);
+  border-radius: 4px;
+}
+
+.institution-tooltip strong {
+  font-family: var(--font-display);
+}
+
+.map-legend {
+  width: 205px;
+  padding: 12px 13px;
+  color: #f3f7f9;
+  background: rgb(0 30 67 / 92%);
+  border: 1px solid rgb(179 201 56 / 47%);
+  border-radius: 4px;
+  box-shadow: 0 7px 24px rgb(0 0 0 / 38%);
+}
+
+.legend-heading {
+  color: var(--pbcm-green);
+  font-size: 9.5px;
+}
+
+.legend-section > strong {
+  color: #dce8ef;
+  font-size: 9px;
+}
+
+.legend-grid span {
+  font-size: 9px;
+}
+
+.sidebar-open {
+  color: #fff;
+  background: rgb(0 45 102 / 96%);
+  border-color: rgb(179 201 56 / 48%);
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.sidebar-open:hover,
+.sidebar-open:focus-visible {
+  color: var(--pbcm-dark-blue);
+  background: var(--pbcm-green);
+}
+
+/* Brighter, brand-aligned illuminated pins */
+.marker-glow {
+  opacity: .54;
+}
+
+.marker-face {
+  border-color: rgb(255 255 255 / 92%);
+  box-shadow:
+    0 3px 7px rgb(0 0 0 / 52%),
+    0 0 10px color-mix(in srgb, var(--type-color) 62%, transparent);
+}
+
+.institution-marker.is-selected .marker-face {
+  box-shadow:
+    0 4px 11px rgb(0 0 0 / 58%),
+    0 0 8px #fff,
+    0 0 20px var(--type-color),
+    0 0 42px color-mix(in srgb, var(--type-color) 78%, transparent);
+}
+
+.profile-drawer {
+  background: #fbfcf6;
+  border-left: 3px solid var(--pbcm-green);
+  box-shadow: -12px 0 34px rgb(0 0 0 / 34%);
+}
+
+.drawer-close {
+  color: var(--pbcm-dark-blue);
+  background: rgb(255 255 255 / 95%);
+  border-color: #b9c58f;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.drawer-close:hover,
+.drawer-close:focus-visible {
+  color: #fff;
+  background: var(--pbcm-dark-blue);
+}
+
+.institution-profile,
+.profile-header,
+.profile-headline,
+.profile-body {
+  background: #fbfcf6;
+}
+
+.profile-image {
+  height: 205px;
+  border-bottom: 5px solid var(--pbcm-green);
+}
+
+.profile-header {
+  padding: 20px 23px 17px;
+}
+
+.profile-header h2 {
+  max-width: 350px;
+  color: var(--pbcm-dark-blue);
+  font-family: var(--font-display);
+  font-size: 25px;
+  line-height: 1.16;
+}
+
+.profile-classification {
+  color: var(--pbcm-dark-green);
+}
+
+.profile-headline {
+  padding: 20px 23px 18px;
+  color: var(--pbcm-dark-blue);
+  font-family: var(--font-display);
+  font-size: 19px;
+  border-left: 6px solid var(--pbcm-green);
+}
+
+.profile-stat-grid {
+  background: #ced7aa;
+}
+
+.profile-stat {
+  background: var(--surface-green);
+}
+
+.profile-stat strong {
+  color: var(--pbcm-dark-blue);
+}
+
+.profile-body {
+  padding-right: 23px;
+  padding-left: 23px;
+}
+
+.profile-introduction h3,
+.profile-content-section h3 {
+  color: var(--pbcm-dark-blue);
+  font-family: var(--font-display);
+  font-size: 14px;
+}
+
+.profile-highlights li::marker {
+  color: var(--pbcm-dark-green);
+}
+
+.profile-resource {
+  color: #0069a6;
+}
+
+.profile-resource:hover,
+.profile-resource:focus-visible {
+  color: var(--pbcm-dark-blue);
+}
+
+.empty-state strong {
+  color: var(--pbcm-dark-blue);
+  font-family: var(--font-display);
+}
+
+@media (max-width: 1120px) {
+  .site-header {
+    grid-template-columns: minmax(310px, auto) minmax(220px, 1fr) auto;
+  }
+
+  .header-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --sidebar-width: 290px;
+    --drawer-width: 370px;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 0 14px;
+  }
+
+  .brand-logo-wrap {
+    width: 190px;
+    flex-basis: 190px;
+    height: 45px;
+  }
+
+  .brand-project {
+    display: none;
+  }
+
+  .header-count {
+    min-width: 68px;
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    border-bottom-width: 3px;
+  }
+
+  .brand-logo-wrap {
+    width: 215px;
+    height: 46px;
+    flex-basis: 215px;
+  }
+
+  .header-count {
+    display: none;
+  }
+
+  .map-shell {
+    min-height: 450px;
+  }
+
+  .map-legend {
+    width: 184px;
+  }
+
+  .profile-drawer {
+    border-top: 4px solid var(--pbcm-green);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-logo-wrap {
+    width: 190px;
+    flex-basis: 190px;
+  }
+
+  .profile-header h2 {
+    font-size: 22px;
   }
 }
