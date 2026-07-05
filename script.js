@@ -649,28 +649,51 @@ const THEMATIC_PROFILE_IMAGES = {
   dining: [
     "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
     "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76"
   ],
   procurement: [
     "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
     "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1485637701894-09ad422f6de6?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&w=1400&q=76"
   ],
   community: [
     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=76&crop=entropy",
+    "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1400&q=76"
   ],
   healthcare: [
     "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&w=1400&q=76"
   ],
   education: [
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1567168544646-208fa5d408fb?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=76"
   ],
   fallback: [
     "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76"
+    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76"
   ]
 };
 
@@ -772,7 +795,22 @@ function thematicImageDetails(institution) {
   const group = thematicGroupFor(institution);
   const choices = THEMATIC_PROFILE_IMAGES[group]
     ?? THEMATIC_PROFILE_IMAGES.fallback;
-  const index = stableImageIndex(institution.id, choices.length);
+
+  /*
+    Allocate fallback images by the institution's stable position inside its
+    thematic group. The previous hash-modulo approach made unrelated records
+    collide frequently—especially groups that only contained two images.
+    This keeps assignments deterministic while avoiding repeats until the
+    relevant image pool has been exhausted.
+  */
+  const peers = INSTITUTIONS
+    .filter((record) => thematicGroupFor(record) === group)
+    .map((record) => String(record.id ?? ""))
+    .sort((a, b) => a.localeCompare(b));
+  const peerIndex = peers.indexOf(String(institution.id ?? ""));
+  const index = peerIndex >= 0
+    ? peerIndex % choices.length
+    : stableImageIndex(institution.id, choices.length);
 
   return {
     url: choices[index],
