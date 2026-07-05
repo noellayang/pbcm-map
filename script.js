@@ -913,25 +913,41 @@ async function hydrateProfileImage(institution) {
     return;
   }
 
-  image.alt = resolved.alt;
-  image.style.objectPosition = resolved.position;
-
-  if (image.src !== new URL(resolved.url, window.location.href).href) {
-    image.src = resolved.url;
-  }
-
-  image.addEventListener("load", () => {
+  const finishLoading = () => {
     figure.classList.remove("is-loading");
-  }, { once: true });
+  };
 
-  image.addEventListener("error", async () => {
+  const useFallback = () => {
     profileImagePreloadCache.delete(institution.id);
+
     const fallback = thematicImageDetails(institution);
-    image.src = fallback.url;
     image.alt = fallback.alt;
     image.style.objectPosition = fallback.position;
-    figure.classList.remove("is-loading");
-  }, { once: true });
+
+    image.addEventListener("load", finishLoading, { once: true });
+    image.addEventListener("error", finishLoading, { once: true });
+    image.src = fallback.url;
+  };
+
+  image.alt = resolved.alt;
+  image.style.objectPosition = resolved.position;
+  image.addEventListener("load", finishLoading, { once: true });
+  image.addEventListener("error", useFallback, { once: true });
+
+  const resolvedAbsoluteUrl = new URL(
+    resolved.url,
+    window.location.href
+  ).href;
+
+  if (image.src !== resolvedAbsoluteUrl) {
+    image.src = resolved.url;
+  } else if (image.complete) {
+    if (image.naturalWidth > 0) {
+      finishLoading();
+    } else {
+      useFallback();
+    }
+  }
 }
 
 /* =========================================================
@@ -1787,25 +1803,57 @@ function showDataLoadError(error) {
 
 
 function renderInitialMapWhenReady(attempt = 0) {
-  const mapContainer = map.getContainer();
-  const { width, height } = mapContainer.getBoundingClientRect();
-  const layoutReady = width > 0 && height > 0;
+  const startInitialRender = () => {
+    const mapContainer = map.getContainer();
+    const { width, height } = mapContainer.getBoundingClientRect();
+    const layoutReady = width > 0 && height > 0;
 
-  if (!layoutReady && attempt < 30) {
+    if (!layoutReady && attempt < 30) {
+      window.requestAnimationFrame(() => {
+        renderInitialMapWhenReady(attempt + 1);
+      });
+      return;
+    }
+
+    /*
+      Wait for two paint frames after the page grid becomes measurable.
+      This gives Leaflet the final map dimensions before custom div-icon
+      markers are created.
+    */
     window.requestAnimationFrame(() => {
-      renderInitialMapWhenReady(attempt + 1);
+      window.requestAnimationFrame(() => {
+        map.invalidateSize({
+          pan: false,
+          animate: false,
+          debounceMoveend: true
+        });
+
+        visibleInstitutions = [...INSTITUTIONS];
+        renderInstitutionList(visibleInstitutions);
+        renderMarkers(visibleInstitutions);
+
+        map.setView(CANADA_VIEW.center, CANADA_VIEW.zoom, {
+          animate: false
+        });
+
+        map.invalidateSize({
+          pan: false,
+          animate: false,
+          debounceMoveend: true
+        });
+
+        if (listElement) {
+          listElement.setAttribute("aria-busy", "false");
+        }
+      });
     });
-    return;
+  };
+
+  if (map._loaded) {
+    startInitialRender();
+  } else {
+    map.whenReady(startInitialRender);
   }
-
-  map.invalidateSize({ pan: false, animate: false });
-  applyFilters({ updateMapView: false });
-  map.setView(CANADA_VIEW.center, CANADA_VIEW.zoom, { animate: false });
-
-  /* Recheck once after marker DOM nodes have been inserted. */
-  window.requestAnimationFrame(() => {
-    map.invalidateSize({ pan: false, animate: false });
-  });
 }
 
 async function loadInstitutionData() {
@@ -1840,7 +1888,6 @@ async function loadInstitutionData() {
   }
 
   INSTITUTIONS = data;
-  rebuildSourceUseCounts();
 
   renderTypeLegend();
   renderInstitutionList(INSTITUTIONS);
