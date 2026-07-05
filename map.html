@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Explore the Map | Lighting Up Canada</title>
+
+  <meta
+    name="description"
+    content="Explore verified plant-based food policies, procurement initiatives, menu changes, and institutional commitments across Canada."
+  >
+  <meta name="theme-color" content="#002d66">
+
+  <link rel="icon" type="image/jpeg" href="./assets/pbcm-logo.jpg">
+  <link rel="preload" as="image" href="./assets/pbcm-horizontal-logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#directory-app">
+    Skip to the directory and map
+  </a>
+
+  <header class="site-header">
+    <a
+      class="brand"
+      href="./index.html"
+      aria-label="Plant-Based Cities Movement — Lighting Up Canada home"
+    >
+      <span class="brand-logo-wrap">
+        <img
+          class="brand-logo"
+          src="./assets/pbcm-horizontal-logo.jpg"
+          alt="Plant-Based Cities Movement"
+          width="420"
+          height="110"
+          decoding="async"
+        >
+      </span>
+
+      <span class="brand-project">
+        <strong>Lighting Up Canada</strong>
+        <span>Plant-Based Progress Map</span>
+      </span>
+    </a>
+
+    <div class="header-theme" aria-label="Project description">
+      <span class="header-theme-kicker">
+        Explore documented progress
+      </span>
+
+      <span class="header-theme-title">
+        Policies, procurement, menus, and institutional commitments across Canada
+      </span>
+    </div>
+
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="./index.html">Home</a>
+      <a href="./index.html#methodology">Methodology</a>
+      <a
+        href="https://plantbasedcitiesmovement.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        PBCM
+      </a>
+    </nav>
+
+    <div
+      class="header-count"
+      aria-label="Number of institutions currently shown"
+    >
+      <strong id="header-count">0</strong>
+      <span>institutions</span>
+    </div>
+  </header>
+
+  <main id="directory-app" class="directory-app">
+    <aside
+      id="results-panel"
+      class="results-panel"
+      aria-label="Institution directory"
+    >
+      <div class="sidebar-header">
+        <div>
+          <p class="sidebar-kicker">National directory</p>
+          <h1>Explore initiatives</h1>
+
+          <span
+            id="result-count"
+            class="result-count"
+            aria-live="polite"
+          >
+            0 results
+          </span>
+        </div>
+
+        <button
+          id="sidebar-toggle"
+          class="icon-button sidebar-toggle"
+          type="button"
+          aria-label="Collapse directory"
+          aria-expanded="true"
+          aria-controls="results-panel"
+          title="Collapse directory"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m14.7 6.3-1.4-1.4L6.2 12l7.1 7.1 1.4-1.4L9 12l5.7-5.7Z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-controls">
+        <label class="search-field" for="institution-search">
+          <span class="sr-only">
+            Search institutions, cities, or initiatives
+          </span>
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m20.7 19.3-4.2-4.2a7 7 0 1 0-1.4 1.4l4.2 4.2 1.4-1.4ZM5 11a6 6 0 1 1 12 0 6 6 0 0 1-12 0Z"/>
+          </svg>
+
+          <input
+            id="institution-search"
+            type="search"
+            placeholder="Search institutions, cities, or initiatives"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </label>
+
+        <div class="filter-row" aria-label="Filter by institution type">
+          <button class="filter-chip active" type="button" data-type="all">
+            All
+          </button>
+
+          <button class="filter-chip" type="button" data-type="city">
+            Municipalities
+          </button>
+
+          <button class="filter-chip" type="button" data-type="university">
+            Education
+          </button>
+
+          <button class="filter-chip" type="button" data-type="hospital">
+            Healthcare
+          </button>
+
+          <button class="filter-chip" type="button" data-type="government">
+            Government
+          </button>
+
+          <button class="filter-chip" type="button" data-type="other">
+            Other
+          </button>
+        </div>
+
+        <div class="sidebar-actions">
+          <span>
+            Select a record to view its evidence and profile
+          </span>
+
+          <button
+            id="reset-view"
+            class="link-button"
+            type="button"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="institution-list"
+        class="institution-list"
+        aria-live="polite"
+        aria-busy="true"
+      ></div>
+
+      <div
+        id="empty-state"
+        class="empty-state"
+        hidden
+      >
+        <strong>No matching initiatives</strong>
+        <p>Try another search term or category.</p>
+      </div>
+    </aside>
+
+    <section
+      class="map-shell"
+      aria-label="Interactive map of plant-forward initiatives across Canada"
+    >
+      <div class="map-frame">
+        <div
+          id="map"
+          tabindex="0"
+          aria-label="Interactive map showing plant-forward institutions across Canada"
+        ></div>
+
+        <button
+          id="sidebar-open"
+          class="sidebar-open"
+          type="button"
+          hidden
+          aria-label="Open institution directory"
+          aria-controls="results-panel"
+          title="Open institution directory"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9.3 17.7 1.4 1.4 7.1-7.1-7.1-7.1-1.4 1.4L15 12l-5.7 5.7Z"/>
+          </svg>
+
+          <span>Directory</span>
+        </button>
+
+        <section class="map-legend" aria-label="Map legend">
+          <div class="legend-heading">
+            Lighting Up Canada map key
+          </div>
+
+          <div class="legend-section">
+            <strong>Institution type</strong>
+            <div id="type-legend" class="legend-grid"></div>
+          </div>
+
+          <div class="legend-section">
+            <strong>Progress stage</strong>
+
+            <div class="legend-grid">
+              <span>
+                <i class="stage-dot stage-outreach" aria-hidden="true"></i>
+                Outreach
+              </span>
+
+              <span>
+                <i class="stage-dot stage-active" aria-hidden="true"></i>
+                Active
+              </span>
+
+              <span>
+                <i class="stage-dot stage-motion-passed" aria-hidden="true"></i>
+                Commitment
+              </span>
+
+              <span>
+                <i class="stage-dot stage-implemented" aria-hidden="true"></i>
+                Implemented
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside
+        id="profile-drawer"
+        class="profile-drawer"
+        aria-hidden="true"
+        aria-labelledby="drawer-name"
+      >
+        <button
+          id="drawer-close"
+          class="drawer-close"
+          type="button"
+          aria-label="Close institution profile"
+          title="Close profile"
+        >
+          ×
+        </button>
+
+        <div id="drawer-content"></div>
+      </aside>
+    </section>
+  </main>
+
+  <div
+    id="mobile-scrim"
+    class="mobile-scrim"
+    hidden
+    aria-hidden="true"
+  ></div>
+
+  <noscript>
+    <div class="noscript-message">
+      This interactive map requires JavaScript. Please enable JavaScript to explore the directory.
+    </div>
+  </noscript>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    defer
+  ></script>
+  <script src="./script.js" defer></script>
+</body>
+</html>
