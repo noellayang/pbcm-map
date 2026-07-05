@@ -1448,30 +1448,61 @@ a {
 
 
 /* =========================================================
-   PBCM BRAND INTEGRATION
-   Keeps the dark-map / glowing-pin Lighting Up Canada concept
-   while aligning navigation, typography, and surfaces with PBCM.
+   REFINED PBCM BRAND INTEGRATION
+   A restrained, editorial interface around the dark map.
    ========================================================= */
 
+:root {
+  --pbcm-green: #b3c938;
+  --pbcm-yellow: #fcb900;
+  --pbcm-gray: #999999;
+  --pbcm-coral: #ffa07a;
+  --pbcm-dark-green: #006400;
+  --pbcm-dark-blue: #002d66;
+  --pbcm-blue: #2ea3f2;
+
+  --night: #0b1824;
+  --night-soft: #102436;
+  --night-panel: #173247;
+  --night-panel-hover: #1d3d55;
+  --night-panel-selected: #214962;
+  --night-border: rgb(255 255 255 / 10%);
+
+  --surface: #f7f6f1;
+  --surface-soft: #efeee8;
+  --surface-border: #d9d8d0;
+  --surface-tint: #f3f5ed;
+
+  --text: #25313a;
+  --text-muted: #64717a;
+  --navy: #193b59;
+  --navy-dark: #002d66;
+  --blue: #197cb3;
+
+  --header-height: 76px;
+  --sidebar-width: 326px;
+  --drawer-width: 408px;
+}
+
 body {
+  background: var(--night);
   font-family: var(--font-primary);
-  background: var(--page);
 }
 
 .skip-link {
-  color: var(--pbcm-dark-blue);
-  background: var(--pbcm-green);
+  color: #fff;
+  background: var(--pbcm-dark-blue);
   font-weight: 700;
 }
 
+/* Header: quiet white canvas so the supplied logo feels native. */
 .site-header {
-  grid-template-columns: minmax(330px, auto) minmax(280px, 1fr) auto auto;
-  gap: 22px;
-  padding: 0 22px;
-  background:
-    linear-gradient(110deg, #001c40 0%, var(--pbcm-dark-blue) 54%, #003a74 100%);
-  border-bottom: 3px solid var(--pbcm-green);
-  box-shadow: 0 4px 18px rgb(0 0 0 / 24%);
+  grid-template-columns: minmax(360px, auto) minmax(260px, 1fr) auto auto;
+  gap: 24px;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #deddd7;
+  box-shadow: 0 3px 16px rgb(14 28 40 / 9%);
 }
 
 .brand {
@@ -1479,21 +1510,19 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   text-decoration: none;
 }
 
 .brand-logo-wrap {
   width: 226px;
-  height: 50px;
+  height: 52px;
   display: flex;
   align-items: center;
   flex: 0 0 226px;
-  padding: 5px 9px;
+  padding: 0;
   overflow: hidden;
   background: #fff;
-  border-radius: 3px;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
 }
 
 .brand-logo {
@@ -1506,8 +1535,8 @@ body {
 .brand-project {
   min-width: 0;
   display: block;
-  padding-left: 13px;
-  border-left: 1px solid rgb(255 255 255 / 23%);
+  padding-left: 16px;
+  border-left: 1px solid #d8d8d2;
 }
 
 .brand-project strong,
@@ -1516,7 +1545,7 @@ body {
 }
 
 .brand-project strong {
-  color: #fff;
+  color: var(--pbcm-dark-blue);
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
@@ -1526,25 +1555,25 @@ body {
 
 .brand-project span {
   margin-top: 3px;
-  color: var(--pbcm-green);
+  color: #6f7b80;
   font-size: 9px;
   font-weight: 800;
-  letter-spacing: .1em;
+  letter-spacing: .11em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .header-theme {
   padding-left: 22px;
-  border-left-color: rgb(179 201 56 / 34%);
+  border-left: 1px solid #deddd7;
 }
 
 .header-theme-kicker {
-  color: var(--pbcm-green);
+  color: var(--pbcm-dark-green);
 }
 
 .header-theme-title {
-  color: #eef5fa;
+  color: #394953;
   font-size: 12px;
   font-weight: 600;
 }
@@ -1557,8 +1586,9 @@ body {
 }
 
 .header-nav a {
-  padding: 8px 9px;
-  color: #e7eef4;
+  padding: 8px 10px;
+  color: #394953;
+  border-radius: 4px;
   font-size: 10.5px;
   font-weight: 700;
   text-decoration: none;
@@ -1567,39 +1597,40 @@ body {
 .header-nav a:hover,
 .header-nav a:focus-visible {
   color: var(--pbcm-dark-blue);
-  background: var(--pbcm-green);
+  background: #f2f4ee;
   outline: none;
 }
 
 .header-count {
-  min-width: 76px;
+  min-width: 80px;
   padding: 8px 10px;
-  color: #d8e4eb;
-  background: rgb(0 0 0 / 16%);
-  border: 1px solid rgb(179 201 56 / 34%);
-  border-radius: 3px;
+  color: #6b767d;
+  background: linear-gradient(135deg, #f7f8f3 0%, #eef1e8 100%);
+  border: 1px solid #d8ddd0;
+  border-radius: 6px;
 }
 
 .header-count strong {
-  color: var(--pbcm-green);
+  color: var(--pbcm-dark-blue);
   font-size: 17px;
 }
 
+/* Sidebar: neutral and editorial, with soft contemporary gradients. */
 .results-panel {
   background: var(--surface);
-  border-right: 1px solid #bdc99a;
-  box-shadow: 5px 0 18px rgb(0 0 0 / 12%);
+  border-right: 1px solid var(--surface-border);
+  box-shadow: 6px 0 24px rgb(5 20 31 / 14%);
 }
 
 .sidebar-header {
-  min-height: 66px;
-  padding: 11px 12px 10px 16px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8faef 100%);
-  border-bottom: 3px solid var(--pbcm-green);
+  min-height: 68px;
+  padding: 12px 13px 11px 17px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f6f1 100%);
+  border-bottom: 1px solid var(--surface-border);
 }
 
 .sidebar-kicker {
-  margin: 0 0 2px;
+  margin: 0 0 3px;
   color: var(--pbcm-dark-green);
   font-size: 9px;
   font-weight: 800;
@@ -1610,60 +1641,60 @@ body {
 .sidebar-header h1 {
   color: var(--pbcm-dark-blue);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
 }
 
 .result-count {
-  margin-top: 2px;
+  margin-top: 3px;
+  color: #6a757c;
   font-size: 11px;
 }
 
 .icon-button {
   color: var(--pbcm-dark-blue);
   background: #fff;
-  border-color: #b7c495;
-  border-radius: 3px;
+  border-color: #d4d7d0;
+  border-radius: 6px;
 }
 
 .icon-button:hover,
 .icon-button:focus-visible {
-  color: #fff;
-  background: var(--pbcm-dark-blue);
-  border-color: var(--pbcm-dark-blue);
+  background: #f0f2ec;
+  border-color: #abb4aa;
 }
 
 .sidebar-controls {
-  padding: 12px 12px 10px;
-  background: #f8faef;
-  border-bottom-color: #d6ddbd;
+  padding: 13px 12px 11px;
+  background: linear-gradient(180deg, #f7f6f1 0%, #f1f1eb 100%);
+  border-bottom: 1px solid var(--surface-border);
 }
 
 .search-field input {
   height: 42px;
   padding-left: 34px;
   background: #fff;
-  border: 1px solid #9cac75;
-  border-radius: 3px;
+  border: 1px solid #c7cbc4;
+  border-radius: 6px;
   font-size: 12px;
 }
 
 .search-field input:focus {
-  border-color: var(--pbcm-dark-blue);
-  box-shadow: 0 0 0 3px rgb(46 163 242 / 18%);
+  border-color: #6a91ad;
+  box-shadow: 0 0 0 3px rgb(46 163 242 / 12%);
 }
 
 .filter-row {
   gap: 5px;
-  margin-top: 9px;
+  margin-top: 10px;
 }
 
 .filter-chip {
   min-height: 30px;
-  padding: 4px 8px;
-  color: #293b49;
+  padding: 4px 9px;
+  color: #34454f;
   background: #fff;
-  border-color: #c6cfaa;
+  border-color: #d1d3cd;
   border-radius: 999px;
   font-size: 10px;
 }
@@ -1671,20 +1702,20 @@ body {
 .filter-chip:hover,
 .filter-chip:focus-visible {
   color: var(--pbcm-dark-blue);
-  background: var(--surface-green);
-  border-color: var(--pbcm-green);
+  background: #f0f3ec;
+  border-color: #aeb8ad;
 }
 
 .filter-chip.active {
   color: #fff;
-  background: var(--pbcm-dark-blue);
-  border-color: var(--pbcm-dark-blue);
-  box-shadow: inset 0 -3px var(--pbcm-green);
+  background: linear-gradient(135deg, #002d66 0%, #164f78 100%);
+  border-color: #0b406c;
+  box-shadow: 0 4px 10px rgb(0 45 102 / 16%);
 }
 
 .sidebar-actions {
-  margin-top: 9px;
-  color: #65706d;
+  margin-top: 10px;
+  color: #6a757c;
   font-size: 9.5px;
 }
 
@@ -1694,20 +1725,20 @@ body {
 }
 
 .institution-list {
-  background: #fbfcf6;
-  scrollbar-color: #a9b873 #f4f7e8;
+  background: #faf9f5;
+  scrollbar-color: #b5bbb4 #efeee8;
 }
 
 .institution-card {
   grid-template-columns: 34px minmax(0, 1fr);
   gap: 10px;
   padding: 11px 12px;
-  background: #fbfcf6;
-  border-bottom-color: #dfe4cf;
+  background: #faf9f5;
+  border-bottom-color: #e2e1da;
 }
 
 .institution-card:hover {
-  background: #f0f5d9;
+  background: #f2f3ee;
 }
 
 .institution-card:focus-visible {
@@ -1715,35 +1746,34 @@ body {
 }
 
 .institution-card.is-selected {
-  background: #e8f1c7;
-  box-shadow:
-    inset 5px 0 var(--pbcm-green),
-    inset 0 0 0 1px rgb(0 45 102 / 10%);
+  background: linear-gradient(90deg, #edf2f5 0%, #f7f8f4 100%);
+  box-shadow: inset 4px 0 #2f708f;
 }
 
 .card-heading strong {
-  color: var(--pbcm-dark-blue);
+  color: #18344c;
   font-size: 13px;
   font-weight: 700;
 }
 
 .card-heading > span,
 .stage-badge {
-  color: #5c696d;
+  color: #66727a;
 }
 
 .type-icon,
 .card-icon,
 .legend-type-icon {
   box-shadow:
-    0 2px 6px rgb(0 0 0 / 27%),
-    0 0 0 1px rgb(255 255 255 / 20%);
+    0 2px 6px rgb(0 0 0 / 22%),
+    0 0 0 1px rgb(255 255 255 / 35%);
 }
 
+/* Dark map remains the visual anchor. */
 .map-shell,
 .map-frame,
 .leaflet-container {
-  background: #07131f;
+  background: #0b1824;
 }
 
 .map-frame::after {
@@ -1752,31 +1782,34 @@ body {
   inset: 0;
   content: "";
   pointer-events: none;
+  background:
+    radial-gradient(circle at 72% 18%, rgb(46 163 242 / 6%), transparent 25%),
+    radial-gradient(circle at 82% 72%, rgb(179 201 56 / 4%), transparent 22%);
   box-shadow:
-    inset 0 0 80px rgb(0 0 0 / 25%),
-    inset 0 -80px 120px rgb(0 16 33 / 14%);
+    inset 0 0 82px rgb(0 0 0 / 22%),
+    inset 0 -80px 120px rgb(0 16 33 / 15%);
 }
 
 .leaflet-control-zoom {
-  border-color: rgb(179 201 56 / 42%) !important;
+  border-color: rgb(255 255 255 / 13%) !important;
 }
 
 .leaflet-control-zoom a {
-  color: #fff !important;
-  background: rgb(0 45 102 / 94%) !important;
+  color: #eef4f7 !important;
+  background: rgb(18 43 62 / 94%) !important;
 }
 
 .leaflet-control-zoom a:hover,
 .leaflet-control-zoom a:focus {
-  color: var(--pbcm-dark-blue) !important;
-  background: var(--pbcm-green) !important;
+  color: #fff !important;
+  background: #24516b !important;
 }
 
 .institution-tooltip {
   color: #fff;
-  background: rgb(0 31 70 / 97%);
-  border-color: rgb(179 201 56 / 48%);
-  border-radius: 4px;
+  background: rgb(11 30 43 / 96%);
+  border-color: rgb(255 255 255 / 16%);
+  border-radius: 6px;
 }
 
 .institution-tooltip strong {
@@ -1786,20 +1819,20 @@ body {
 .map-legend {
   width: 205px;
   padding: 12px 13px;
-  color: #f3f7f9;
-  background: rgb(0 30 67 / 92%);
-  border: 1px solid rgb(179 201 56 / 47%);
-  border-radius: 4px;
-  box-shadow: 0 7px 24px rgb(0 0 0 / 38%);
+  color: #eef4f7;
+  background: linear-gradient(145deg, rgb(17 42 60 / 94%) 0%, rgb(10 29 43 / 94%) 100%);
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 34%);
 }
 
 .legend-heading {
-  color: var(--pbcm-green);
+  color: #fff;
   font-size: 9.5px;
 }
 
 .legend-section > strong {
-  color: #dce8ef;
+  color: #d5e0e6;
   font-size: 9px;
 }
 
@@ -1809,49 +1842,57 @@ body {
 
 .sidebar-open {
   color: #fff;
-  background: rgb(0 45 102 / 96%);
-  border-color: rgb(179 201 56 / 48%);
-  border-radius: 3px;
+  background: linear-gradient(135deg, rgb(20 54 75 / 96%) 0%, rgb(10 38 56 / 96%) 100%);
+  border-color: rgb(255 255 255 / 14%);
+  border-radius: 7px;
   font-weight: 700;
 }
 
 .sidebar-open:hover,
 .sidebar-open:focus-visible {
-  color: var(--pbcm-dark-blue);
-  background: var(--pbcm-green);
+  background: #24516b;
 }
 
-/* Brighter, brand-aligned illuminated pins */
+/* Preserve the illuminated markers, but keep the glow controlled. */
 .marker-glow {
-  opacity: .54;
+  opacity: .34;
 }
 
 .marker-face {
-  border-color: rgb(255 255 255 / 92%);
+  border-color: rgb(255 255 255 / 85%);
   box-shadow:
-    0 3px 7px rgb(0 0 0 / 52%),
-    0 0 10px color-mix(in srgb, var(--type-color) 62%, transparent);
+    0 3px 7px rgb(0 0 0 / 48%),
+    0 0 8px color-mix(in srgb, var(--type-color) 46%, transparent);
+}
+
+.institution-marker:hover .marker-glow {
+  opacity: .58;
+}
+
+.institution-marker.is-selected .marker-glow {
+  opacity: .78;
 }
 
 .institution-marker.is-selected .marker-face {
   box-shadow:
-    0 4px 11px rgb(0 0 0 / 58%),
-    0 0 8px #fff,
-    0 0 20px var(--type-color),
-    0 0 42px color-mix(in srgb, var(--type-color) 78%, transparent);
+    0 4px 11px rgb(0 0 0 / 56%),
+    0 0 7px rgb(255 255 255 / 72%),
+    0 0 16px var(--type-color),
+    0 0 30px color-mix(in srgb, var(--type-color) 58%, transparent);
 }
 
+/* Profile drawer: calm paper-like surface with subtle brand cues. */
 .profile-drawer {
-  background: #fbfcf6;
-  border-left: 3px solid var(--pbcm-green);
-  box-shadow: -12px 0 34px rgb(0 0 0 / 34%);
+  background: #faf9f5;
+  border-left: 1px solid #d9d8d0;
+  box-shadow: -12px 0 34px rgb(0 0 0 / 30%);
 }
 
 .drawer-close {
   color: var(--pbcm-dark-blue);
-  background: rgb(255 255 255 / 95%);
-  border-color: #b9c58f;
-  border-radius: 3px;
+  background: rgb(255 255 255 / 94%);
+  border-color: #d2d5ce;
+  border-radius: 6px;
   font-weight: 700;
 }
 
@@ -1865,12 +1906,12 @@ body {
 .profile-header,
 .profile-headline,
 .profile-body {
-  background: #fbfcf6;
+  background: #faf9f5;
 }
 
 .profile-image {
   height: 205px;
-  border-bottom: 5px solid var(--pbcm-green);
+  border-bottom: 1px solid #deddd6;
 }
 
 .profile-header {
@@ -1886,23 +1927,26 @@ body {
 }
 
 .profile-classification {
-  color: var(--pbcm-dark-green);
+  color: #5d6b70;
 }
 
 .profile-headline {
-  padding: 20px 23px 18px;
-  color: var(--pbcm-dark-blue);
+  margin: 0 18px;
+  padding: 18px 5px 17px;
+  color: #17364d;
   font-family: var(--font-display);
   font-size: 19px;
-  border-left: 6px solid var(--pbcm-green);
+  border-top: 1px solid #deddd6;
+  border-bottom: 1px solid #deddd6;
 }
 
 .profile-stat-grid {
-  background: #ced7aa;
+  gap: 1px;
+  background: #d9ddd8;
 }
 
 .profile-stat {
-  background: var(--surface-green);
+  background: linear-gradient(145deg, #f5f6f1 0%, #ecefe7 100%);
 }
 
 .profile-stat strong {
@@ -1922,11 +1966,11 @@ body {
 }
 
 .profile-highlights li::marker {
-  color: var(--pbcm-dark-green);
+  color: #6f8c21;
 }
 
 .profile-resource {
-  color: #0069a6;
+  color: #176f9d;
 }
 
 .profile-resource:hover,
@@ -1941,7 +1985,7 @@ body {
 
 @media (max-width: 1120px) {
   .site-header {
-    grid-template-columns: minmax(310px, auto) minmax(220px, 1fr) auto;
+    grid-template-columns: minmax(320px, auto) minmax(220px, 1fr) auto;
   }
 
   .header-nav {
@@ -1984,7 +2028,6 @@ body {
   .site-header {
     grid-template-columns: minmax(0, 1fr);
     justify-items: start;
-    border-bottom-width: 3px;
   }
 
   .brand-logo-wrap {
@@ -2006,7 +2049,7 @@ body {
   }
 
   .profile-drawer {
-    border-top: 4px solid var(--pbcm-green);
+    border-top: 1px solid #d9d8d0;
     border-left: 0;
   }
 }

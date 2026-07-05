@@ -1,13 +1,14 @@
-# PBCM-branded Lighting Up Canada map
+# Refined PBCM map styling
 
-Files:
-- map.html
-- style.css
-- script.js
-- institutions.json (included from the current map data build)
-- assets/pbcm-horizontal-logo.jpg
-- assets/pbcm-logo.jpg
+This revision removes the neon-green borders and uses the PBCM green only as a restrained supporting accent.
 
-Upload these into the same repository folder. Keep `index.html` beside `map.html`.
+Key changes:
+- White header matching the supplied logo background
+- Integrated logo without a floating card or contrasting box
+- Neutral paper-like directory and profile surfaces
+- Dark blue contemporary gradients for active controls and map overlays
+- Softer selected states and borders
+- Controlled marker glow rather than broad neon effects
+- Dark map remains the visual focus
 
-The redesign uses the PBCM brand guide palette and typography while retaining the dark map and glowing institution markers. No map filtering, profile, or data-loading logic was removed.
+Upload `map.html`, `style.css`, `script.js`, `institutions.json`, and `assets/` together.
