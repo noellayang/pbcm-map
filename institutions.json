@@ -745,5 +745,62 @@
       "source": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/",
       "position": "center"
     }
+  },
+  {
+    "id": "child-learning-center",
+    "name": "University of Guelph Child Care and Learning Centre",
+    "shortName": "Child Care and Learning Centre",
+    "type": "other",
+    "city": "Guelph",
+    "province": "ON",
+    "coordinates": {
+      "lat": 43.55094,
+      "lng": -80.24513
+    },
+    "coordinatesApproximate": true,
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": 2020,
+    "timeframe": "2020-01-01",
+    "headline": "Fully Plant-Based Child-Care Menu Introduced in 2020",
+    "stats": [
+      {
+        "value": "0.65",
+        "label": "Reported relative reduction in monthly menu-related carbon footprint"
+      },
+      {
+        "value": "2020",
+        "label": "Year documented"
+      }
+    ],
+    "summary": "The University of Guelph Child Care and Learning Centre switched to a fully plant-based menu in 2020. A Foodsteps assessment reported that the change reduced the menu’s monthly carbon footprint by nearly 65%, saving more than 1,900 kg CO2e per month compared with the previous meat-and-dairy menu.",
+    "achievements": [
+      "Introduced a fully plant-based menu for meals and snacks in 2020.",
+      "Removed meat, dairy and eggs from the centre’s regular menu.",
+      "Reduced the reported monthly menu-related carbon footprint by nearly 65%.",
+      "Saved an estimated 1,900 kg CO2e per month compared with the previous menu.",
+      "Improved meal inclusion and simplified accommodation of dietary restrictions and allergies."
+    ],
+    "organizationsInvolved": [
+      "University of Guelph",
+      "University of Guelph Child Care and Learning Centre",
+      "Foodsteps"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/"
+      }
+    ],
+    "lastUpdated": "2026-07-04",
+    "verified": true,
+    "image": {
+      "url": "https://news.uoguelph.ca/wp-content/uploads/2022/09/lentil-shepherds-pie-500x333.jpg",
+      "kind": "initiative",
+      "alt": "Plant-based lentil shepherd's pie portions prepared at the University of Guelph Child Care and Learning Centre",
+      "credit": "University of Guelph",
+      "source": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/",
+      "position": "center"
+    }
   }
 ]
