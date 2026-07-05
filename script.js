@@ -565,304 +565,335 @@ const UNPUBLISHED_RESEARCH_LEADS = [
 
 
 /* =========================================================
-   PROFILE IMAGES
+   PROFILE IMAGES — FAST, CURATED, NON-LOGO
    =========================================================
 
-   Image policy:
-   1. Prefer a unique source-page preview when it appears related
-      to plant-based food, dining, procurement, or an on-the-ground
-      initiative.
-   2. Preserve curated scenic or institution-specific image links
-      when they are still the best available option.
-   3. Use a unique Wikipedia/Wikimedia image of the institution,
-      campus, municipality, or public body when no better initiative
-      image is available.
-   4. Fall back to varied plant-forward food imagery rather than
-      repeating generic icons.
+   Production image policy:
+   1. Use an explicitly approved initiative/dining image from JSON.
+   2. Use a reviewed institution/campus/community photograph.
+   3. Use a relevant plant-forward food photograph.
+
+   The map deliberately does not scrape source pages, call Microlink,
+   or query Wikipedia at click time. Those requests caused slow and
+   inconsistent profile loading and could return logos or text graphics.
 */
 
-const SCENIC_IMAGE_OVERRIDES = {
-  "burnaby": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATUOAM8ovnNGVTPT6PM5ZBJt0NY4qv3ELZ6U_qmi4YTGH-qdofUiZBGk&s=10",
-  "district-of-north-vancouver": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlyxzyam8JQVGhJt8pjL9jrX42RhVxCLbDIRN8X85BQ&s=10",
-  "vancouver": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
-  "halton-region": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS69qOrp0juP07gCE-54R7UKaOKsGqyp-5jvlRLOkS4Eg&s=10",
-  "kingston": "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
-  "montr-al": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
-  "vancouver-general-hospital": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrHMOUbr7FFeXYcoF94NEWtYukkXZQSDVTPjfEicNhlalguaDgLyrFEtUw&s=10",
-  "university-of-british-columbia": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=3840&fm=webp&q=75&fit=max",
-  "university-of-guelph": "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=3840&q=75",
-  "child-learning-center": "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg"
+const APPROVED_IMAGE_KINDS = new Set([
+  "initiative",
+  "dining",
+  "food-service",
+  "campus",
+  "institution",
+  "facility",
+  "community",
+  "food"
+]);
+
+const LOGO_OR_TEXT_IMAGE_PATTERNS = [
+  /logo/i,
+  /wordmark/i,
+  /brandmark/i,
+  /crest/i,
+  /seal/i,
+  /favicon/i,
+  /emblem/i,
+  /coat[-_ ]?of[-_ ]?arms/i,
+  /social[-_ ]?avatar/i
+];
+
+/*
+  Reviewed direct photographs. These are used only where the subject is
+  clearly a place, facility, campus, or community—not a logo or wordmark.
+  Future approved records should preferably carry their own `image` object
+  in institutions.json instead of expanding this list.
+*/
+const CURATED_PROFILE_IMAGES = {
+  "vancouver": {
+    url: "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
+    kind: "community",
+    alt: "Aerial view of Vancouver"
+  },
+  "kingston": {
+    url: "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
+    kind: "community",
+    alt: "Waterfront and cityscape in Kingston, Ontario"
+  },
+  "montr-al": {
+    url: "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
+    kind: "community",
+    alt: "City view of Montréal, Québec"
+  },
+  "university-of-british-columbia": {
+    url: "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+    kind: "campus",
+    alt: "University of British Columbia campus"
+  },
+  "university-of-guelph": {
+    url: "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=1600&q=72",
+    kind: "campus",
+    alt: "University of Guelph campus and Johnston Green"
+  },
+  "child-learning-center": {
+    url: "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
+    kind: "facility",
+    alt: "Outdoor learning and play area at a child-care facility"
+  }
 };
 
 /*
-  These titles resolve common naming differences and improve
-  Wikimedia matching. Entries not listed here use institution.name.
+  Stable, direct thematic photographs. They are selected from the record's
+  subject matter and institution type. They are not logos, text slides, or
+  dynamically scraped previews.
 */
-const WIKIPEDIA_TITLES = {
-  "montr-al": "Montreal",
-  "district-of-north-vancouver": "District of North Vancouver",
-  "university-of-british-columbia": "University of British Columbia",
-  "university-of-guelph": "University of Guelph",
-  "university-of-toronto-st-george-campus": "University of Toronto",
-  "university-of-toronto-mississauga": "University of Toronto Mississauga",
-  "trinity-college-university-of-toronto": "Trinity College, Toronto",
-  "university-of-toronto-scarborough": "University of Toronto Scarborough",
-  "government-of-canada-health-canada": "Health Canada",
-  "british-columbia-institute-of-technology": "British Columbia Institute of Technology",
-  "trinity-western-university": "Trinity Western University",
-  "eric-hamber-secondary-school": "Eric Hamber Secondary School",
-  "provincial-health-services-authority": "Provincial Health Services Authority",
-  "providence-health-care": "Providence Health Care (Vancouver)",
-  "newfoundland-and-labrador-health-services": "Newfoundland and Labrador Health Services"
+const THEMATIC_PROFILE_IMAGES = {
+  dining: [
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76"
+  ],
+  procurement: [
+    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76"
+  ],
+  community: [
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76"
+  ],
+  healthcare: [
+    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76"
+  ],
+  education: [
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76"
+  ],
+  fallback: [
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
+    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76"
+  ]
 };
 
-const GENERIC_SOURCE_PATTERNS = [
-  /nourishleadership\.ca\/programs\//i,
-  /impactclimate\.ca\/wp-content\//i,
-  /forwardfood\.org\/testimonials/i,
-  /instagram\.com\//i,
-  /facebook\.com\//i,
-  /linkedin\.com\//i,
-  /youtube\.com\//i,
-  /youtu\.be\//i,
-  /\.pdf($|\?)/i
-];
+const profileImageDetailsCache = new Map();
+const profileImagePreloadCache = new Map();
 
-const FOOD_RELATED_PATTERNS = [
-  /plant/i,
-  /vegan/i,
-  /vegetarian/i,
-  /food/i,
-  /meal/i,
-  /menu/i,
-  /dining/i,
-  /dish/i,
-  /chef/i,
-  /kitchen/i,
-  /cafeteria/i,
-  /procurement/i,
-  /recipe/i,
-  /catering/i,
-  /agri-food/i,
-  /sustainable food/i
-];
+function stableImageIndex(value, length) {
+  if (!length) return 0;
 
-const THEMATIC_FALLBACK_IMAGES = [
-  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1600&q=80"
-];
-
-let sourceUseCounts = new Map();
-
-function rebuildSourceUseCounts() {
-  sourceUseCounts = INSTITUTIONS.reduce((counts, institution) => {
-    institution.resources?.forEach((resource) => {
-      const url = resource?.url?.trim();
-
-      if (/^https?:\/\//i.test(url ?? "")) {
-        counts.set(url, (counts.get(url) ?? 0) + 1);
-      }
-    });
-
-    return counts;
-  }, new Map());
-}
-
-function sourcePreviewCandidates(institution) {
-  return (institution.resources ?? [])
-    .map((resource) => {
-      const url = resource?.url?.trim() ?? "";
-      const label = `${resource?.label ?? ""} ${url}`;
-
-      if (!/^https?:\/\//i.test(url)) {
-        return null;
-      }
-
-      const isShared = (sourceUseCounts.get(url) ?? 0) > 1;
-      const isGeneric = GENERIC_SOURCE_PATTERNS.some(
-        (pattern) => pattern.test(url)
-      );
-
-      if (isShared || isGeneric) {
-        return null;
-      }
-
-      let score = 1;
-
-      if (FOOD_RELATED_PATTERNS.some((pattern) => pattern.test(label))) {
-        score += 6;
-      }
-
-      if (/dining|hospitality|sustainability|student|caf|foodservice/i.test(label)) {
-        score += 2;
-      }
-
-      return {
-        url,
-        score
-      };
-    })
-    .filter(Boolean)
-    .sort((a, b) => b.score - a.score);
-}
-
-function initiativeSourcePreviewImage(institution) {
-  const bestCandidate = sourcePreviewCandidates(institution)[0];
-
-  if (!bestCandidate) {
-    return "";
-  }
-
-  return `https://api.microlink.io/?url=${encodeURIComponent(bestCandidate.url)}&embed=image.url`;
-}
-
-function curatedScenicImage(institution) {
-  return SCENIC_IMAGE_OVERRIDES[institution.id]
-    ?? institution.image
-    ?? "";
-}
-
-function wikipediaTitleFor(institution) {
-  return WIKIPEDIA_TITLES[institution.id] ?? institution.name;
-}
-
-async function wikipediaImageFor(institution) {
-  const title = wikipediaTitleFor(institution);
-
-  if (!title) {
-    return "";
-  }
-
-  const endpoint =
-    `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
-
-  try {
-    const response = await fetch(endpoint, {
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (!response.ok) {
-      return "";
-    }
-
-    const data = await response.json();
-
-    return data.originalimage?.source
-      ?? data.thumbnail?.source
-      ?? "";
-  } catch (error) {
-    console.warn(`Could not load a Wikimedia image for ${institution.name}.`, error);
-    return "";
-  }
-}
-
-function thematicFallbackImage(institution) {
-  const seed = Array.from(institution.id).reduce(
-    (value, character) => value + character.charCodeAt(0),
+  const hash = Array.from(String(value ?? "")).reduce(
+    (total, character) => ((total * 31) + character.charCodeAt(0)) >>> 0,
     0
   );
 
-  return THEMATIC_FALLBACK_IMAGES[seed % THEMATIC_FALLBACK_IMAGES.length];
+  return hash % length;
 }
 
-async function resolveProfileImage(institution) {
-  const initiativeImage = initiativeSourcePreviewImage(institution);
-
-  if (initiativeImage) {
-    return initiativeImage;
-  }
-
-  const scenicImage = curatedScenicImage(institution);
-
-  if (scenicImage) {
-    return scenicImage;
-  }
-
-  const wikipediaImage = await wikipediaImageFor(institution);
-
-  if (wikipediaImage) {
-    return wikipediaImage;
-  }
-
-  return thematicFallbackImage(institution);
+function isProbablyLogoOrTextImage(url) {
+  return LOGO_OR_TEXT_IMAGE_PATTERNS.some(
+    (pattern) => pattern.test(String(url ?? ""))
+  );
 }
 
-function profileImagePlaceholder(institution) {
-  const label = TYPE_LABELS?.[institution.type] ?? "Institution";
+function normalizeApprovedImage(institution) {
+  const candidate = institution.image;
 
-  return `
-    <div
-      class="profile-image-placeholder"
-      aria-hidden="true"
-      style="
-        width:100%;
-        height:100%;
-        display:flex;
-        flex-direction:column;
-        justify-content:flex-end;
-        gap:4px;
-        padding:20px;
-        color:#f2f5f7;
-        background:
-          radial-gradient(circle at 78% 22%, color-mix(in srgb, var(--type-color) 45%, transparent), transparent 34%),
-          linear-gradient(135deg, #172738 0%, #29445b 100%);
-      "
-    >
-      <strong style="font-size:16px;line-height:1.25;">
-        ${escapeHtml(institution.name)}
-      </strong>
-      <span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.78;">
-        ${escapeHtml(label)}
-      </span>
-    </div>
-  `;
+  if (!candidate) return null;
+
+  const details = typeof candidate === "string"
+    ? {
+        url: candidate,
+        kind: institution.imageKind,
+        alt: institution.imageAlt,
+        credit: institution.imageCredit,
+        source: institution.imageSource,
+        position: institution.imagePosition
+      }
+    : candidate;
+
+  const url = String(details?.url ?? "").trim();
+  const kind = String(details?.kind ?? "").trim().toLowerCase();
+
+  if (
+    !/^https?:\/\//i.test(url)
+    && !url.startsWith("./")
+    && !url.startsWith("assets/")
+    && !url.startsWith("/assets/")
+  ) {
+    return null;
+  }
+
+  if (!APPROVED_IMAGE_KINDS.has(kind) || isProbablyLogoOrTextImage(url)) {
+    return null;
+  }
+
+  return {
+    url,
+    kind,
+    alt: details.alt || institution.name,
+    credit: details.credit || "",
+    source: details.source || "",
+    position: details.position || "center"
+  };
+}
+
+function thematicGroupFor(institution) {
+  const text = [
+    institution.headline,
+    institution.summary,
+    institution.stageLabel,
+    ...(institution.achievements ?? [])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (/hospital|patient|health care|healthcare|long-term care|clinical/.test(text)) {
+    return "healthcare";
+  }
+
+  if (/procurement|purchas|contract|supplier|catering|vendor|food service/.test(text)) {
+    return "procurement";
+  }
+
+  if (/menu|meal|dish|dining|cafeteria|chef|kitchen|recipe|food station/.test(text)) {
+    return "dining";
+  }
+
+  if (institution.type === "university") return "education";
+  if (institution.type === "hospital") return "healthcare";
+  if (institution.type === "city" || institution.type === "government") {
+    return "community";
+  }
+
+  return "fallback";
+}
+
+function thematicImageDetails(institution) {
+  const group = thematicGroupFor(institution);
+  const choices = THEMATIC_PROFILE_IMAGES[group]
+    ?? THEMATIC_PROFILE_IMAGES.fallback;
+  const index = stableImageIndex(institution.id, choices.length);
+
+  return {
+    url: choices[index],
+    kind: "food",
+    alt: `Plant-forward food representing the ${institution.name} initiative`,
+    credit: "Illustrative plant-forward food image",
+    source: "",
+    position: "center"
+  };
+}
+
+function profileImageDetails(institution) {
+  if (profileImageDetailsCache.has(institution.id)) {
+    return profileImageDetailsCache.get(institution.id);
+  }
+
+  const details = normalizeApprovedImage(institution)
+    ?? CURATED_PROFILE_IMAGES[institution.id]
+    ?? thematicImageDetails(institution);
+
+  const normalized = {
+    ...details,
+    alt: details.alt || institution.name,
+    position: details.position || "center"
+  };
+
+  profileImageDetailsCache.set(institution.id, normalized);
+  return normalized;
+}
+
+function imageFallbackCandidates(institution) {
+  const primary = profileImageDetails(institution);
+  const thematic = thematicImageDetails(institution);
+  const universal = THEMATIC_PROFILE_IMAGES.fallback.map((url) => ({
+    url,
+    kind: "food",
+    alt: `Plant-forward food representing the ${institution.name} initiative`,
+    credit: "Illustrative plant-forward food image",
+    source: "",
+    position: "center"
+  }));
+
+  const seen = new Set();
+
+  return [primary, thematic, ...universal].filter((item) => {
+    if (!item?.url || seen.has(item.url) || isProbablyLogoOrTextImage(item.url)) {
+      return false;
+    }
+
+    seen.add(item.url);
+    return true;
+  });
+}
+
+function preloadProfileImage(institution) {
+  if (profileImagePreloadCache.has(institution.id)) {
+    return profileImagePreloadCache.get(institution.id);
+  }
+
+  const candidates = imageFallbackCandidates(institution);
+  const promise = new Promise((resolve) => {
+    let index = 0;
+
+    const tryNext = () => {
+      const candidate = candidates[index++];
+
+      if (!candidate) {
+        resolve(candidates[candidates.length - 1] ?? null);
+        return;
+      }
+
+      const image = new Image();
+      image.decoding = "async";
+      image.onload = () => resolve(candidate);
+      image.onerror = tryNext;
+      image.src = candidate.url;
+    };
+
+    tryNext();
+  });
+
+  profileImagePreloadCache.set(institution.id, promise);
+  return promise;
 }
 
 async function hydrateProfileImage(institution) {
   const figure = drawerContent?.querySelector(".profile-image");
+  const image = figure?.querySelector("img");
 
-  if (!figure) {
-    return;
-  }
+  if (!figure || !image) return;
 
-  const image = figure.querySelector("img");
-  const placeholder = figure.querySelector(".profile-image-placeholder");
-  const resolvedUrl = await resolveProfileImage(institution);
+  figure.classList.add("is-loading");
+  const resolved = await preloadProfileImage(institution);
 
-  /*
-    The user may have opened another profile while the asynchronous
-    image request was running. Do not insert an image into the wrong
-    institution's drawer.
-  */
   if (
-    selectedInstitutionId !== institution.id
+    !resolved
+    || selectedInstitutionId !== institution.id
     || !drawerContent?.contains(figure)
   ) {
     return;
   }
 
-  if (!resolvedUrl || !image) {
-    return;
+  image.alt = resolved.alt;
+  image.style.objectPosition = resolved.position;
+
+  if (image.src !== new URL(resolved.url, window.location.href).href) {
+    image.src = resolved.url;
   }
 
   image.addEventListener("load", () => {
-    image.hidden = false;
-    placeholder?.remove();
+    figure.classList.remove("is-loading");
   }, { once: true });
 
-  image.addEventListener("error", () => {
-    image.remove();
+  image.addEventListener("error", async () => {
+    profileImagePreloadCache.delete(institution.id);
+    const fallback = thematicImageDetails(institution);
+    image.src = fallback.url;
+    image.alt = fallback.alt;
+    image.style.objectPosition = fallback.position;
+    figure.classList.remove("is-loading");
   }, { once: true });
-
-  image.src = resolvedUrl;
 }
 
 /* =========================================================
@@ -1131,6 +1162,16 @@ function renderInstitutionList(institutions) {
     .join("");
 
   listElement.querySelectorAll(".institution-card").forEach((card) => {
+    const institution = getInstitutionById(card.dataset.institutionId);
+
+    card.addEventListener("pointerenter", () => {
+      if (institution) preloadProfileImage(institution);
+    }, { once: true });
+
+    card.addEventListener("focus", () => {
+      if (institution) preloadProfileImage(institution);
+    }, { once: true });
+
     card.addEventListener("click", () => {
       selectInstitution(card.dataset.institutionId);
     });
@@ -1313,21 +1354,21 @@ function renderProfileDrawer(institution) {
         .join("")
     : `<p class="empty-value">No public sources currently listed.</p>`;
 
-  const initialImageUrl = curatedScenicImage(institution);
+  const initialImage = profileImageDetails(institution);
 
   const profileImage = `
     <figure
-      class="profile-image"
+      class="profile-image is-loading"
       style="--type-color:${escapeHtml(typeColor(institution.type))};"
     >
       <img
-        ${initialImageUrl ? `src="${escapeHtml(initialImageUrl)}"` : ""}
-        alt="${escapeHtml(institution.name)}"
-        loading="lazy"
+        src="${escapeHtml(initialImage.url)}"
+        alt="${escapeHtml(initialImage.alt)}"
+        loading="eager"
         decoding="async"
-        ${initialImageUrl ? "" : "hidden"}
+        fetchpriority="high"
+        style="object-position:${escapeHtml(initialImage.position)};"
       >
-      ${initialImageUrl ? "" : profileImagePlaceholder(institution)}
     </figure>
   `;
 
@@ -1463,21 +1504,6 @@ function renderProfileDrawer(institution) {
       </div>
     </article>
   `;
-
-  const profileImageElement = drawerContent.querySelector(".profile-image img");
-
-  profileImageElement?.addEventListener("error", () => {
-    profileImageElement.remove();
-
-    const figure = drawerContent.querySelector(".profile-image");
-
-    if (figure && !figure.querySelector(".profile-image-placeholder")) {
-      figure.insertAdjacentHTML(
-        "beforeend",
-        profileImagePlaceholder(institution)
-      );
-    }
-  }, { once: true });
 
   hydrateProfileImage(institution);
 }

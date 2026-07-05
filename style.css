@@ -2064,3 +2064,56 @@ body {
     font-size: 22px;
   }
 }
+
+
+/* =========================================================
+   FAST PROFILE IMAGE STATES
+   ========================================================= */
+.profile-image {
+  isolation: isolate;
+  background:
+    linear-gradient(135deg, #e7e8e3 0%, #d9deda 48%, #e9e8e3 100%);
+}
+
+.profile-image::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(
+      105deg,
+      transparent 28%,
+      rgb(255 255 255 / 48%) 45%,
+      transparent 62%
+    );
+  transform: translateX(-100%);
+}
+
+.profile-image.is-loading::after {
+  opacity: 1;
+  animation: profile-image-shimmer 1.15s ease-in-out infinite;
+}
+
+.profile-image img {
+  position: relative;
+  z-index: 1;
+  background: #e5e7e3;
+  transition: opacity 180ms ease;
+}
+
+.profile-image.is-loading img {
+  opacity: 0.76;
+}
+
+@keyframes profile-image-shimmer {
+  to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-image.is-loading::after {
+    animation: none;
+  }
+}
