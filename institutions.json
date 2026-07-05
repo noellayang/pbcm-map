@@ -20,10 +20,6 @@
       {
         "value": "2021",
         "label": "Year documented"
-      },
-      {
-        "value": "2021",
-        "label": "Year documented"
       }
     ],
     "summary": "Passed November 2, 2021 Vancouver City Council",
@@ -43,7 +39,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
+      "kind": "community",
+      "alt": "Aerial view of Vancouver",
+      "credit": "Institution/community image",
+      "source": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
+      "position": "center"
+    }
   },
   {
     "id": "halton-region",
@@ -63,10 +67,6 @@
     "timeframe": "2023-07-12",
     "headline": "Municipal Plant-Forward Motion",
     "stats": [
-      {
-        "value": "2023",
-        "label": "Year documented"
-      },
       {
         "value": "2023",
         "label": "Year documented"
@@ -93,7 +93,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.halton.ca/getmedia/df42da95-be1a-4d33-b490-47862e8c2dcb/cs-dundas-lions-valley-park-mobile-may-2026.jpg?ext=.jpg&height=400&mediaprotectionhash=4ccf099efd4f381e8c3bd1639001d2c6d3399bc789eb2253c8879910f11985c4&width=500",
+      "kind": "community",
+      "alt": "Aerial view of the Dundas Street bridge and Lions Valley Park in Halton Region",
+      "credit": "Halton Region",
+      "source": "https://www.halton.ca/",
+      "position": "center"
+    }
   },
   {
     "id": "kingston",
@@ -113,10 +121,6 @@
     "timeframe": "2024-10-15",
     "headline": "Plant-Based Motion Passed",
     "stats": [
-      {
-        "value": "2024",
-        "label": "Year documented"
-      },
       {
         "value": "2024",
         "label": "Year documented"
@@ -140,7 +144,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
+      "kind": "community",
+      "alt": "Waterfront and cityscape in Kingston, Ontario",
+      "credit": "Institution/community image",
+      "source": "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
+      "position": "center"
+    }
   },
   {
     "id": "montr-al",
@@ -187,7 +199,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
+      "kind": "community",
+      "alt": "City view of Montréal, Québec",
+      "credit": "Institution/community image",
+      "source": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
+      "position": "center"
+    }
   },
   {
     "id": "vancouver-general-hospital",
@@ -210,10 +230,6 @@
       {
         "value": "2024",
         "label": "Year documented"
-      },
-      {
-        "value": "2024",
-        "label": "Year documented"
       }
     ],
     "summary": "Vancouver General Hospital (Vancouver Coastal Health)",
@@ -232,7 +248,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://med-fom-emerg.sites.olt.ubc.ca/files/2012/10/VGH-300x224.jpg",
+      "kind": "facility",
+      "alt": "Emergency entrance at Vancouver General Hospital",
+      "credit": "UBC Department of Emergency Medicine",
+      "source": "https://emergency.med.ubc.ca/vancouver-general-hospital/",
+      "position": "center"
+    }
   },
   {
     "id": "university-of-british-columbia",
@@ -269,7 +293,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "kind": "campus",
+      "alt": "University of British Columbia campus",
+      "credit": "Institution/community image",
+      "source": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "position": "center"
+    }
   },
   {
     "id": "child-learning-center",
@@ -299,7 +331,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
+      "kind": "facility",
+      "alt": "Outdoor learning and play area at a child-care facility",
+      "credit": "Institution/community image",
+      "source": "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
+      "position": "center"
+    }
   },
   {
     "id": "university-of-calgary",
@@ -334,7 +374,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.ucalgary.ca/live-uc-ucalgary-site/sites/default/files/styles/ucws_trio_cta_circle/public/2022-05/220420_Start-Something-Pageanty-013.jpg?h=a06990a2&itok=R_bNp0K7",
+      "kind": "campus",
+      "alt": "University of Calgary campus banner",
+      "credit": "University of Calgary",
+      "source": "https://www.ucalgary.ca/newsroom/downloadable-newsroom-images",
+      "position": "center"
+    }
   },
   {
     "id": "university-of-winnipeg",
@@ -351,7 +399,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": 2022,
-    "timeframe": "",
+    "timeframe": "2022-09-01",
     "headline": "Sprout Converted to a 100% Plant-Based Campus Food Outlet",
     "stats": [
       {
@@ -378,7 +426,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.uwinnipeg.ca/future-student/images/campus-photos/virtual-campus-tour-1.jpg",
+      "kind": "campus",
+      "alt": "Wesley Hall at the University of Winnipeg",
+      "credit": "University of Winnipeg",
+      "source": "https://www.uwinnipeg.ca/future-student/student-exp/campus-photos.html",
+      "position": "center"
+    }
   },
   {
     "id": "university-of-toronto-st-george-campus",
@@ -395,7 +451,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2022,
-    "timeframe": "",
+    "timeframe": "2022-08-01",
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
@@ -422,7 +478,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.utoronto.ca/sites/default/files/styles/banner_380/public/2024-07/stgeorge-campus-cover_4.png?h=70150442&itok=nVR9t_l2",
+      "kind": "campus",
+      "alt": "Aerial view of the University of Toronto St. George campus",
+      "credit": "University of Toronto",
+      "source": "https://www.utoronto.ca/university-life/campuses/st-george",
+      "position": "center"
+    }
   },
   {
     "id": "university-of-toronto-mississauga",
@@ -439,7 +503,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2022,
-    "timeframe": "",
+    "timeframe": "2022-08-01",
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
@@ -466,7 +530,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.utoronto.ca/sites/default/files/styles/banner_380/public/2021-10/cover-utm-hazel-mccallion-bldg.jpeg?h=70150442&itok=VMmn89YP",
+      "kind": "campus",
+      "alt": "Hazel McCallion Academic Learning Centre at University of Toronto Mississauga",
+      "credit": "University of Toronto",
+      "source": "https://www.utoronto.ca/university-life/campuses/mississauga",
+      "position": "center"
+    }
   },
   {
     "id": "universit-laval",
@@ -506,7 +578,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.ulaval.ca/sites/default/files/notre-universite/photos-et-logo/salle-de-presse/campus-vue-aerienne.jpg",
+      "kind": "campus",
+      "alt": "Aerial view of the Université Laval campus",
+      "credit": "Marc Robitaille / Université Laval",
+      "source": "https://www.ulaval.ca/notre-universite/salle-de-presse/photos-et-logo",
+      "position": "center"
+    }
   },
   {
     "id": "mcgill-university",
@@ -541,7 +621,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "https://www.mcgill.ca/newsroom/files/newsroom/styles/media_gallery_thumbnail/public/arts_building_cupola_summer.jpg?itok=eIbJYBuE",
+      "kind": "campus",
+      "alt": "Arts Building cupola at McGill University",
+      "credit": "McGill University / Université McGill",
+      "source": "https://www.mcgill.ca/newsroom/photo-bank",
+      "position": "center"
+    }
   },
   {
     "id": "dalhousie-university",
@@ -558,7 +646,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": null,
-    "timeframe": "2030-12-31",
+    "timeframe": "1969-12-31 | 2030-12-31",
     "headline": "Plant-Based Baseline Established and 50% Menu Goal Set for 2030",
     "stats": [
       {
@@ -581,7 +669,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20700%22%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%22%20stop-color%3D%22hsl%2818%2045%25%2023%25%29%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22hsl%2871%2048%25%2012%25%29%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22700%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Ccircle%20cx%3D%22980%22%20cy%3D%22140%22%20r%3D%22220%22%20fill%3D%22%23b3c938%22%20opacity%3D%22.13%22%2F%3E%0A%3Ccircle%20cx%3D%22150%22%20cy%3D%22650%22%20r%3D%22280%22%20fill%3D%22%232ea3f2%22%20opacity%3D%22.10%22%2F%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.10%22%20stroke-width%3D%223%22%3E%0A%3Cpath%20d%3D%22M-50%20170%20C250%2040%20410%20270%20710%20130%20S1050%2070%201260%20220%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20430%20C220%20290%20450%20560%20760%20400%20S1080%20350%201280%20520%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2895%20105%29%22%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2286%22%20height%3D%2286%22%20rx%3D%2218%22%20fill%3D%22%23b3c938%22%2F%3E%0A%3Cpath%20d%3D%22M18%2065V36l18-10v11l22-11v11l18-7v35H61V51H49v14H18z%22%20fill%3D%22%2310283b%22%2F%3E%0A%3C%2Fg%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22255%22%20fill%3D%22%23b3c938%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22700%22%20letter-spacing%3D%223%22%3EEDUCATIONAL%20INSTITUTION%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22345%22%20fill%3D%22%23fff%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22700%22%3EDalhousie%20University%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22405%22%20fill%3D%22%23d5e0e7%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2230%22%3EHalifax%2C%20NS%3C%2Ftext%3E%0A%3Cline%20x1%3D%2295%22%20y1%3D%22475%22%20x2%3D%22520%22%20y2%3D%22475%22%20stroke%3D%22%23b3c938%22%20stroke-width%3D%227%22%2F%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22555%22%20fill%3D%22%23c7d4dc%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2225%22%3ELighting%20Up%20Canada%20institution%20profile%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "kind": "institution",
+      "alt": "Institution profile graphic for Dalhousie University in Halifax",
+      "credit": "Lighting Up Canada",
+      "source": "https://noellayang.github.io/pbcm-map/",
+      "position": "center"
+    }
   },
   {
     "id": "toronto",
@@ -598,7 +694,7 @@
     "stage": "active",
     "stageLabel": "Commitment in progress",
     "yearImplemented": 2019,
-    "timeframe": "2030-12-31",
+    "timeframe": "1969-12-31 | 2030-12-31",
     "headline": "City Food Procurement Tied to a 25% Emissions-Reduction Goal",
     "stats": [
       {
@@ -625,7 +721,15 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20700%22%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%22%20stop-color%3D%22hsl%28173%2045%25%2023%25%29%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22hsl%28271%2048%25%2012%25%29%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22700%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Ccircle%20cx%3D%22980%22%20cy%3D%22140%22%20r%3D%22220%22%20fill%3D%22%23b3c938%22%20opacity%3D%22.13%22%2F%3E%0A%3Ccircle%20cx%3D%22150%22%20cy%3D%22650%22%20r%3D%22280%22%20fill%3D%22%232ea3f2%22%20opacity%3D%22.10%22%2F%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.10%22%20stroke-width%3D%223%22%3E%0A%3Cpath%20d%3D%22M-50%20170%20C250%2040%20410%20270%20710%20130%20S1050%2070%201260%20220%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20430%20C220%20290%20450%20560%20760%20400%20S1080%20350%201280%20520%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2895%20105%29%22%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2286%22%20height%3D%2286%22%20rx%3D%2218%22%20fill%3D%22%23b3c938%22%2F%3E%0A%3Cpath%20d%3D%22M18%2065V36l18-10v11l22-11v11l18-7v35H61V51H49v14H18z%22%20fill%3D%22%2310283b%22%2F%3E%0A%3C%2Fg%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22255%22%20fill%3D%22%23b3c938%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22700%22%20letter-spacing%3D%223%22%3EMUNICIPALITY%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22345%22%20fill%3D%22%23fff%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22700%22%3EToronto%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22405%22%20fill%3D%22%23d5e0e7%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2230%22%3EToronto%2C%20ON%3C%2Ftext%3E%0A%3Cline%20x1%3D%2295%22%20y1%3D%22475%22%20x2%3D%22520%22%20y2%3D%22475%22%20stroke%3D%22%23b3c938%22%20stroke-width%3D%227%22%2F%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22555%22%20fill%3D%22%23c7d4dc%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2225%22%3ELighting%20Up%20Canada%20institution%20profile%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "kind": "institution",
+      "alt": "Institution profile graphic for Toronto in Toronto",
+      "credit": "Lighting Up Canada",
+      "source": "https://noellayang.github.io/pbcm-map/",
+      "position": "center"
+    }
   },
   {
     "id": "government-of-canada-health-canada",
@@ -642,13 +746,9 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": 2019,
-    "timeframe": "",
+    "timeframe": "2019-01-22",
     "headline": "Canada’s National Food Guide Prioritizes Plant Protein",
     "stats": [
-      {
-        "value": "2019",
-        "label": "Year documented"
-      },
       {
         "value": "2019",
         "label": "Year documented"
@@ -669,6 +769,14 @@
       }
     ],
     "lastUpdated": "2026-07-02",
-    "verified": true
+    "verified": true,
+    "image": {
+      "url": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20700%22%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%22%20stop-color%3D%22hsl%28118%2045%25%2023%25%29%22%2F%3E%0A%3Cstop%20offset%3D%221%22%20stop-color%3D%22hsl%28191%2048%25%2012%25%29%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22700%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Ccircle%20cx%3D%22980%22%20cy%3D%22140%22%20r%3D%22220%22%20fill%3D%22%23b3c938%22%20opacity%3D%22.13%22%2F%3E%0A%3Ccircle%20cx%3D%22150%22%20cy%3D%22650%22%20r%3D%22280%22%20fill%3D%22%232ea3f2%22%20opacity%3D%22.10%22%2F%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.10%22%20stroke-width%3D%223%22%3E%0A%3Cpath%20d%3D%22M-50%20170%20C250%2040%20410%20270%20710%20130%20S1050%2070%201260%20220%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20430%20C220%20290%20450%20560%20760%20400%20S1080%20350%201280%20520%22%2F%3E%0A%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%2895%20105%29%22%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2286%22%20height%3D%2286%22%20rx%3D%2218%22%20fill%3D%22%23b3c938%22%2F%3E%0A%3Cpath%20d%3D%22M18%2065V36l18-10v11l22-11v11l18-7v35H61V51H49v14H18z%22%20fill%3D%22%2310283b%22%2F%3E%0A%3C%2Fg%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22255%22%20fill%3D%22%23b3c938%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22700%22%20letter-spacing%3D%223%22%3EGOVERNMENT%20OR%20PUBLIC%20BODY%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22345%22%20fill%3D%22%23fff%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%3EGovernment%20of%20Canada%20%2F%20Health%20Canada%3C%2Ftext%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22405%22%20fill%3D%22%23d5e0e7%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2230%22%3EOttawa%2C%20Canada%3C%2Ftext%3E%0A%3Cline%20x1%3D%2295%22%20y1%3D%22475%22%20x2%3D%22520%22%20y2%3D%22475%22%20stroke%3D%22%23b3c938%22%20stroke-width%3D%227%22%2F%3E%0A%3Ctext%20x%3D%2295%22%20y%3D%22555%22%20fill%3D%22%23c7d4dc%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2225%22%3ELighting%20Up%20Canada%20institution%20profile%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "kind": "institution",
+      "alt": "Institution profile graphic for Government of Canada / Health Canada in Ottawa",
+      "credit": "Lighting Up Canada",
+      "source": "https://noellayang.github.io/pbcm-map/",
+      "position": "center"
+    }
   }
 ]
