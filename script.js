@@ -565,17 +565,22 @@ const UNPUBLISHED_RESEARCH_LEADS = [
 
 
 /* =========================================================
-   PROFILE IMAGES — FAST, CURATED, NON-LOGO
+   PROFILE IMAGES — VERIFIED, UNIQUE, NON-LOGO
    =========================================================
 
-   Production image policy:
-   1. Use an explicitly approved initiative/dining image from JSON.
-   2. Use a reviewed institution/campus/community photograph.
-   3. Use a relevant plant-forward food photograph.
+   Image policy:
+   1. Prefer an explicit image object supplied in institutions.json.
+   2. Accept only image kinds that represent an initiative, dining system,
+      institution, facility, campus, or community.
+   3. Reject likely logos, crests, seals, favicons, avatars, and wordmarks.
+   4. Never reuse the same photographic URL for two institutions.
+   5. When no approved photograph is available, use a unique location-based
+      visual generated from the institution's coordinates. This is more honest
+      than showing an unrelated stock-food photograph and guarantees that no
+      two records share the same fallback image.
 
-   The map deliberately does not scrape source pages, call Microlink,
-   or query Wikipedia at click time. Those requests caused slow and
-   inconsistent profile loading and could return logos or text graphics.
+   The map deliberately does not scrape source pages, call Microlink, or query
+   Wikipedia at click time. Those requests caused slow and inconsistent loads.
 */
 
 const APPROVED_IMAGE_KINDS = new Set([
@@ -585,8 +590,7 @@ const APPROVED_IMAGE_KINDS = new Set([
   "campus",
   "institution",
   "facility",
-  "community",
-  "food"
+  "community"
 ]);
 
 const LOGO_OR_TEXT_IMAGE_PATTERNS = [
@@ -598,118 +602,63 @@ const LOGO_OR_TEXT_IMAGE_PATTERNS = [
   /favicon/i,
   /emblem/i,
   /coat[-_ ]?of[-_ ]?arms/i,
-  /social[-_ ]?avatar/i
+  /social[-_ ]?avatar/i,
+  /profile[-_ ]?picture/i
 ];
 
 /*
-  Reviewed direct photographs. These are used only where the subject is
-  clearly a place, facility, campus, or community—not a logo or wordmark.
-  Future approved records should preferably carry their own `image` object
-  in institutions.json instead of expanding this list.
+  These reviewed photographs are institution- or community-specific.
+  They are not treated as initiative photographs unless the source record
+  explicitly says so.
 */
 const CURATED_PROFILE_IMAGES = {
   "vancouver": {
     url: "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
     kind: "community",
-    alt: "Aerial view of Vancouver"
+    alt: "Aerial view of Vancouver",
+    credit: "City view of Vancouver",
+    source: "https://vancouver.ca/"
   },
   "kingston": {
     url: "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
     kind: "community",
-    alt: "Waterfront and cityscape in Kingston, Ontario"
+    alt: "Waterfront and cityscape in Kingston, Ontario",
+    credit: "Tourism Kingston",
+    source: "https://www.visitkingston.ca/"
   },
   "montr-al": {
     url: "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
     kind: "community",
-    alt: "City view of Montréal, Québec"
+    alt: "City view of Montréal, Québec",
+    credit: "Bonjour Québec",
+    source: "https://www.bonjourquebec.com/"
   },
   "university-of-british-columbia": {
     url: "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
     kind: "campus",
-    alt: "University of British Columbia campus"
+    alt: "University of British Columbia campus",
+    credit: "University of British Columbia campus photograph",
+    source: "https://www.ubc.ca/"
   },
   "university-of-guelph": {
     url: "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=1600&q=72",
     kind: "campus",
-    alt: "University of Guelph campus and Johnston Green"
+    alt: "University of Guelph campus and Johnston Green",
+    credit: "University of Guelph",
+    source: "https://www.uoguelph.ca/"
   },
   "child-learning-center": {
     url: "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
     kind: "facility",
-    alt: "Outdoor learning and play area at a child-care facility"
+    alt: "Outdoor learning and play area at a child-care facility",
+    credit: "Earthscape",
+    source: "https://www.earthscapeplay.com/"
   }
-};
-
-/*
-  Stable, direct thematic photographs. They are selected from the record's
-  subject matter and institution type. They are not logos, text slides, or
-  dynamically scraped previews.
-*/
-const THEMATIC_PROFILE_IMAGES = {
-  dining: [
-    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76"
-  ],
-  procurement: [
-    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1543353071-087092ec393a?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1485637701894-09ad422f6de6?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&w=1400&q=76"
-  ],
-  community: [
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=76&crop=entropy",
-    "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1400&q=76"
-  ],
-  healthcare: [
-    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&w=1400&q=76"
-  ],
-  education: [
-    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1567168544646-208fa5d408fb?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=76"
-  ],
-  fallback: [
-    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=76",
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=76"
-  ]
 };
 
 const profileImageDetailsCache = new Map();
 const profileImagePreloadCache = new Map();
-
-function stableImageIndex(value, length) {
-  if (!length) return 0;
-
-  const hash = Array.from(String(value ?? "")).reduce(
-    (total, character) => ((total * 31) + character.charCodeAt(0)) >>> 0,
-    0
-  );
-
-  return hash % length;
-}
+const reservedPhotoUrls = new Map();
 
 function isProbablyLogoOrTextImage(url) {
   return LOGO_OR_TEXT_IMAGE_PATTERNS.some(
@@ -717,9 +666,18 @@ function isProbablyLogoOrTextImage(url) {
   );
 }
 
-function normalizeApprovedImage(institution) {
-  const candidate = institution.image;
+function isSupportedImageUrl(url) {
+  return (
+    /^https?:\/\//i.test(url)
+    || url.startsWith("./")
+    || url.startsWith("../")
+    || url.startsWith("assets/")
+    || url.startsWith("/assets/")
+    || url.startsWith("data:image/")
+  );
+}
 
+function normalizeImageCandidate(candidate, institution) {
   if (!candidate) return null;
 
   const details = typeof candidate === "string"
@@ -737,15 +695,11 @@ function normalizeApprovedImage(institution) {
   const kind = String(details?.kind ?? "").trim().toLowerCase();
 
   if (
-    !/^https?:\/\//i.test(url)
-    && !url.startsWith("./")
-    && !url.startsWith("assets/")
-    && !url.startsWith("/assets/")
+    !url
+    || !isSupportedImageUrl(url)
+    || !APPROVED_IMAGE_KINDS.has(kind)
+    || isProbablyLogoOrTextImage(url)
   ) {
-    return null;
-  }
-
-  if (!APPROVED_IMAGE_KINDS.has(kind) || isProbablyLogoOrTextImage(url)) {
     return null;
   }
 
@@ -755,70 +709,102 @@ function normalizeApprovedImage(institution) {
     alt: details.alt || institution.name,
     credit: details.credit || "",
     source: details.source || "",
-    position: details.position || "center"
+    position: details.position || "center",
+    verified: details.verified === true
   };
 }
 
-function thematicGroupFor(institution) {
-  const text = [
-    institution.headline,
-    institution.summary,
-    institution.stageLabel,
-    ...(institution.achievements ?? [])
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
+function reserveUniquePhoto(candidate, institution) {
+  if (!candidate) return null;
 
-  if (/hospital|patient|health care|healthcare|long-term care|clinical/.test(text)) {
-    return "healthcare";
+  const absoluteUrl = candidate.url.startsWith("data:image/")
+    ? candidate.url
+    : new URL(candidate.url, window.location.href).href;
+
+  const existingOwner = reservedPhotoUrls.get(absoluteUrl);
+
+  if (existingOwner && existingOwner !== institution.id) {
+    console.warn(
+      `Duplicate profile image rejected for ${institution.name}; `
+      + `already assigned to ${existingOwner}.`
+    );
+    return null;
   }
 
-  if (/procurement|purchas|contract|supplier|catering|vendor|food service/.test(text)) {
-    return "procurement";
-  }
-
-  if (/menu|meal|dish|dining|cafeteria|chef|kitchen|recipe|food station/.test(text)) {
-    return "dining";
-  }
-
-  if (institution.type === "university") return "education";
-  if (institution.type === "hospital") return "healthcare";
-  if (institution.type === "city" || institution.type === "government") {
-    return "community";
-  }
-
-  return "fallback";
+  reservedPhotoUrls.set(absoluteUrl, institution.id);
+  return candidate;
 }
 
-function thematicImageDetails(institution) {
-  const group = thematicGroupFor(institution);
-  const choices = THEMATIC_PROFILE_IMAGES[group]
-    ?? THEMATIC_PROFILE_IMAGES.fallback;
+function hashString(value) {
+  return Array.from(String(value ?? "")).reduce(
+    (hash, character) =>
+      ((hash << 5) - hash + character.charCodeAt(0)) >>> 0,
+    2166136261
+  );
+}
+
+function locationVisualDetails(institution) {
+  const seed = hashString(institution.id);
+  const latitude = Number(institution.coordinates?.lat ?? 0);
+  const longitude = Number(institution.coordinates?.lng ?? 0);
+
+  const hueA = seed % 360;
+  const hueB = (hueA + 38 + (seed % 71)) % 360;
+  const x = 18 + (Math.abs(longitude * 7.13) % 64);
+  const y = 18 + (Math.abs(latitude * 5.71) % 58);
+  const lineOffset = seed % 37;
 
   /*
-    Allocate fallback images by the institution's stable position inside its
-    thematic group. The previous hash-modulo approach made unrelated records
-    collide frequently—especially groups that only contained two images.
-    This keeps assignments deterministic while avoiding repeats until the
-    relevant image pool has been exhausted.
+    The SVG contains no institution name or logo. It is a unique,
+    coordinate-derived geographic visual used only when a reviewed
+    institution/initiative photograph is unavailable.
   */
-  const peers = INSTITUTIONS
-    .filter((record) => thematicGroupFor(record) === group)
-    .map((record) => String(record.id ?? ""))
-    .sort((a, b) => a.localeCompare(b));
-  const peerIndex = peers.indexOf(String(institution.id ?? ""));
-  const index = peerIndex >= 0
-    ? peerIndex % choices.length
-    : stableImageIndex(institution.id, choices.length);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="hsl(${hueA} 34% 20%)"/>
+          <stop offset="1" stop-color="hsl(${hueB} 42% 11%)"/>
+        </linearGradient>
+        <radialGradient id="light">
+          <stop offset="0" stop-color="rgba(255,255,255,.36)"/>
+          <stop offset=".35" stop-color="rgba(179,201,56,.18)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="18"/>
+        </filter>
+      </defs>
+      <rect width="1200" height="700" fill="url(#bg)"/>
+      <g fill="none" stroke="rgba(255,255,255,.10)" stroke-width="3">
+        <path d="M-80 ${90 + lineOffset} C230 20 370 220 640 122 S1020 20 1300 168"/>
+        <path d="M-70 ${260 + lineOffset} C180 160 380 380 690 245 S1030 155 1290 330"/>
+        <path d="M-50 ${470 + lineOffset} C250 350 450 610 760 465 S1050 370 1290 535"/>
+        <path d="M${140 + lineOffset} -40 C70 180 310 275 198 520 S180 760 390 800"/>
+        <path d="M${525 + lineOffset} -60 C420 170 690 260 585 500 S570 720 790 800"/>
+        <path d="M${900 + lineOffset} -40 C790 170 1070 290 960 520 S950 720 1150 790"/>
+      </g>
+      <circle cx="${x * 12}" cy="${y * 7}" r="170" fill="url(#light)" filter="url(#glow)"/>
+      <circle cx="${x * 12}" cy="${y * 7}" r="34" fill="#b3c938" opacity=".96"/>
+      <circle cx="${x * 12}" cy="${y * 7}" r="58" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="5"/>
+      <circle cx="${x * 12}" cy="${y * 7}" r="88" fill="none" stroke="rgba(179,201,56,.38)" stroke-width="3"/>
+      <g fill="rgba(255,255,255,.12)">
+        <circle cx="${170 + seed % 180}" cy="${120 + seed % 70}" r="11"/>
+        <circle cx="${860 + seed % 190}" cy="${130 + seed % 130}" r="8"/>
+        <circle cx="${760 + seed % 120}" cy="${520 + seed % 80}" r="13"/>
+        <circle cx="${260 + seed % 100}" cy="${500 + seed % 90}" r="7"/>
+      </g>
+    </svg>
+  `;
 
   return {
-    url: choices[index],
-    kind: "food",
-    alt: `Plant-forward food representing the ${institution.name} initiative`,
-    credit: "Illustrative plant-forward food image",
+    url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,
+    kind: "location",
+    alt: `Location-based visual for ${institution.name} in ${institution.city}, ${institution.province}`,
+    credit: "Lighting Up Canada location visual",
     source: "",
-    position: "center"
+    position: "center",
+    verified: false
   };
 }
 
@@ -827,42 +813,27 @@ function profileImageDetails(institution) {
     return profileImageDetailsCache.get(institution.id);
   }
 
-  const details = normalizeApprovedImage(institution)
-    ?? CURATED_PROFILE_IMAGES[institution.id]
-    ?? thematicImageDetails(institution);
+  const explicitImage = reserveUniquePhoto(
+    normalizeImageCandidate(institution.image, institution),
+    institution
+  );
 
-  const normalized = {
-    ...details,
-    alt: details.alt || institution.name,
-    position: details.position || "center"
-  };
+  const curatedImage = explicitImage
+    ? null
+    : reserveUniquePhoto(
+        normalizeImageCandidate(
+          CURATED_PROFILE_IMAGES[institution.id],
+          institution
+        ),
+        institution
+      );
 
-  profileImageDetailsCache.set(institution.id, normalized);
-  return normalized;
-}
+  const selected = explicitImage
+    ?? curatedImage
+    ?? locationVisualDetails(institution);
 
-function imageFallbackCandidates(institution) {
-  const primary = profileImageDetails(institution);
-  const thematic = thematicImageDetails(institution);
-  const universal = THEMATIC_PROFILE_IMAGES.fallback.map((url) => ({
-    url,
-    kind: "food",
-    alt: `Plant-forward food representing the ${institution.name} initiative`,
-    credit: "Illustrative plant-forward food image",
-    source: "",
-    position: "center"
-  }));
-
-  const seen = new Set();
-
-  return [primary, thematic, ...universal].filter((item) => {
-    if (!item?.url || seen.has(item.url) || isProbablyLogoOrTextImage(item.url)) {
-      return false;
-    }
-
-    seen.add(item.url);
-    return true;
-  });
+  profileImageDetailsCache.set(institution.id, selected);
+  return selected;
 }
 
 function preloadProfileImage(institution) {
@@ -870,26 +841,27 @@ function preloadProfileImage(institution) {
     return profileImagePreloadCache.get(institution.id);
   }
 
-  const candidates = imageFallbackCandidates(institution);
+  const details = profileImageDetails(institution);
+
   const promise = new Promise((resolve) => {
-    let index = 0;
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => resolve(details);
+    image.onerror = () => {
+      const fallback = locationVisualDetails(institution);
 
-    const tryNext = () => {
-      const candidate = candidates[index++];
-
-      if (!candidate) {
-        resolve(candidates[candidates.length - 1] ?? null);
+      if (fallback.url === details.url) {
+        resolve(fallback);
         return;
       }
 
-      const image = new Image();
-      image.decoding = "async";
-      image.onload = () => resolve(candidate);
-      image.onerror = tryNext;
-      image.src = candidate.url;
+      const fallbackImage = new Image();
+      fallbackImage.decoding = "async";
+      fallbackImage.onload = () => resolve(fallback);
+      fallbackImage.onerror = () => resolve(fallback);
+      fallbackImage.src = fallback.url;
     };
-
-    tryNext();
+    image.src = details.url;
   });
 
   profileImagePreloadCache.set(institution.id, promise);
@@ -918,12 +890,9 @@ async function hydrateProfileImage(institution) {
   };
 
   const useFallback = () => {
-    profileImagePreloadCache.delete(institution.id);
-
-    const fallback = thematicImageDetails(institution);
+    const fallback = locationVisualDetails(institution);
     image.alt = fallback.alt;
     image.style.objectPosition = fallback.position;
-
     image.addEventListener("load", finishLoading, { once: true });
     image.addEventListener("error", finishLoading, { once: true });
     image.src = fallback.url;
@@ -934,10 +903,9 @@ async function hydrateProfileImage(institution) {
   image.addEventListener("load", finishLoading, { once: true });
   image.addEventListener("error", useFallback, { once: true });
 
-  const resolvedAbsoluteUrl = new URL(
-    resolved.url,
-    window.location.href
-  ).href;
+  const resolvedAbsoluteUrl = resolved.url.startsWith("data:image/")
+    ? resolved.url
+    : new URL(resolved.url, window.location.href).href;
 
   if (image.src !== resolvedAbsoluteUrl) {
     image.src = resolved.url;
