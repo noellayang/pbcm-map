@@ -565,22 +565,17 @@ const UNPUBLISHED_RESEARCH_LEADS = [
 
 
 /* =========================================================
-   PROFILE IMAGES — VERIFIED, UNIQUE, NON-LOGO
+   PROFILE IMAGES — JSON-CONTROLLED
    =========================================================
 
    Image policy:
-   1. Prefer an explicit image object supplied in institutions.json.
-   2. Accept only image kinds that represent an initiative, dining system,
-      institution, facility, campus, or community.
-   3. Reject likely logos, crests, seals, favicons, avatars, and wordmarks.
-   4. Never reuse the same photographic URL for two institutions.
-   5. When no approved photograph is available, use a unique location-based
-      visual generated from the institution's coordinates. This is more honest
-      than showing an unrelated stock-food photograph and guarantees that no
-      two records share the same fallback image.
-
-   The map deliberately does not scrape source pages, call Microlink, or query
-   Wikipedia at click time. Those requests caused slow and inconsistent loads.
+   1. The spreadsheet / Apps Script export is the source of truth.
+   2. The public map reads only institution.image from institutions.json.
+   3. image-audit.csv is not requested or parsed by this file.
+   4. No stock-image pools, hashing, scraping, or institution-specific
+      fallback assignment is performed in the browser.
+   5. A restrained generic illustration is used only when image metadata is
+      missing or the approved image fails to load.
 */
 
 const APPROVED_IMAGE_KINDS = new Set([
@@ -590,221 +585,117 @@ const APPROVED_IMAGE_KINDS = new Set([
   "campus",
   "institution",
   "facility",
-  "community"
+  "community",
+  "other"
 ]);
 
-const LOGO_OR_TEXT_IMAGE_PATTERNS = [
-  /logo/i,
-  /wordmark/i,
-  /brandmark/i,
-  /crest/i,
-  /seal/i,
-  /favicon/i,
-  /emblem/i,
-  /coat[-_ ]?of[-_ ]?arms/i,
-  /social[-_ ]?avatar/i,
-  /profile[-_ ]?picture/i
-];
-
-/*
-  These reviewed photographs are institution- or community-specific.
-  They are not treated as initiative photographs unless the source record
-  explicitly says so.
-*/
-const CURATED_PROFILE_IMAGES = {
-  "vancouver": {
-    url: "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
-    kind: "community",
-    alt: "Aerial view of Vancouver",
-    credit: "City view of Vancouver",
-    source: "https://vancouver.ca/"
-  },
-  "kingston": {
-    url: "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
-    kind: "community",
-    alt: "Waterfront and cityscape in Kingston, Ontario",
-    credit: "Tourism Kingston",
-    source: "https://www.visitkingston.ca/"
-  },
-  "montr-al": {
-    url: "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
-    kind: "community",
-    alt: "City view of Montréal, Québec",
-    credit: "Bonjour Québec",
-    source: "https://www.bonjourquebec.com/"
-  },
-  "university-of-british-columbia": {
-    url: "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
-    kind: "campus",
-    alt: "University of British Columbia campus",
-    credit: "University of British Columbia campus photograph",
-    source: "https://www.ubc.ca/"
-  },
-  "university-of-guelph": {
-    url: "https://www.uoguelph.ca/_next/image?url=https%3A%2F%2Fapi.liveugconthub.uoguelph.dev%2Fsites%2Fdefault%2Ffiles%2F2025-01%2Fjohnston-green-aerials-5.jpg&w=1600&q=72",
-    kind: "campus",
-    alt: "University of Guelph campus and Johnston Green",
-    credit: "University of Guelph",
-    source: "https://www.uoguelph.ca/"
-  },
-  "child-learning-center": {
-    url: "https://www.earthscapeplay.com/wp-content/uploads/2025/09/guelph-ontario-childcare-outdoor-play-area-trike-loop-log-cl.jpg",
-    kind: "facility",
-    alt: "Outdoor learning and play area at a child-care facility",
-    credit: "Earthscape",
-    source: "https://www.earthscapeplay.com/"
-  }
-};
-
-const profileImageDetailsCache = new Map();
-const profileImagePreloadCache = new Map();
-const reservedPhotoUrls = new Map();
-
-function isProbablyLogoOrTextImage(url) {
-  return LOGO_OR_TEXT_IMAGE_PATTERNS.some(
-    (pattern) => pattern.test(String(url ?? ""))
-  );
-}
-
-function isSupportedImageUrl(url) {
-  return (
-    /^https?:\/\//i.test(url)
-    || url.startsWith("./")
-    || url.startsWith("../")
-    || url.startsWith("assets/")
-    || url.startsWith("/assets/")
-    || url.startsWith("data:image/")
-  );
-}
-
-function normalizeImageCandidate(candidate, institution) {
-  if (!candidate) return null;
-
-  const details = typeof candidate === "string"
-    ? {
-        url: candidate,
-        kind: institution.imageKind,
-        alt: institution.imageAlt,
-        credit: institution.imageCredit,
-        source: institution.imageSource,
-        position: institution.imagePosition
-      }
-    : candidate;
-
-  const url = String(details?.url ?? "").trim();
-  const kind = String(details?.kind ?? "").trim().toLowerCase();
-
-  if (
-    !url
-    || !isSupportedImageUrl(url)
-    || !APPROVED_IMAGE_KINDS.has(kind)
-    || isProbablyLogoOrTextImage(url)
-  ) {
-    return null;
-  }
-
-  return {
-    url,
-    kind,
-    alt: details.alt || institution.name,
-    credit: details.credit || "",
-    source: details.source || "",
-    position: details.position || "center",
-    verified: details.verified === true
-  };
-}
-
-function reserveUniquePhoto(candidate, institution) {
-  if (!candidate) return null;
-
-  const absoluteUrl = candidate.url.startsWith("data:image/")
-    ? candidate.url
-    : new URL(candidate.url, window.location.href).href;
-
-  const existingOwner = reservedPhotoUrls.get(absoluteUrl);
-
-  if (existingOwner && existingOwner !== institution.id) {
-    console.warn(
-      `Duplicate profile image rejected for ${institution.name}; `
-      + `already assigned to ${existingOwner}.`
-    );
-    return null;
-  }
-
-  reservedPhotoUrls.set(absoluteUrl, institution.id);
-  return candidate;
-}
-
-function hashString(value) {
-  return Array.from(String(value ?? "")).reduce(
-    (hash, character) =>
-      ((hash << 5) - hash + character.charCodeAt(0)) >>> 0,
-    2166136261
-  );
-}
-
-function locationVisualDetails(institution) {
-  const seed = hashString(institution.id);
-  const latitude = Number(institution.coordinates?.lat ?? 0);
-  const longitude = Number(institution.coordinates?.lng ?? 0);
-
-  const hueA = seed % 360;
-  const hueB = (hueA + 38 + (seed % 71)) % 360;
-  const x = 18 + (Math.abs(longitude * 7.13) % 64);
-  const y = 18 + (Math.abs(latitude * 5.71) % 58);
-  const lineOffset = seed % 37;
-
-  /*
-    The SVG contains no institution name or logo. It is a unique,
-    coordinate-derived geographic visual used only when a reviewed
-    institution/initiative photograph is unavailable.
-  */
+const GENERIC_PROFILE_IMAGE = (() => {
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Generic institution placeholder">
       <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="hsl(${hueA} 34% 20%)"/>
-          <stop offset="1" stop-color="hsl(${hueB} 42% 11%)"/>
+        <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#10283b"/>
+          <stop offset="1" stop-color="#06141f"/>
         </linearGradient>
-        <radialGradient id="light">
-          <stop offset="0" stop-color="rgba(255,255,255,.36)"/>
-          <stop offset=".35" stop-color="rgba(179,201,56,.18)"/>
-          <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+        <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+          <stop offset="0" stop-color="#b3c938" stop-opacity=".24"/>
+          <stop offset="1" stop-color="#b3c938" stop-opacity="0"/>
         </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="18"/>
-        </filter>
       </defs>
-      <rect width="1200" height="700" fill="url(#bg)"/>
-      <g fill="none" stroke="rgba(255,255,255,.10)" stroke-width="3">
-        <path d="M-80 ${90 + lineOffset} C230 20 370 220 640 122 S1020 20 1300 168"/>
-        <path d="M-70 ${260 + lineOffset} C180 160 380 380 690 245 S1030 155 1290 330"/>
-        <path d="M-50 ${470 + lineOffset} C250 350 450 610 760 465 S1050 370 1290 535"/>
-        <path d="M${140 + lineOffset} -40 C70 180 310 275 198 520 S180 760 390 800"/>
-        <path d="M${525 + lineOffset} -60 C420 170 690 260 585 500 S570 720 790 800"/>
-        <path d="M${900 + lineOffset} -40 C790 170 1070 290 960 520 S950 720 1150 790"/>
+      <rect width="1200" height="700" fill="url(#background)"/>
+      <rect width="1200" height="700" fill="url(#glow)"/>
+      <g fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="4">
+        <path d="M-80 155 C240 40 360 265 650 145 S1020 55 1280 205"/>
+        <path d="M-80 365 C210 245 420 485 720 345 S1050 265 1280 420"/>
+        <path d="M-80 585 C230 455 470 690 790 540 S1080 475 1280 615"/>
       </g>
-      <circle cx="${x * 12}" cy="${y * 7}" r="170" fill="url(#light)" filter="url(#glow)"/>
-      <circle cx="${x * 12}" cy="${y * 7}" r="34" fill="#b3c938" opacity=".96"/>
-      <circle cx="${x * 12}" cy="${y * 7}" r="58" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="5"/>
-      <circle cx="${x * 12}" cy="${y * 7}" r="88" fill="none" stroke="rgba(179,201,56,.38)" stroke-width="3"/>
-      <g fill="rgba(255,255,255,.12)">
-        <circle cx="${170 + seed % 180}" cy="${120 + seed % 70}" r="11"/>
-        <circle cx="${860 + seed % 190}" cy="${130 + seed % 130}" r="8"/>
-        <circle cx="${760 + seed % 120}" cy="${520 + seed % 80}" r="13"/>
-        <circle cx="${260 + seed % 100}" cy="${500 + seed % 90}" r="7"/>
+      <g transform="translate(470 220)">
+        <rect x="0" y="115" width="260" height="180" rx="8" fill="#ffffff" fill-opacity=".10"/>
+        <path d="M-35 120 130 20 295 120Z" fill="#b3c938" fill-opacity=".86"/>
+        <rect x="48" y="155" width="42" height="140" fill="#ffffff" fill-opacity=".70"/>
+        <rect x="109" y="155" width="42" height="140" fill="#ffffff" fill-opacity=".70"/>
+        <rect x="170" y="155" width="42" height="140" fill="#ffffff" fill-opacity=".70"/>
+        <rect x="-18" y="295" width="296" height="22" rx="4" fill="#ffffff" fill-opacity=".72"/>
       </g>
     </svg>
   `;
 
   return {
     url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,
-    kind: "location",
-    alt: `Location-based visual for ${institution.name} in ${institution.city}, ${institution.province}`,
-    credit: "Lighting Up Canada location visual",
+    kind: "placeholder",
+    alt: "Generic institution illustration",
+    credit: "",
     source: "",
     position: "center",
-    verified: false
+    isPlaceholder: true
+  };
+})();
+
+const profileImageDetailsCache = new Map();
+const profileImagePreloadCache = new Map();
+
+function isSupportedImageUrl(value) {
+  const url = String(value ?? "").trim();
+
+  return (
+    /^https?:\/\//i.test(url)
+    || /^data:image\//i.test(url)
+    || url.startsWith("./")
+    || url.startsWith("../")
+    || url.startsWith("assets/")
+    || url.startsWith("/assets/")
+  );
+}
+
+function normalizeImagePosition(value) {
+  const position = String(value ?? "").trim();
+
+  if (!position) return "center";
+
+  /*
+    Allow common object-position values and percentages while preventing
+    arbitrary CSS injection through exported spreadsheet text.
+  */
+  if (
+    /^(center|top|bottom|left|right)(\s+(center|top|bottom|left|right))?$/i.test(position)
+    || /^\d{1,3}%(\s+\d{1,3}%)?$/.test(position)
+  ) {
+    return position;
+  }
+
+  return "center";
+}
+
+function normalizeInstitutionImage(institution) {
+  const image = institution?.image;
+
+  if (!image || typeof image !== "object") return null;
+
+  const url = String(image.url ?? "").trim();
+  if (!isSupportedImageUrl(url)) return null;
+
+  const rawKind = String(image.kind ?? "institution").trim().toLowerCase();
+  const kind = APPROVED_IMAGE_KINDS.has(rawKind)
+    ? rawKind
+    : "institution";
+
+  return {
+    url,
+    kind,
+    alt:
+      String(image.alt ?? "").trim()
+      || `Image for ${institution.name}`,
+    credit: String(image.credit ?? "").trim(),
+    source: String(image.source ?? "").trim(),
+    position: normalizeImagePosition(image.position),
+    isPlaceholder: false
+  };
+}
+
+function genericProfileImage(institution) {
+  return {
+    ...GENERIC_PROFILE_IMAGE,
+    alt: `Generic institution illustration for ${institution.name}`
   };
 }
 
@@ -813,24 +704,9 @@ function profileImageDetails(institution) {
     return profileImageDetailsCache.get(institution.id);
   }
 
-  const explicitImage = reserveUniquePhoto(
-    normalizeImageCandidate(institution.image, institution),
-    institution
-  );
-
-  const curatedImage = explicitImage
-    ? null
-    : reserveUniquePhoto(
-        normalizeImageCandidate(
-          CURATED_PROFILE_IMAGES[institution.id],
-          institution
-        ),
-        institution
-      );
-
-  const selected = explicitImage
-    ?? curatedImage
-    ?? locationVisualDetails(institution);
+  const selected =
+    normalizeInstitutionImage(institution)
+    ?? genericProfileImage(institution);
 
   profileImageDetailsCache.set(institution.id, selected);
   return selected;
@@ -841,31 +717,54 @@ function preloadProfileImage(institution) {
     return profileImagePreloadCache.get(institution.id);
   }
 
-  const details = profileImageDetails(institution);
+  const requested = profileImageDetails(institution);
 
   const promise = new Promise((resolve) => {
+    if (requested.isPlaceholder) {
+      resolve(requested);
+      return;
+    }
+
     const image = new Image();
     image.decoding = "async";
-    image.onload = () => resolve(details);
-    image.onerror = () => {
-      const fallback = locationVisualDetails(institution);
-
-      if (fallback.url === details.url) {
-        resolve(fallback);
-        return;
-      }
-
-      const fallbackImage = new Image();
-      fallbackImage.decoding = "async";
-      fallbackImage.onload = () => resolve(fallback);
-      fallbackImage.onerror = () => resolve(fallback);
-      fallbackImage.src = fallback.url;
-    };
-    image.src = details.url;
+    image.onload = () => resolve(requested);
+    image.onerror = () => resolve(genericProfileImage(institution));
+    image.src = requested.url;
   });
 
   profileImagePreloadCache.set(institution.id, promise);
   return promise;
+}
+
+function updateImageCaption(figure, details) {
+  const caption = figure?.querySelector(".profile-image-caption");
+  if (!caption) return;
+
+  if (details.isPlaceholder || (!details.credit && !details.source)) {
+    caption.hidden = true;
+    caption.innerHTML = "";
+    return;
+  }
+
+  const credit = details.credit
+    ? `<span>${escapeHtml(details.credit)}</span>`
+    : "";
+
+  const sourceUrl = safeUrl(details.source);
+  const source = sourceUrl !== "#"
+    ? `
+        <a
+          href="${escapeHtml(sourceUrl)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Image source ↗
+        </a>
+      `
+    : "";
+
+  caption.innerHTML = `${credit}${source}`;
+  caption.hidden = !credit && !source;
 }
 
 async function hydrateProfileImage(institution) {
@@ -889,17 +788,21 @@ async function hydrateProfileImage(institution) {
     figure.classList.remove("is-loading");
   };
 
+  const applyDetails = (details) => {
+    image.alt = details.alt;
+    image.style.objectPosition = details.position;
+    updateImageCaption(figure, details);
+  };
+
   const useFallback = () => {
-    const fallback = locationVisualDetails(institution);
-    image.alt = fallback.alt;
-    image.style.objectPosition = fallback.position;
+    const fallback = genericProfileImage(institution);
+    applyDetails(fallback);
     image.addEventListener("load", finishLoading, { once: true });
     image.addEventListener("error", finishLoading, { once: true });
     image.src = fallback.url;
   };
 
-  image.alt = resolved.alt;
-  image.style.objectPosition = resolved.position;
+  applyDetails(resolved);
   image.addEventListener("load", finishLoading, { once: true });
   image.addEventListener("error", useFallback, { once: true });
 
@@ -1391,6 +1294,21 @@ function renderProfileDrawer(institution) {
         fetchpriority="high"
         style="object-position:${escapeHtml(initialImage.position)};"
       >
+      <figcaption
+        class="profile-image-caption"
+        ${initialImage.isPlaceholder || (!initialImage.credit && !initialImage.source) ? "hidden" : ""}
+      >
+        ${
+          initialImage.credit
+            ? `<span>${escapeHtml(initialImage.credit)}</span>`
+            : ""
+        }
+        ${
+          safeUrl(initialImage.source) !== "#"
+            ? `<a href="${escapeHtml(safeUrl(initialImage.source))}" target="_blank" rel="noopener noreferrer">Image source ↗</a>`
+            : ""
+        }
+      </figcaption>
     </figure>
   `;
 
