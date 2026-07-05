@@ -1730,8 +1730,8 @@ const DATA_URL = "./institutions.json";
 function showDataLoadError(error) {
   console.error("Unable to load institution data:", error);
 
-  if (institutionList) {
-    institutionList.innerHTML = `
+  if (listElement) {
+    listElement.innerHTML = `
       <div class="data-error">
         <strong>Institution data could not be loaded.</strong>
         <p>
@@ -1745,6 +1745,29 @@ function showDataLoadError(error) {
   if (resultCountElement) {
     resultCountElement.textContent = "Data unavailable";
   }
+}
+
+
+function renderInitialMapWhenReady(attempt = 0) {
+  const mapContainer = map.getContainer();
+  const { width, height } = mapContainer.getBoundingClientRect();
+  const layoutReady = width > 0 && height > 0;
+
+  if (!layoutReady && attempt < 30) {
+    window.requestAnimationFrame(() => {
+      renderInitialMapWhenReady(attempt + 1);
+    });
+    return;
+  }
+
+  map.invalidateSize({ pan: false, animate: false });
+  applyFilters({ updateMapView: false });
+  map.setView(CANADA_VIEW.center, CANADA_VIEW.zoom, { animate: false });
+
+  /* Recheck once after marker DOM nodes have been inserted. */
+  window.requestAnimationFrame(() => {
+    map.invalidateSize({ pan: false, animate: false });
+  });
 }
 
 async function loadInstitutionData() {
@@ -1783,16 +1806,22 @@ async function loadInstitutionData() {
 
   renderTypeLegend();
   renderInstitutionList(INSTITUTIONS);
-  renderMarkers(INSTITUTIONS);
 
   if (headerCountElement) {
     headerCountElement.textContent = INSTITUTIONS.length;
   }
 
-  window.setTimeout(() => {
-    map.invalidateSize();
-    applyFilters();
-  }, 0);
+  /*
+    Leaflet is created before the async JSON request finishes. On some page
+    loads, the grid and map container have not completed their first usable
+    layout when the initial markers are added. Leaflet then positions those
+    marker elements using a stale/zero container size. A later directory
+    action works because it clears and recreates the markers after layout.
+
+    Wait until the map has measurable dimensions, invalidate Leaflet's cached
+    size, and only then perform the first marker render.
+  */
+  renderInitialMapWhenReady();
 }
 
 loadInstitutionData().catch(showDataLoadError);
