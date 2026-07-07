@@ -7,8 +7,8 @@
     "city": "Burnaby",
     "province": "BC",
     "coordinates": {
-      "lat": 49.24636,
-      "lng": -122.97551
+      "lat": 49.2425,
+      "lng": -122.9725
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -52,8 +52,8 @@
     "city": "North Vancouver",
     "province": "BC",
     "coordinates": {
-      "lat": 49.32009,
-      "lng": -123.06108
+      "lat": 49.34206,
+      "lng": -123.0741
     },
     "coordinatesApproximate": true,
     "stage": "motion-passed",
@@ -103,8 +103,8 @@
     "city": "Vancouver",
     "province": "BC",
     "coordinates": {
-      "lat": 49.27143,
-      "lng": -123.13424
+      "lat": 49.25652,
+      "lng": -123.10837
     },
     "coordinatesApproximate": true,
     "stage": "motion-passed",
@@ -153,8 +153,8 @@
     "city": "Toronto",
     "province": "ON",
     "coordinates": {
-      "lat": 43.64538,
-      "lng": -79.39152
+      "lat": 43.65344,
+      "lng": -79.38409
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -205,10 +205,10 @@
     "city": "Brampton",
     "province": "ON",
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 43.68581,
+      "lng": -79.75993
     },
-    "coordinatesApproximate": false,
+    "coordinatesApproximate": true,
     "stage": "motion-passed",
     "stageLabel": "Motion passed",
     "yearImplemented": null,
@@ -257,8 +257,8 @@
     "city": "Oakville",
     "province": "ON",
     "coordinates": {
-      "lat": 43.46819,
-      "lng": -79.68611
+      "lat": 43.4138,
+      "lng": -79.7352
     },
     "coordinatesApproximate": true,
     "stage": "motion-passed",
@@ -311,8 +311,8 @@
     "city": "Kingston",
     "province": "ON",
     "coordinates": {
-      "lat": 44.23544,
-      "lng": -76.47207
+      "lat": 44.23071,
+      "lng": -76.48102
     },
     "coordinatesApproximate": true,
     "stage": "motion-passed",
@@ -362,8 +362,8 @@
     "city": "Montréal",
     "province": "QC",
     "coordinates": {
-      "lat": 45.51265,
-      "lng": -73.58091
+      "lat": 45.50884,
+      "lng": -73.55399
     },
     "coordinatesApproximate": true,
     "stage": "motion-passed",
@@ -417,8 +417,8 @@
     "city": "Ottawa",
     "province": "Canada",
     "coordinates": {
-      "lat": 45.42422,
-      "lng": -75.68131
+      "lat": 45.4059,
+      "lng": -75.7353
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -465,8 +465,8 @@
     "city": "Vancouver",
     "province": "BC",
     "coordinates": {
-      "lat": 49.28244,
-      "lng": -123.12737
+      "lat": 49.26116,
+      "lng": -123.12209
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -514,8 +514,8 @@
     "city": "Guelph",
     "province": "ON",
     "coordinates": {
-      "lat": 43.55094,
-      "lng": -80.24513
+      "lat": 43.5321,
+      "lng": -80.2263
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -571,10 +571,10 @@
     "city": "Montréal",
     "province": "QC",
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 45.49718,
+      "lng": -73.57908
     },
-    "coordinatesApproximate": false,
+    "coordinatesApproximate": true,
     "stage": "implemented",
     "stageLabel": "Implemented / documented",
     "yearImplemented": null,
@@ -613,10 +613,10 @@
     "city": "Guelph",
     "province": "ON",
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 43.53272,
+      "lng": -80.22618
     },
-    "coordinatesApproximate": false,
+    "coordinatesApproximate": true,
     "stage": "active",
     "stageLabel": "Reviewed initiative",
     "yearImplemented": null,
@@ -655,8 +655,8 @@
     "city": "Calgary",
     "province": "AB",
     "coordinates": {
-      "lat": 51.05467,
-      "lng": -114.07861
+      "lat": 51.07698,
+      "lng": -114.13065
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -698,8 +698,8 @@
     "city": "Burnaby",
     "province": "BC",
     "coordinates": {
-      "lat": 49.24769,
-      "lng": -122.9843
+      "lat": 49.27809,
+      "lng": -122.91988
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -747,8 +747,8 @@
     "city": "Vancouver",
     "province": "BC",
     "coordinates": {
-      "lat": 49.28031,
-      "lng": -123.11518
+      "lat": 49.26061,
+      "lng": -123.246
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -797,10 +797,10 @@
     "city": "Victoria",
     "province": "BC",
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 48.46341,
+      "lng": -123.31169
     },
-    "coordinatesApproximate": false,
+    "coordinatesApproximate": true,
     "stage": "active",
     "stageLabel": "Reviewed initiative",
     "yearImplemented": null,
@@ -839,8 +839,8 @@
     "city": "Winnipeg",
     "province": "MB",
     "coordinates": {
-      "lat": 49.8869,
-      "lng": -97.14213
+      "lat": 49.88995,
+      "lng": -97.15371
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -891,8 +891,8 @@
     "city": "Halifax",
     "province": "NS",
     "coordinates": {
-      "lat": 44.65212,
-      "lng": -63.58594
+      "lat": 44.63658,
+      "lng": -63.59169
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -939,8 +939,8 @@
     "city": "Mississauga",
     "province": "ON",
     "coordinates": {
-      "lat": 43.59452,
-      "lng": -79.63666
+      "lat": 43.54831,
+      "lng": -79.66274
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -991,8 +991,8 @@
     "city": "Toronto",
     "province": "ON",
     "coordinates": {
-      "lat": 43.65166,
-      "lng": -79.37985
+      "lat": 43.66289,
+      "lng": -79.39566
     },
     "coordinatesApproximate": true,
     "stage": "active",
@@ -1043,10 +1043,10 @@
     "city": "London",
     "province": "ON",
     "coordinates": {
-      "lat": 0,
-      "lng": 0
+      "lat": 43.0096,
+      "lng": -81.27373
     },
-    "coordinatesApproximate": false,
+    "coordinatesApproximate": true,
     "stage": "implemented",
     "stageLabel": "Implemented / documented",
     "yearImplemented": null,
@@ -1085,8 +1085,8 @@
     "city": "Montréal",
     "province": "QC",
     "coordinates": {
-      "lat": 45.49974,
-      "lng": -73.57068
+      "lat": 45.50478,
+      "lng": -73.57715
     },
     "coordinatesApproximate": true,
     "stage": "implemented",
@@ -1128,8 +1128,8 @@
     "city": "Quebec City",
     "province": "QC",
     "coordinates": {
-      "lat": 46.82245,
-      "lng": -71.2227
+      "lat": 46.78174,
+      "lng": -71.27474
     },
     "coordinatesApproximate": true,
     "stage": "active",
