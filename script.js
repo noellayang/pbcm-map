@@ -958,6 +958,27 @@ function formatYear(value) {
   return Number.isInteger(value) ? String(value) : "Not reported";
 }
 
+function formatStatValue(value) {
+  if (value === null || value === undefined || value === "") return "";
+
+  const rawValue = String(value).trim();
+
+  /*
+    Spreadsheet percentages may arrive as decimals, such as 0.65.
+    Show those as 65% in the bold profile infographic, while leaving
+    existing values such as "46%", years, counts and other text unchanged.
+  */
+  if (/^(?:0(?:\.\d+)?|1(?:\.0+)?)$/.test(rawValue)) {
+    const percentage = Number(rawValue) * 100;
+
+    return `${Number.isInteger(percentage)
+      ? percentage
+      : Number(percentage.toFixed(1))}%`;
+  }
+
+  return rawValue;
+}
+
 function isMobileLayout() {
   return window.matchMedia("(max-width: 680px)").matches;
 }
@@ -1326,7 +1347,7 @@ function renderProfileDrawer(institution) {
             .map(
               (stat) => `
                 <div class="profile-stat">
-                  <strong>${escapeHtml(stat.value)}</strong>
+                  <strong>${escapeHtml(formatStatValue(stat.value))}</strong>
                   <span>${escapeHtml(stat.label)}</span>
                 </div>
               `
