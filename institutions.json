@@ -15,9 +15,9 @@
     "stageLabel": "Initiative documented",
     "yearImplemented": null,
     "timeframe": "2025-03-31",
-    "headline": "PBCM presentation to Burnaby, BC Environment Committee",
+    "headline": "Plant-Based Food Presented to Burnaby’s Environment Committee",
     "stats": [],
-    "summary": "PBCM presentation to Burnaby, BC Environment Committee. Presented March 31, 2025",
+    "summary": "PBCM presented plant-based food and sustainable procurement options to Burnaby’s Environment Committee on March 31, 2025. The presentation began a municipal discussion; it was not a policy decision.",
     "achievements": [
       "Discussed the role of food emissions in municipal climate action",
       "Highlighted opportunities to increase plant-based food options and reduce food-related greenhouse gas emissions",
@@ -60,14 +60,14 @@
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2024,
     "timeframe": "2024-05-06",
-    "headline": "Municipal Plant-Forward Motion",
+    "headline": "Plant-Forward Food Motion Passed",
     "stats": [
       {
         "value": "2024",
         "label": "Year documented"
       }
     ],
-    "summary": "Passed May 6, 2024 District of North Vancouver Council",
+    "summary": "Council passed a motion on May 6, 2024 directing the District to prioritize plant-based options when it purchases or funds food.",
     "achievements": [
       "Prioritize plant-based food options whenever food is purchased or funded by the District",
       "Support healthier and more sustainable food choices at municipal meetings, events, and functions",
@@ -111,14 +111,14 @@
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2021,
     "timeframe": "2021-11-02 | 2023-09-20",
-    "headline": "Municipal Plant-Based Procurement Review Motion",
+    "headline": "Plant-Based Procurement Review Approved",
     "stats": [
       {
         "value": "2021",
         "label": "Year documented"
       }
     ],
-    "summary": "Passed November 2, 2021 Vancouver City Council",
+    "summary": "Vancouver Council approved a plant-based procurement review in 2021. Staff were directed to assess lower-emission food purchasing options, costs and emissions tracking.",
     "achievements": [
       "Directed staff to evaluate plant-based procurement opportunities to reduce greenhouse gas emissions and costs",
       "Reviewed procurement scenarios proposed by the Vancouver Humane Society",
@@ -164,8 +164,8 @@
     "headline": "City Food Procurement Tied to a 25% Emissions-Reduction Goal",
     "stats": [
       {
-        "value": "0.25",
-        "label": "Documented target or result"
+        "value": "25%",
+        "label": "Food-emissions reduction target (%)"
       },
       {
         "value": "2019",
@@ -211,11 +211,16 @@
     "coordinatesApproximate": true,
     "stage": "motion-passed",
     "stageLabel": "Motion passed",
-    "yearImplemented": null,
+    "yearImplemented": 2022,
     "timeframe": "",
-    "headline": "Municipal Plant-Forward Motion",
-    "stats": [],
-    "summary": "Municipal Plant-Forward Motion\nPassed August 10, 2022\nCity of Brampton Counciil\n• Increase plant-based and sustainable food options within municipal food services\n• Recognize the environmental and climate impacts associated with food systems\n• Encourage healthier and lower-carbon food choices\n• Advance sustainable municipal food procurement practices",
+    "headline": "Plant-Forward Municipal Food Motion Passed",
+    "stats": [
+      {
+        "value": "2022",
+        "label": "Year documented"
+      }
+    ],
+    "summary": "Brampton Council passed a motion in August 2022 supporting more plant-based and sustainable options in municipal food services.",
     "achievements": [
       "Municipal Plant-Forward Motion",
       "Passed August 10, 2022",
@@ -265,14 +270,14 @@
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2023,
     "timeframe": "2023-07-12",
-    "headline": "Municipal Plant-Forward Motion",
+    "headline": "Plant-Based Food Review Motion Passed",
     "stats": [
       {
         "value": "2023",
         "label": "Year documented"
       }
     ],
-    "summary": "Passed July 12, 2023 Halton Regional Council",
+    "summary": "Halton Regional Council passed a motion in July 2023 to examine more plant-based options at Regional facilities and events.",
     "achievements": [
       "Evaluate increasing plant-based food options at Regional facilities and events",
       "Align food offerings with Canada’s Food Guide",
@@ -319,14 +324,18 @@
     "stageLabel": "Policy or motion adopted",
     "yearImplemented": 2024,
     "timeframe": "2024-10-15",
-    "headline": "Plant-Based Motion Passed",
+    "headline": "Plant-Based Procurement Motion Passed",
     "stats": [
+      {
+        "value": "10–3",
+        "label": "Council vote"
+      },
       {
         "value": "2024",
         "label": "Year documented"
       }
     ],
-    "summary": "October 15, 2024 Kingston City Council (10–3 vote)",
+    "summary": "Kingston Council passed the motion by a 10–3 vote in October 2024. It directs the City to increase plant-rich and plant-based food at facilities and events.",
     "achievements": [
       "Prioritize increasing plant-rich and plant-based food procurement at City of Kingston facilities and events",
       "Support healthy, sustainable, and lower-carbon food choices in alignment with Canada’s Food Guide and climate objectives",
@@ -373,8 +382,8 @@
     "headline": "Plant-Forward Motion Passed May 16, 2022",
     "stats": [
       {
-        "value": "0.75",
-        "label": "Documented target or result"
+        "value": "75%",
+        "label": "Vegetarian food at City events (%)"
       },
       {
         "value": "2022",
@@ -425,14 +434,14 @@
     "stageLabel": "Implemented",
     "yearImplemented": 2019,
     "timeframe": "2019-01-22",
-    "headline": "Canada’s National Food Guide Prioritizes Plant Protein",
+    "headline": "Canada’s Food Guide Prioritizes Plant Proteins",
     "stats": [
       {
         "value": "2019",
         "label": "Year documented"
       }
     ],
-    "summary": "The Food Guide is a foundational national policy accomplishment that supports institutional plant-forward action across Canada.",
+    "summary": "Canada’s Food Guide recommends choosing plant-based protein foods more often. This national guidance supports plant-forward menu and procurement decisions in public institutions.",
     "achievements": [
       "Recommends choosing protein foods that come from plants more often.",
       "Places beans, lentils, nuts, seeds, tofu and other plant proteins within the core national healthy-eating framework.",
@@ -473,14 +482,18 @@
     "stageLabel": "Initiative documented",
     "yearImplemented": 2024,
     "timeframe": "",
-    "headline": "2024 Plant-Rich Menu Pilot",
+    "headline": "More Than 20 Plant-Rich Patient Dishes Piloted",
     "stats": [
+      {
+        "value": "20+",
+        "label": "New plant-rich menu items"
+      },
       {
         "value": "2024",
         "label": "Year documented"
       }
     ],
-    "summary": "Vancouver General Hospital (Vancouver Coastal Health)",
+    "summary": "Vancouver General Hospital piloted more than 20 plant-rich patient menu items in 2024 to support health, recovery and lower-carbon food service.",
     "achievements": [
       "Piloted more than 20 new plant-rich menu items for patients",
       "Increased availability of nutritious, lower-carbon meal choices",
@@ -525,8 +538,8 @@
     "headline": "Fully Plant-Based Child-Care Menu Introduced in 2020",
     "stats": [
       {
-        "value": "0.65",
-        "label": "Reported relative reduction in monthly menu-related carbon footprint"
+        "value": "65%",
+        "label": "Monthly menu carbon reduction (%)"
       },
       {
         "value": "2020",
@@ -579,9 +592,14 @@
     "stageLabel": "Implemented / documented",
     "yearImplemented": null,
     "timeframe": "",
-    "headline": "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk",
-    "stats": [],
-    "summary": "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk",
+    "headline": "Vegan and Vegetarian Options Make Up Most Dining Menus",
+    "stats": [
+      {
+        "value": "42%",
+        "label": "Vegan menu options (%)"
+      }
+    ],
+    "summary": "Concordia reports that about 42% of dining options are vegan and 24% are vegetarian. The university also increased the visibility and promotion of plant-based milk.",
     "achievements": [
       "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk"
     ],
@@ -621,9 +639,9 @@
     "stageLabel": "Reviewed initiative",
     "yearImplemented": null,
     "timeframe": "",
-    "headline": "Vegan and Vegetarian options are readily available across campus,",
+    "headline": "Vegan and Vegetarian Meals Available Across Campus",
     "stats": [],
-    "summary": "Vegan and Vegetarian options are readily available across campus,",
+    "summary": "The University of Guelph provides vegan and vegetarian choices across campus dining locations. The current record confirms availability but does not document a measurable expansion or purchasing target.",
     "achievements": [
       "Vegan and Vegetarian options are readily available across campus,"
     ],
@@ -664,7 +682,12 @@
     "yearImplemented": null,
     "timeframe": "",
     "headline": "Thousands of Plant-Forward Recipes and a Dedicated Vegan Residence Station",
-    "stats": [],
+    "stats": [
+      {
+        "value": "3,000+",
+        "label": "Plant-forward recipes available to culinary teams"
+      }
+    ],
     "summary": "The program combines permanent vegan service, lower-carbon menu identification and large-scale recipe development rather than relying on occasional specials.",
     "achievements": [
       "Operates a dedicated vegan station within the university’s principal residence dining program.",
@@ -709,8 +732,8 @@
     "headline": "50% Plant-Based Menu Expansion Goal",
     "stats": [
       {
-        "value": "0.5",
-        "label": "Documented target or result"
+        "value": "50%",
+        "label": "Increase in plant-based menu items (%)"
       }
     ],
     "summary": "This commitment gives SFU a measurable benchmark for expanding everyday access to plant-based meals across its campuses.",
@@ -758,8 +781,8 @@
     "headline": "Climate-Friendly Food Procurement Guidelines Support a 50% Food-Emissions Target",
     "stats": [
       {
-        "value": "0.5",
-        "label": "Documented target or result"
+        "value": "50%",
+        "label": "Food-emissions reduction target by 2030 (%)"
       }
     ],
     "summary": "UBC adopted climate-friendly food-system procurement guidelines under its Climate Action Plan 2030. The guidelines support a university target to reduce food-system greenhouse-gas emissions by 50% by 2030, including reductions in ruminant meat and dairy purchases and increased use of climate-friendly alternatives.",
@@ -805,9 +828,14 @@
     "stageLabel": "Reviewed initiative",
     "yearImplemented": null,
     "timeframe": "",
-    "headline": "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15).",
-    "stats": [],
-    "summary": "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15).",
+    "headline": "Plant-Based Defaults Planned for 60% of Campus Menus",
+    "stats": [
+      {
+        "value": "60%",
+        "label": "Campus menus with plant-based defaults by 2030 (%)"
+      }
+    ],
+    "summary": "UVic’s Climate and Sustainability Action Plan targets plant-based defaults on 60% of campus menus by 2030 and a 50% reduction in food-related greenhouse-gas emissions.",
     "achievements": [
       "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15)."
     ],
@@ -850,8 +878,8 @@
     "headline": "Sprout Converted to a 100% Plant-Based Campus Food Outlet",
     "stats": [
       {
-        "value": "1",
-        "label": "Documented target or result"
+        "value": "100%",
+        "label": "Plant-based menu at Sprout (%)"
       },
       {
         "value": "2022",
@@ -902,8 +930,8 @@
     "headline": "Plant-Based Baseline Established and 50% Menu Goal Set for 2030",
     "stats": [
       {
-        "value": "0.5",
-        "label": "Documented target or result"
+        "value": "50%",
+        "label": "Plant-based menu goal by 2030 (%)"
       }
     ],
     "summary": "Dalhousie pairs a published baseline with a long-term target, creating a clear framework for measuring progress.",
@@ -950,8 +978,8 @@
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
-        "value": "0.2",
-        "label": "Documented target or result"
+        "value": "20%",
+        "label": "Additional menus committed to plant-based food (%)"
       },
       {
         "value": "2022",
@@ -1002,8 +1030,8 @@
     "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
-        "value": "0.2",
-        "label": "Documented target or result"
+        "value": "20%",
+        "label": "Additional menus committed to plant-based food (%)"
       },
       {
         "value": "2022",
@@ -1051,9 +1079,14 @@
     "stageLabel": "Implemented / documented",
     "yearImplemented": null,
     "timeframe": "",
-    "headline": "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based",
-    "stats": [],
-    "summary": "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based",
+    "headline": "Plant-Based Dishes Make Up About 46% of Residence Menus",
+    "stats": [
+      {
+        "value": "46%",
+        "label": "Plant-based residence menu offerings (%)"
+      }
+    ],
+    "summary": "Western reports that about 46% of offerings in its residence dining cycle are plant-based.",
     "achievements": [
       "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based"
     ],
@@ -1139,8 +1172,8 @@
     "headline": "Nearly 40% of Campus Food Purchases Are Plant-Origin",
     "stats": [
       {
-        "value": "0.4",
-        "label": "Documented target or result"
+        "value": "40%",
+        "label": "Food-service purchases from plant sources (%)"
       }
     ],
     "summary": "Université Laval combines procurement measurement with a practical framework for designing lower-carbon meals.",
