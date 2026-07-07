@@ -35,10 +35,10 @@
     "resources": [
       {
         "label": "Primary source",
-        "url": "https://council.vancouver.ca/20211102/documents/b5.pdf"
+        "url": "https://vancouver.ca/files/cov/2023-09-20-council-memo-plant-based-procurement-motion-status-update-rts.pdf"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
       "url": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
@@ -46,6 +46,58 @@
       "alt": "Aerial view of Vancouver",
       "credit": "Ian Kobylanski",
       "source": "https://images.squarespace-cdn.com/content/v1/574512d92eeb81676262d877/1676606109508-D5LZABVB2L934NF4ZPUG/2023-Vancouver-Aerial-Skyline-Photography-Copyright-Photographer-Ian-Kobylanski-31.jpg",
+      "position": "center"
+    }
+  },
+  {
+    "id": "toronto",
+    "name": "Toronto",
+    "shortName": "Toronto",
+    "type": "city",
+    "city": "Toronto",
+    "province": "ON",
+    "coordinates": {
+      "lat": 43.64538,
+      "lng": -79.39152
+    },
+    "coordinatesApproximate": true,
+    "stage": "active",
+    "stageLabel": "Commitment in progress",
+    "yearImplemented": 2019,
+    "timeframe": "1905-07-11 | 2030-12-31",
+    "headline": "City Food Procurement Tied to a 25% Emissions-Reduction Goal",
+    "stats": [
+      {
+        "value": "0.25",
+        "label": "Documented target or result"
+      },
+      {
+        "value": "2019",
+        "label": "Year documented"
+      }
+    ],
+    "summary": "Toronto is one of Canada’s strongest municipal examples of linking institutional meals to a quantified climate target.",
+    "achievements": [
+      "Committed to reducing greenhouse-gas emissions associated with food procured by the City by 25% by 2030.",
+      "Measures the climate impact of meals served through municipal operations.",
+      "Uses planetary-health and plant-forward approaches to identify lower-carbon food choices.",
+      "Applied the commitment to corporate food procurement rather than limiting action to public education."
+    ],
+    "organizationsInvolved": [],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://secure.toronto.ca/council/agenda-item.do?item=2024.IE15.1"
+      }
+    ],
+    "lastUpdated": "2026-07-02",
+    "verified": true,
+    "image": {
+      "url": "https://www.toronto.ca/wp-content/uploads/2017/11/96cb-cityhall-jets-350x526.jpg",
+      "kind": "community",
+      "alt": "Toronto City Hall and Nathan Phillips Square",
+      "credit": "City of Toronto",
+      "source": "https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-city-facilities/city-hall/tours-points-of-interest/",
       "position": "center"
     }
   },
@@ -92,7 +144,7 @@
         "url": "https://edmweb.halton.ca/OnBaseAgendaOnline/Documents/ViewDocument/Notice%20of%20Motion%20-%20Food%20System%20and%20Climate%20Change.doc.pdf?documentType=Agenda&isSection=false&itemId=125597&meetingId=4418&publishId=78701"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
       "url": "https://www.halton.ca/getmedia/df42da95-be1a-4d33-b490-47862e8c2dcb/cs-dundas-lions-valley-park-mobile-may-2026.jpg?ext=.jpg&height=400&mediaprotectionhash=4ccf099efd4f381e8c3bd1639001d2c6d3399bc789eb2253c8879910f11985c4&width=500",
@@ -143,7 +195,7 @@
         "url": "https://pub-cityofkingston.escribemeetings.com/filestream.ashx?DocumentId=9046"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
       "url": "https://www.visitkingston.ca/media/transforms/headers/_960x540_crop_center-center_none_ns/header-getting-to-kington.jpg",
@@ -198,7 +250,7 @@
         "url": "https://ville.montreal.qc.ca/documents/Adi_Public/CM/CM_PV_ORDI_2022-05-16_13h00_FR.pdf"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
       "url": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
@@ -206,6 +258,54 @@
       "alt": "City view of Montréal, Québec",
       "credit": "Tourisme Montréal / Bonjour Québec",
       "source": "https://www.bonjourquebec.com/sites/default/files/styles/square/public/2022-06/Montreal-Tourisme-Montreal-H_0.jpg.webp?itok=jirDA_c8",
+      "position": "center"
+    }
+  },
+  {
+    "id": "government-of-canada-health-canada",
+    "name": "Government of Canada / Health Canada",
+    "shortName": "Government of Canada / Health Canada",
+    "type": "government",
+    "city": "Ottawa",
+    "province": "Canada",
+    "coordinates": {
+      "lat": 45.42422,
+      "lng": -75.68131
+    },
+    "coordinatesApproximate": true,
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": 2019,
+    "timeframe": "2019-01-22",
+    "headline": "Canada’s National Food Guide Prioritizes Plant Protein",
+    "stats": [
+      {
+        "value": "2019",
+        "label": "Year documented"
+      }
+    ],
+    "summary": "The Food Guide is a foundational national policy accomplishment that supports institutional plant-forward action across Canada.",
+    "achievements": [
+      "Recommends choosing protein foods that come from plants more often.",
+      "Places beans, lentils, nuts, seeds, tofu and other plant proteins within the core national healthy-eating framework.",
+      "Recognizes that food choices can affect both personal health and the environment.",
+      "Gives public institutions a strong federal evidence base for increasing plant-based meals and revising procurement standards."
+    ],
+    "organizationsInvolved": [],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/"
+      }
+    ],
+    "lastUpdated": "2026-07-02",
+    "verified": true,
+    "image": {
+      "url": "https://food-guide.canada.ca/sites/default/files/styles/title_bar_image/public/2022-05/ComboShot-Banner%20500x300.jpg",
+      "kind": "initiative",
+      "alt": "Canada's food guide plate featuring vegetables, fruits, whole grains and protein foods",
+      "credit": "Health Canada",
+      "source": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/",
       "position": "center"
     }
   },
@@ -247,7 +347,7 @@
         "url": "https://www.vch.ca/en/news/vancouver-general-hospital-pilots-new-plant-rich-menu-items-health-patients-and-planet"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
       "url": "https://vancouver.citynews.ca/wp-content/blogs.dir/sites/9/2024/03/13/MicrosoftTeams-image-6-1024x576.jpg",
@@ -259,52 +359,59 @@
     }
   },
   {
-    "id": "university-of-british-columbia",
-    "name": "University of British Columbia",
-    "shortName": "University of British Columbia",
-    "type": "university",
-    "city": "Vancouver",
-    "province": "BC",
+    "id": "child-learning-center",
+    "name": "University of Guelph Child Care and Learning Centre",
+    "shortName": "Child Care and Learning Centre",
+    "type": "other",
+    "city": "Guelph",
+    "province": "ON",
     "coordinates": {
-      "lat": 49.28031,
-      "lng": -123.11518
+      "lat": 43.55094,
+      "lng": -80.24513
     },
     "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": null,
-    "timeframe": "",
-    "headline": "Climate-Friendly Food Procurement Guidelines Support a 50% Food-Emissions Target",
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": 2020,
+    "timeframe": "2020-01-01",
+    "headline": "Fully Plant-Based Child-Care Menu Introduced in 2020",
     "stats": [
       {
-        "value": "0.5",
-        "label": "Documented target or result"
+        "value": "0.65",
+        "label": "Reported relative reduction in monthly menu-related carbon footprint"
+      },
+      {
+        "value": "2020",
+        "label": "Year documented"
       }
     ],
-    "summary": "UBC adopted climate-friendly food-system procurement guidelines under its Climate Action Plan 2030. The guidelines support a university target to reduce food-system greenhouse-gas emissions by 50% by 2030, including reductions in ruminant meat and dairy purchases and increased use of climate-friendly alternatives.",
+    "summary": "The University of Guelph Child Care and Learning Centre switched to a fully plant-based menu in 2020. A Foodsteps assessment reported that the change reduced the menu’s monthly carbon footprint by nearly 65%, saving more than 1,900 kg CO2e per month compared with the previous meat-and-dairy menu.",
     "achievements": [
-      "Adopted climate-friendly food-system procurement guidelines for campus food providers.",
-      "Set a target to reduce food-system greenhouse-gas emissions by 50% by 2030.",
-      "Directed providers to establish baselines and reduction targets for ruminant meat and dairy purchases.",
-      "Promoted substitutions with climate-friendly alternatives, including plant-based milk and lower-carbon menu options."
+      "Introduced a fully plant-based menu for meals and snacks in 2020.",
+      "Removed meat, dairy and eggs from the centre’s regular menu.",
+      "Reduced the reported monthly menu-related carbon footprint by nearly 65%.",
+      "Saved an estimated 1,900 kg CO2e per month compared with the previous menu.",
+      "Improved meal inclusion and simplified accommodation of dietary restrictions and allergies."
     ],
     "organizationsInvolved": [
-      "Canadian University"
+      "University of Guelph",
+      "University of Guelph Child Care and Learning Centre",
+      "Foodsteps"
     ],
     "resources": [
       {
         "label": "Primary source",
-        "url": "https://planning.ubc.ca/sustainability/sustainability-action-plans/climate-action-plan-2030/food-systems/climate-friendly-food-systems-procurement-guidelines"
+        "url": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/"
       }
     ],
-    "lastUpdated": "2026-07-02",
+    "lastUpdated": "2026-07-06",
     "verified": true,
     "image": {
-      "url": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
-      "kind": "campus",
-      "alt": "University of British Columbia campus",
-      "credit": "University of British Columbia",
-      "source": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "url": "https://news.uoguelph.ca/wp-content/uploads/2022/09/lentil-shepherds-pie-500x333.jpg",
+      "kind": "initiative",
+      "alt": "Plant-based lentil shepherd's pie portions prepared at the University of Guelph Child Care and Learning Centre",
+      "credit": "University of Guelph",
+      "source": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/",
       "position": "center"
     }
   },
@@ -352,6 +459,56 @@
     }
   },
   {
+    "id": "university-of-british-columbia",
+    "name": "University of British Columbia",
+    "shortName": "University of British Columbia",
+    "type": "university",
+    "city": "Vancouver",
+    "province": "BC",
+    "coordinates": {
+      "lat": 49.28031,
+      "lng": -123.11518
+    },
+    "coordinatesApproximate": true,
+    "stage": "active",
+    "stageLabel": "Commitment in progress",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Climate-Friendly Food Procurement Guidelines Support a 50% Food-Emissions Target",
+    "stats": [
+      {
+        "value": "0.5",
+        "label": "Documented target or result"
+      }
+    ],
+    "summary": "UBC adopted climate-friendly food-system procurement guidelines under its Climate Action Plan 2030. The guidelines support a university target to reduce food-system greenhouse-gas emissions by 50% by 2030, including reductions in ruminant meat and dairy purchases and increased use of climate-friendly alternatives.",
+    "achievements": [
+      "Adopted climate-friendly food-system procurement guidelines for campus food providers.",
+      "Set a target to reduce food-system greenhouse-gas emissions by 50% by 2030.",
+      "Directed providers to establish baselines and reduction targets for ruminant meat and dairy purchases.",
+      "Promoted substitutions with climate-friendly alternatives, including plant-based milk and lower-carbon menu options."
+    ],
+    "organizationsInvolved": [
+      "Canadian University"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://planning.ubc.ca/sustainability/sustainability-action-plans/climate-action-plan-2030/food-systems/climate-friendly-food-systems-procurement-guidelines"
+      }
+    ],
+    "lastUpdated": "2026-07-06",
+    "verified": true,
+    "image": {
+      "url": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "kind": "campus",
+      "alt": "University of British Columbia campus",
+      "credit": "University of British Columbia",
+      "source": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "position": "center"
+    }
+  },
+  {
     "id": "university-of-winnipeg",
     "name": "University of Winnipeg",
     "shortName": "University of Winnipeg",
@@ -366,7 +523,7 @@
     "stage": "implemented",
     "stageLabel": "Implemented",
     "yearImplemented": 2022,
-    "timeframe": "1969-12-31",
+    "timeframe": "2022-09-01",
     "headline": "Sprout Converted to a 100% Plant-Based Campus Food Outlet",
     "stats": [
       {
@@ -404,54 +561,50 @@
     }
   },
   {
-    "id": "university-of-toronto-st-george-campus",
-    "name": "University of Toronto – St. George Campus",
-    "shortName": "University of Toronto – St. George Campus",
+    "id": "dalhousie-university",
+    "name": "Dalhousie University",
+    "shortName": "Dalhousie University",
     "type": "university",
-    "city": "Toronto",
-    "province": "ON",
+    "city": "Halifax",
+    "province": "NS",
     "coordinates": {
-      "lat": 43.65166,
-      "lng": -79.37985
+      "lat": 44.65212,
+      "lng": -63.58594
     },
     "coordinatesApproximate": true,
-    "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": 2022,
-    "timeframe": "1969-12-31",
-    "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": null,
+    "timeframe": "1905-07-12 | 2030-12-31",
+    "headline": "Plant-Based Baseline Established and 50% Menu Goal Set for 2030",
     "stats": [
       {
-        "value": "0.2",
+        "value": "0.5",
         "label": "Documented target or result"
-      },
-      {
-        "value": "2022",
-        "label": "Year documented"
       }
     ],
-    "summary": "The pledge established a measurable expansion commitment at one of Canada’s largest university campuses.",
+    "summary": "Dalhousie pairs a published baseline with a long-term target, creating a clear framework for measuring progress.",
     "achievements": [
-      "Signed the Forward Food Pledge after intensive plant-based culinary training for campus chefs.",
-      "Committed to converting an additional 20% of campus menus to plant-based offerings, beyond the existing baseline.",
-      "Built staff capacity to produce appealing, culturally diverse and scalable plant-based meals.",
-      "Connected menu transformation with the university’s broader sustainability and food-emissions work."
+      "Measured a baseline showing approximately 33% of food purchases by dollar value were plant-based.",
+      "Set an objective for at least 50% of menu options to be plant-based by 2030.",
+      "Introduced Cool Food identification to help students select lower-carbon meals.",
+      "Integrated procurement, menu planning, health and food-related emissions into a ten-year institutional food plan."
     ],
     "organizationsInvolved": [],
     "resources": [
       {
         "label": "Primary source",
-        "url": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/"
+        "url": "https://www.dal.ca/content/dam/www/about/mission-vision-and-values/sustainability/Sustainable%20and%20Healthy%20Food%20Plan%20Final.pdf"
       }
     ],
     "lastUpdated": "2026-07-02",
     "verified": true,
     "image": {
-      "url": "https://spacesandexperiences.utoronto.ca/wp-content/uploads/2022/09/ForwardFood-JS-Aug2022_47-1024x683.jpg",
-      "kind": "initiative",
-      "alt": "University of Toronto chefs preparing plant-based dishes during Forward Food training",
-      "credit": "University of Toronto Spaces & Experiences",
-      "source": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/",
+      "url": "https://www.dal.ca/content/experience-fragments/www/life_at_dal/housing-and-dining/campus-dining/master/_jcr_content/root/container_copy_83970/teaser_copy_copy.coreimg.jpeg/1769204391390/sweet-potato-bowl-uncropped.jpeg",
+      "kind": "dining",
+      "alt": "Sweet potato and quinoa bowl served through Dalhousie campus dining",
+      "credit": "Dalhousie University",
+      "source": "https://www.dal.ca/life-at-dal/campus-dining/sustainability.html",
       "position": "center"
     }
   },
@@ -508,50 +661,54 @@
     }
   },
   {
-    "id": "universit-laval",
-    "name": "Université Laval",
-    "shortName": "Université Laval",
+    "id": "university-of-toronto-st-george-campus",
+    "name": "University of Toronto – St. George Campus",
+    "shortName": "University of Toronto – St. George Campus",
     "type": "university",
-    "city": "Quebec City",
-    "province": "QC",
+    "city": "Toronto",
+    "province": "ON",
     "coordinates": {
-      "lat": 46.82245,
-      "lng": -71.2227
+      "lat": 43.65166,
+      "lng": -79.37985
     },
     "coordinatesApproximate": true,
     "stage": "active",
-    "stageLabel": "Initiative documented",
-    "yearImplemented": null,
-    "timeframe": "",
-    "headline": "Nearly 40% of Campus Food Purchases Are Plant-Origin",
+    "stageLabel": "Commitment in progress",
+    "yearImplemented": 2022,
+    "timeframe": "2022-08-01",
+    "headline": "Additional 20% of Campus Menus Committed to Plant-Based Food",
     "stats": [
       {
-        "value": "0.4",
+        "value": "0.2",
         "label": "Documented target or result"
+      },
+      {
+        "value": "2022",
+        "label": "Year documented"
       }
     ],
-    "summary": "Université Laval combines procurement measurement with a practical framework for designing lower-carbon meals.",
+    "summary": "The pledge established a measurable expansion commitment at one of Canada’s largest university campuses.",
     "achievements": [
-      "Developed an “eco-efficient meal” method that evaluates both nutritional quality and greenhouse-gas impact.",
-      "Asked campus food operators to offer meals with stronger nutrition and lower climate impact.",
-      "Reports that nearly 40% of food-service purchases are foods of plant origin.",
-      "Embedded healthy, plant-forward and local food into its Horizon 2030 sustainability direction."
+      "Signed the Forward Food Pledge after intensive plant-based culinary training for campus chefs.",
+      "Committed to converting an additional 20% of campus menus to plant-based offerings, beyond the existing baseline.",
+      "Built staff capacity to produce appealing, culturally diverse and scalable plant-based meals.",
+      "Connected menu transformation with the university’s broader sustainability and food-emissions work."
     ],
     "organizationsInvolved": [],
     "resources": [
       {
         "label": "Primary source",
-        "url": "https://www.ulaval.ca/developpement-durable/alimentation/repas-eco-efficients"
+        "url": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/"
       }
     ],
     "lastUpdated": "2026-07-02",
     "verified": true,
     "image": {
-      "url": "https://www.ulaval.ca/sites/default/files/DD/MilieuDeVie/Alimentation_responsable/Alimentation-titre.jpg",
-      "kind": "dining",
-      "alt": "Food service staff preparing meals at a Université Laval campus dining counter",
-      "credit": "Université Laval",
-      "source": "https://www.ulaval.ca/en/sustainable-development/sustainable-food-choices",
+      "url": "https://spacesandexperiences.utoronto.ca/wp-content/uploads/2022/09/ForwardFood-JS-Aug2022_47-1024x683.jpg",
+      "kind": "initiative",
+      "alt": "University of Toronto chefs preparing plant-based dishes during Forward Food training",
+      "credit": "University of Toronto Spaces & Experiences",
+      "source": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/",
       "position": "center"
     }
   },
@@ -599,207 +756,50 @@
     }
   },
   {
-    "id": "dalhousie-university",
-    "name": "Dalhousie University",
-    "shortName": "Dalhousie University",
+    "id": "universit-laval",
+    "name": "Université Laval",
+    "shortName": "Université Laval",
     "type": "university",
-    "city": "Halifax",
-    "province": "NS",
+    "city": "Quebec City",
+    "province": "QC",
     "coordinates": {
-      "lat": 44.65212,
-      "lng": -63.58594
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": null,
-    "timeframe": "1969-12-31",
-    "headline": "Plant-Based Baseline Established and 50% Menu Goal Set for 2030",
-    "stats": [
-      {
-        "value": "0.5",
-        "label": "Documented target or result"
-      }
-    ],
-    "summary": "Dalhousie pairs a published baseline with a long-term target, creating a clear framework for measuring progress.",
-    "achievements": [
-      "Measured a baseline showing approximately 33% of food purchases by dollar value were plant-based.",
-      "Set an objective for at least 50% of menu options to be plant-based by 2030.",
-      "Introduced Cool Food identification to help students select lower-carbon meals.",
-      "Integrated procurement, menu planning, health and food-related emissions into a ten-year institutional food plan."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Primary source",
-        "url": "https://www.dal.ca/content/dam/www/about/mission-vision-and-values/sustainability/Sustainable%20and%20Healthy%20Food%20Plan%20Final.pdf"
-      }
-    ],
-    "lastUpdated": "2026-07-02",
-    "verified": true,
-    "image": {
-      "url": "https://www.dal.ca/content/experience-fragments/www/life_at_dal/housing-and-dining/campus-dining/master/_jcr_content/root/container_copy_83970/teaser_copy_copy.coreimg.jpeg/1769204391390/sweet-potato-bowl-uncropped.jpeg",
-      "kind": "dining",
-      "alt": "Sweet potato and quinoa bowl served through Dalhousie campus dining",
-      "credit": "Dalhousie University",
-      "source": "https://www.dal.ca/life-at-dal/campus-dining/sustainability.html",
-      "position": "center"
-    }
-  },
-  {
-    "id": "toronto",
-    "name": "Toronto",
-    "shortName": "Toronto",
-    "type": "city",
-    "city": "Toronto",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.64538,
-      "lng": -79.39152
+      "lat": 46.82245,
+      "lng": -71.2227
     },
     "coordinatesApproximate": true,
     "stage": "active",
-    "stageLabel": "Commitment in progress",
-    "yearImplemented": 2019,
-    "timeframe": "1969-12-31 | 2030-12-31",
-    "headline": "City Food Procurement Tied to a 25% Emissions-Reduction Goal",
+    "stageLabel": "Initiative documented",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Nearly 40% of Campus Food Purchases Are Plant-Origin",
     "stats": [
       {
-        "value": "0.25",
+        "value": "0.4",
         "label": "Documented target or result"
-      },
-      {
-        "value": "2019",
-        "label": "Year documented"
       }
     ],
-    "summary": "Toronto is one of Canada’s strongest municipal examples of linking institutional meals to a quantified climate target.",
+    "summary": "Université Laval combines procurement measurement with a practical framework for designing lower-carbon meals.",
     "achievements": [
-      "Committed to reducing greenhouse-gas emissions associated with food procured by the City by 25% by 2030.",
-      "Measures the climate impact of meals served through municipal operations.",
-      "Uses planetary-health and plant-forward approaches to identify lower-carbon food choices.",
-      "Applied the commitment to corporate food procurement rather than limiting action to public education."
+      "Developed an “eco-efficient meal” method that evaluates both nutritional quality and greenhouse-gas impact.",
+      "Asked campus food operators to offer meals with stronger nutrition and lower climate impact.",
+      "Reports that nearly 40% of food-service purchases are foods of plant origin.",
+      "Embedded healthy, plant-forward and local food into its Horizon 2030 sustainability direction."
     ],
     "organizationsInvolved": [],
     "resources": [
       {
         "label": "Primary source",
-        "url": "https://secure.toronto.ca/council/agenda-item.do?item=2024.IE15.1"
+        "url": "https://www.ulaval.ca/developpement-durable/alimentation/repas-eco-efficients"
       }
     ],
     "lastUpdated": "2026-07-02",
     "verified": true,
     "image": {
-      "url": "https://www.toronto.ca/wp-content/uploads/2017/11/96cb-cityhall-jets-350x526.jpg",
-      "kind": "community",
-      "alt": "Toronto City Hall and Nathan Phillips Square",
-      "credit": "City of Toronto",
-      "source": "https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-city-facilities/city-hall/tours-points-of-interest/",
-      "position": "center"
-    }
-  },
-  {
-    "id": "government-of-canada-health-canada",
-    "name": "Government of Canada / Health Canada",
-    "shortName": "Government of Canada / Health Canada",
-    "type": "government",
-    "city": "Ottawa",
-    "province": "Canada",
-    "coordinates": {
-      "lat": 45.42422,
-      "lng": -75.68131
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2019,
-    "timeframe": "1969-12-31",
-    "headline": "Canada’s National Food Guide Prioritizes Plant Protein",
-    "stats": [
-      {
-        "value": "2019",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The Food Guide is a foundational national policy accomplishment that supports institutional plant-forward action across Canada.",
-    "achievements": [
-      "Recommends choosing protein foods that come from plants more often.",
-      "Places beans, lentils, nuts, seeds, tofu and other plant proteins within the core national healthy-eating framework.",
-      "Recognizes that food choices can affect both personal health and the environment.",
-      "Gives public institutions a strong federal evidence base for increasing plant-based meals and revising procurement standards."
-    ],
-    "organizationsInvolved": [],
-    "resources": [
-      {
-        "label": "Primary source",
-        "url": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/"
-      }
-    ],
-    "lastUpdated": "2026-07-02",
-    "verified": true,
-    "image": {
-      "url": "https://food-guide.canada.ca/sites/default/files/styles/title_bar_image/public/2022-05/ComboShot-Banner%20500x300.jpg",
-      "kind": "initiative",
-      "alt": "Canada's food guide plate featuring vegetables, fruits, whole grains and protein foods",
-      "credit": "Health Canada",
-      "source": "https://food-guide.canada.ca/en/healthy-eating-recommendations/make-it-a-habit-to-eat-vegetables-fruit-whole-grains-and-protein-foods/",
-      "position": "center"
-    }
-  },
-  {
-    "id": "child-learning-center",
-    "name": "University of Guelph Child Care and Learning Centre",
-    "shortName": "Child Care and Learning Centre",
-    "type": "other",
-    "city": "Guelph",
-    "province": "ON",
-    "coordinates": {
-      "lat": 43.55094,
-      "lng": -80.24513
-    },
-    "coordinatesApproximate": true,
-    "stage": "implemented",
-    "stageLabel": "Implemented",
-    "yearImplemented": 2020,
-    "timeframe": "2020-01-01",
-    "headline": "Fully Plant-Based Child-Care Menu Introduced in 2020",
-    "stats": [
-      {
-        "value": "0.65",
-        "label": "Reported relative reduction in monthly menu-related carbon footprint"
-      },
-      {
-        "value": "2020",
-        "label": "Year documented"
-      }
-    ],
-    "summary": "The University of Guelph Child Care and Learning Centre switched to a fully plant-based menu in 2020. A Foodsteps assessment reported that the change reduced the menu’s monthly carbon footprint by nearly 65%, saving more than 1,900 kg CO2e per month compared with the previous meat-and-dairy menu.",
-    "achievements": [
-      "Introduced a fully plant-based menu for meals and snacks in 2020.",
-      "Removed meat, dairy and eggs from the centre’s regular menu.",
-      "Reduced the reported monthly menu-related carbon footprint by nearly 65%.",
-      "Saved an estimated 1,900 kg CO2e per month compared with the previous menu.",
-      "Improved meal inclusion and simplified accommodation of dietary restrictions and allergies."
-    ],
-    "organizationsInvolved": [
-      "University of Guelph",
-      "University of Guelph Child Care and Learning Centre",
-      "Foodsteps"
-    ],
-    "resources": [
-      {
-        "label": "Primary source",
-        "url": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/"
-      }
-    ],
-    "lastUpdated": "2026-07-04",
-    "verified": true,
-    "image": {
-      "url": "https://news.uoguelph.ca/wp-content/uploads/2022/09/lentil-shepherds-pie-500x333.jpg",
-      "kind": "initiative",
-      "alt": "Plant-based lentil shepherd's pie portions prepared at the University of Guelph Child Care and Learning Centre",
-      "credit": "University of Guelph",
-      "source": "https://news.uoguelph.ca/2022/10/u-of-gs-child-care-and-learning-centre-cuts-carbon-footprint-through-plant-based-menu/",
+      "url": "https://www.ulaval.ca/sites/default/files/DD/MilieuDeVie/Alimentation_responsable/Alimentation-titre.jpg",
+      "kind": "dining",
+      "alt": "Food service staff preparing meals at a Université Laval campus dining counter",
+      "credit": "Université Laval",
+      "source": "https://www.ulaval.ca/en/sustainable-development/sustainable-food-choices",
       "position": "center"
     }
   }
