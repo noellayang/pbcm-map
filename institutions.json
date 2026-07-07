@@ -1,5 +1,101 @@
 [
   {
+    "id": "burnaby",
+    "name": "Burnaby",
+    "shortName": "Burnaby",
+    "type": "city",
+    "city": "Burnaby",
+    "province": "BC",
+    "coordinates": {
+      "lat": 49.24636,
+      "lng": -122.97551
+    },
+    "coordinatesApproximate": true,
+    "stage": "active",
+    "stageLabel": "Initiative documented",
+    "yearImplemented": null,
+    "timeframe": "2025-03-31",
+    "headline": "PBCM presentation to Burnaby, BC Environment Committee",
+    "stats": [],
+    "summary": "PBCM presentation to Burnaby, BC Environment Committee. Presented March 31, 2025",
+    "achievements": [
+      "Discussed the role of food emissions in municipal climate action",
+      "Highlighted opportunities to increase plant-based food options and reduce food-related greenhouse gas emissions",
+      "Raised awareness of sustainable food procurement practices and municipal leadership opportunities",
+      "Contributed to dialogue on climate-friendly food systems within municipal governance"
+    ],
+    "organizationsInvolved": [
+      "Plant-Based Cities Movement"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://pub-burnaby.escribemeetings.com/filestream.ashx?DocumentId=81350"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.burnaby.ca/sites/default/files/styles/rad_widescreen_800w/public/acquiadam/2021-07/Our%20City%20Hall.jpg?h=bccd1fa5&itok=M5M7KiLZ",
+      "kind": "institution",
+      "alt": "Burnaby City Hall",
+      "credit": "City of Burnaby",
+      "source": "https://www.burnaby.ca/our-city/city-hall",
+      "position": "center"
+    }
+  },
+  {
+    "id": "district-of-north-vancouver",
+    "name": "District of North Vancouver",
+    "shortName": "District of North Vancouver",
+    "type": "city",
+    "city": "North Vancouver",
+    "province": "BC",
+    "coordinates": {
+      "lat": 49.32009,
+      "lng": -123.06108
+    },
+    "coordinatesApproximate": true,
+    "stage": "motion-passed",
+    "stageLabel": "Policy or motion adopted",
+    "yearImplemented": 2024,
+    "timeframe": "2024-05-06",
+    "headline": "Municipal Plant-Forward Motion",
+    "stats": [
+      {
+        "value": "2024",
+        "label": "Year documented"
+      }
+    ],
+    "summary": "Passed May 6, 2024 District of North Vancouver Council",
+    "achievements": [
+      "Prioritize plant-based food options whenever food is purchased or funded by the District",
+      "Support healthier and more sustainable food choices at municipal meetings, events, and functions",
+      "Recognize the environmental benefits of reducing food-related greenhouse gas emissions",
+      "Promote biodiversity conservation and more sustainable use of natural resources through food procurement",
+      "Demonstrate municipal leadership on climate-friendly and plant-forward food practices"
+    ],
+    "organizationsInvolved": [
+      "Plant-Based Cities Movement"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://www.dnv.org/your-government/council-meetings-and-minutes"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://images.dnv.org/images/dnv-air-deepcove.jpg",
+      "kind": "community",
+      "alt": "View across North Van",
+      "credit": "District of North Vancouver",
+      "source": "https://www.dnv.org/",
+      "position": "center"
+    }
+  },
+  {
     "id": "vancouver",
     "name": "Vancouver",
     "shortName": "Vancouver",
@@ -98,6 +194,58 @@
       "alt": "Toronto City Hall and Nathan Phillips Square",
       "credit": "City of Toronto",
       "source": "https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-city-facilities/city-hall/tours-points-of-interest/",
+      "position": "center"
+    }
+  },
+  {
+    "id": "brampton",
+    "name": "Brampton",
+    "shortName": "Brampton",
+    "type": "city",
+    "city": "Brampton",
+    "province": "ON",
+    "coordinates": {
+      "lat": 0,
+      "lng": 0
+    },
+    "coordinatesApproximate": false,
+    "stage": "motion-passed",
+    "stageLabel": "Motion passed",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Municipal Plant-Forward Motion",
+    "stats": [],
+    "summary": "Municipal Plant-Forward Motion\nPassed August 10, 2022\nCity of Brampton Counciil\n• Increase plant-based and sustainable food options within municipal food services\n• Recognize the environmental and climate impacts associated with food systems\n• Encourage healthier and lower-carbon food choices\n• Advance sustainable municipal food procurement practices",
+    "achievements": [
+      "Municipal Plant-Forward Motion",
+      "Passed August 10, 2022",
+      "City of Brampton Counciil",
+      "Increase plant-based and sustainable food options within municipal food services",
+      "Recognize the environmental and climate impacts associated with food systems",
+      "Encourage healthier and lower-carbon food choices",
+      "Advance sustainable municipal food procurement practices"
+    ],
+    "organizationsInvolved": [
+      "Plant-Based Cities Movement-supported initiative. https://www.kingstonist.com/news/opinion-plant-based-cities-movement-leading-the-way-to-a-sustainable-future/"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://pub-brampton.escribemeetings.com/Meeting.aspx?Agenda=PostMinutes&Id=9a224761-dd7b-4b89-9307-ea0a3bf05185&lang=English"
+      },
+      {
+        "label": "Secondary source",
+        "url": "https://www.kingstonist.com/news/opinion-plant-based-cities-movement-leading-the-way-to-a-sustainable-future/"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.brampton.ca/EN/City-Hall/News/PublishingImages/Banner.jpg?RenditionID=5",
+      "kind": "community",
+      "alt": "Downtown Brampton and City Hall at sunset",
+      "credit": "City of Brampton",
+      "source": "https://www.brampton.ca/EN/City-Hall/News",
       "position": "center"
     }
   },
@@ -416,6 +564,90 @@
     }
   },
   {
+    "id": "concordia-university",
+    "name": "Concordia University",
+    "shortName": "Concordia University",
+    "type": "university",
+    "city": "Montréal",
+    "province": "QC",
+    "coordinates": {
+      "lat": 0,
+      "lng": 0
+    },
+    "coordinatesApproximate": false,
+    "stage": "implemented",
+    "stageLabel": "Implemented / documented",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk",
+    "stats": [],
+    "summary": "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk",
+    "achievements": [
+      "Concordia University: dining menus include approximately 42% vegan and 24% vegetarian options, alongside increased visibility and promotion of plant-based milk"
+    ],
+    "organizationsInvolved": [
+      "Canadian University Supported Initiative"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://www.concordia.ca/sustainability/about/action-plan/progress-updates/food-systems.html"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.concordia.ca/content/concordia/en/web/design/study/_jcr_content/content-main/grid_container/grid-container-parsys/image_48579862.img.jpg/1781620981652.jpg",
+      "kind": "campus",
+      "alt": "Concordia University buildings in downtown Montréal",
+      "credit": "Concordia University",
+      "source": "https://www.concordia.ca/",
+      "position": "center"
+    }
+  },
+  {
+    "id": "university-of-guelph",
+    "name": "University of Guelph",
+    "shortName": "University of Guelph",
+    "type": "university",
+    "city": "Guelph",
+    "province": "ON",
+    "coordinates": {
+      "lat": 0,
+      "lng": 0
+    },
+    "coordinatesApproximate": false,
+    "stage": "active",
+    "stageLabel": "Reviewed initiative",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Vegan and Vegetarian options are readily available across campus,",
+    "stats": [],
+    "summary": "Vegan and Vegetarian options are readily available across campus,",
+    "achievements": [
+      "Vegan and Vegetarian options are readily available across campus,"
+    ],
+    "organizationsInvolved": [
+      "Canadian University Supported Initiative"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://hospitality.uoguelph.ca/"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://api.liveugconthub.uoguelph.dev/sites/default/files/2026-06/hbrc-1680x640.jpg",
+      "kind": "campus",
+      "alt": "Luckevich Pinchin Honey Bee Research Centre at the University of Guelph",
+      "credit": "University of Guelph",
+      "source": "https://www.uoguelph.ca/",
+      "position": "center"
+    }
+  },
+  {
     "id": "university-of-calgary",
     "name": "University of Calgary",
     "shortName": "University of Calgary",
@@ -455,6 +687,55 @@
       "alt": "Plant-forward ingredients and dishes at University of Calgary Food Services",
       "credit": "University of Calgary",
       "source": "https://www.ucalgary.ca/ancillary/sustainability/sustainability-food-services",
+      "position": "center"
+    }
+  },
+  {
+    "id": "simon-fraser-university",
+    "name": "Simon Fraser University",
+    "shortName": "Simon Fraser University",
+    "type": "university",
+    "city": "Burnaby",
+    "province": "BC",
+    "coordinates": {
+      "lat": 49.24769,
+      "lng": -122.9843
+    },
+    "coordinatesApproximate": true,
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": null,
+    "timeframe": "2025-12-31",
+    "headline": "50% Plant-Based Menu Expansion Goal",
+    "stats": [
+      {
+        "value": "0.5",
+        "label": "Documented target or result"
+      }
+    ],
+    "summary": "This commitment gives SFU a measurable benchmark for expanding everyday access to plant-based meals across its campuses.",
+    "achievements": [
+      "Committed to increasing the number of plant-based menu items offered through SFU Food by 50%.",
+      "Embedded the goal in the university’s food-sustainability program rather than treating plant-based meals as isolated menu additions.",
+      "Positioned menu expansion alongside waste reduction, responsible purchasing and lower-impact campus dining."
+    ],
+    "organizationsInvolved": [
+      "Chartwells/Compass Group associated with SFU dining operations"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://www.sfu.ca/food/programs/sustainability.html"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.sfu.ca/content/sfu/main/campuses/burnaby/_jcr_content/main_content/image.img.original.low.jpg/1614268345466.jpg",
+      "kind": "campus",
+      "alt": "Academic Quadrangle at Simon Fraser University's Burnaby campus",
+      "credit": "Simon Fraser University",
+      "source": "https://www.sfu.ca/campuses/burnaby.html",
       "position": "center"
     }
   },
@@ -505,6 +786,48 @@
       "alt": "University of British Columbia campus",
       "credit": "University of British Columbia",
       "source": "https://images.spaicelabs.com/images/flus6j8v/production/fbb07b3efe502c9f5f53301aee35738e9f3531f9-1920x1080.jpg?rect=420%2C0%2C1080%2C1080&w=1600&fm=webp&q=72&fit=max",
+      "position": "center"
+    }
+  },
+  {
+    "id": "university-of-victoria",
+    "name": "University of Victoria",
+    "shortName": "University of Victoria",
+    "type": "university",
+    "city": "Victoria",
+    "province": "BC",
+    "coordinates": {
+      "lat": 0,
+      "lng": 0
+    },
+    "coordinatesApproximate": false,
+    "stage": "active",
+    "stageLabel": "Reviewed initiative",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15).",
+    "stats": [],
+    "summary": "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15).",
+    "achievements": [
+      "UVic: Climate and Sustainability Action Plan 2030 targets a 50% reduction in food-related GHG emissions and plant-based defaults on 60% of campus menus by 2030 (p. 15)."
+    ],
+    "organizationsInvolved": [
+      "Canadian University Supported Initiative"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://www.uvic.ca/_assets/docs/csap2030-actions.pdf"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.uvic.ca/_assets/images/cards/storygrid/campus-trees_0710241010_520x346-260x173.webp",
+      "kind": "campus",
+      "alt": "Tree-lined pathway on the University of Victoria campus",
+      "credit": "University of Victoria",
+      "source": "https://www.uvic.ca/",
       "position": "center"
     }
   },
@@ -709,6 +1032,48 @@
       "alt": "University of Toronto chefs preparing plant-based dishes during Forward Food training",
       "credit": "University of Toronto Spaces & Experiences",
       "source": "https://spacesandexperiences.utoronto.ca/food-beverage/plant-based-momentum-at-the-st-george-campus/",
+      "position": "center"
+    }
+  },
+  {
+    "id": "western-university",
+    "name": "Western University",
+    "shortName": "Western University",
+    "type": "university",
+    "city": "London",
+    "province": "ON",
+    "coordinates": {
+      "lat": 0,
+      "lng": 0
+    },
+    "coordinatesApproximate": false,
+    "stage": "implemented",
+    "stageLabel": "Implemented / documented",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based",
+    "stats": [],
+    "summary": "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based",
+    "achievements": [
+      "Western University: residence dining services report that approximately 46% of menu offerings within the residence dining cycle are plant-based"
+    ],
+    "organizationsInvolved": [
+      "Canadian University Supported Initiative"
+    ],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://food.uwo.ca/sustainable-dining"
+      }
+    ],
+    "lastUpdated": "2026-07-07",
+    "verified": true,
+    "image": {
+      "url": "https://www.uwo.ca/img/about/visit-campus/maps-2col_visitus.jpg",
+      "kind": "campus",
+      "alt": "Students walking near University College at Western University",
+      "credit": "Western University",
+      "source": "https://www.uwo.ca/about/visit/index.html",
       "position": "center"
     }
   },
