@@ -914,189 +914,21 @@ const map = L.map("map", {
 });
 
 /*
-  LIGHTING UP CANADA VECTOR ATLAS
+  Native raster basemap for the Lighting Up Canada theme.
 
-  Leaflet remains the map engine, but the generic raster basemap has been
-  removed. Water is now the map canvas, while Canada and neighbouring US states
-  are rendered as independent GeoJSON layers. This gives the interface direct,
-  reliable control over ocean, land, borders, labels, and hover states.
+  CARTO Dark Matter already provides a coordinated dark-ocean, readable-land,
+  boundary, road, and label palette. It is used exactly as supplied: no CSS
+  colour filters, blend modes, or stacked label layer are required.
 */
-const ATLAS_DATA_URL =
-  "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_50m_admin_1_states_provinces.geojson";
-
-map.createPane("atlasContextPane");
-map.getPane("atlasContextPane").style.zIndex = "180";
-map.getPane("atlasContextPane").style.pointerEvents = "none";
-
-map.createPane("atlasCanadaPane");
-map.getPane("atlasCanadaPane").style.zIndex = "200";
-
-map.createPane("atlasLabelPane");
-map.getPane("atlasLabelPane").style.zIndex = "320";
-map.getPane("atlasLabelPane").style.pointerEvents = "none";
-
-const CANADA_PROVINCE_LABELS = [
-  ["BC", 54.2, -124.7],
-  ["AB", 55.1, -115.0],
-  ["SK", 54.7, -106.0],
-  ["MB", 55.0, -97.0],
-  ["ON", 50.7, -85.1],
-  ["QC", 52.3, -71.8],
-  ["NB", 46.7, -66.4],
-  ["NS", 45.1, -63.4],
-  ["PE", 46.4, -63.4],
-  ["NL", 53.1, -59.5],
-  ["YT", 63.5, -136.3],
-  ["NT", 65.1, -120.8],
-  ["NU", 67.3, -94.4]
-];
-
-const CANADA_CITY_LABELS = [
-  ["Vancouver", 49.2827, -123.1207],
-  ["Calgary", 51.0447, -114.0719],
-  ["Edmonton", 53.5461, -113.4938],
-  ["Winnipeg", 49.8951, -97.1384],
-  ["Toronto", 43.6532, -79.3832],
-  ["Ottawa", 45.4215, -75.6972],
-  ["Montréal", 45.5019, -73.5674],
-  ["Halifax", 44.6488, -63.5752],
-  ["St. John’s", 47.5615, -52.7126]
-];
-
-function atlasCountryCode(feature) {
-  const properties = feature?.properties ?? {};
-  return String(
-    properties.adm0_a3 ||
-    properties.sr_adm0_a3 ||
-    properties.iso_a3 ||
-    properties.gu_a3 ||
-    ""
-  ).toUpperCase();
-}
-
-function addAtlasLabel(text, lat, lng, className, minZoom = 3) {
-  const marker = L.marker([lat, lng], {
-    pane: "atlasLabelPane",
-    interactive: false,
-    keyboard: false,
-    icon: L.divIcon({
-      className: "atlas-label-shell",
-      html: `<span class="${className}">${escapeHtml(text)}</span>`,
-      iconSize: null
-    })
-  }).addTo(map);
-
-  function updateVisibility() {
-    const element = marker.getElement();
-    if (element) {
-      element.hidden = map.getZoom() < minZoom;
-    }
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  {
+    subdomains: "abcd",
+    maxZoom: 20,
+    className: "pbcm-dark-basemap",
+    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
-
-  marker.on("add", updateVisibility);
-  map.on("zoomend", updateVisibility);
-}
-
-function addAtlasLabels() {
-  CANADA_PROVINCE_LABELS.forEach(([label, lat, lng]) => {
-    addAtlasLabel(label, lat, lng, "atlas-province-label", 3);
-  });
-
-  CANADA_CITY_LABELS.forEach(([label, lat, lng]) => {
-    addAtlasLabel(label, lat, lng, "atlas-city-label", 5);
-  });
-}
-
-async function loadIlluminatedAtlas() {
-  try {
-    const response = await fetch(ATLAS_DATA_URL, { cache: "force-cache" });
-    if (!response.ok) {
-      throw new Error(`Atlas request failed with status ${response.status}`);
-    }
-
-    const adminRegions = await response.json();
-    const features = Array.isArray(adminRegions.features)
-      ? adminRegions.features
-      : [];
-
-    const contextFeatures = features.filter(
-      (feature) => atlasCountryCode(feature) === "USA"
-    );
-    const canadaFeatures = features.filter(
-      (feature) => atlasCountryCode(feature) === "CAN"
-    );
-
-    L.geoJSON(
-      { type: "FeatureCollection", features: contextFeatures },
-      {
-        pane: "atlasContextPane",
-        interactive: false,
-        style: {
-          fillColor: "#87969f",
-          fillOpacity: 0.72,
-          color: "#6f818a",
-          weight: 0.65,
-          opacity: 0.72
-        }
-      }
-    ).addTo(map);
-
-    L.geoJSON(
-      { type: "FeatureCollection", features: canadaFeatures },
-      {
-        pane: "atlasCanadaPane",
-        style: {
-          fillColor: "#dce5dc",
-          fillOpacity: 1,
-          color: "#71878c",
-          weight: 1.05,
-          opacity: 0.94
-        },
-        onEachFeature(feature, layer) {
-          const name = feature?.properties?.name || feature?.properties?.name_en;
-          if (name) {
-            layer.bindTooltip(name, {
-              className: "atlas-region-tooltip",
-              direction: "center",
-              sticky: true,
-              opacity: 1
-            });
-          }
-
-          layer.on({
-            mouseover(event) {
-              event.target.setStyle({
-                fillColor: "#edf3e8",
-                color: "#526f76",
-                weight: 1.5
-              });
-              event.target.bringToFront();
-            },
-            mouseout(event) {
-              event.target.setStyle({
-                fillColor: "#dce5dc",
-                color: "#71878c",
-                weight: 1.05
-              });
-            }
-          });
-        }
-      }
-    ).addTo(map);
-
-    addAtlasLabels();
-  } catch (error) {
-    console.error("Unable to load the Lighting Up Canada vector atlas.", error);
-    document.getElementById("map")?.classList.add("atlas-load-failed");
-  }
-}
-
-map.attributionControl.setPrefix(false);
-map.attributionControl.addAttribution(
-  'Geography: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a>'
-);
-
-loadIlluminatedAtlas();
+).addTo(map);
 
 /* =========================================================
    CANONICAL PUBLIC STATUS LANGUAGE
