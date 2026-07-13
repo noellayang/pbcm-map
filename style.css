@@ -2466,7 +2466,7 @@ body {
 /* Start with a true dark basemap and lift only enough detail to make
    coastlines, borders, labels and major roads readable. */
 .midnight-basemap {
-  filter: brightness(1.24) contrast(0.91) saturate(1.17) hue-rotate(-5deg);
+  filter: brightness(1.00) contrast(1.18) saturate(1.25) hue-rotate(-5deg);
 }
 
 /* Keep atmosphere at the edges without veiling central Canada. */
