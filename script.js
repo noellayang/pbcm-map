@@ -861,6 +861,32 @@ const TYPE_LABELS = {
   other: "Other institution"
 };
 
+
+const STAGE_DISPLAY_LABELS = {
+  outreach: "Documented",
+  active: "In progress",
+  "motion-passed": "Adopted",
+  implemented: "Implemented"
+};
+
+function normalizeStage(stage) {
+  const value = String(stage || "").trim().toLowerCase();
+  if (["outreach", "documented", "initiative-documented"].includes(value)) return "outreach";
+  if (["active", "in-progress", "commitment-in-progress"].includes(value)) return "active";
+  if (["motion-passed", "policy-adopted", "adopted", "commitment"].includes(value)) return "motion-passed";
+  if (["implemented", "complete", "completed"].includes(value)) return "implemented";
+  return "outreach";
+}
+
+function normalizeInstitutionStage(institution) {
+  const stage = normalizeStage(institution.stage);
+  return {
+    ...institution,
+    stage,
+    stageLabel: STAGE_DISPLAY_LABELS[stage]
+  };
+}
+
 const CANADA_VIEW = {
   center: [56.3, -106.3],
   zoom: 4
@@ -888,9 +914,6 @@ const mobileScrim = document.getElementById("mobile-scrim");
 
 const typeLegendElement = document.getElementById("type-legend");
 const resetViewButton = document.getElementById("reset-view");
-const mapLegend = document.getElementById("map-legend");
-const legendToggle = document.getElementById("legend-toggle");
-const legendContent = document.getElementById("legend-content");
 
 let activeType = "all";
 let searchTerm = "";
@@ -910,58 +933,24 @@ const map = L.map("map", {
   minZoom: 3,
   maxZoom: 18,
   zoomControl: true,
-  scrollWheelZoom: true
+  scrollWheelZoom: false
 });
 
 /*
-  CARTO Voyager is split into geography and labels so each can be treated
-  independently. The geography layer is darkened into a deep-blue night map
-  while preserving its naturally lighter land and darker blue water. The
-  labels-only layer is then restored to a crisp, pale treatment for legibility.
-  This produces a Google Maps-style dark hierarchy without requiring an API key
-  or replacing Leaflet.
+  CARTO Voyager provides clearer coastlines, political boundaries, labels,
+  and recognizably blue water. A dedicated CSS class then converts it into
+  a restrained twilight basemap, preserving the Lighting Up Canada night
+  identity without sacrificing geographic legibility.
 */
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
-    className: "night-geography-basemap",
+    className: "twilight-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
 ).addTo(map);
-
-L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png",
-  {
-    subdomains: "abcd",
-    maxZoom: 20,
-    className: "night-label-basemap",
-    interactive: false
-  }
-).addTo(map);
-
-/* =========================================================
-   CANONICAL PUBLIC STATUS LANGUAGE
-   ========================================================= */
-
-const STAGE_LABELS = Object.freeze({
-  outreach: "Documented",
-  active: "In progress",
-  "motion-passed": "Adopted",
-  implemented: "Implemented"
-});
-
-function canonicalStageLabel(stage) {
-  return STAGE_LABELS[stage] ?? "Documented";
-}
-
-function normalizePublicInstitution(institution) {
-  return {
-    ...institution,
-    stageLabel: canonicalStageLabel(institution.stage)
-  };
-}
 
 /* =========================================================
    HELPERS
@@ -1482,7 +1471,7 @@ function renderProfileDrawer(institution) {
             ${organizationsDetail}
 
             <div>
-              <dt>Last updated</dt>
+              <dt>Last reviewed</dt>
               <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
             </div>
 
@@ -1518,20 +1507,6 @@ function openProfileDrawer(institution) {
 
   drawer?.classList.add("is-open");
   drawer?.setAttribute("aria-hidden", "false");
-  document.body.classList.add("profile-open");
-
-  /* Keep the legend readable on laptops. On phones, collapse it so the map
-     and selected location retain priority above the bottom profile sheet. */
-  if (
-    isMobileLayout() &&
-    mapLegend &&
-    legendContent &&
-    legendToggle
-  ) {
-    mapLegend.classList.add("is-collapsed");
-    legendToggle.setAttribute("aria-expanded", "false");
-    legendContent.hidden = true;
-  }
 
   if (isMobileLayout() && mobileScrim) {
     mobileScrim.hidden = false;
@@ -1541,7 +1516,6 @@ function openProfileDrawer(institution) {
 function closeProfileDrawer() {
   drawer?.classList.remove("is-open");
   drawer?.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("profile-open");
 
   if (mobileScrim) {
     mobileScrim.hidden = true;
@@ -1562,25 +1536,7 @@ function focusInstitutionOnVisibleMap(
     institution.coordinates.lng
   );
 
-  if (isMobileLayout() && accountForDrawer) {
-    const mapHeight = map.getContainer().getBoundingClientRect().height;
-    const projectedMarker = map.project(latLng, zoom);
-
-    // Place the pin in the upper visible portion of the map so the bottom
-    // profile sheet does not immediately cover the selected location.
-    const desiredMarkerY = Math.max(92, Math.min(mapHeight * 0.26, 150));
-    const centreShiftY = mapHeight / 2 - desiredMarkerY;
-    const projectedCentre = projectedMarker.add([0, centreShiftY]);
-    const adjustedCentre = map.unproject(projectedCentre, zoom);
-
-    map.flyTo(adjustedCentre, zoom, {
-      animate: true,
-      duration: 0.45
-    });
-    return;
-  }
-
-  if (!accountForDrawer) {
+  if (isMobileLayout() || !accountForDrawer) {
     map.flyTo(latLng, zoom, {
       animate: true,
       duration: 0.45
@@ -1871,7 +1827,7 @@ async function loadInstitutionData() {
     );
   }
 
-  INSTITUTIONS = data.map(normalizePublicInstitution);
+  INSTITUTIONS = data.map(normalizeInstitutionStage);
 
   renderTypeLegend();
   renderInstitutionList(INSTITUTIONS);
@@ -1891,46 +1847,6 @@ async function loadInstitutionData() {
     size, and only then perform the first marker render.
   */
   renderInitialMapWhenReady();
-}
-
-
-const legendTabs = Array.from(document.querySelectorAll("[data-legend-tab]"));
-const legendPanels = Array.from(document.querySelectorAll("[data-legend-panel]"));
-
-function activateLegendTab(tabName) {
-  legendTabs.forEach((tab) => {
-    const isActive = tab.dataset.legendTab === tabName;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-    tab.tabIndex = isActive ? 0 : -1;
-  });
-
-  legendPanels.forEach((panel) => {
-    const isActive = panel.dataset.legendPanel === tabName;
-    panel.classList.toggle("is-active", isActive);
-    panel.hidden = !isActive;
-  });
-}
-
-legendTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => activateLegendTab(tab.dataset.legendTab));
-  tab.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-    event.preventDefault();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    const nextIndex = (index + direction + legendTabs.length) % legendTabs.length;
-    const nextTab = legendTabs[nextIndex];
-    activateLegendTab(nextTab.dataset.legendTab);
-    nextTab.focus();
-  });
-});
-
-if (legendToggle && mapLegend && legendContent) {
-  legendToggle.addEventListener("click", () => {
-    const isCollapsed = mapLegend.classList.toggle("is-collapsed");
-    legendToggle.setAttribute("aria-expanded", String(!isCollapsed));
-    legendContent.hidden = isCollapsed;
-  });
 }
 
 loadInstitutionData().catch(showDataLoadError);
