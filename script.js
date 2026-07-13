@@ -914,10 +914,10 @@ const map = L.map("map", {
 });
 
 /*
-  The basemap is split into separate geography and label panes. The map canvas
-  supplies the deep navy ocean colour. Voyager geography is blended over it,
-  which keeps land visibly lighter without turning the entire map grey. Labels
-  remain in their own pane so they stay crisp and accessible.
+  The basemap is split into separate dark geography and label panes. CARTO Dark
+  Matter supplies a genuinely navy ocean and lighter charcoal land natively,
+  avoiding the grey wash caused by blending a daytime raster style. Labels stay
+  separate so they remain crisp and accessible.
 */
 map.createPane("nightGeographyPane");
 map.getPane("nightGeographyPane").style.zIndex = "200";
@@ -928,7 +928,7 @@ map.getPane("nightLabelPane").style.zIndex = "350";
 map.getPane("nightLabelPane").style.pointerEvents = "none";
 
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
@@ -939,7 +939,7 @@ L.tileLayer(
 ).addTo(map);
 
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
