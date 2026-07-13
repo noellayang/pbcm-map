@@ -3421,56 +3421,68 @@ body.profile-open .map-legend.is-collapsed {
 }
 
 /* =========================================================
-   HIGH-CONTRAST LIGHTING UP CANADA MAP OVERRIDE
-   Darker ocean, preserved lighter land, crisp labels.
-   ========================================================= */
-
+   HIGH-CONTRAST DEEP-OCEAN MAP — FINAL OVERRIDE
+   =========================================================
+   The map canvas provides the ocean colour. The no-label geography tiles are
+   blended over that canvas, allowing pale land to lift while water remains
+   deep navy. Labels stay in a separate pane and are not affected by the blend.
+*/
 :root {
-  --map-water-deep: #041524;
-  --map-water-edge: #08243a;
-  --map-night-frame: #061827;
+  --map-ocean-deep: #031424;
+  --map-ocean-edge: #08263d;
+  --map-land-visible: #687477;
+  --map-label-primary: #eef4f6;
 }
 
 .map-shell,
 .map-frame,
 #map,
-.leaflet-container {
-  background-color: var(--map-water-deep) !important;
+.leaflet-container,
+.leaflet-map-pane {
+  background-color: var(--map-ocean-deep) !important;
 }
 
-/*
-  Keep the current lighter-land appearance while pushing the darkest parts
-  of the geography layer—primarily ocean and large lakes—deeper into navy.
-  Labels remain on their own layer and are intentionally not affected.
-*/
+/* Isolated geography pane: screen blending lifts land substantially more than
+   water, yielding a clear dark-ocean / lighter-land hierarchy. */
+.leaflet-nightGeographyPane-pane {
+  background: var(--map-ocean-deep);
+  isolation: isolate;
+}
+
 .night-geography-basemap {
+  opacity: 0.78 !important;
+  mix-blend-mode: screen;
   filter:
-    brightness(0.48)
-    contrast(1.34)
-    saturate(0.94)
-    hue-rotate(-7deg) !important;
+    grayscale(0.28)
+    sepia(0.08)
+    hue-rotate(156deg)
+    saturate(0.72)
+    brightness(0.72)
+    contrast(1.22) !important;
 }
 
+/* Labels remain separate and bright enough to read, without the heavy black
+   halo produced by aggressive inversion. */
 .night-label-basemap {
+  opacity: 0.94 !important;
+  mix-blend-mode: screen;
   filter:
-    invert(1)
-    grayscale(0.18)
-    brightness(1.38)
-    contrast(0.98) !important;
-  opacity: 0.92 !important;
+    grayscale(0.25)
+    brightness(1.08)
+    contrast(1.12) !important;
 }
 
-/* Preserve a subtle atmospheric frame without laying a dark veil over land. */
+/* Keep the atmosphere subtle so it does not flatten coastlines or inland
+   boundaries. */
 .map-frame::after {
   background:
-    linear-gradient(to bottom, rgb(2 13 24 / 3%), transparent 22%),
-    radial-gradient(circle at 51% 43%, rgb(139 188 204 / 3%), transparent 58%) !important;
-  box-shadow:
-    inset 0 0 20px rgb(0 7 15 / 14%),
-    inset 0 -18px 32px rgb(0 9 18 / 8%) !important;
+    linear-gradient(to bottom, rgb(3 18 31 / 2%), transparent 25%),
+    radial-gradient(circle at 50% 43%, rgb(126 178 190 / 3%), transparent 58%) !important;
+  box-shadow: inset 0 0 18px rgb(0 6 14 / 10%) !important;
 }
 
-/* Keep Leaflet's empty-tile background aligned with the deep ocean colour. */
-.leaflet-tile-pane {
-  background-color: var(--map-water-deep);
+/* Maintain legible controls against the deeper ocean. */
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  backdrop-filter: blur(5px);
 }

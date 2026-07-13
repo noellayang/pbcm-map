@@ -914,18 +914,25 @@ const map = L.map("map", {
 });
 
 /*
-  CARTO Voyager is split into geography and labels so each can be treated
-  independently. The geography layer is darkened into a deep-blue night map
-  while preserving its naturally lighter land and darker blue water. The
-  labels-only layer is then restored to a crisp, pale treatment for legibility.
-  This produces a Google Maps-style dark hierarchy without requiring an API key
-  or replacing Leaflet.
+  The basemap is split into separate geography and label panes. The map canvas
+  supplies the deep navy ocean colour. Voyager geography is blended over it,
+  which keeps land visibly lighter without turning the entire map grey. Labels
+  remain in their own pane so they stay crisp and accessible.
 */
+map.createPane("nightGeographyPane");
+map.getPane("nightGeographyPane").style.zIndex = "200";
+map.getPane("nightGeographyPane").style.pointerEvents = "none";
+
+map.createPane("nightLabelPane");
+map.getPane("nightLabelPane").style.zIndex = "350";
+map.getPane("nightLabelPane").style.pointerEvents = "none";
+
 L.tileLayer(
   "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
+    pane: "nightGeographyPane",
     className: "night-geography-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
@@ -936,6 +943,7 @@ L.tileLayer(
   {
     subdomains: "abcd",
     maxZoom: 20,
+    pane: "nightLabelPane",
     className: "night-label-basemap",
     interactive: false
   }
