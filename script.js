@@ -914,17 +914,30 @@ const map = L.map("map", {
 });
 
 /*
-  CARTO Dark Matter keeps the intended night-map identity. A restrained
-  CSS adjustment lifts geographic detail and blue tones without turning the
-  basemap into a recoloured daytime map.
+  CARTO Voyager is split into geography and labels so each can be treated
+  independently. The geography layer is darkened into a deep-blue night map
+  while preserving its naturally lighter land and darker blue water. The
+  labels-only layer is then restored to a crisp, pale treatment for legibility.
+  This produces a Google Maps-style dark hierarchy without requiring an API key
+  or replacing Leaflet.
 */
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
-    className: "midnight-basemap",
+    className: "night-geography-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
+  }
+).addTo(map);
+
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png",
+  {
+    subdomains: "abcd",
+    maxZoom: 20,
+    className: "night-label-basemap",
+    interactive: false
   }
 ).addTo(map);
 
@@ -1507,7 +1520,14 @@ function openProfileDrawer(institution) {
   drawer?.setAttribute("aria-hidden", "false");
   document.body.classList.add("profile-open");
 
-  if (mapLegend && legendContent && legendToggle) {
+  /* Keep the legend readable on laptops. On phones, collapse it so the map
+     and selected location retain priority above the bottom profile sheet. */
+  if (
+    isMobileLayout() &&
+    mapLegend &&
+    legendContent &&
+    legendToggle
+  ) {
     mapLegend.classList.add("is-collapsed");
     legendToggle.setAttribute("aria-expanded", "false");
     legendContent.hidden = true;
