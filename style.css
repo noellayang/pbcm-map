@@ -3244,3 +3244,105 @@ body.profile-open .map-legend.is-collapsed {
     font-size: 10px;
   }
 }
+
+/* =========================================================
+   PROGRESS MARKERS — BRIGHT, FLAT, CONSISTENT CIRCLES
+   ========================================================= */
+:root {
+  --stage-outreach: #168cff;      /* blue — initiative documented */
+  --stage-active: #ffd400;        /* yellow — commitment in progress */
+  --stage-motion: #f04444;        /* red — motion passed */
+  --stage-implemented: #20b85a;   /* green — implemented */
+}
+
+/* Use identical geometry in the map key and directory cards. */
+.stage-dot,
+.stage-badge::before {
+  width: 10px !important;
+  min-width: 10px !important;
+  max-width: 10px !important;
+  height: 10px !important;
+  min-height: 10px !important;
+  max-height: 10px !important;
+  flex: 0 0 10px !important;
+  display: inline-block !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  aspect-ratio: 1 / 1;
+}
+
+.stage-dot.stage-outreach,
+.stage-badge.stage-outreach::before {
+  color: var(--stage-outreach) !important;
+  background: var(--stage-outreach) !important;
+}
+
+.stage-dot.stage-active,
+.stage-badge.stage-active::before {
+  color: var(--stage-active) !important;
+  background: var(--stage-active) !important;
+}
+
+.stage-dot.stage-motion-passed,
+.stage-badge.stage-motion-passed::before {
+  color: var(--stage-motion) !important;
+  background: var(--stage-motion) !important;
+}
+
+.stage-dot.stage-implemented,
+.stage-badge.stage-implemented::before {
+  color: var(--stage-implemented) !important;
+  background: var(--stage-implemented) !important;
+}
+
+/* Preserve circle proportions even inside compressed legend layouts. */
+.stage-legend-grid span,
+.stage-badge {
+  align-items: center;
+}
+
+.stage-legend-grid .stage-dot {
+  align-self: center;
+}
+
+/* Final progress marker refinement: bright solid circles with thin dark rims. */
+.stage-dot,
+.stage-badge::before {
+  width: 10px !important;
+  min-width: 10px !important;
+  max-width: 10px !important;
+  height: 10px !important;
+  min-height: 10px !important;
+  max-height: 10px !important;
+  flex: 0 0 10px !important;
+  box-sizing: border-box !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.stage-dot.stage-outreach,
+.stage-badge.stage-outreach::before {
+  border-color: #075db8 !important;
+}
+
+.stage-dot.stage-active,
+.stage-badge.stage-active::before {
+  border-color: #a27600 !important;
+}
+
+.stage-dot.stage-motion-passed,
+.stage-badge.stage-motion-passed::before {
+  border-color: #a91616 !important;
+}
+
+.stage-dot.stage-implemented,
+.stage-badge.stage-implemented::before {
+  border-color: #0b7434 !important;
+}
