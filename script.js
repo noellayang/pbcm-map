@@ -946,14 +946,14 @@ L.tileLayer(
    ========================================================= */
 
 const STAGE_LABELS = Object.freeze({
-  outreach: "Initiative documented",
-  active: "Commitment in progress",
-  "motion-passed": "Policy or motion adopted",
+  outreach: "Documented",
+  active: "In progress",
+  "motion-passed": "Adopted",
   implemented: "Implemented"
 });
 
 function canonicalStageLabel(stage) {
-  return STAGE_LABELS[stage] ?? "Initiative documented";
+  return STAGE_LABELS[stage] ?? "Documented";
 }
 
 function normalizePublicInstitution(institution) {
@@ -1892,6 +1892,38 @@ async function loadInstitutionData() {
   */
   renderInitialMapWhenReady();
 }
+
+
+const legendTabs = Array.from(document.querySelectorAll("[data-legend-tab]"));
+const legendPanels = Array.from(document.querySelectorAll("[data-legend-panel]"));
+
+function activateLegendTab(tabName) {
+  legendTabs.forEach((tab) => {
+    const isActive = tab.dataset.legendTab === tabName;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+
+  legendPanels.forEach((panel) => {
+    const isActive = panel.dataset.legendPanel === tabName;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+legendTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => activateLegendTab(tab.dataset.legendTab));
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const nextIndex = (index + direction + legendTabs.length) % legendTabs.length;
+    const nextTab = legendTabs[nextIndex];
+    activateLegendTab(nextTab.dataset.legendTab);
+    nextTab.focus();
+  });
+});
 
 if (legendToggle && mapLegend && legendContent) {
   legendToggle.addEventListener("click", () => {

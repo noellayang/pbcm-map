@@ -243,31 +243,67 @@
           </button>
 
           <div id="legend-content" class="legend-content">
-            <div class="legend-section">
-              <strong>Institution type</strong>
+            <div class="legend-tabs" role="tablist" aria-label="Map key categories">
+              <button
+                id="legend-types-tab"
+                class="legend-tab is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="legend-types-panel"
+                data-legend-tab="types"
+              >
+                Types
+              </button>
+
+              <button
+                id="legend-progress-tab"
+                class="legend-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="legend-progress-panel"
+                data-legend-tab="progress"
+              >
+                Progress
+              </button>
+            </div>
+
+            <div
+              id="legend-types-panel"
+              class="legend-panel is-active"
+              role="tabpanel"
+              aria-labelledby="legend-types-tab"
+              data-legend-panel="types"
+            >
               <div id="type-legend" class="legend-grid legend-type-grid"></div>
             </div>
 
-            <div class="legend-section">
-              <strong>Initiative status</strong>
-
+            <div
+              id="legend-progress-panel"
+              class="legend-panel"
+              role="tabpanel"
+              aria-labelledby="legend-progress-tab"
+              data-legend-panel="progress"
+              hidden
+            >
               <div class="legend-grid stage-legend-grid">
-                <span>
+                <span title="An initiative has been identified and documented.">
                   <i class="stage-dot stage-outreach" aria-hidden="true"></i>
-                  Initiative documented
+                  Documented
                 </span>
 
-                <span>
+                <span title="A commitment or initiative is currently underway.">
                   <i class="stage-dot stage-active" aria-hidden="true"></i>
-                  Commitment in progress
+                  In progress
                 </span>
 
-                <span>
+                <span title="A policy, motion, or formal commitment has been adopted.">
                   <i class="stage-dot stage-motion-passed" aria-hidden="true"></i>
-                  Policy or motion adopted
+                  Adopted
                 </span>
 
-                <span>
+                <span title="The initiative has been put into practice.">
                   <i class="stage-dot stage-implemented" aria-hidden="true"></i>
                   Implemented
                 </span>

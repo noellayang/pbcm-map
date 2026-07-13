@@ -2933,3 +2933,194 @@ body.profile-open .map-legend.is-collapsed {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   REFINED MAP CONTROLS + TABBED VERTICAL KEY
+   ========================================================= */
+
+/* Keep Leaflet's zoom stack in its own lane and place Directory beneath it. */
+.sidebar-open {
+  top: 94px;
+  left: 12px;
+  min-width: 112px;
+  min-height: 38px;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.sidebar-open svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.sidebar-open span {
+  overflow: visible;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Small, readable vertical key: one category at a time. */
+.map-legend,
+body.profile-open .map-legend,
+body.profile-open .map-legend.is-collapsed {
+  right: 14px;
+  left: auto;
+  bottom: 14px;
+  width: 222px;
+  max-width: calc(100% - 28px);
+}
+
+.legend-toggle {
+  min-height: 39px;
+  padding: 8px 12px;
+}
+
+.legend-heading {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+}
+
+.legend-content {
+  display: block;
+  padding: 0 10px 10px;
+  overflow: visible;
+}
+
+.legend-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-bottom: 8px;
+  padding: 3px;
+  background: rgb(1 16 28 / 54%);
+  border: 1px solid rgb(190 219 232 / 15%);
+  border-radius: 5px;
+}
+
+.legend-tab {
+  min-height: 30px;
+  padding: 5px 8px;
+  color: #b9cad2;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.legend-tab:hover,
+.legend-tab:focus-visible {
+  color: #ffffff;
+  background: rgb(255 255 255 / 8%);
+}
+
+.legend-tab.is-active {
+  color: #ffffff;
+  background: #173f59;
+  box-shadow: 0 1px 5px rgb(0 7 17 / 26%);
+}
+
+.legend-panel[hidden] {
+  display: none;
+}
+
+.legend-type-grid,
+.stage-legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+  width: 100%;
+}
+
+.legend-type-grid span,
+.stage-legend-grid span {
+  width: 100%;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 5px;
+  color: #edf4f6;
+  font-size: 10.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.legend-type-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.stage-dot {
+  flex: 0 0 8px;
+}
+
+.map-legend.is-collapsed,
+body.profile-open .map-legend.is-collapsed {
+  width: 106px;
+}
+
+/* Keep the key clear of a desktop profile drawer without cutting it off. */
+@media (min-width: 1101px) {
+  body.profile-open .map-legend:not(.is-collapsed) {
+    right: calc(var(--drawer-width) + 14px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .map-legend,
+  body.profile-open .map-legend,
+  body.profile-open .map-legend.is-collapsed {
+    right: 12px;
+    left: auto;
+    bottom: 12px;
+    width: 214px;
+  }
+
+  body.profile-open .map-legend:not(.is-collapsed) {
+    right: 12px;
+  }
+}
+
+@media (max-width: 680px) {
+  .sidebar-open {
+    top: 92px;
+    left: 9px;
+    min-width: 104px;
+    min-height: 36px;
+    padding: 7px 10px;
+  }
+
+  .map-legend,
+  body.profile-open .map-legend,
+  body.profile-open .map-legend.is-collapsed {
+    top: auto;
+    right: 8px;
+    bottom: 8px;
+    left: auto;
+    width: min(216px, calc(100% - 16px));
+    max-height: none;
+  }
+
+  body.profile-open .map-legend.is-collapsed {
+    top: 8px;
+    right: 8px;
+    bottom: auto;
+    left: auto;
+    width: 106px;
+  }
+
+  .legend-content {
+    max-height: none;
+    overflow: visible;
+  }
+}
