@@ -888,6 +888,9 @@ const mobileScrim = document.getElementById("mobile-scrim");
 
 const typeLegendElement = document.getElementById("type-legend");
 const resetViewButton = document.getElementById("reset-view");
+const mapLegend = document.getElementById("map-legend");
+const legendToggle = document.getElementById("legend-toggle");
+const legendContent = document.getElementById("legend-content");
 
 let activeType = "all";
 let searchTerm = "";
@@ -907,7 +910,7 @@ const map = L.map("map", {
   minZoom: 3,
   maxZoom: 18,
   zoomControl: true,
-  scrollWheelZoom: false
+  scrollWheelZoom: true
 });
 
 /*
@@ -925,6 +928,28 @@ L.tileLayer(
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
 ).addTo(map);
+
+/* =========================================================
+   CANONICAL PUBLIC STATUS LANGUAGE
+   ========================================================= */
+
+const STAGE_LABELS = Object.freeze({
+  outreach: "Initiative documented",
+  active: "Commitment in progress",
+  "motion-passed": "Policy or motion adopted",
+  implemented: "Implemented"
+});
+
+function canonicalStageLabel(stage) {
+  return STAGE_LABELS[stage] ?? "Initiative documented";
+}
+
+function normalizePublicInstitution(institution) {
+  return {
+    ...institution,
+    stageLabel: canonicalStageLabel(institution.stage)
+  };
+}
 
 /* =========================================================
    HELPERS
@@ -1445,7 +1470,7 @@ function renderProfileDrawer(institution) {
             ${organizationsDetail}
 
             <div>
-              <dt>Last reviewed</dt>
+              <dt>Last updated</dt>
               <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
             </div>
 
@@ -1801,7 +1826,7 @@ async function loadInstitutionData() {
     );
   }
 
-  INSTITUTIONS = data;
+  INSTITUTIONS = data.map(normalizePublicInstitution);
 
   renderTypeLegend();
   renderInstitutionList(INSTITUTIONS);
@@ -1821,6 +1846,14 @@ async function loadInstitutionData() {
     size, and only then perform the first marker render.
   */
   renderInitialMapWhenReady();
+}
+
+if (legendToggle && mapLegend && legendContent) {
+  legendToggle.addEventListener("click", () => {
+    const isCollapsed = mapLegend.classList.toggle("is-collapsed");
+    legendToggle.setAttribute("aria-expanded", String(!isCollapsed));
+    legendContent.hidden = isCollapsed;
+  });
 }
 
 loadInstitutionData().catch(showDataLoadError);

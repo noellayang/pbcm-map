@@ -2290,3 +2290,158 @@ body {
     animation: none;
   }
 }
+
+/* =========================================================
+   STATUS LEGEND — CONSISTENT WORDING + NON-COLOUR CUES
+   ========================================================= */
+
+:root {
+  --stage-outreach: #58bfff;
+  --stage-active: #ffd24a;
+  --stage-motion: #ff8b78;
+  --stage-implemented: #b3c938;
+}
+
+.stage-legend-grid {
+  gap: 6px;
+}
+
+.stage-legend-grid span {
+  min-height: 18px;
+  align-items: center;
+  line-height: 1.3;
+}
+
+.stage-dot,
+.stage-badge::before {
+  border: 1px solid rgb(255 255 255 / 82%);
+  box-shadow: 0 0 0 1px rgb(0 29 67 / 42%), 0 0 7px currentColor;
+}
+
+/* Documented: circle */
+.stage-dot.stage-outreach,
+.stage-badge.stage-outreach::before {
+  border-radius: 50%;
+}
+
+/* In progress: diamond */
+.stage-dot.stage-active,
+.stage-badge.stage-active::before {
+  border-radius: 1px;
+  transform: rotate(45deg) scale(0.82);
+}
+
+/* Adopted: square */
+.stage-dot.stage-motion-passed,
+.stage-badge.stage-motion-passed::before {
+  border-radius: 1px;
+}
+
+/* Implemented: ring */
+.stage-dot.stage-implemented,
+.stage-badge.stage-implemented::before {
+  background: transparent;
+  border: 2px solid var(--stage-implemented);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(0 29 67 / 48%), 0 0 7px var(--stage-implemented);
+}
+
+.stage-badge.stage-active::before {
+  margin-right: 1px;
+}
+
+/* Make map wheel zoom discoverable without adding visual clutter. */
+.leaflet-container:focus-visible {
+  outline: 3px solid var(--pbcm-yellow);
+  outline-offset: -3px;
+}
+
+/* =========================================================
+   COMPACT, COLLAPSIBLE MAP KEY
+   ========================================================= */
+
+.map-legend {
+  width: 214px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.legend-toggle {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.legend-toggle:hover,
+.legend-toggle:focus-visible {
+  background: rgb(255 255 255 / 8%);
+}
+
+.legend-toggle:focus-visible {
+  outline: 2px solid #8fd8ff;
+  outline-offset: -2px;
+}
+
+.legend-toggle svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: currentColor;
+  transition: transform 160ms ease;
+}
+
+.legend-heading {
+  margin: 0;
+}
+
+.legend-content {
+  padding: 0 10px 10px;
+}
+
+.map-legend.is-collapsed {
+  width: 108px;
+}
+
+.map-legend.is-collapsed .legend-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.legend-type-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 7px;
+}
+
+.legend-type-grid span {
+  min-width: 0;
+}
+
+.legend-type-grid .legend-type-icon {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+}
+
+.stage-legend-grid span {
+  font-size: 8.25px;
+}
+
+@media (max-width: 800px) {
+  .map-legend {
+    width: 200px;
+    max-height: none;
+    overflow: hidden;
+  }
+
+  .map-legend.is-collapsed {
+    width: 104px;
+  }
+}
