@@ -2731,7 +2731,7 @@ body.profile-open .map-legend.is-collapsed {
    Water remains the darkest blue while land stays distinctly lighter. */
 .night-geography-basemap {
   filter:
-    brightness(0.52)
+    brightness(0.3)
     contrast(1.12)
     saturate(0.82)
     hue-rotate(-5deg);
