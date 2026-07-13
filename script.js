@@ -914,17 +914,16 @@ const map = L.map("map", {
 });
 
 /*
-  CARTO Voyager provides clearer coastlines, political boundaries, labels,
-  and recognizably blue water. A dedicated CSS class then converts it into
-  a restrained twilight basemap, preserving the Lighting Up Canada night
-  identity without sacrificing geographic legibility.
+  CARTO Dark Matter keeps the intended night-map identity. A restrained
+  CSS adjustment lifts geographic detail and blue tones without turning the
+  basemap into a recoloured daytime map.
 */
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
-    className: "twilight-basemap",
+    className: "midnight-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
 ).addTo(map);
@@ -1506,6 +1505,13 @@ function openProfileDrawer(institution) {
 
   drawer?.classList.add("is-open");
   drawer?.setAttribute("aria-hidden", "false");
+  document.body.classList.add("profile-open");
+
+  if (mapLegend && legendContent && legendToggle) {
+    mapLegend.classList.add("is-collapsed");
+    legendToggle.setAttribute("aria-expanded", "false");
+    legendContent.hidden = true;
+  }
 
   if (isMobileLayout() && mobileScrim) {
     mobileScrim.hidden = false;
@@ -1515,6 +1521,7 @@ function openProfileDrawer(institution) {
 function closeProfileDrawer() {
   drawer?.classList.remove("is-open");
   drawer?.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("profile-open");
 
   if (mobileScrim) {
     mobileScrim.hidden = true;
@@ -1535,7 +1542,25 @@ function focusInstitutionOnVisibleMap(
     institution.coordinates.lng
   );
 
-  if (isMobileLayout() || !accountForDrawer) {
+  if (isMobileLayout() && accountForDrawer) {
+    const mapHeight = map.getContainer().getBoundingClientRect().height;
+    const projectedMarker = map.project(latLng, zoom);
+
+    // Place the pin in the upper visible portion of the map so the bottom
+    // profile sheet does not immediately cover the selected location.
+    const desiredMarkerY = Math.max(92, Math.min(mapHeight * 0.26, 150));
+    const centreShiftY = mapHeight / 2 - desiredMarkerY;
+    const projectedCentre = projectedMarker.add([0, centreShiftY]);
+    const adjustedCentre = map.unproject(projectedCentre, zoom);
+
+    map.flyTo(adjustedCentre, zoom, {
+      animate: true,
+      duration: 0.45
+    });
+    return;
+  }
+
+  if (!accountForDrawer) {
     map.flyTo(latLng, zoom, {
       animate: true,
       duration: 0.45

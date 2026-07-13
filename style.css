@@ -2445,3 +2445,266 @@ body {
     width: 104px;
   }
 }
+
+/* =========================================================
+   MIDNIGHT MAP REFINEMENT — DARK, LEGIBLE, RESTRAINED
+   ========================================================= */
+
+:root {
+  --map-water-deep: #081d2d;
+  --map-panel: rgb(8 30 46 / 90%);
+  --map-panel-border: rgb(166 207 229 / 24%);
+}
+
+.map-shell,
+.map-frame,
+#map,
+.leaflet-container {
+  background: var(--map-water-deep);
+}
+
+/* Start with a true dark basemap and lift only enough detail to make
+   coastlines, borders, labels and major roads readable. */
+.midnight-basemap {
+  filter: brightness(1.24) contrast(0.91) saturate(1.17) hue-rotate(-5deg);
+}
+
+/* Keep atmosphere at the edges without veiling central Canada. */
+.map-frame::after {
+  background:
+    radial-gradient(circle at 53% 42%, rgb(75 151 193 / 5%), transparent 49%);
+  box-shadow: inset 0 0 34px rgb(0 8 18 / 15%);
+}
+
+/* A selected location should look illuminated, not encircled. */
+.institution-marker.is-selected {
+  transform: translateY(-2px) scale(1.075);
+}
+
+.institution-marker.is-selected .marker-glow {
+  opacity: 0.64;
+  transform: translateX(-50%) scale(1.12);
+  animation: none;
+}
+
+.institution-marker.is-selected .marker-face {
+  border-color: rgb(255 255 255 / 94%);
+  transform: none;
+  box-shadow:
+    0 4px 10px rgb(0 8 18 / 48%),
+    0 0 8px color-mix(in srgb, var(--type-color) 78%, white 8%),
+    0 0 20px color-mix(in srgb, var(--type-color) 64%, transparent);
+}
+
+.institution-marker.is-selected .marker-face::after {
+  display: none;
+}
+
+/* =========================================================
+   HORIZONTAL MAP KEY
+   ========================================================= */
+
+.map-legend {
+  right: 16px;
+  left: auto;
+  bottom: 14px;
+  width: min(760px, calc(100% - 32px));
+  max-width: calc(100% - 32px);
+  border-radius: 7px;
+}
+
+.legend-toggle {
+  min-height: 32px;
+  padding: 6px 10px;
+}
+
+.legend-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0 10px 9px;
+}
+
+.legend-section {
+  min-width: 0;
+}
+
+.legend-section + .legend-section {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-top: 0;
+  border-left: 1px solid rgb(201 229 243 / 20%);
+}
+
+.legend-section > strong {
+  margin-bottom: 5px;
+}
+
+.legend-type-grid,
+.stage-legend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+}
+
+.legend-type-grid span,
+.stage-legend-grid span {
+  width: auto;
+  min-height: 18px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 8.5px;
+}
+
+.map-legend.is-collapsed {
+  width: 104px;
+}
+
+.map-legend.is-collapsed .legend-content {
+  display: none;
+}
+
+/* When a profile is open, keep the key out of the pin/profile sight line. */
+body.profile-open .map-legend {
+  right: calc(var(--drawer-width) + 14px);
+}
+
+body.profile-open .map-legend.is-collapsed {
+  right: calc(var(--drawer-width) + 14px);
+}
+
+/* =========================================================
+   RESPONSIVE MAP + PROFILE VISIBILITY
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  :root {
+    --sidebar-width: 294px;
+    --drawer-width: 360px;
+  }
+
+  .site-header {
+    gap: 18px;
+    padding-inline: 18px;
+  }
+
+  .map-legend {
+    width: min(650px, calc(100% - 24px));
+    right: 12px;
+    bottom: 12px;
+  }
+
+  body.profile-open .map-legend,
+  body.profile-open .map-legend.is-collapsed {
+    right: calc(var(--drawer-width) + 10px);
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --sidebar-width: 250px;
+    --drawer-width: 318px;
+  }
+
+  .map-legend {
+    right: 10px;
+    left: auto;
+    width: min(560px, calc(100% - 20px));
+  }
+
+  .legend-content {
+    gap: 10px;
+  }
+
+  .legend-section + .legend-section {
+    padding-left: 10px;
+  }
+
+  body.profile-open .map-legend,
+  body.profile-open .map-legend.is-collapsed {
+    right: calc(var(--drawer-width) + 8px);
+  }
+}
+
+@media (max-width: 680px) {
+  .map-shell {
+    height: 62vh;
+    min-height: 440px;
+  }
+
+  .profile-drawer {
+    max-height: 68vh;
+    border-radius: 14px 14px 0 0;
+    box-shadow: 0 -12px 34px rgb(0 0 0 / 38%);
+  }
+
+  .profile-image {
+    height: 138px;
+  }
+
+  .mobile-scrim {
+    background: linear-gradient(to bottom, transparent 0 24%, rgb(4 14 23 / 34%) 58%, rgb(4 14 23 / 58%) 100%);
+    pointer-events: none;
+  }
+
+  .map-legend,
+  body.profile-open .map-legend,
+  body.profile-open .map-legend.is-collapsed {
+    right: 8px;
+    left: auto;
+    bottom: 8px;
+    width: calc(100% - 16px);
+    max-height: none;
+    overflow: hidden;
+  }
+
+  .legend-content {
+    display: block;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .legend-section + .legend-section {
+    margin-top: 7px;
+    padding: 7px 0 0;
+    border-top: 1px solid rgb(201 229 243 / 18%);
+    border-left: 0;
+  }
+
+  .legend-type-grid,
+  .stage-legend-grid {
+    flex-wrap: nowrap;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  body.profile-open .map-legend {
+    bottom: auto;
+    top: 8px;
+  }
+
+  body.profile-open .map-legend:not(.is-collapsed) {
+    width: calc(100% - 16px);
+  }
+}
+
+@media (max-width: 420px) {
+  .map-shell {
+    height: 64vh;
+    min-height: 420px;
+  }
+
+  .profile-drawer {
+    max-height: 65vh;
+  }
+
+  .profile-header {
+    padding-top: 14px;
+    padding-bottom: 12px;
+  }
+
+  .profile-header h2 {
+    font-size: 18px;
+  }
+}
