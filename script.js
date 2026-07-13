@@ -910,11 +910,18 @@ const map = L.map("map", {
   scrollWheelZoom: false
 });
 
+/*
+  CARTO Voyager provides clearer coastlines, political boundaries, labels,
+  and recognizably blue water. A dedicated CSS class then converts it into
+  a restrained twilight basemap, preserving the Lighting Up Canada night
+  identity without sacrificing geographic legibility.
+*/
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
+    className: "twilight-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
 ).addTo(map);
