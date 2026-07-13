@@ -914,10 +914,14 @@ const map = L.map("map", {
 });
 
 /*
-  The basemap is split into separate dark geography and label panes. CARTO Dark
-  Matter supplies a genuinely navy ocean and lighter charcoal land natively,
-  avoiding the grey wash caused by blending a daytime raster style. Labels stay
-  separate so they remain crisp and accessible.
+  The basemap is split into separate geography and label panes.
+
+  CARTO Voyager supplies a stronger native lightness difference between land
+  and water than Dark Matter. CSS then shifts that geography into a twilight
+  palette, while CARTO Dark Matter labels remain in a separate pane so place
+  names stay crisp and readable. This preserves the Lighting Up Canada night
+  identity without trying to recolour land and ocean independently inside one
+  raster image (which CSS cannot do reliably).
 */
 map.createPane("nightGeographyPane");
 map.getPane("nightGeographyPane").style.zIndex = "200";
@@ -928,12 +932,12 @@ map.getPane("nightLabelPane").style.zIndex = "350";
 map.getPane("nightLabelPane").style.pointerEvents = "none";
 
 L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
   {
     subdomains: "abcd",
     maxZoom: 20,
     pane: "nightGeographyPane",
-    className: "night-geography-basemap",
+    className: "twilight-geography-basemap",
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
 ).addTo(map);
