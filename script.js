@@ -920,23 +920,39 @@ const map = L.map("map", {
 const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
 
 function addBasemap() {
-  if (L.maptiler && typeof L.maptiler.maptilerLayer === "function") {
-    return L.maptiler.maptilerLayer({
+  const pluginReady =
+    window.L?.maptiler &&
+    typeof window.L.maptiler.maptilerLayer === "function";
+
+  const hybridStyle =
+    window.maptilersdk?.MapStyle?.HYBRID ??
+    `https://api.maptiler.com/maps/hybrid-v4/style.json?key=${MAPTILER_KEY}`;
+
+  if (pluginReady) {
+    const layer = L.maptiler.maptilerLayer({
       apiKey: MAPTILER_KEY,
-      style: "hybrid-v4",
+      style: hybridStyle,
       attributionControl: false
-    }).addTo(map);
+    });
+
+    layer.on("ready", () => {
+      document.documentElement.classList.add("maptiler-ready");
+    });
+
+    layer.addTo(map);
+    return layer;
   }
 
   console.error(
-    "MapTiler Leaflet plug-in did not load. Falling back to OpenStreetMap tiles."
+    "MapTiler Leaflet plug-in did not load. Falling back to MapTiler Hybrid raster tiles."
   );
 
   return L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    `https://api.maptiler.com/maps/hybrid-v4/256/{z}/{x}/{y}.jpg?key=${MAPTILER_KEY}`,
     {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap contributors"
+      maxZoom: 20,
+      tileSize: 256,
+      attribution: '&copy; MapTiler &copy; OpenStreetMap contributors'
     }
   ).addTo(map);
 }
