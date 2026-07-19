@@ -47,10 +47,10 @@
   --other: #d28a00;
 
   /* Progress stages */
-  --stage-outreach: #0072b2;
-  --stage-active: #e69f00;
-  --stage-motion: #cc79a7;
-  --stage-implemented: #009e73;
+  --stage-outreach: #2ea3f2;
+  --stage-active: #fcb900;
+  --stage-motion: #ffa07a;
+  --stage-implemented: #7e9b12;
 
   --font-primary: "Open Sans", Arial, Helvetica, sans-serif;
   --font-display: "Noto Serif", Georgia, serif;
@@ -2119,27 +2119,496 @@ body {
 }
 
 /* =========================================================
-   FINAL ACCESSIBLE STAGE PALETTE + ILLUMINATED PIN STATES
+   MAPTILER HYBRID + LEGEND REPAIR
+   This block intentionally overrides older experimental map-key styles.
    ========================================================= */
 
-/* Okabe–Ito-inspired colours: distinct without implying failure. */
-.stage-dot,
-.stage-badge::before {
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
-  min-height: 10px;
-  flex: 0 0 10px;
-  border: 1px solid rgb(0 29 67 / 48%);
-  border-radius: 50%;
-  box-shadow: none;
-  filter: none;
+/* MapTiler renders into a WebGL canvas inside Leaflet. Keep it beneath
+   Leaflet markers and remove old raster-filter experiments. */
+.leaflet-map-pane .maplibregl-map,
+.leaflet-map-pane .maptiler-sdk-map,
+.leaflet-map-pane canvas.maplibregl-canvas {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
 }
 
-/* A soft ambient glow makes every map point feel illuminated. */
+.night-geography-basemap,
+.night-label-basemap,
+.midnight-basemap,
+.accessible-basemap,
+.deep-ocean-basemap {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
+
+/* Do not veil satellite imagery with the previous atmospheric overlays. */
+.map-frame::after {
+  background: none !important;
+  box-shadow: inset 0 0 24px rgb(0 18 35 / 8%) !important;
+}
+
+/* Stable, compact map key. */
+.map-legend {
+  position: absolute;
+  z-index: 760;
+  left: 18px;
+  right: auto;
+  bottom: 18px;
+  width: 238px;
+  max-width: calc(100% - 36px);
+  padding: 0;
+  overflow: hidden;
+  color: #eef5f8;
+  background: rgb(8 31 49 / 94%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgb(0 14 28 / 34%);
+  backdrop-filter: blur(10px);
+}
+
+.legend-toggle {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.legend-toggle:hover,
+.legend-toggle:focus-visible {
+  background: rgb(255 255 255 / 7%);
+}
+
+.legend-toggle:focus-visible {
+  outline: 2px solid #8fd8ff;
+  outline-offset: -2px;
+}
+
+.legend-toggle svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: currentColor;
+  transition: transform 160ms ease;
+}
+
+.legend-toggle[aria-expanded="false"] svg {
+  transform: rotate(-90deg);
+}
+
+.legend-heading {
+  margin: 0;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.legend-content {
+  padding: 0 12px 12px;
+  border-top: 1px solid rgb(255 255 255 / 13%);
+}
+
+.legend-content[hidden] {
+  display: none !important;
+}
+
+.legend-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 9px 0;
+}
+
+.legend-tab {
+  min-height: 32px;
+  padding: 6px 8px;
+  color: #c8d5dc;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.legend-tab:hover,
+.legend-tab:focus-visible {
+  color: #ffffff;
+  background: rgb(255 255 255 / 10%);
+}
+
+.legend-tab.is-active {
+  color: #071f31;
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.legend-panel,
+.legend-panel[hidden] {
+  display: none;
+}
+
+.legend-panel.is-active:not([hidden]) {
+  display: block;
+}
+
+.legend-grid,
+.legend-type-grid,
+.stage-legend-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 7px;
+}
+
+.legend-grid span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #edf4f7;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.legend-type-icon {
+  width: 22px !important;
+  height: 22px !important;
+  flex: 0 0 22px !important;
+  border-width: 1px !important;
+  box-shadow: none !important;
+}
+
+.legend-type-icon svg {
+  width: 11px;
+  height: 11px;
+}
+
+.stage-dot {
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  flex: 0 0 10px !important;
+  display: inline-block;
+  border: 1px solid rgb(0 20 34 / 72%) !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Bright, discrete stage colours. */
+.stage-dot.stage-outreach,
+.stage-badge.stage-outreach::before {
+  background: #178bff !important;
+  color: #178bff !important;
+}
+
+.stage-dot.stage-active,
+.stage-badge.stage-active::before {
+  background: #ffd400 !important;
+  color: #ffd400 !important;
+}
+
+.stage-dot.stage-motion-passed,
+.stage-badge.stage-motion-passed::before {
+  background: #f04444 !important;
+  color: #f04444 !important;
+}
+
+.stage-dot.stage-implemented,
+.stage-badge.stage-implemented::before {
+  background: #26b84b !important;
+  color: #26b84b !important;
+}
+
+.stage-badge::before {
+  width: 9px !important;
+  height: 9px !important;
+  flex: 0 0 9px !important;
+  border: 1px solid rgb(0 20 34 / 52%) !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+}
+
+/* Keep the key visible beside, rather than beneath, a desktop profile. */
+@media (min-width: 901px) {
+  .profile-drawer.is-open ~ * .map-legend,
+  .map-shell:has(.profile-drawer.is-open) .map-legend {
+    right: calc(var(--drawer-width) + 18px);
+    left: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .map-legend {
+    left: 12px;
+    bottom: 12px;
+    width: 220px;
+    max-width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 680px) {
+  .map-legend {
+    top: 12px;
+    bottom: auto;
+    width: 210px;
+  }
+
+  .profile-drawer.is-open + .map-legend,
+  .map-shell:has(.profile-drawer.is-open) .map-legend {
+    width: 132px;
+  }
+}
+
+/* =========================================================
+   PRODUCTION LEGEND + PIN REFINEMENT
+   This final block intentionally owns all legend geometry and stage colours.
+   ========================================================= */
+
+/* Friendly, colour-blind-conscious progress palette. */
+:root {
+  --stage-outreach: #0072b2;
+  --stage-active: #e6a000;
+  --stage-motion: #cc79a7;
+  --stage-implemented: #009e73;
+}
+
+/* Compact vertical key: readable, but less intrusive over the map. */
+.map-legend {
+  position: absolute;
+  z-index: 760;
+  left: 14px;
+  right: auto;
+  bottom: 14px;
+  width: 214px;
+  max-width: calc(100% - 28px);
+  padding: 0;
+  overflow: hidden;
+  color: #eef5f8;
+  background: rgb(7 29 47 / 94%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgb(0 14 28 / 30%);
+  backdrop-filter: blur(9px);
+}
+
+.legend-toggle {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.legend-toggle:hover,
+.legend-toggle:focus-visible {
+  background: rgb(255 255 255 / 7%);
+}
+
+.legend-toggle:focus-visible {
+  outline: 2px solid #8fd8ff;
+  outline-offset: -2px;
+}
+
+.legend-toggle svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: currentColor;
+  transition: transform 160ms ease;
+}
+
+.legend-toggle[aria-expanded="false"] svg {
+  transform: rotate(-90deg);
+}
+
+.legend-heading {
+  margin: 0;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.legend-content {
+  padding: 0 10px 10px;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.legend-content[hidden] {
+  display: none !important;
+}
+
+.legend-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 7px 0;
+}
+
+.legend-tab {
+  min-height: 28px;
+  padding: 5px 7px;
+  color: #cbd8df;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.legend-tab:hover,
+.legend-tab:focus-visible {
+  color: #ffffff;
+  background: rgb(255 255 255 / 10%);
+}
+
+.legend-tab:focus-visible {
+  outline: 2px solid #8fd8ff;
+  outline-offset: 1px;
+}
+
+.legend-tab.is-active {
+  color: #072036;
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.legend-panel,
+.legend-panel[hidden] {
+  display: none;
+}
+
+.legend-panel.is-active:not([hidden]) {
+  display: block;
+}
+
+.legend-grid,
+.legend-type-grid,
+.stage-legend-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+}
+
+.legend-grid span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #edf4f7;
+  font-size: 10.5px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.legend-type-icon {
+  width: 20px !important;
+  height: 20px !important;
+  flex: 0 0 20px !important;
+  border-width: 1px !important;
+  box-shadow: none !important;
+}
+
+.legend-type-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* One consistent stage-marker shape in the legend and directory. */
+.stage-dot,
+.stage-badge::before {
+  display: inline-block;
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  flex: 0 0 10px !important;
+  border: 1px solid rgb(0 20 34 / 68%) !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.stage-dot.stage-outreach,
+.stage-badge.stage-outreach::before {
+  color: var(--stage-outreach) !important;
+  background: var(--stage-outreach) !important;
+}
+
+.stage-dot.stage-active,
+.stage-badge.stage-active::before {
+  color: var(--stage-active) !important;
+  background: var(--stage-active) !important;
+}
+
+.stage-dot.stage-motion-passed,
+.stage-badge.stage-motion-passed::before {
+  color: var(--stage-motion) !important;
+  background: var(--stage-motion) !important;
+}
+
+.stage-dot.stage-implemented,
+.stage-badge.stage-implemented::before {
+  color: var(--stage-implemented) !important;
+  background: var(--stage-implemented) !important;
+}
+
+/* Keep the key anchored on the open map, never behind the profile drawer. */
+@media (min-width: 901px) {
+  .map-shell:has(.profile-drawer.is-open) .map-legend {
+    left: 14px;
+    right: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .map-legend {
+    left: 10px;
+    bottom: 10px;
+    width: 204px;
+    max-width: calc(100% - 20px);
+  }
+}
+
+@media (max-width: 680px) {
+  .map-legend {
+    top: 10px;
+    bottom: auto;
+    width: 198px;
+  }
+}
+
+/* Subtle ambient illumination; selected markers become brighter and whiter. */
 .marker-glow {
-  opacity: 0.42;
-  transform: translateX(-50%) scale(0.9);
+  opacity: .42;
+  transform: translateX(-50%) scale(.9);
   animation: none;
 }
 
@@ -2152,26 +2621,17 @@ body {
 }
 
 .institution-marker:hover .marker-glow {
-  opacity: 0.62;
+  opacity: .62;
   transform: translateX(-50%) scale(1.02);
 }
 
-.institution-marker:hover .marker-face {
-  border-color: rgb(255 255 255 / 96%);
-  box-shadow:
-    0 3px 8px rgb(0 0 0 / 42%),
-    0 0 7px rgb(255 255 255 / 40%),
-    0 0 18px color-mix(in srgb, var(--type-color) 62%, transparent);
-}
-
-/* Selected points become brighter and whiter, without a heavy ring. */
 .institution-marker.is-selected {
   transform: translateY(-2px) scale(1.08);
   animation: none;
 }
 
 .institution-marker.is-selected .marker-glow {
-  opacity: 0.82;
+  opacity: .82;
   transform: translateX(-50%) scale(1.16);
   animation: none;
 }
@@ -2189,4 +2649,3 @@ body {
 .institution-marker.is-selected .marker-face::after {
   display: none;
 }
-
