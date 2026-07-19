@@ -914,16 +914,34 @@ const map = L.map("map", {
 });
 
 /*
-  MapTiler plug-in with Leaflet for the Lighting Up Canada theme.
+  MapTiler vector basemap. Hybrid is used for its clear provincial borders.
+  Leaflet, MapTiler SDK, and the Leaflet-MapTiler plug-in must load first.
 */
 const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
 
-const maptilerLayer = L.maptiler.maptilerLayer({
-  apiKey: MAPTILER_KEY,
-  style: "hybrid-v4"
-});
+function addBasemap() {
+  if (L.maptiler && typeof L.maptiler.maptilerLayer === "function") {
+    return L.maptiler.maptilerLayer({
+      apiKey: MAPTILER_KEY,
+      style: "hybrid-v4",
+      attributionControl: false
+    }).addTo(map);
+  }
 
-maptilerLayer.addTo(map);
+  console.error(
+    "MapTiler Leaflet plug-in did not load. Falling back to OpenStreetMap tiles."
+  );
+
+  return L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }
+  ).addTo(map);
+}
+
+const maptilerLayer = addBasemap();
 
 /* =========================================================
    CANONICAL PUBLIC STATUS LANGUAGE
