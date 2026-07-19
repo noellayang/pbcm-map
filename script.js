@@ -914,21 +914,16 @@ const map = L.map("map", {
 });
 
 /*
-  Native raster basemap for the Lighting Up Canada theme.
-
-  CARTO Dark Matter already provides a coordinated dark-ocean, readable-land,
-  boundary, road, and label palette. It is used exactly as supplied: no CSS
-  colour filters, blend modes, or stacked label layer are required.
+  MapTiler plug-in with Leaflet for the Lighting Up Canada theme.
 */
-L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-  {
-    subdomains: "abcd",
-    maxZoom: 20,
-    className: "pbcm-dark-basemap",
-    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
-  }
-).addTo(map);
+const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
+
+const maptilerLayer = L.maptiler.maptilerLayer({
+  apiKey: MAPTILER_KEY,
+  style: "hybrid-v4"
+});
+
+maptilerLayer.addTo(map);
 
 /* =========================================================
    CANONICAL PUBLIC STATUS LANGUAGE
