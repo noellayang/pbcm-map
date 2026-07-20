@@ -911,20 +911,42 @@ const map = L.map("map", {
 });
 
 /*
-  CARTO Voyager provides clearer coastlines, political boundaries, labels,
-  and recognizably blue water. A dedicated CSS class then converts it into
-  a restrained twilight basemap, preserving the Lighting Up Canada night
-  identity without sacrificing geographic legibility.
+  MapTiler Hybrid is the canonical production basemap.
+  It preserves satellite imagery, labels, roads, and political borders.
+  Do not replace this block with CARTO/OSM during unrelated UI updates.
 */
-L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-  {
-    subdomains: "abcd",
-    maxZoom: 20,
-    className: "twilight-basemap",
-    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
+const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
+
+function addProductionBasemap() {
+  if (
+    window.L?.maptiler?.maptilerLayer &&
+    window.L?.MaptilerStyle?.HYBRID
+  ) {
+    return L.maptiler.maptilerLayer({
+      apiKey: MAPTILER_KEY,
+      style: L.MaptilerStyle.HYBRID
+    }).addTo(map);
   }
-).addTo(map);
+
+  console.warn(
+    "MapTiler SDK layer was unavailable; using the MapTiler Hybrid raster fallback."
+  );
+
+  return L.tileLayer(
+    `https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.jpg?key=${MAPTILER_KEY}`,
+    {
+      tileSize: 512,
+      zoomOffset: -1,
+      minZoom: 0,
+      maxZoom: 20,
+      attribution:
+        '&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a> ' +
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+    }
+  ).addTo(map);
+}
+
+const basemapLayer = addProductionBasemap();
 
 /* =========================================================
    HELPERS
