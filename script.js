@@ -977,20 +977,30 @@ const map = L.map("map", {
 });
 
 /*
-  CARTO Voyager provides clearer coastlines, political boundaries, labels,
-  and recognizably blue water. A dedicated CSS class then converts it into
-  a restrained twilight basemap, preserving the Lighting Up Canada night
-  identity without sacrificing geographic legibility.
+  MapTiler Hybrid basemap.
+
+  This uses Leaflet's native raster tile layer rather than the optional
+  MapTiler SDK bridge. It keeps the satellite imagery, labels, roads and
+  political/provincial boundaries while avoiding a plug-in failure from
+  stopping the rest of the application.
 */
-L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
+
+const maptilerHybridLayer = L.tileLayer(
+  `https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.png?key=${MAPTILER_KEY}`,
   {
-    subdomains: "abcd",
+    tileSize: 512,
+    zoomOffset: -1,
+    minZoom: 1,
     maxZoom: 20,
-    className: "twilight-basemap",
-    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
+    crossOrigin: true,
+    attribution:
+      '<a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">&copy; MapTiler</a> ' +
+      '<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>'
   }
-).addTo(map);
+);
+
+maptilerHybridLayer.addTo(map);
 
 initializeLegendControls();
 
