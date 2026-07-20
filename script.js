@@ -889,6 +889,11 @@ const mobileScrim = document.getElementById("mobile-scrim");
 const typeLegendElement = document.getElementById("type-legend");
 const resetViewButton = document.getElementById("reset-view");
 
+const legendElement = document.getElementById("map-legend");
+const legendToggle = document.getElementById("legend-toggle");
+const legendTabs = Array.from(document.querySelectorAll(".legend-tab"));
+const legendPanels = Array.from(document.querySelectorAll(".legend-panel"));
+
 let activeType = "all";
 let searchTerm = "";
 let selectedInstitutionId = null;
@@ -896,6 +901,67 @@ let visibleInstitutions = [...INSTITUTIONS];
 let sidebarCollapsed = false;
 
 const markers = new Map();
+
+
+function setLegendExpanded(isExpanded) {
+  if (!legendElement || !legendToggle) return;
+
+  legendElement.classList.toggle("is-collapsed", !isExpanded);
+  legendToggle.setAttribute("aria-expanded", String(isExpanded));
+}
+
+function setLegendTab(tabName) {
+  if (!legendTabs.length || !legendPanels.length) return;
+
+  legendTabs.forEach((tab) => {
+    const isActive = tab.dataset.legendTab === tabName;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+
+  legendPanels.forEach((panel) => {
+    const isActive = panel.dataset.legendPanel === tabName;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+function initializeLegendControls() {
+  if (!legendElement || !legendToggle) return;
+
+  setLegendExpanded(legendToggle.getAttribute("aria-expanded") !== "false");
+
+  const activeTab = legendTabs.find((tab) => tab.classList.contains("is-active"))?.dataset.legendTab
+    ?? legendTabs[0]?.dataset.legendTab;
+
+  if (activeTab) setLegendTab(activeTab);
+
+  legendToggle.addEventListener("click", () => {
+    const isExpanded = legendToggle.getAttribute("aria-expanded") !== "false";
+    setLegendExpanded(!isExpanded);
+  });
+
+  legendTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => setLegendTab(tab.dataset.legendTab));
+
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+
+      let nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % legendTabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + legendTabs.length) % legendTabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = legendTabs.length - 1;
+
+      const nextTab = legendTabs[nextIndex];
+      if (!nextTab) return;
+      setLegendTab(nextTab.dataset.legendTab);
+      nextTab.focus();
+    });
+  });
+}
 
 /* =========================================================
    MAP
@@ -911,42 +977,22 @@ const map = L.map("map", {
 });
 
 /*
-  MapTiler Hybrid is the canonical production basemap.
-  It preserves satellite imagery, labels, roads, and political borders.
-  Do not replace this block with CARTO/OSM during unrelated UI updates.
+  CARTO Voyager provides clearer coastlines, political boundaries, labels,
+  and recognizably blue water. A dedicated CSS class then converts it into
+  a restrained twilight basemap, preserving the Lighting Up Canada night
+  identity without sacrificing geographic legibility.
 */
-const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
-
-function addProductionBasemap() {
-  if (
-    window.L?.maptiler?.maptilerLayer &&
-    window.L?.MaptilerStyle?.HYBRID
-  ) {
-    return L.maptiler.maptilerLayer({
-      apiKey: MAPTILER_KEY,
-      style: L.MaptilerStyle.HYBRID
-    }).addTo(map);
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  {
+    subdomains: "abcd",
+    maxZoom: 20,
+    className: "twilight-basemap",
+    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
+).addTo(map);
 
-  console.warn(
-    "MapTiler SDK layer was unavailable; using the MapTiler Hybrid raster fallback."
-  );
-
-  return L.tileLayer(
-    `https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.jpg?key=${MAPTILER_KEY}`,
-    {
-      tileSize: 512,
-      zoomOffset: -1,
-      minZoom: 0,
-      maxZoom: 20,
-      attribution:
-        '&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a> ' +
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }
-  ).addTo(map);
-}
-
-const basemapLayer = addProductionBasemap();
+initializeLegendControls();
 
 /* =========================================================
    HELPERS
@@ -1847,59 +1893,3 @@ async function loadInstitutionData() {
 
 loadInstitutionData().catch(showDataLoadError);
 
-
-/* =========================================================
-   CANONICAL MAP LEGEND CONTROLLER
-   Keep this component paired with the final legend CSS block.
-   ========================================================= */
-(function initializeMapLegend() {
-  const legend = document.getElementById("map-legend");
-  const toggle = document.getElementById("legend-toggle");
-  const content = document.getElementById("legend-content");
-  const tabs = Array.from(document.querySelectorAll("[data-legend-tab]"));
-  const panels = Array.from(document.querySelectorAll("[data-legend-panel]"));
-
-  if (!legend || !toggle || !content) return;
-
-  function setCollapsed(collapsed) {
-    legend.classList.toggle("is-collapsed", collapsed);
-    toggle.setAttribute("aria-expanded", String(!collapsed));
-    content.hidden = collapsed;
-  }
-
-  function activateTab(name, focusTab = false) {
-    tabs.forEach((tab) => {
-      const selected = tab.dataset.legendTab === name;
-      tab.classList.toggle("is-active", selected);
-      tab.setAttribute("aria-selected", String(selected));
-      tab.tabIndex = selected ? 0 : -1;
-      if (selected && focusTab) tab.focus();
-    });
-
-    panels.forEach((panel) => {
-      const selected = panel.dataset.legendPanel === name;
-      panel.classList.toggle("is-active", selected);
-      panel.hidden = !selected;
-    });
-  }
-
-  toggle.addEventListener("click", () => {
-    setCollapsed(toggle.getAttribute("aria-expanded") === "true");
-  });
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(tab.dataset.legendTab));
-    tab.addEventListener("keydown", (event) => {
-      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-      event.preventDefault();
-      const direction = event.key === "ArrowRight" ? 1 : -1;
-      const nextIndex = (index + direction + tabs.length) % tabs.length;
-      activateTab(tabs[nextIndex].dataset.legendTab, true);
-    });
-  });
-
-  const initiallySelected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true")
-    || tabs[0];
-  activateTab(initiallySelected?.dataset.legendTab || "types");
-  setCollapsed(false);
-})();

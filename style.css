@@ -439,7 +439,25 @@ a {
 
 /* Shared institution type icons */
 
-
+.type-icon,
+.card-icon,
+.legend-type-icon {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  background: var(--type-color, var(--navy));
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  box-shadow:
+    0 1px 4px rgb(0 0 0 / 24%),
+    0 0 0 1px rgb(23 43 58 / 22%);
+  transition:
+    transform 100ms ease,
+    box-shadow 100ms ease;
+}
 
 .card-icon {
   width: 27px;
@@ -452,7 +470,11 @@ a {
   fill: currentColor;
 }
 
-
+.legend-type-icon svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
 
 .card-content {
   min-width: 0;
@@ -650,29 +672,94 @@ a {
 
 /* Map legend */
 
+.map-legend {
+  position: absolute;
+  z-index: 500;
+  left: 16px;
+  right: auto;
+  bottom: 16px;
+  width: 178px;
+  padding: 10px 11px;
+  color: #edf2f5;
+  background: rgba(43, 46, 49, 0.9);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 32%);
+  backdrop-filter: blur(5px);
+}
 
+.legend-heading {
+  margin-bottom: 7px;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
+.legend-section + .legend-section {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgb(255 255 255 / 13%);
+}
 
+.legend-section > strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #cbd5dc;
+  font-size: 8.5px;
+  font-weight: 600;
+}
 
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
 
+.legend-grid span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #edf2f5;
+  font-size: 8.5px;
+  line-height: 1.25;
+}
 
+.legend-type-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
 
+.stage-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+}
 
+.stage-dot.stage-outreach {
+  color: var(--stage-outreach);
+  background: var(--stage-outreach);
+}
 
+.stage-dot.stage-active {
+  color: var(--stage-active);
+  background: var(--stage-active);
+}
 
+.stage-dot.stage-motion-passed {
+  color: var(--stage-motion);
+  background: var(--stage-motion);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.stage-dot.stage-implemented {
+  color: var(--stage-implemented);
+  background: var(--stage-implemented);
+}
 
 /* Collapsed directory button */
 
@@ -1190,7 +1277,12 @@ a {
     font-size: 16px;
   }
 
-  
+  .map-legend {
+    left: 12px;
+    right: auto;
+    bottom: 14px;
+    width: 170px;
+  }
 }
 
 /* =========================================================
@@ -1287,7 +1379,14 @@ a {
     display: none;
   }
 
-  
+  .map-legend {
+    left: 10px;
+    right: auto;
+    bottom: 12px;
+    width: 164px;
+    max-height: 210px;
+    overflow-y: auto;
+  }
 }
 
 /* =========================================================
@@ -1327,7 +1426,9 @@ a {
     min-height: 400px;
   }
 
-  
+  .map-legend {
+    width: 154px;
+  }
 }
 
 /* =========================================================
@@ -1660,7 +1761,13 @@ body {
   color: #66727a;
 }
 
-
+.type-icon,
+.card-icon,
+.legend-type-icon {
+  box-shadow:
+    0 2px 6px rgb(0 0 0 / 22%),
+    0 0 0 1px rgb(255 255 255 / 35%);
+}
 
 /* Dark map remains the visual anchor. */
 .map-shell,
@@ -1709,13 +1816,29 @@ body {
   font-family: var(--font-display);
 }
 
+.map-legend {
+  width: 205px;
+  padding: 12px 13px;
+  color: #eef4f7;
+  background: linear-gradient(145deg, rgb(17 42 60 / 94%) 0%, rgb(10 29 43 / 94%) 100%);
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 34%);
+}
 
+.legend-heading {
+  color: #fff;
+  font-size: 9.5px;
+}
 
+.legend-section > strong {
+  color: #d5e0e6;
+  font-size: 9px;
+}
 
-
-
-
-
+.legend-grid span {
+  font-size: 9px;
+}
 
 .sidebar-open {
   color: #fff;
@@ -1921,7 +2044,9 @@ body {
     min-height: 450px;
   }
 
-  
+  .map-legend {
+    width: 184px;
+  }
 
   .profile-drawer {
     border-top: 1px solid #d9d8d0;
@@ -2184,99 +2309,83 @@ body {
   }
 }
 
+
 /* =========================================================
-   PRODUCTION MAP LEGEND — SINGLE SOURCE OF TRUTH
-   Keep this block and the matching HTML/JS together.
-   Approved progress colours are locked and must not change.
+   LEGEND REPAIR — TABS, TOGGLE, COMPACT SPACING
+   Keeps current map/basemap unchanged and only restores the
+   intended legend control styling and interaction surface.
    ========================================================= */
-:root {
-  --stage-outreach: #2f80ed;      /* LOCKED: Initiative documented */
-  --stage-active: #f2c94c;        /* LOCKED: Commitment in progress */
-  --stage-motion: #9b5de5;        /* LOCKED: Motion passed */
-  --stage-implemented: #6f9e2f;   /* LOCKED: Implemented */
-}
-
-.map-legend,
-.map-legend * {
-  box-sizing: border-box;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-}
-
 .map-legend {
-  position: absolute;
-  z-index: 700;
-  left: 16px;
-  bottom: 16px;
-  width: min(214px, calc(100% - 32px));
-  overflow: hidden;
-  color: #eef4f7;
-  background: linear-gradient(145deg, rgb(17 42 60 / 96%), rgb(10 29 43 / 96%));
-  border: 1px solid rgb(255 255 255 / 18%);
-  border-radius: 11px;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 38%);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  left: 18px;
+  bottom: 18px;
+  width: 212px;
+  padding: 10px 10px 9px;
+  color: #edf2f5;
+  background: linear-gradient(145deg, rgb(16 39 58 / 94%) 0%, rgb(9 28 42 / 94%) 100%);
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 34%);
+  backdrop-filter: blur(6px);
 }
 
-.map-legend button {
-  appearance: none;
+.legend-toggle,
+.legend-tab {
   -webkit-appearance: none;
-  margin: 0;
-  border: 0;
+  appearance: none;
   font: inherit;
-  line-height: inherit;
 }
 
 .legend-toggle {
   width: 100%;
-  min-height: 38px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 9px 11px;
-  color: #ffffff;
+  gap: 10px;
+  padding: 0;
+  color: #f3f7fa;
   background: transparent;
+  border: 0;
   cursor: pointer;
   text-align: left;
 }
 
-.legend-toggle:hover,
-.legend-toggle:focus-visible {
-  background: rgb(255 255 255 / 7%);
+.legend-toggle:hover .legend-heading,
+.legend-toggle:focus-visible .legend-heading {
+  color: #ffffff;
 }
 
 .legend-toggle:focus-visible,
 .legend-tab:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: -3px;
+  outline: 2px solid rgb(143 216 255 / 72%);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .legend-heading {
-  color: #ffffff;
-  font-size: 11px;
+  margin: 0;
+  color: #f1f5f8;
+  font-size: 10px;
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0.075em;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .legend-toggle svg {
-  width: 17px;
-  height: 17px;
-  flex: 0 0 17px;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
   fill: currentColor;
+  color: #f1f5f8;
   transition: transform 160ms ease;
 }
 
-.map-legend.is-collapsed .legend-toggle svg {
+.legend-toggle[aria-expanded="false"] svg {
   transform: rotate(-90deg);
 }
 
 .legend-content {
-  display: block;
-  padding: 0 10px 10px;
-  border-top: 1px solid rgb(255 255 255 / 11%);
+  margin-top: 9px;
 }
 
 .map-legend.is-collapsed .legend-content {
@@ -2286,141 +2395,90 @@ body {
 .legend-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  padding: 7px 0 8px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .legend-tab {
-  min-width: 0;
-  min-height: 29px;
-  padding: 5px 7px;
-  color: #d3dee5;
-  background: rgb(255 255 255 / 6%);
-  border: 1px solid rgb(255 255 255 / 15%) !important;
-  border-radius: 5px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  color: #d9e4eb;
+  background: rgb(255 255 255 / 9%);
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 6px;
+  cursor: pointer;
   font-size: 10px;
   font-weight: 700;
-  line-height: 1.15;
-  cursor: pointer;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .legend-tab:hover {
-  color: #ffffff;
-  background: rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 13%);
 }
 
 .legend-tab.is-active,
 .legend-tab[aria-selected="true"] {
-  color: #082033;
-  background: #ffffff;
-  border-color: #ffffff !important;
-  box-shadow: none;
-}
-
-.legend-panel {
-  display: none;
-}
-
-.legend-panel.is-active:not([hidden]) {
-  display: block;
+  color: #0e2940;
+  background: #eef4f8;
+  border-color: rgb(255 255 255 / 45%);
 }
 
 .legend-panel[hidden] {
   display: none !important;
 }
 
-.legend-grid,
-.legend-type-grid,
-.stage-legend-grid {
+.legend-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 5px;
+  gap: 7px;
 }
 
-.legend-grid span,
-.legend-type-grid span,
-.stage-legend-grid span {
-  min-width: 0;
+.legend-grid span {
   display: flex;
   align-items: center;
-  gap: 7px;
-  color: #edf3f6;
+  gap: 8px;
+  color: #eef4f7;
   font-size: 10px;
-  font-weight: 500;
   line-height: 1.25;
   white-space: nowrap;
 }
 
 .legend-type-icon {
-  width: 19px;
-  height: 19px;
-  flex: 0 0 19px;
-}
-
-.legend-type-icon svg {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
 
 .stage-dot {
-  width: 9px;
-  height: 9px;
-  flex: 0 0 9px;
-  border: 1px solid rgb(255 255 255 / 50%);
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  min-height: 10px;
+  flex: 0 0 10px;
+  border: 1px solid rgb(0 26 51 / 42%);
   border-radius: 50%;
-  box-shadow: 0 0 7px currentColor;
+  box-shadow: none;
 }
 
-.stage-outreach {
-  --badge-color: var(--stage-outreach);
+@media (max-width: 900px) {
+  .map-legend {
+    width: 204px;
+    padding: 9px 9px 8px;
+  }
 }
 
-.stage-active {
-  --badge-color: var(--stage-active);
-}
-
-.stage-motion-passed {
-  --badge-color: var(--stage-motion);
-}
-
-.stage-implemented {
-  --badge-color: var(--stage-implemented);
-}
-
-.stage-dot.stage-outreach {
-  color: var(--stage-outreach);
-  background: var(--stage-outreach);
-}
-
-.stage-dot.stage-active {
-  color: var(--stage-active);
-  background: var(--stage-active);
-}
-
-.stage-dot.stage-motion-passed {
-  color: var(--stage-motion);
-  background: var(--stage-motion);
-}
-
-.stage-dot.stage-implemented {
-  color: var(--stage-implemented);
-  background: var(--stage-implemented);
-}
-
-@media (max-width: 760px) {
+@media (max-width: 680px) {
   .map-legend {
     left: 10px;
-    bottom: 10px;
-    width: min(202px, calc(100% - 20px));
+    bottom: 12px;
+    width: 192px;
   }
 
-  .legend-toggle {
-    min-height: 36px;
-    padding: 8px 10px;
-  }
-
-  .legend-content {
-    padding: 0 9px 9px;
+  .legend-grid span {
+    font-size: 9.5px;
   }
 }
-
