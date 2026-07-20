@@ -1200,5 +1200,53 @@
       "source": "https://www.ulaval.ca/en/sustainable-development/sustainable-food-choices",
       "position": "center"
     }
+  },
+  {
+    "id": "york-university",
+    "name": "York University",
+    "shortName": "York University",
+    "type": "university",
+    "city": "Toronto",
+    "province": "ON",
+    "coordinates": {
+      "lat": 43.77345,
+      "lng": -79.50187
+    },
+    "coordinatesApproximate": true,
+    "stage": "implemented",
+    "stageLabel": "Implemented",
+    "yearImplemented": null,
+    "timeframe": "",
+    "headline": "Vegetarian Majority Menu Target Achieved",
+    "stats": [
+      {
+        "value": "60%",
+        "label": "Menus targeted to be vegetarian (%)"
+      }
+    ],
+    "summary": "York’s achievement demonstrates rapid, measurable protein diversification across institutional menus.",
+    "achievements": [
+      "Set a goal for at least 60% of menus to be vegetarian.",
+      "Required at least half of those vegetarian selections to be fully vegan.",
+      "Redesigned Chef’s Table offerings around culturally diverse plant-based dishes.",
+      "Reportedly reached the target within roughly one year of implementation."
+    ],
+    "organizationsInvolved": [],
+    "resources": [
+      {
+        "label": "Primary source",
+        "url": "https://www.yorku.ca/foodservices/nutrition-tips/sustainability/"
+      }
+    ],
+    "lastUpdated": "2026-07-14",
+    "verified": true,
+    "image": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Vari_Hall.jpg",
+      "kind": "institution",
+      "alt": "Vari Hall and central fountain at York University",
+      "credit": "Andrei Sedoff",
+      "source": "https://commons.wikimedia.org/wiki/File:Vari_Hall.jpg",
+      "position": "center"
+    }
   }
 ]
