@@ -888,9 +888,6 @@ const mobileScrim = document.getElementById("mobile-scrim");
 
 const typeLegendElement = document.getElementById("type-legend");
 const resetViewButton = document.getElementById("reset-view");
-const mapLegend = document.getElementById("map-legend");
-const legendToggle = document.getElementById("legend-toggle");
-const legendContent = document.getElementById("legend-content");
 
 let activeType = "all";
 let searchTerm = "";
@@ -910,76 +907,24 @@ const map = L.map("map", {
   minZoom: 3,
   maxZoom: 18,
   zoomControl: true,
-  scrollWheelZoom: true
+  scrollWheelZoom: false
 });
 
 /*
-  MapTiler vector basemap. Hybrid is used for its clear provincial borders.
-  Leaflet, MapTiler SDK, and the Leaflet-MapTiler plug-in must load first.
+  CARTO Voyager provides clearer coastlines, political boundaries, labels,
+  and recognizably blue water. A dedicated CSS class then converts it into
+  a restrained twilight basemap, preserving the Lighting Up Canada night
+  identity without sacrificing geographic legibility.
 */
-const MAPTILER_KEY = "tKFppSkMugbwLBqhX3rw";
-
-function addBasemap() {
-  const pluginReady =
-    window.L?.maptiler &&
-    typeof window.L.maptiler.maptilerLayer === "function";
-
-  const hybridStyle =
-    window.maptilersdk?.MapStyle?.HYBRID ??
-    `https://api.maptiler.com/maps/hybrid-v4/style.json?key=${MAPTILER_KEY}`;
-
-  if (pluginReady) {
-    const layer = L.maptiler.maptilerLayer({
-      apiKey: MAPTILER_KEY,
-      style: hybridStyle,
-      attributionControl: false
-    });
-
-    layer.on("ready", () => {
-      document.documentElement.classList.add("maptiler-ready");
-    });
-
-    layer.addTo(map);
-    return layer;
+L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  {
+    subdomains: "abcd",
+    maxZoom: 20,
+    className: "twilight-basemap",
+    attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }
-
-  console.error(
-    "MapTiler Leaflet plug-in did not load. Falling back to MapTiler Hybrid raster tiles."
-  );
-
-  return L.tileLayer(
-    `https://api.maptiler.com/maps/hybrid-v4/256/{z}/{x}/{y}.jpg?key=${MAPTILER_KEY}`,
-    {
-      maxZoom: 20,
-      tileSize: 256,
-      attribution: '&copy; MapTiler &copy; OpenStreetMap contributors'
-    }
-  ).addTo(map);
-}
-
-const maptilerLayer = addBasemap();
-
-/* =========================================================
-   CANONICAL PUBLIC STATUS LANGUAGE
-   ========================================================= */
-
-const STAGE_LABELS = Object.freeze({
-  outreach: "Initiative documented",
-  active: "Commitment in progress",
-  "motion-passed": "Motion passed",
-  implemented: "Implemented"
-});
-
-function canonicalStageLabel(stage) {
-  return STAGE_LABELS[stage] ?? "Initiative documented";
-}
-
-function normalizePublicInstitution(institution) {
-  return {
-    ...institution,
-    stageLabel: canonicalStageLabel(institution.stage)
-  };
-}
+).addTo(map);
 
 /* =========================================================
    HELPERS
@@ -1500,7 +1445,7 @@ function renderProfileDrawer(institution) {
             ${organizationsDetail}
 
             <div>
-              <dt>Last updated</dt>
+              <dt>Last reviewed</dt>
               <dd>${escapeHtml(formatDate(institution.lastUpdated))}</dd>
             </div>
 
@@ -1536,20 +1481,6 @@ function openProfileDrawer(institution) {
 
   drawer?.classList.add("is-open");
   drawer?.setAttribute("aria-hidden", "false");
-  document.body.classList.add("profile-open");
-
-  /* Keep the legend readable on laptops. On phones, collapse it so the map
-     and selected location retain priority above the bottom profile sheet. */
-  if (
-    isMobileLayout() &&
-    mapLegend &&
-    legendContent &&
-    legendToggle
-  ) {
-    mapLegend.classList.add("is-collapsed");
-    legendToggle.setAttribute("aria-expanded", "false");
-    legendContent.hidden = true;
-  }
 
   if (isMobileLayout() && mobileScrim) {
     mobileScrim.hidden = false;
@@ -1559,7 +1490,6 @@ function openProfileDrawer(institution) {
 function closeProfileDrawer() {
   drawer?.classList.remove("is-open");
   drawer?.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("profile-open");
 
   if (mobileScrim) {
     mobileScrim.hidden = true;
@@ -1580,25 +1510,7 @@ function focusInstitutionOnVisibleMap(
     institution.coordinates.lng
   );
 
-  if (isMobileLayout() && accountForDrawer) {
-    const mapHeight = map.getContainer().getBoundingClientRect().height;
-    const projectedMarker = map.project(latLng, zoom);
-
-    // Place the pin in the upper visible portion of the map so the bottom
-    // profile sheet does not immediately cover the selected location.
-    const desiredMarkerY = Math.max(92, Math.min(mapHeight * 0.26, 150));
-    const centreShiftY = mapHeight / 2 - desiredMarkerY;
-    const projectedCentre = projectedMarker.add([0, centreShiftY]);
-    const adjustedCentre = map.unproject(projectedCentre, zoom);
-
-    map.flyTo(adjustedCentre, zoom, {
-      animate: true,
-      duration: 0.45
-    });
-    return;
-  }
-
-  if (!accountForDrawer) {
+  if (isMobileLayout() || !accountForDrawer) {
     map.flyTo(latLng, zoom, {
       animate: true,
       duration: 0.45
@@ -1889,7 +1801,7 @@ async function loadInstitutionData() {
     );
   }
 
-  INSTITUTIONS = data.map(normalizePublicInstitution);
+  INSTITUTIONS = data;
 
   renderTypeLegend();
   renderInstitutionList(INSTITUTIONS);
@@ -1911,45 +1823,61 @@ async function loadInstitutionData() {
   renderInitialMapWhenReady();
 }
 
-
-const legendTabs = Array.from(document.querySelectorAll("[data-legend-tab]"));
-const legendPanels = Array.from(document.querySelectorAll("[data-legend-panel]"));
-
-function activateLegendTab(tabName) {
-  legendTabs.forEach((tab) => {
-    const isActive = tab.dataset.legendTab === tabName;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-    tab.tabIndex = isActive ? 0 : -1;
-  });
-
-  legendPanels.forEach((panel) => {
-    const isActive = panel.dataset.legendPanel === tabName;
-    panel.classList.toggle("is-active", isActive);
-    panel.hidden = !isActive;
-  });
-}
-
-legendTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => activateLegendTab(tab.dataset.legendTab));
-  tab.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-    event.preventDefault();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    const nextIndex = (index + direction + legendTabs.length) % legendTabs.length;
-    const nextTab = legendTabs[nextIndex];
-    activateLegendTab(nextTab.dataset.legendTab);
-    nextTab.focus();
-  });
-});
-
-if (legendToggle && mapLegend && legendContent) {
-  legendToggle.addEventListener("click", () => {
-    const isCollapsed = mapLegend.classList.toggle("is-collapsed");
-    legendToggle.setAttribute("aria-expanded", String(!isCollapsed));
-    legendContent.hidden = isCollapsed;
-  });
-}
-
 loadInstitutionData().catch(showDataLoadError);
 
+
+/* =========================================================
+   CANONICAL MAP LEGEND CONTROLLER
+   Keep this component paired with the final legend CSS block.
+   ========================================================= */
+(function initializeMapLegend() {
+  const legend = document.getElementById("map-legend");
+  const toggle = document.getElementById("legend-toggle");
+  const content = document.getElementById("legend-content");
+  const tabs = Array.from(document.querySelectorAll("[data-legend-tab]"));
+  const panels = Array.from(document.querySelectorAll("[data-legend-panel]"));
+
+  if (!legend || !toggle || !content) return;
+
+  function setCollapsed(collapsed) {
+    legend.classList.toggle("is-collapsed", collapsed);
+    toggle.setAttribute("aria-expanded", String(!collapsed));
+    content.hidden = collapsed;
+  }
+
+  function activateTab(name, focusTab = false) {
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.legendTab === name;
+      tab.classList.toggle("is-active", selected);
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected && focusTab) tab.focus();
+    });
+
+    panels.forEach((panel) => {
+      const selected = panel.dataset.legendPanel === name;
+      panel.classList.toggle("is-active", selected);
+      panel.hidden = !selected;
+    });
+  }
+
+  toggle.addEventListener("click", () => {
+    setCollapsed(toggle.getAttribute("aria-expanded") === "true");
+  });
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateTab(tab.dataset.legendTab));
+    tab.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = (index + direction + tabs.length) % tabs.length;
+      activateTab(tabs[nextIndex].dataset.legendTab, true);
+    });
+  });
+
+  const initiallySelected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true")
+    || tabs[0];
+  activateTab(initiallySelected?.dataset.legendTab || "types");
+  setCollapsed(false);
+})();

@@ -2308,3 +2308,221 @@ body {
     display: none;
   }
 }
+
+/* =========================================================
+   CANONICAL MAP LEGEND COMPONENT — DO NOT DUPLICATE
+   This final block is the single source of truth for the
+   legend and intentionally overrides older legacy selectors.
+   Approved progress colours are locked here.
+   ========================================================= */
+:root {
+  --stage-outreach: #2f80ed;      /* approved: blue */
+  --stage-active: #f2c94c;        /* approved: golden yellow */
+  --stage-motion: #9b5de5;        /* approved: violet */
+  --stage-implemented: #6f9e2f;   /* approved: green */
+}
+
+.map-legend {
+  position: absolute;
+  z-index: 500;
+  left: 16px;
+  right: auto;
+  bottom: 16px;
+  width: min(212px, calc(100% - 32px));
+  padding: 0;
+  overflow: hidden;
+  color: #eef4f7;
+  background: linear-gradient(145deg, rgb(17 42 60 / 95%), rgb(10 29 43 / 95%));
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 36%);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  font-family: var(--font-primary);
+}
+
+.map-legend button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  font: inherit;
+}
+
+.legend-toggle {
+  width: 100%;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 11px;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.legend-toggle:hover,
+.legend-toggle:focus-visible {
+  background: rgb(255 255 255 / 7%);
+}
+
+.legend-toggle:focus-visible,
+.legend-tab:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -3px;
+}
+
+.legend-heading {
+  margin: 0;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legend-toggle svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: currentColor;
+  transition: transform 160ms ease;
+}
+
+.map-legend.is-collapsed .legend-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.legend-content {
+  display: block;
+  padding: 0 10px 10px;
+  border-top: 1px solid rgb(255 255 255 / 11%);
+}
+
+.map-legend.is-collapsed .legend-content {
+  display: none;
+}
+
+.legend-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 7px 0 8px;
+}
+
+.legend-tab {
+  min-width: 0;
+  min-height: 28px;
+  padding: 5px 7px;
+  color: #cbd7df;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+.legend-tab:hover {
+  color: #ffffff;
+  background: rgb(255 255 255 / 9%);
+}
+
+.legend-tab.is-active,
+.legend-tab[aria-selected="true"] {
+  color: #082033;
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+.legend-panel {
+  display: none;
+}
+
+.legend-panel.is-active:not([hidden]) {
+  display: block;
+}
+
+.legend-panel[hidden] {
+  display: none !important;
+}
+
+.legend-grid,
+.legend-type-grid,
+.stage-legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.legend-grid span,
+.legend-type-grid span,
+.stage-legend-grid span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #edf3f6;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.legend-type-icon {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+}
+
+.stage-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border: 1px solid rgb(255 255 255 / 48%);
+  border-radius: 50%;
+  box-shadow: 0 0 7px currentColor;
+}
+
+.stage-dot.stage-outreach {
+  color: var(--stage-outreach);
+  background: var(--stage-outreach);
+}
+
+.stage-dot.stage-active {
+  color: var(--stage-active);
+  background: var(--stage-active);
+}
+
+.stage-dot.stage-motion-passed {
+  color: var(--stage-motion);
+  background: var(--stage-motion);
+}
+
+.stage-dot.stage-implemented {
+  color: var(--stage-implemented);
+  background: var(--stage-implemented);
+}
+
+@media (max-width: 760px) {
+  .map-legend {
+    left: 10px;
+    bottom: 10px;
+    width: min(202px, calc(100% - 20px));
+  }
+
+  .legend-toggle {
+    min-height: 36px;
+    padding: 8px 10px;
+  }
+
+  .legend-content {
+    padding: 0 9px 9px;
+  }
+}
